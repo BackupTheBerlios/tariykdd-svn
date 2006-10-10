@@ -91,7 +91,7 @@ public class Chooser extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Menu");
+        jMenu1.setText("Menu Work");
         mnuAbout.setText("About the Tariy Project...");
         mnuAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
