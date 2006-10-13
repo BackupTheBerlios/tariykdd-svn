@@ -51,6 +51,8 @@ public class Chooser extends javax.swing.JFrame {
         jOptionPane1 = new javax.swing.JOptionPane();
         chooser = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        mnuActions = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         mnuAbout = new javax.swing.JMenuItem();
 
@@ -91,8 +93,22 @@ public class Chooser extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Menu");
-        mnuAbout.setText("About the Tariy Project...");
+        jMenu2.setText("Actions");
+        mnuActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b_play.png")));
+        mnuActions.setMnemonic('n');
+        mnuActions.setText("New Experiment");
+        mnuActions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuActionsActionPerformed(evt);
+            }
+        });
+
+        jMenu2.add(mnuActions);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu1.setText("About");
+        mnuAbout.setText("About ...");
         mnuAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuAboutActionPerformed(evt);
@@ -123,6 +139,13 @@ public class Chooser extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuActionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuActionsActionPerformed
+// TODO add your handling code here:
+        canvas.conexiones.clear();
+        canvas.removeAll();
+        canvas.repaint();
+    }//GEN-LAST:event_mnuActionsActionPerformed
 
     private void mnuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutActionPerformed
 // TODO add your handling code here:
@@ -198,9 +221,11 @@ public class Chooser extends javax.swing.JFrame {
     private javax.swing.JTabbedPane chooser;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JMenuItem mnuAbout;
+    private javax.swing.JMenuItem mnuActions;
     // End of variables declaration//GEN-END:variables
     
 }
