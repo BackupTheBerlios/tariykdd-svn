@@ -6,7 +6,7 @@
 
 package gui.KnowledgeFlow;
 
-import gui.Credits;
+import gui.frmCredits;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
  
@@ -153,7 +153,7 @@ public class Chooser extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(this, "The Tariy Project\nUniversidad de Nariño",
 //                "The Tariy Project.",JOptionPane.INFORMATION_MESSAGE);
         //jOptionPane1.showMessageDialog(this, "The Tariy Project\nUniversidad de Nariño");
-        new Credits().setVisible(true);
+        new frmCredits().setVisible(true);
     }//GEN-LAST:event_mnuAboutActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

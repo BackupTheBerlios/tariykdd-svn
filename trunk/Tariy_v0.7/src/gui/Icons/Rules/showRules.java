@@ -1,7 +1,7 @@
 /*
  * showRules.java
  *
- * Created on 27 de mayo de 2006, 06:25 AM
+ * Created on 31 de mayo de 2006, 21:55
  */
 
 package gui.Icons.Rules;
@@ -9,13 +9,20 @@ package gui.Icons.Rules;
 import Utils.AssocRules;
 import Utils.ExampleFileFilter;
 import Utils.FileManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 /**
  *
- * @author  and
+ * @author  ivan
  */
 public class showRules extends javax.swing.JFrame {
-    /** Las reglas de asociación. */
+    /** Las reglas de asociaciÃ³n. */
     private AssocRules rules;
     
     /** Tabla analizada. */
@@ -37,16 +44,59 @@ public class showRules extends javax.swing.JFrame {
         initComponents();
         
         if(rules.getRules().size() != 0) {
-            txtRules.setText(rules.toString());
+            RulesTableModel model = new RulesTableModel(rules.getRules());
+            tblRules.setModel(model);
+
+//            columnSizes();
         } else {
-            txtRules.setText("No se obtuvieron resultados...");
+            // No hay resultados //
         }
         
         lblTable.setText(table);
         lblSupport.setText(support + "%");
         lblConfidence.setText(confidence + "%");
+        
+        this.addJTableHeaderListener();
     }
-
+    
+    public void addJTableHeaderListener() {
+        MouseAdapter mouseListener = new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                TableColumnModel columnModel = tblRules.getColumnModel();
+                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
+                //System.out.println("column model " + viewColumn);
+                int column = tblRules.convertColumnIndexToModel(viewColumn);
+                System.out.println("column " + column);
+                // Ordenar elementos de la columna de la tabla.
+                if(e.getClickCount() == 1 && column != -1) {
+                    // Ordenar por confianza.
+                    if(column == 1) {
+                        rules.sortByGoldStone(0);
+                        rules.sortByGoldStone(1);
+                        RulesTableModel rtm = new RulesTableModel(rules.getRules());
+                        tblRules.setModel(rtm);
+                    } else if(column == 2) {
+                        RulesTableModel rtm = new RulesTableModel(rules.sortByConfidence());
+                        tblRules.setModel(rtm);
+                    }
+                }
+            }
+        };
+        JTableHeader header = tblRules.getTableHeader();
+        header.addMouseListener(mouseListener);
+    }
+    
+//    public void columnSizes() {
+//        int columns = model.getColumnCount();
+//        int csize = 0;
+//        TableColumn column = null;
+//        
+//        for (int i=0; i<columns; i++) {
+//            column = tblRules.getColumnModel().getColumn(i);
+//            csize = model.getColumnName(i).length();
+//            column.setPreferredWidth(csize*10);
+//        }
+//    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -58,19 +108,27 @@ public class showRules extends javax.swing.JFrame {
         Save = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
         lblTable = new javax.swing.JLabel();
-        lblSupport = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblSupport = new javax.swing.JLabel();
         lblConfidence = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         btn_atras = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtRules = new javax.swing.JTextPane();
+        tblRules = new javax.swing.JTable();
 
         Save.setCurrentDirectory(new java.io.File("/home/ivan/tariy/Reportes"));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Rules Viewer");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stock_text_justify.png")));
         jLabel1.setText("Analized Table:");
@@ -78,27 +136,19 @@ public class showRules extends javax.swing.JFrame {
         lblTable.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         lblTable.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
-        lblSupport.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblSupport.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
-
         jLabel2.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/text_strike.png")));
         jLabel2.setText("System Support:");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rules.png")));
-        jLabel3.setText("Confidence:");
+        lblSupport.setFont(new java.awt.Font("Lucida Bright", 1, 14));
+        lblSupport.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
         lblConfidence.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         lblConfidence.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
-        btnSave.setIcon(new javax.swing.ImageIcon("/usr/share/icons/crystalsvg/22x22/actions/save_all.png"));
-        btnSave.setText("Save Report");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 14));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rules.png")));
+        jLabel3.setText("Confidence:");
 
         btn_atras.setIcon(new javax.swing.ImageIcon("/usr/share/icons/Bluecurve/20x20/actions/back.png"));
         btn_atras.setText("Back");
@@ -108,66 +158,91 @@ public class showRules extends javax.swing.JFrame {
             }
         });
 
-        txtRules.setEditable(false);
-        txtRules.setFont(new java.awt.Font("Bitstream Vera Sans", 0, 10));
-        jScrollPane1.setViewportView(txtRules);
+        btnSave.setIcon(new javax.swing.ImageIcon("/usr/share/icons/crystalsvg/22x22/actions/save_all.png"));
+        btnSave.setText("Save Report");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        tblRules.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblRules);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(btn_atras)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 431, Short.MAX_VALUE)
-                        .add(btnSave))
+                .add(21, 21, 21)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
+                        .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .add(16, 16, 16)
+                        .add(lblTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(layout.createSequentialGroup()
+                                .add(29, 29, 29)
+                                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(15, 15, 15)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(lblTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE))))
-                .addContainerGap())
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)))
+                    .add(layout.createSequentialGroup()
+                        .add(btn_atras, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .add(448, 448, 448)
+                        .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                        .add(5, 5, 5)))
+                .add(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(lblTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(lblTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(lblSupport, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(8, 8, 8)
+                .add(15, 15, 15)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(lblConfidence, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(lblConfidence, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel3))
+                .add(33, 33, 33)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .add(24, 24, 24)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btn_atras)
                     .add(btnSave))
-                .addContainerGap())
+                .add(36, 36, 36))
         );
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-691)/2, (screenSize.height-387)/2, 691, 387);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atrasActionPerformed
-// TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_btn_atrasActionPerformed
-
+    
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        
+    }//GEN-LAST:event_formMousePressed
+    
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+    }//GEN-LAST:event_formMouseClicked
+    
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 // TODO add your handling code here:
         ExampleFileFilter ext = new ExampleFileFilter(".tux", "Archivo de reglas");
@@ -185,6 +260,11 @@ public class showRules extends javax.swing.JFrame {
                     "%\n\n" + rules.toString());
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+    
+    private void btn_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atrasActionPerformed
+// TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_atrasActionPerformed
     
     /**
      * @param args the command line arguments
@@ -208,7 +288,7 @@ public class showRules extends javax.swing.JFrame {
     private javax.swing.JLabel lblConfidence;
     private javax.swing.JLabel lblSupport;
     private javax.swing.JLabel lblTable;
-    private javax.swing.JTextPane txtRules;
+    private javax.swing.JTable tblRules;
     // End of variables declaration//GEN-END:variables
     
 }
