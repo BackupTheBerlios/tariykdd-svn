@@ -40,10 +40,10 @@ public class pnlPreprocesamiento extends javax.swing.JPanel {
         jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Conexion/Archivo Plano")));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Conexion/plaintext")));
         jLabel12.setText("Archivo Plano");
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel12.setName("Archivo Plano");
+        jLabel12.setName("plaintext");
         jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -64,7 +64,7 @@ public class pnlPreprocesamiento extends javax.swing.JPanel {
                 .add(jLabel12)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel11)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
