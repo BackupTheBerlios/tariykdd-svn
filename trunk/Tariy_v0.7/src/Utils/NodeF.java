@@ -27,7 +27,7 @@ public class NodeF extends NodeNoF {
         this.next = null;
     }
     
-    public short getFrec() {
+    public short getSupport() {
         return this.frec;
     }
     
@@ -44,7 +44,7 @@ public class NodeF extends NodeNoF {
             aux = aux.dad;
         }
         path = path.substring(0, path.length()-1);
-        path = path + "] +" + this.getFrec();
+        path = path + "] +" + this.getSupport();
         return path;
     }
     
