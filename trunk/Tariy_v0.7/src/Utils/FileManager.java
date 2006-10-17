@@ -2,6 +2,8 @@
  * FileManager.java
  *
  * Created on 3 de abril de 2005, 08:54 AM
+ *
+ * Proyecto Tariy
  */
 
 package Utils;
@@ -10,17 +12,41 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * La clase <code>FileManager</code> gestiona todo lo relacionado con flujos de
+ * archivos.
  *
- * @author  Tariy
+ * @author Proyecto Tariy
  */
-
 public class FileManager {
+    /**
+     * El archivo de acceso aleatorio del cual se quiere leer o al cual se va a
+     * escribir.
+     */
     File out;
-    RandomAccessFile outChannel;
-    private int n = 0;
-    private ArrayList dictionary;
-    private ArrayList columns;
     
+    /**
+     * Puntero para ubicarse en el archivo de acceso aleatorio. Proporciona el
+     * flujo hacia el archivo.
+     */
+    RandomAccessFile outChannel;
+    
+    /** Matriz con los datos de un archivo de acceso aleatorio .arff. */
+    private Object[][] data;
+    
+    /**
+     * Arreglo con los nombres de los atributos de un archivo de acceso
+     * aleatorio .arff.
+     */
+    private Object[] attributes;
+    
+    /** Lista con el diccionario de datos de un archivo .arff */
+    ArrayList dictionary;
+    
+    /**
+     * Crea una nueva instancia de la clase <code>FileManager</code>.
+     *
+     * @param file Archivo de acceso aleatorio.
+     */
     public FileManager(String archivo) {
         try{
             out = new File( archivo );
@@ -30,14 +56,12 @@ public class FileManager {
         }
     }
     
-    public ArrayList getDictionary() {
-        return dictionary;
-    }
-    
-    public int getTransactions() {
-        return n;
-    }
-    
+    /**
+     * Escribe un item de tipo <code>short</code> (2 bytes) en el archivo de
+     * acceso aleatorio.
+     *
+     * @param s El item a escribir en el archivo de acceso aleatorio.
+     */
     public void writeItem(short s) {
         try{
             outChannel.seek( out.length() );
@@ -47,6 +71,11 @@ public class FileManager {
         }
     }
     
+    /**
+     * Escribe una cadena en el archivo de acceso aleatorio.
+     *
+     * @param s La cadena a escribir en el archivo de acceso aleatorio.
+     */
     public void writeString(String s){
         byte b[];
         try{
@@ -58,14 +87,23 @@ public class FileManager {
         }
     }
     
+    /**
+     * Retorna el tamaÃ±o en bytes del archivo de acceso aleatorio.
+     */
     public long getFileSize() {
         return out.length();
     }
     
+    /**
+     * Retorna el nombre del archivo de acceso aleatorio.
+     */
     public String getFileName() {
         return out.getName();
     }
     
+    /**
+     * Cierra el flujo hacia el archivo de acceso aleatorio.
+     */
     public void closeFile() {
         try{
             outChannel.close();
@@ -74,15 +112,31 @@ public class FileManager {
         }
     }
     
+    /**
+     * Borra fisicamente el archivo de acceso aleatorio.
+     */
     public void deleteFile() {
         out.deleteOnExit();
     }
     
     
+    /**
+     * Ubica el flujo en una posiciÃ³n determinada del archivo de acceso
+     * aleatorio.
+     */
     public void setOutChannel(int pos) throws IOException {
         outChannel.seek(pos);
     }
     
+    /**
+     * Lee y muestra el contenido de un archivo de acceso aleatorio. Esta
+     * funciÃ³n es Ãºtil para el antiguo formato de archivos Tariy, lee un flujo
+     * de tipo <code>Short</code> y muestra cada transacciÃ³n separada por el
+     * cero.
+     *
+     * @param readposition La posiciÃ³n a partir de la cual se va a leer el
+     *                     archivo.
+     */
     public void ReadTransaction(int readposition) {
         try{
             outChannel.seek(readposition);
@@ -101,6 +155,13 @@ public class FileManager {
         }
     }
     
+    /**
+     * Lee y muestra el contenido del antiguo formato de archivos Tariy sin
+     * hacer distinciÃ³n de el separador de transacciones, el cero.
+     *
+     * @param initiposition La posiciÃ³n a partir de la cual se va a leer el
+     *                      archivo.
+     */
     public void readFile(int initposition) {
         try{
             outChannel.seek(initposition);
@@ -116,7 +177,169 @@ public class FileManager {
         }
     }
     
-    public DataSet readFile() {
+    /**
+     * Retorna el arreglo que tiene los nombres los atributos del archivo de
+     * acceso aleatorio .arff.
+     */
+    public Object[] getAttributes() {
+        return attributes;
+    }
+    
+    /**
+     * Retorna la matriz que almacena los datos del archivo de acceso aleatorio
+     * .arff.
+     */
+    public Object[][] getData() {
+        return data;
+    }
+    
+    /**
+     * Retorna el diccionario de datos construido a partir del archivo de acceso
+     * aleatorio .arff.
+     */
+    public ArrayList getDictionary() {
+        return this.dictionary;
+    }
+    
+    /**
+     * A partir de un archivo de acceso aleatorio .arff, almacena los nombres de
+     * los atributos en un arreglo, los datos en una matriz y el diccionario de
+     * datos en un ArrayList.
+     */
+    public void dataAndAttributes(boolean noAll) {
+        String attrs = "";
+        String dat = "";
+        int cols = 0;
+        int rows = 0;
+        DataSet dataset = new DataSet("Dictionary");
+        
+        try {
+            outChannel.seek(0);
+            long fileSize = outChannel.length();
+            long pos = 0;
+            String read = "";
+            boolean buildDictionary = true;
+            
+            while (pos < fileSize) {
+                if (!read.equalsIgnoreCase("@data")) {
+                    read = outChannel.readLine();
+                    pos = outChannel.getFilePointer();
+                    
+                    // Mientras la cadena leida sea igual a @attribute almacenela
+                    // en una cadena para los atributos.
+                    if (read != null && read.length() > 10 && read.substring(0, 10).equalsIgnoreCase("@attribute")) {
+                        attrs = attrs + read;
+                        cols++;
+                    }
+                } else {
+                    if (buildDictionary) {
+                        dataset.buildMultivaluedDictionary(attrs);
+                        dataset.sortDictionary();
+                        dictionary = dataset.getDictionary();
+                    }
+                    // Despues de haber leido @data almacenar la cadena leida en
+                    // una cadena para los datos.
+                    read = outChannel.readLine();
+                    pos = outChannel.getFilePointer();
+                    // Las lineas son separadas a traves del salto de linea.
+                    dat = dat + read + ",/n,";
+                    rows++;
+                    if (rows == 100 && noAll) {
+                        break;
+                    }
+                    read = "@data";
+                }
+            }
+            // Se elimina la coma sobrante al final de leer los datos.
+            dat = dat.substring(0, dat.length()-3);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Los nombres de los atributos se almacenan en un arreglo.
+            if (cols==1) {
+                cols = 2;
+                attributes = new Object[cols];
+                attributes[0] = "TID";
+                attributes[1] = "ITEM";
+            } else {
+                attributes = new Object[cols];
+                String colName;
+                for (int i=0; i<cols; i++) {
+                    int beg = attrs.indexOf("@attribute");
+                    if (beg<0) {
+                        beg = attrs.indexOf("@ATTRIBUTE");
+                        if (beg<0) {
+                            break;
+                        }
+                    }
+                    int end = beg + 10;
+                    colName = attrs.substring(end, attrs.indexOf('{'));
+                    colName = colName.trim().toUpperCase();
+                    attributes[i] = colName;
+                    attrs = attrs.substring(attrs.indexOf('}')+1, attrs.length());
+                }
+            }
+            // Los nombres de los datos se almacenan en una matriz.
+            data = new Object[rows][cols];
+            StringTokenizer token = new StringTokenizer(dat, ",");
+            String s = "";
+            int c = 0;
+            int r = 0;
+            
+            while (token.hasMoreTokens()) {
+                s = token.nextToken().trim();
+                if (s.equals("/n")) {
+                    r++;
+                    if (r==rows) {
+                        break;
+                    }
+                    c=0;
+                } else {
+                    if (!noAll) {
+                        String attr = (String) dataset.getAttrNames().get(c) +
+                                "=" + s;
+                        short node = dataset.codeAttribute(attr);
+                        data[r][c] = node;
+                    } else {
+                        data[r][c] = s;
+                    }
+                    c++;
+                }
+            }
+        }
+    }
+    
+    /**
+     * Retorna la representaciÃ³n textual del archivo plano relacionado con esta
+     * clase.
+     */
+    public String toString() {
+        String file = "";
+        try {
+            long size = outChannel.length();
+            outChannel.seek(0);
+            long curPointer = outChannel.getFilePointer();
+            while (curPointer < size) {
+                file = file + outChannel.readLine() + "\n";
+                curPointer = outChannel.getFilePointer();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            return file;
+        }
+    }
+    
+    /**
+     * Retorna el <code>DataSet</code> que se construye a partir de un archivo
+     * de acceso aleatorio de formato .arff de tipo multivaluado o multicolumna.
+     *
+     * @param  isMarketB Determina si el conjunto de datos del archivo de acceso
+     *         aleatorio .arff es del tipo para Market Basket.
+     * @return Un <code>DataSet</code> con los datos comprimidos en un Ã¡rbol
+     *         N-Ario.
+     */
+    public DataSet buildMultivaluedDataset() {
         DataSet tree = new DataSet("contact");
         
         try{
@@ -126,37 +349,68 @@ public class FileManager {
             StringTokenizer data;
             int tokenSize;
             boolean flagSortDictionary = true;
-            // Se establece la capacidad inicial del diccionario.
-            dictionary = new ArrayList(10);
-            // Se adiciona el primer dato del diccionario, el elemento nulo.
-            dictionary.add(new String("?"));
-            outChannel.seek(0);
             
-            while(true) {
+            long pos=0;
+            outChannel.seek(0);
+            long fileSize = outChannel.length();
+            
+            while (pos<fileSize) {
                 if(!cad.equalsIgnoreCase("@data")) {
                     cad = outChannel.readLine();
-                    if(cad.length()>10 && cad.substring(0, 10).equalsIgnoreCase("@attribute")) {
-                        this.buildDictionary(cad);
+                    pos = outChannel.getFilePointer();
+                    if(cad != null && cad.length()>10 && cad.substring(0, 10).equalsIgnoreCase("@attribute")) {
+                        attr = attr + cad;
                     }
                 } else {
                     if(flagSortDictionary){
-                        Collections.sort(dictionary);
+                        tree.buildMultivaluedDictionary(attr);
+                        tree.sortDictionary();
                         flagSortDictionary = false;
                     }
+                    
                     attr = outChannel.readLine();
-                    data = new StringTokenizer(attr, ",");
-                    tokenSize = data.countTokens();
-                    for(int index=0; index<tokenSize-1; index++) {
-                        attr = data.nextToken();
-                        node = encodeAttribute(attr.trim());
-                        if(node >= 0){
-                            tree.buildNTree(node, index);
+                    pos = outChannel.getFilePointer();
+                    
+                    // La linea en blanco no se tiene en cuenta.
+                    if (attr != null) {
+                        data = new StringTokenizer(attr, ",");
+                        tokenSize = data.countTokens();
+                        for(int index=0; index<tokenSize-1; index++) {
+                            attr = data.nextToken().trim();
+                            if ( !attr.equals("?") ) {
+                                // Si el conjunto es de Market Basket el arreglo
+                                // de los nombres de los atributos, solo tiene
+                                // 1 atributo, el stock de productos.
+                                /*if (isMarketB) {
+                                    attr = (String) tree.getAttrNames().get(0) +
+                                            "." + attr;
+                                } else {*/
+                                attr = (String) tree.getAttrNames().get(index) +
+                                        "=" + attr;
+                                //}
+                            }
+                            node = tree.codeAttribute(attr.trim());
+                            if ( node >= 0 ) {
+                                tree.buildNTree(node, index);
+                            }
                         }
-                    }
-                    attr = data.nextToken();
-                    node = encodeAttribute(attr.trim());
-                    if(node >= 0){
-                        tree.buildNTree(node, -1);
+                        attr = data.nextToken().trim();
+                        if ( !attr.equals("?") ) {
+                            // Si el conjunto es de Market Basket el arreglo
+                            // de los nombres de los atributos, solo tiene
+                            // 1 atributo, el stock de productos.
+                            /*if (isMarketB) {
+                                attr = (String) tree.getAttrNames().get(0) +
+                                        "." + attr;
+                            } else {*/
+                            attr = (String) tree.getAttrNames().get(tokenSize-1) +
+                                    "=" + attr;
+                            //}
+                        }
+                        node = tree.codeAttribute(attr.trim());
+                        if(node >= 0){
+                            tree.buildNTree(node, -1);
+                        }
                     }
                 }
             }
@@ -172,85 +426,138 @@ public class FileManager {
         }
     }
     
-    public void buildDictionary(int psize, String attributes) {
-        String att = "", aux = "";
-        int intSize = 0;
-        dictionary = new ArrayList(psize);
-        while(psize > 0) {
-            int beg = attributes.indexOf('{');
-            int end = attributes.indexOf('}');
+    /**
+     * Retorna el <code>DataSet</code> que se construye a partir de un archivo
+     * de acceso aleatorio de formato .arff de tipo univaluado o binario.
+     *
+     * @return Un <code>DataSet</code> con los datos comprimidos en un Ã¡rbol
+     *         N-Ario.
+     */
+    public DataSet buildUnivaluedDataSet() {
+        DataSet tree = new DataSet("contact");
+        
+        try{
+            String cad = "start";
+            String attr = "";
+            long fileSize;
+            String item1 = "";
+            String item2 = "";
+            String cab = "";
+            String cab2;
+            StringTokenizer data;
+            short node1 = 0;
+            short node2 = 0;
+            long filePos = 0;
+            int id;
+            boolean flagSortDictionary = true;
+            boolean start = true;
+            boolean end = false;
             
-            for(beg=beg+1; beg<end; beg++) {
-                if(attributes.charAt(beg) != ',' && attributes.charAt(beg) != 32)
-                    att = att + attributes.charAt(beg);
-                else {
-                    if(attributes.charAt(beg) == ',') {
-                        intSize++;
-                        att = att + ",";
+            outChannel.seek(0);
+            fileSize = outChannel.length();
+            long i = 0;
+            while (i<fileSize) {
+                if(!cad.equalsIgnoreCase("@data")) {
+                    cad = outChannel.readLine();
+                    i = outChannel.getFilePointer();
+                    if(cad.length()>10 &&
+                            cad.substring(0, 10).equalsIgnoreCase("@attribute")) {
+                        attr = attr + cad;
                     }
+                } else {
+                    if(flagSortDictionary){
+                        tree.buildUnivaluedDictionary(attr);
+                        tree.sortDictionary();
+                        flagSortDictionary = false;
+                        
+                        attr = outChannel.readLine();
+                        data = new StringTokenizer(attr, ",");
+                        cab2 = data.nextToken();
+                        cab = cab2;
+                        item1 = data.nextToken().trim();
+                        node1 = tree.codeAttribute(item1);
+                    }
+                    
+                    id = 1;
+                    attr = outChannel.readLine();
+                    data = new StringTokenizer(attr, ",");
+                    cab2 = data.nextToken().trim();
+                    item2 = data.nextToken().trim();
+                    node2 = tree.codeAttribute(item2);
+                    
+                    if (!cab.equals(cab2)) {
+                        end = true;
+                        cab = cab2;
+                    }
+                    if (start) {
+                        id = 0;
+                        start = false;
+                    }
+                    if (end) {
+                        if (id == 0 && end) {
+                            id = -2;
+                        } else {
+                            id = -1;
+                        }
+                        end = false;
+                        start = true;
+                    }
+                    tree.buildNTree(node1, id);
+                    node1 = node2;
                 }
             }
-            columns = new ArrayList(intSize+2);
-            columns.add("?");
-            for(int i=0; i<att.length(); i++) {
-                if(att.charAt(i) != ',')
-                    aux = aux + att.charAt(i);
-                else {
-                    columns.add(aux);
-                    aux = "";
-                }
+            if (start) {
+                id = -2;
+            } else {
+                id = -1;
             }
-            columns.add(aux);
-            dictionary.add(columns);
-            attributes = attributes.substring(end+1, attributes.length());
-            att = "";
-            aux = "";
-            intSize = 0;
-            psize--;
-        }
-        
-    }
-    
-    public short findAtt(String attribute, int index) {
-        short node = 0;
-        ArrayList al = (ArrayList) dictionary.get(index);
-        Iterator it = al.iterator();
-        while( it.hasNext() ) {
-            if( !it.next().toString().equalsIgnoreCase(attribute) )
-                node++;
-            else
-                break;
-        }
-        return node;
-    }
-    
-    private void buildDictionary(String cad) {
-        StringTokenizer attributes;
-        String attr;
-        int beg = cad.indexOf('{');
-        int end = cad.indexOf('}');
-        
-        cad = cad.substring(beg+1, end);
-        attributes = new StringTokenizer(cad, ",");
-        
-        while(attributes.hasMoreTokens()) {
-            attr = attributes.nextToken();
-            dictionary.add(attr.trim());
+            tree.buildNTree(node1, id);
+        } catch (EOFException e1) {
+            this.closeFile();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        } finally {
+            //tree.showNTree();
+            return tree;
+            //tree.saveTree("/home/and/Reportes/ntree.tariy");
+            //tree.rollBackTree("/home/and/Reportes/ntree.tariy");
         }
     }
     
-    private short encodeAttribute(String attr) {
-        short index = (short) Collections.binarySearch(dictionary, attr);//dictionary.indexOf(attr);
-        return index;
-    }
-    
-    static void sout(String s) {
-        System.out.println(s);
+    /**
+     * Retorna una matriz que representa un archivo de acceso aleatorio .arff con
+     * los nombres de sus atributos y sus datos.
+     */
+    public Object[][] buildDataMatrix() {
+        dataAndAttributes(false);
+        
+        int rows = getData().length + 1;
+        int cols = getAttributes().length;
+        Object[][] matrix = new Object[rows][cols];
+        
+        for (int c=0; c<cols; c++) {
+            matrix[0][c] = attributes[c];
+        }
+        
+        for (int r=1; r<rows; r++) {
+            for (int c=0; c<cols; c++) {
+                matrix[r][c] = data[r-1][c];
+            }
+        }
+        
+// Imprime los atributos y datos de un archivo .arff.
+//        for (int j=0; j<rows; j++) {
+//            for (int h=0; h<cols; h++) {
+//                System.out.print(matrix[j][h] + " * ");
+//            }
+//            System.out.print("\n" + (j+1) + ". ");
+//        }
+        
+        return matrix;
     }
     
     public static void main(String[] arg) {
-        FileManager ar = new FileManager("/home/ivan/tariy/cDatos/arff/newMarket.arff");
-        DataSet dataset = ar.readFile();
-        dataset.showNTree();
+        FileManager ar = new FileManager("/home/ivan/tariy/cDatos/arff/nominales/bd2_5k.arff");
+        ar.dataAndAttributes(false);
     }
 }
