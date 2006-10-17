@@ -9,6 +9,7 @@ package gui.KnowledgeFlow;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.DBConnection.DBConnectionIcon;
+import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Rules.RulesIcon;
 import java.awt.Color;
@@ -99,6 +100,8 @@ public class Contenedor extends JPanel {
                 icon = new AssociationIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Apriori")){
                 icon = new AssociationIcon((JLabel)presionado, p.x, p.y);
+            } else if (nameIcon.equals("plaintext")) {
+                icon = new FileIcon((JLabel) presionado, p.x, p.y);
             } else if(nameIcon.equals("Generador")){
                 icon = new RulesIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("updatem")){
