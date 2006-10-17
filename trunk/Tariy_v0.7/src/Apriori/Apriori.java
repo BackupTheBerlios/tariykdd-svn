@@ -270,18 +270,4 @@ public class Apriori extends Thread{
         System.out.println("Apriori en " + executionTime + "ms " + "Soporte: " + support);
         animation.stop();
     }
-    
-    public static void main(String arg[]){
-        FileManager fm = new FileManager("/home/ivan/tariy/cDatos/arff/newMarket.arff");
-        Apriori a = new Apriori(fm.readFile(), (short)1);
-        
-        while(a.makeCandidates());
-        System.out.println(a.Trees.size());
-        a.showFrequents();
-        
-        AssocRules ar = new AssocRules(a.getFrequents(), fm.getDictionary(), 60);
-        ar.buildRules();
-        System.out.println("\nRULES:");
-        ar.showRules();
-    }
 }
