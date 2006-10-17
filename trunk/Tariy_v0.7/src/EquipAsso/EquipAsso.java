@@ -166,21 +166,4 @@ public class EquipAsso extends Thread{
     public void setAnimation(AnimationLabel animation){
         this.animation = animation;
     }
-    
-    public static void main(String args[]){
-        FileManager fm = new FileManager("/home/ivan/tariy/cDatos/arff/marketb.arff");
-        EquipAsso equi = new EquipAsso(fm.readFile(), (short) 2);
-        
-        int type = 2;
-        while(equi.findInDataset(type));
-        Vector frequents = equi.getFrequents();
-        AvlTree petitTree;
-        for(int j = 0; j < frequents.size(); j++){
-            petitTree = (AvlTree) frequents.elementAt(j);
-            if(petitTree.isEmpty() != true){
-                petitTree.printTree();
-            }
-        }
-        equi.clearFrequents();
-    }
 }
