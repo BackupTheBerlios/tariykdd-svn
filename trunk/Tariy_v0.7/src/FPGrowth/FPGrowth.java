@@ -337,23 +337,6 @@ public class FPGrowth extends Thread{
         this.Trees.clear();
     }
     
-    public static void main(String args[]) {
-        try{
-            FileManager fm = new FileManager("/home/ivan/tariy/cDatos/arff/newMarket.arff");
-            DataSet dataset = fm.readFile();
-            FPGrowth arbol = new FPGrowth(dataset, (short) 1);
-            arbol.buildTree();
-            //arbol.goToRoot();
-            arbol.buildFrequents();
-            arbol.showFrequents();
-            AssocRules ar = new AssocRules(arbol.getFrequents(), fm.getDictionary(), 0);
-            ar.buildRules();
-            System.out.println("\nRULES:");
-            ar.showRules();
-        }catch(NullPointerException npe){
-        }
-    }
-    
     public void run() {
         long time = System.currentTimeMillis();
         
