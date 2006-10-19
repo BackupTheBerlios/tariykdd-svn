@@ -142,7 +142,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
                             ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                        }
+                        } 
                         
                         nuevoPresionado.seleccionado = true;
                         conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
