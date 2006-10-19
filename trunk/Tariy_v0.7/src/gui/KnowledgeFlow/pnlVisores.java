@@ -31,14 +31,14 @@ public class pnlVisores extends javax.swing.JPanel {
         setName("otro");
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
-        jLabel11.setText("Arbol");
+        jLabel11.setText("Tree");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel11.setName("Arbol");
         jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Generador")));
-        jLabel12.setText("Generador");
+        jLabel12.setText("Generator");
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel12.setName("Generador");
         jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -50,7 +50,7 @@ public class pnlVisores extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                     .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
                 .addContainerGap())
         );
