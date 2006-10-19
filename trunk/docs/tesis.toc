@@ -1,0 +1,112 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}INTRODUCCI\'ON}{5}
+\contentsline {chapter}{\numberline {2}TEMA}{7}
+\contentsline {section}{\numberline {2.1}Titulo}{7}
+\contentsline {section}{\numberline {2.2}L\'inea de Investigaci\'on}{7}
+\contentsline {section}{\numberline {2.3}Alcance y Delimitaci\'on}{7}
+\contentsline {chapter}{\numberline {3}PROBLEMA OBJETO DE ESTUDIO}{9}
+\contentsline {section}{\numberline {3.1}Descripci\'on del Problema}{9}
+\contentsline {section}{\numberline {3.2}Formulaci\'on del Problema}{10}
+\contentsline {chapter}{\numberline {4}OBJETIVOS}{11}
+\contentsline {section}{\numberline {4.1}Objetivo General}{11}
+\contentsline {section}{\numberline {4.2}Objetivos Espec\'ificos}{11}
+\contentsline {chapter}{\numberline {5}JUSTIFICACI\'ON}{13}
+\contentsline {chapter}{\numberline {6}MARCO TEORICO}{14}
+\contentsline {section}{\numberline {6.1}El Proceso de Descubrimiento de Conocimiento en Bases de Datos - DCBD}{14}
+\contentsline {section}{\numberline {6.2}Arquitecturas de Integraci\'on de las Herra\discretionary {-}{}{}mientas DCBD con un SGBD}{15}
+\contentsline {section}{\numberline {6.3}Implementaci\'on de Herramientas DCBD d\'ebilmente acopladas con un SGBD}{16}
+\contentsline {section}{\numberline {6.4}Estado del Arte}{17}
+\contentsline {subsection}{\numberline {6.4.1}WEKA - Waikato Environment for Knowledge Analysis}{17}
+\contentsline {subsection}{\numberline {6.4.2}ADaM - Algorithm Development and Mining System}{18}
+\contentsline {subsection}{\numberline {6.4.3}Orange - Data Mining Fruitful and Fun}{19}
+\contentsline {subsection}{\numberline {6.4.4}TANAGRA - A Free Software for Research and Academic Purposes}{21}
+\contentsline {subsection}{\numberline {6.4.5}AlphaMiner}{23}
+\contentsline {subsection}{\numberline {6.4.6}YALE - Yet Another Learning Environment}{25}
+\contentsline {subsubsection}{Modelando Procesos De Descubrimiento De Conocimiento Como Arboles De Operadores}{25}
+\contentsline {subsubsection}{Qu\'e Puede Hacer YALE?}{26}
+\contentsline {chapter}{\numberline {7}DESARROLLO DEL PROYECTO}{28}
+\contentsline {section}{\numberline {7.1}An\'alisis UML}{28}
+\contentsline {subsection}{\numberline {7.1.1}Funciones}{28}
+\contentsline {subsection}{\numberline {7.1.2}Diagramas de Casos de Uso}{31}
+\contentsline {subsubsection}{Tariy}{31}
+\contentsline {subsubsection}{M\'odulo de Selecci\'on}{32}
+\contentsline {subsubsection}{M\'odulo de Conexi\'on a Base de Datos}{32}
+\contentsline {subsubsection}{M\'odulo de Conexi\'on a Archivo Plano}{33}
+\contentsline {subsubsection}{M\'odulo de Preprocesamiento}{33}
+\contentsline {subsubsection}{M\'odulo de Miner\'ia de Datos}{34}
+\contentsline {subsubsection}{M\'odulo de Reglas}{35}
+\contentsline {subsection}{\numberline {7.1.3}Diagramas de Secuencia}{36}
+\contentsline {subsubsection}{Clase Apriori}{36}
+\contentsline {subsubsection}{Clase EquipAsso}{41}
+\contentsline {subsubsection}{Clase ItemSet}{45}
+\contentsline {subsubsection}{Clase DataSet}{47}
+\contentsline {subsubsection}{Clase FPGrowth}{52}
+\contentsline {subsubsection}{Clase AvlTree}{55}
+\contentsline {subsubsection}{Clase Transaction}{59}
+\contentsline {subsubsection}{Clase NodeF}{62}
+\contentsline {subsubsection}{Clase NodeNoF}{64}
+\contentsline {subsubsection}{Clase C45}{66}
+\contentsline {subsubsection}{Clase myHasMap}{67}
+\contentsline {subsubsection}{Clase Route}{69}
+\contentsline {subsubsection}{Clase TreeCounter}{70}
+\contentsline {subsubsection}{Clase Attribute}{72}
+\contentsline {subsubsection}{Clase Node}{73}
+\contentsline {section}{\numberline {7.2}Dise\~no}{74}
+\contentsline {subsection}{\numberline {7.2.1}Diagramas de Colaboraci\'on}{74}
+\contentsline {subsubsection}{Clase Apriori}{74}
+\contentsline {subsubsection}{Clase EuipAsso}{79}
+\contentsline {subsubsection}{Clase Combinations}{81}
+\contentsline {subsubsection}{Clase BaseConditionals}{82}
+\contentsline {subsubsection}{Clase Combinations}{83}
+\contentsline {subsubsection}{Clase FPGrowth}{85}
+\contentsline {subsubsection}{Clase AvlTree}{86}
+\contentsline {subsection}{\numberline {7.2.2}Diagramas de Clase}{87}
+\contentsline {subsection}{\numberline {7.2.3}Diagramas de Paquetes}{93}
+\contentsline {section}{\numberline {7.3}Implementaci\'on}{97}
+\contentsline {subsection}{\numberline {7.3.1}Arquitectura de TariyKDD}{97}
+\contentsline {subsubsection}{Modulo de Conexi\'on}{97}
+\contentsline {subsubsection}{Almacenamiento de los datos en memoria}{97}
+\contentsline {subsection}{\numberline {7.3.2}Descripci\'on de clases}{99}
+\contentsline {subsubsection}{Paquete Utils}{99}
+\contentsline {subsubsection}{Paquete Apriori}{100}
+\contentsline {subsubsection}{Paquete EquipAsso}{100}
+\contentsline {subsubsection}{Paquete FPGrowth}{100}
+\contentsline {subsubsection}{Paquete MateBy}{101}
+\contentsline {subsection}{\numberline {7.3.3}Casos de uso reales}{102}
+\contentsline {subsubsection}{Ingreso a la aplicaci\'on}{102}
+\contentsline {subsubsection}{M\'odulo filtros}{103}
+\contentsline {subsubsection}{M\'odulo algoritmos}{104}
+\contentsline {subsubsection}{M\'odulo visualizaci\'on}{105}
+\contentsline {subsubsection}{Conexi\'on a un archivo plano}{106}
+\contentsline {subsubsection}{Conexi\'on a una base de datos}{107}
+\contentsline {subsubsection}{Men\'u emergente conexi\'on BD}{108}
+\contentsline {subsubsection}{Configuraci\'on conexi\'on BD}{109}
+\contentsline {subsubsection}{Ventana de conexi\'on BD}{110}
+\contentsline {subsubsection}{Selecci\'on de atributos}{111}
+\contentsline {subsubsection}{Ventana selecci\'on de atributos}{112}
+\contentsline {subsubsection}{Filtro Remove Missing}{114}
+\contentsline {subsubsection}{Conexi\'on filtros a BD}{115}
+\contentsline {subsubsection}{Men\'u emergente de filtros}{116}
+\contentsline {subsubsection}{Visualizaci\'on de datos filtrados}{118}
+\contentsline {subsubsection}{Configuraci\'on filtro Update Missing}{120}
+\contentsline {subsubsection}{Configuraci\'on filtro Selection}{121}
+\contentsline {subsubsection}{Configuraci\'on filtro Range}{123}
+\contentsline {subsubsection}{Configuraci\'on filtro Reduction}{124}
+\contentsline {subsubsection}{Configuraci\'on filtro Codification}{126}
+\contentsline {subsubsection}{Configuraci\'on filtro Replace Value}{127}
+\contentsline {subsubsection}{Configuraci\'on filtro Numeric Range}{128}
+\contentsline {subsubsection}{Configuraci\'on filtro Discretize}{130}
+\contentsline {subsubsection}{Algoritmos}{131}
+\contentsline {subsubsection}{Opci\'on Delete}{132}
+\contentsline {subsubsection}{Opci\'on Configure}{133}
+\contentsline {subsubsection}{Opci\'on Run}{134}
+\contentsline {subsubsection}{Algoritmo FPGrowth}{135}
+\contentsline {subsubsection}{Algoritmo EquipAsso}{136}
+\contentsline {subsubsection}{Algoritmo C4.5}{137}
+\contentsline {subsubsection}{Algoritmo Mate}{138}
+\contentsline {subsubsection}{Diagrama de Visualizaci\'on}{139}
+\contentsline {subsubsection}{Opci\'on Delete}{140}
+\contentsline {subsubsection}{Opci\'on Configure}{141}
+\contentsline {subsubsection}{Opci\'on Run}{142}
+\contentsline {subsubsection}{Visor de Reglas}{143}
+\contentsline {chapter}{\numberline {8}Conclusiones}{143}

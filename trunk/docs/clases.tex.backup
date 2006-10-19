@@ -1,0 +1,58 @@
+% \documentclass[letterpaper,12pt]{report}
+% \usepackage[pdftex]{graphicx}
+% \usepackage[spanish]{babel}
+% \usepackage[latin1]{inputenc}
+% \pagestyle{headings}
+% 
+% \begin{document}
+\subsection{Diagramas de Clase}
+%\addtolength{\textwidth}{-5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% KnowledgeFlow %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.1\textwidth]{imgsClases/KnowledgeFlow.png}
+\caption{Paquete KnowledgeFlow}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%% Utils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.0\textwidth]{imgsClases/Utils.png}
+\caption{Paquete Utils}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%% FPGrowth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.0\textwidth]{imgsClases/FPGrowth.png}
+\caption{Paquete FPGrowth}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%% EquipAsso %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[angle=90, width=0.5\textwidth]{imgsClases/EquipAsso.png}
+\caption{Paquete EquipAsso}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%% Mate %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[angle=90, width=1.0\textwidth]{imgsClases/Mate.png}
+\caption{Paquete Mate}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%% C45 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[angle=90, width=1.0\textwidth]{imgsClases/Mate.png}
+\caption{Paquete Mate}
+\end{figure}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[angle=90, width=0.8\textwidth]{imgsClases/c45c.png}
+%\caption{Paquete C45}
+%\end{figure}
+
+%\addtolength{\textwidth}{5cm}

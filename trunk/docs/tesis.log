@@ -1,0 +1,499 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2006.7.28)  19 OCT 2006 10:56
+**tesis.tex
+(./tesis.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
+Document Class: report 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/generic/babel/babel.sty
+Package: babel 2001/03/01 v3.7h The Babel package
+
+(/usr/share/texmf/tex/generic/babel/spanish.ldf
+Language: spanish.ldf 2001/01/30 v4.1c Spanish support from the babel system
+
+(/usr/share/texmf/tex/generic/babel/babel.def
+File: babel.def 2001/03/01 v3.7h Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Spanish'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@spanish = a dialect from \language0
+\es@quottoks=\toks14
+\es@quotdepth=\count89
+Package babel Info: Making . an active character on input line 464.
+Package babel Info: Making " an active character on input line 495.
+Package babel Info: Making < an active character on input line 581.
+Package babel Info: Making > an active character on input line 582.
+)) (/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2001/07/10 v0.99a Input encoding file 
+
+(/usr/share/texmf/tex/latex/base/latin1.def
+File: latin1.def 2001/07/10 v0.99a Input encoding file 
+))
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2001/08/31 v1.1 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 125.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count90
+))
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+)
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+) (./tesis.aux (./portada.aux) (./subportada.aux) (./introduccion.aux) (./tema.
+aux) (./problema.aux)
+(./objetivos.aux) (./justificacion.aux) (./mteorico.aux) (./funciones.aux)
+(./desarrollo.aux) (./secuencias2.aux) (./secuencias3.aux)
+(./colaboraciones.aux) (./clases.aux) (./paquetes.aux) (./descripcion.aux)
+(./conclusiones.aux))
+\openout1 = `tesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+ (/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count91
+\scratchcounter=\count92
+\scratchtoks=\toks16
+\scratchdimen=\dimen106
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen107
+\minusone=\count93
+\thousandpoint=\dimen108
+\emptytoks=\toks17
+\nextbox=\box27
+\nextdepth=\dimen109
+\everyline=\toks18
+\!!counta=\count94
+\!!countb=\count95
+\recursecounter=\count96
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count97
+\nofMParguments=\count98
+\everyMPtoPDFconversion=\toks19
+) (./tesis.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 4.
+ [3
+
+
+
+
+{/usr/share/texmf/dvips/config/pdftex.map}])
+\tf@toc=\write4
+\openout4 = `tesis.toc'.
+
+ [4]
+\openout2 = `descripcion.aux'.
+
+
+(./descripcion.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--16
+
+ []
+
+
+Overfull \hbox (9.19978pt too wide) in paragraph at lines 3--16
+/cmr12/El sis-tema op-er-a-ti-vo so-bre el cual se tra-ba-jo du-rante la im-ple
+-mentaci^^Son de TariyKDD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--53
+
+ []
+
+[97
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+] <images/nario1.png, id=17, 288.07625pt x 84.315pt>
+File: images/nario1.png Graphic file (type png)
+
+<use images/nario1.png> [98]
+Overfull \hbox (1.82184pt too wide) in paragraph at lines 85--88
+[]/cmr12/Esta clase ges-tiona to-do lo rela-ciona-do con flu-jos de archivos,
+ []
+
+
+Overfull \hbox (0.96875pt too wide) in paragraph at lines 95--97
+[]/cmr12/Los item-sets fre-cuentes gen-er-a-dos por los al-go-rit-mos de aso-ci
+aci^^Son
+ []
+
+[99 <./images/nario1.png>] [100] [101]
+<images/01.png, id=31, 581.6429pt x 366.57434pt>
+File: images/01.png Graphic file (type png)
+ <use images/01.png> [102 <./images/01.png>] <images/02.png, id=35, 581.6429pt 
+x 366.57434pt>
+File: images/02.png Graphic file (type png)
+
+<use images/02.png> [103 <./images/02.png>]
+<images/03.png, id=39, 581.6429pt x 366.57434pt>
+File: images/03.png Graphic file (type png)
+ <use images/03.png> [104 <./images/03.png>] <images/04.png, id=43, 581.6429pt 
+x 366.57434pt>
+File: images/04.png Graphic file (type png)
+
+<use images/04.png> [105 <./images/04.png>]
+<images/05.png, id=50, 581.6429pt x 366.57434pt>
+File: images/05.png Graphic file (type png)
+ <use images/05.png> [106 <./images/05.png>] <images/06.png, id=54, 581.6429pt 
+x 366.57434pt>
+File: images/06.png Graphic file (type png)
+
+<use images/06.png> [107 <./images/06.png>]
+<images/07.png, id=59, 581.6429pt x 366.57434pt>
+File: images/07.png Graphic file (type png)
+ <use images/07.png> [108 <./images/07.png>] <images/08.png, id=63, 581.6429pt 
+x 366.57434pt>
+File: images/08.png Graphic file (type png)
+
+<use images/08.png> [109 <./images/08.png>]
+<images/11.png, id=67, 506.76073pt x 235.9659pt>
+File: images/11.png Graphic file (type png)
+ <use images/11.png> [110 <./images/11.png>] <images/09.png, id=71, 581.6429pt 
+x 390.95457pt>
+File: images/09.png Graphic file (type png)
+
+<use images/09.png> [111 <./images/09.png>]
+<images/attverMark.png, id=75, 815.86736pt x 534.62386pt>
+File: images/attverMark.png Graphic file (type png)
+
+<use images/attverMark.png> [112 <./images/attverMark.png>] [113]
+<images/17.png, id=83, 520.69229pt x 410.9812pt>
+File: images/17.png Graphic file (type png)
+ <use images/17.png>
+Underfull \hbox (badness 10000) in paragraph at lines 330--330
+[]/cmr12/4. El ^^S^^Pcono cor-re-spon-di-ente
+ []
+
+[114 <./images/17.png>] <images/19.png, id=87, 891.62024pt x 628.66193pt>
+File: images/19.png Graphic file (type png)
+
+<use images/19.png> [115 <./images/19.png>]
+<images/f1.png, id=91, 891.62024pt x 628.66193pt>
+File: images/f1.png Graphic file (type png)
+ <use images/f1.png> [116 <./images/f1.png>] [117] <images/fv1.png, id=98, 613.
+85963pt x 327.3918pt>
+File: images/fv1.png Graphic file (type png)
+
+<use images/fv1.png> <images/fv2.png, id=99, 613.85963pt x 327.3918pt>
+File: images/fv2.png Graphic file (type png)
+
+<use images/fv2.png> [118 <./images/fv1.png> <./images/fv2.png>] [119]
+<images/fi2.png, id=107, 891.62024pt x 628.66193pt>
+File: images/fi2.png Graphic file (type png)
+ <use images/fi2.png>
+[120 <./images/fi2.png>]
+<images/fi3ver.png, id=111, 891.62024pt x 628.66193pt>
+File: images/fi3ver.png Graphic file (type png)
+ <use images/fi3ver.png>
+Underfull \hbox (badness 3417) in paragraph at lines 416--416
+[]/cmr12/2. Se mues-tra B la ven-tana
+ []
+
+[121 <./images/fi3ver.png>] [122]
+<images/fi4.png, id=118, 891.62024pt x 628.66193pt>
+File: images/fi4.png Graphic file (type png)
+ <use images/fi4.png>
+Underfull \hbox (badness 3417) in paragraph at lines 432--432
+[]/cmr12/2. Se mues-tra B la ven-tana
+ []
+
+
+Underfull \hbox (badness 2547) in paragraph at lines 432--432
+/cmr12/al fil-tro 'Range'. Los cam-pos
+ []
+
+[123 <./images/fi4.png>] <images/fi5.png, id=122, 891.62024pt x 628.66193pt>
+File: images/fi5.png Graphic file (type png)
+
+<use images/fi5.png>
+Underfull \hbox (badness 1968) in paragraph at lines 448--448
+/cmr12/fil-tro 'Re-duc-tion'. Los cam-pos
+ []
+
+[124 <./images/fi5.png>] [125]
+<images/fi6.png, id=130, 891.62024pt x 628.66193pt>
+File: images/fi6.png Graphic file (type png)
+ <use images/fi6.png>
+[126 <./images/fi6.png>] <images/fi7.png, id=134, 891.62024pt x 628.66193pt>
+File: images/fi7.png Graphic file (type png)
+
+<use images/fi7.png> [127 <./images/fi7.png>]
+<images/fi8.png, id=138, 891.62024pt x 628.66193pt>
+File: images/fi8.png Graphic file (type png)
+ <use images/fi8.png>
+[128 <./images/fi8.png>] [129]
+<images/fi9.png, id=145, 891.62024pt x 628.66193pt>
+File: images/fi9.png Graphic file (type png)
+ <use images/fi9.png>
+Underfull \hbox (badness 2922) in paragraph at lines 513--513
+/cmr12/fil-tro 'Dis-cretize'. Los cam-pos
+ []
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 513--513
+/cmr12/son: /cmbx12/Atrib-u-to/cmr12/, en el cual se
+ []
+
+
+Underfull \hbox (badness 2057) in paragraph at lines 513--513
+/cmr12/crear. 'Tama~no del ran-go': se
+ []
+
+[130 <./images/fi9.png>] <images/a1.png, id=149, 830.66963pt x 521.56302pt>
+File: images/a1.png Graphic file (type png)
+
+<use images/a1.png> [131 <./images/a1.png>]
+<images/am1.png, id=154, 830.66963pt x 521.56302pt>
+File: images/am1.png Graphic file (type png)
+ <use images/am1.png>
+[132 <./images/am1.png>] <images/am2.png, id=158, 830.66963pt x 521.56302pt>
+File: images/am2.png Graphic file (type png)
+
+<use images/am2.png>
+Underfull \hbox (badness 4168) in paragraph at lines 563--564
+[]/cmr12/2. So-bre el ^^Sarea de tra-ba-jo
+ []
+
+[133 <./images/am2.png>] <images/am3.png, id=162, 830.66963pt x 521.56302pt>
+File: images/am3.png Graphic file (type png)
+
+<use images/am3.png> [134 <./images/am3.png>]
+<images/a2.png, id=166, 830.66963pt x 521.56302pt>
+File: images/a2.png Graphic file (type png)
+ <use images/a2.png> [135 <./images/a2.png>] <images/a3.png, id=170, 830.66963p
+t x 521.56302pt>
+File: images/a3.png Graphic file (type png)
+
+<use images/a3.png> [136 <./images/a3.png>]
+<images/a4.png, id=174, 830.66963pt x 521.56302pt>
+File: images/a4.png Graphic file (type png)
+ <use images/a4.png> [137 <./images/a4.png>] <images/a5.png, id=179, 830.66963p
+t x 521.56302pt>
+File: images/a5.png Graphic file (type png)
+
+<use images/a5.png> [138 <./images/a5.png>]
+<images/v01.png, id=183, 830.66963pt x 521.56302pt>
+File: images/v01.png Graphic file (type png)
+ <use images/v01.png>
+[139 <./images/v01.png>] <images/v0m1.png, id=187, 830.66963pt x 521.56302pt>
+File: images/v0m1.png Graphic file (type png)
+
+<use images/v0m1.png> [140 <./images/v0m1.png>]
+<images/v0m2.png, id=191, 830.66963pt x 521.56302pt>
+File: images/v0m2.png Graphic file (type png)
+ <use images/v0m2.png>
+Underfull \hbox (badness 4168) in paragraph at lines 696--697
+[]/cmr12/2. So-bre el ^^Sarea de tra-ba-jo
+ []
+
+[141 <./images/v0m2.png>] <images/v0m3.png, id=195, 830.66963pt x 521.56302pt>
+File: images/v0m3.png Graphic file (type png)
+
+<use images/v0m3.png> [142 <./images/v0m3.png>]
+<images/v0r.png, id=199, 891.62024pt x 628.66193pt>
+File: images/v0r.png Graphic file (type png)
+ <use images/v0r.png>)
+[143 <./images/v0r.png>] (./tesis.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 59--62
+[]/cmr12/IBM Cor-po-ra-tion.  In-tel-li-gent min-er.  http://www-
+ []
+
+
+Underfull \hbox (badness 6268) in paragraph at lines 64--70
+[]/cmr12/J Dem-sar and B Zu-pan.  Or-ange: From ex-per-i-men-tal ma-chine
+ []
+
+
+Underfull \hbox (badness 3536) in paragraph at lines 64--70
+/cmr12/learn-ing to in-ter-ac-tive da-ta min-ing.  Tech-ni-cal re-port, Fac-ul-
+ty of
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 64--70
+/cmr12/Com-put-er and In-for-ma-tion Sci-ence, Uni-ver-si-ty of Li-ubliana, Slo
+ve-nia,
+ []
+
+[146
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+[]/cmr12/Waikato ML Group.  Attribute-relation file for-mat (arff).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--91
+[]/cmr12/Waikato ML Group.  Col-lec-tions of datasets.  $/cmmi12/http /cmr12/:
+ []
+
+[147]
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
+[]/cmr12/Faculty of Com-put-er and Slove-nia In-for-ma-tion Sci-ence,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
+/cmr12/Uni-ver-si-ty of Li-ubliana.  Or-ange's in-ter-face to mysql.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+[]/cmr12/Goverment of Hong Kong.  In-no-va-tion and tech-nol-o-gy fund.
+ []
+
+[148]
+Underfull \hbox (badness 10000) in paragraph at lines 236--240
+[]/cmr12/Information Tech-nol-o-gy The Uni-ver-si-ty of Al-aba-ma in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--240
+/cmr12/Huntsville and Sys-tems Cen-ter.  Adam 4.0.2 com-po-nents.
+ []
+
+
+Underfull \hbox (badness 7685) in paragraph at lines 242--246
+[]/cmr12/Information Tech-nol-o-gy The Uni-ver-si-ty of Al-aba-ma in Huntsville
+
+ []
+
+
+Underfull \hbox (badness 3623) in paragraph at lines 242--246
+/cmr12/and Sys-tems Cen-ter.  Al-go-rithm de-vel-op-ment and min-ing sys-tem.
+ []
+
+[149]) [150] (./tesis.aux (./portada.aux) (./subportada.aux)
+(./introduccion.aux) (./tema.aux) (./problema.aux) (./objetivos.aux)
+(./justificacion.aux) (./mteorico.aux) (./funciones.aux) (./desarrollo.aux)
+(./secuencias2.aux) (./secuencias3.aux) (./colaboraciones.aux) (./clases.aux)
+(./paquetes.aux) (./descripcion.aux) (./conclusiones.aux)) ) 
+Here is how much of TeX's memory you used:
+ 1925 strings out of 95437
+ 23615 string characters out of 1190233
+ 79750 words of memory out of 1000001
+ 4815 multiletter control sequences out of 10000+50000
+ 9199 words of font info for 32 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 25i,10n,25p,1118b,398s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 230 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 190 words of extra memory for PDF output out of 65536
+{/usr/share/texmf/d
+vips/tetex/aae443f0.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></us
+r/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb>{/usr/share/texmf/dvips/tetex/7
+4afc74c.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texm
+f/fonts/type1/bluesky/cm/cmti12.pfb>{/usr/share/texmf/dvips/tetex/f7b6d320.enc}
+</usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1
+/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb>
+Output written on tesis.pdf (54 pages, 1073227 bytes).

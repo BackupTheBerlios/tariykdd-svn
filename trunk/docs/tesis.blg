@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99c (Web2C 7.4.5)
+The top-level auxiliary file: tesis.aux
+A level-1 auxiliary file: portada.aux
+A level-1 auxiliary file: subportada.aux
+A level-1 auxiliary file: introduccion.aux
+A level-1 auxiliary file: tema.aux
+A level-1 auxiliary file: problema.aux
+A level-1 auxiliary file: objetivos.aux
+A level-1 auxiliary file: justificacion.aux
+A level-1 auxiliary file: mteorico.aux
+A level-1 auxiliary file: funciones.aux
+A level-1 auxiliary file: desarrollo.aux
+A level-1 auxiliary file: secuencias2.aux
+A level-1 auxiliary file: secuencias3.aux
+A level-1 auxiliary file: colaboraciones.aux
+A level-1 auxiliary file: clases.aux
+A level-1 auxiliary file: paquetes.aux
+A level-1 auxiliary file: descripcion.aux
+A level-1 auxiliary file: conclusiones.aux
+The style file: plain.bst
+Database file #1: bibliografia.bib
+Warning--can't use both author and editor fields in 1
+Warning--empty publisher in 5
+Warning--can't use both volume and number fields in 6
+Warning--empty year in 13
+Warning--empty year in 12
+Warning--can't use both author and editor fields in 11
+Warning--empty year in 19
+Warning--can't use both volume and number fields in 22
+Warning--empty booktitle in yalep
+Warning--empty publisher in 23
+Warning--empty chapter and pages in 25
+Warning--empty publisher in 25
+Warning--empty publisher in 37
+You've used 52 entries,
+            2118 wiz_defined-function locations,
+            729 strings with 11053 characters,
+and the built_in function-call counts, 14217 in all, are:
+= -- 1259
+> -- 764
+< -- 6
++ -- 310
+- -- 252
+* -- 789
+:= -- 2427
+add.period$ -- 156
+call.type$ -- 52
+change.case$ -- 273
+chr.to.int$ -- 0
+cite$ -- 65
+duplicate$ -- 567
+empty$ -- 1249
+format.name$ -- 252
+if$ -- 2992
+int.to.chr$ -- 0
+int.to.str$ -- 52
+missing$ -- 38
+newline$ -- 262
+num.names$ -- 104
+pop$ -- 476
+preamble$ -- 1
+purify$ -- 230
+quote$ -- 0
+skip$ -- 367
+stack$ -- 0
+substring$ -- 294
+swap$ -- 81
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 192
+warning$ -- 13
+while$ -- 106
+width$ -- 54
+write$ -- 528
+(There were 13 warnings)

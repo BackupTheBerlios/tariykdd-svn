@@ -1,0 +1,24 @@
+\chapter{TEMA}
+\section{Titulo}
+TariyKDD: Una herramienta gen\'erica para el Descubrimiento de Conocimiento en Bases de Datos, d\'ebilmente acoplada con el SGBD PostgreSQL.\\
+\\
+\section{L\'inea de Investigaci\'on}
+El presente trabajo de grado, se encuentra inscrito bajo la \textbf{l\'inea de software y
+manejo de informaci\'on}, se enmarca dentro del \'area de las Bases de Datos y
+espec\'ificamente en la sub\'area  de arquitecturas de integraci\'on del Proceso de
+descubrimiento en Bases de datos con Sistemas Gestores de bases de Datos.\\
+\\
+\section{Alcance y Delimitaci\'on}
+TARIYKDD es una herramienta que contempla todas las etapas del proceso DCBD, es decir:
+Selecci\'on, preprocesamiento, transformaci\'on, miner\'ia de datos y visualizaci\'on
+\cite{1, 4, 16}. En la etapa de miner\'ia de datos se implementaron las tareas de
+Asociaci\'on y Clasificaci\'on. En estas dos tareas, se utilizaron los operadores
+algebraicos relacionales  y primitivas SQL para DCBD, desarrollados por Timar\'an
+\cite{32, 35}, con los algoritmos EquipAsso \cite{33, 34, 35} y Mate-tree \cite{35}. En
+la etapa de Visualizaci\'on se desarrollo una interfaz gr\'afica que le permite al
+usuario interactuar de manera f\'acil con la herramienta.\\
+\\
+Para los algoritmos implementados, se hicieron pruebas de rendimiento, utilizando
+conjuntos de datos reales y se los comparo con los algoritmos Apriori H\'ibrido \cite{4},
+FP-Growth \cite{17, 19} y C.4.5 \cite{25, 26}.\\
+\\

@@ -1,0 +1,36 @@
+\chapter{Conclusiones}
+En este proyecto se dise\~n\'o e implement\'o una herramienta d\'ebilmente acoplada con el SGBD PostgreSQL que da soporte a las etapas de conexi\'on, preprocesamiento, miner\'ia y visualizaci\'on del proceso KDD.  Igualmente se incluyeron en el estudio nuevos algoritmos de asociaci\'on y clasificaci\'on propuestos por Timaran \cite{32}.\\
+\\
+Para el desarrollo del proyecto se hizo un an\'alisis de varias herramientas de software libre que abordan tareas similares a las que se pretend\'ia en este trabajo.  Se identific\'o las limitaciones y virtudes de estas aplicaciones y se dise\~n\'o una metodolog\'ia para el desarrollo de una herramienta que cubriera las falencias encontradas.\\
+\\
+Teniendo en cuenta la intenci\'on de liberar la herramienta se establecieron patrones de dise\~no que hicieran posible el acoplamiento de nuevas funcionalidades a cada uno de los m\'odulos que lo componen, facilitando as\'i la inclusi\'on futura de nuevas caracter\'isticas y el mejoramiento continuo de la aplicaci\'on.\\
+\\
+La construcci\'on de TariyKDD comprendi\'o el desarrollo de cuatro m\'odulos que cubrieron, el proceso de conexi\'on a datos, tanto a archivos planos como a bases de datos relacionales, la etapa de preprocesamiento, donde se implementaron 9 filtros para la selecci\'on, transformaci\'on y preparaci\'on de los datos, el proceso de miner\'ia, que comprendi\'o tareas de asociaci\'on y clasificaci\'on, implementando 5 algoritmos, Apriori, FPGrowth y EquipAsso para asociaci\'on y C4.5 y MateBy para clasificaci\'on y el proceso de visualizaci\'on de resultados, utilizando tablas y \'arboles para generar reportes de los resultados y reglas obtenidas.  Estos desarrollos fueron logrados usando en su totalidad herramientas de c\'odigo abierto y software libre.\\
+\\
+Se desarroll\'o un modelo de datos que facilit\'o la aplicaci\'on de algoritmos de asociaci\'on sobre bases de datos enmarcadas en el concepto de canasta de mercado donde la longitud de cada transacci\'on es variable.\\
+\\
+Se realizaron pruebas para evaluar la validez de los algoritmos implementados. Para el plan de pruebas de la tarea de asociaci\'on, se utilizaron conjuntos de datos
+reales de transacciones de un supermercado de la Caja de Compensaci\'on familiar
+de Nari\~no. Para Clasificaci\'on, se trabaj\'o 
+%% trabajará %%
+con conjuntos de datos especializados para este
+tipo de algoritmos disponibles en \cite{data}.\\
+\\
+Analizando las pruebas obtenidas para Asociaci\'on, en esta arquitectura d\'ebilmente acoplada con PostgreSQL, el rendimiento es muy significativo obteniendo muy buenos tiempos de respuesta al aplicar el algoritmo EquipAsso. \\
+\\
+Fruto de este estudio se public\'o y sustent\'o un art\'iculo internacional en el marco del Congreso Latinoamericano de Estudios Informaticos - CLEI 2006 realizado en la ciudad de Santiago de Chile.\\
+\\
+Se cuenta con una versi\'on de TariyKDD con la capacidad de extraer reglas asociaci\'on y clasificaci\'on bajo una arquitectura d\'ebilmente acoplada con el SGBD PostgreSQL desarrollada bajo los lineamientos del software libre.\\
+\\
+Una vez que se han descrito los resultados m\'as relevantes que se han obtenido durante la realizacion de este proyecto, se sugiere una serie de recomendaciones como punto de partida para futuros trabajos:\\
+\\
+\begin{enumerate}
+\item Realizar mayores pruebas de rendimiento de esta arquitectura e implementar otras primitivas que Timaran propone para tareas de Asociaci\'on y Clasificaci\'on.
+\item Implementar otras tares y algoritmos de miner\'ia de datos, asi como nuevos filtros e interfaces de visualizaci\'on que permitan el mejoramiento continuo de TariyKDD.
+\item Implementar nuevas interfaces gr\'aficas que permitan la visualizaci\'on de informaci\'on de una manera m\'as amigable para el usuario.
+\item Probar el m\'odulo de clasificaci\'on con bases de datos reales.
+\item Implementar una funcionalidad que permita aplicar el modelo de clasificaci\'on construido y clasificar datos cuya clase se desconoce.
+\item Liberar y compartir una versi\'on de TariyKDD con la capacidad de descubrir conocimiento en bases de datos.
+\end{enumerate}
+
+Finalmente este trabajo nos permitio aplicar los conocimientos adquiridos en el programa de Ingenier\'ia de Sistemas y en especial los de la electiva de bases de datos, asi como nuestro trabajo y aprendizaje dentro del Grupo de Investigacion GRiAS L\'inea KDD.\\

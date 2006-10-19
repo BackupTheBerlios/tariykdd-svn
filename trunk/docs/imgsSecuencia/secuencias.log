@@ -1,0 +1,222 @@
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2006.9.3)  5 OCT 2006 20:32
+entering extended mode
+**secuencias.tex
+(./secuencias.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/report.cls
+Document Class: report 2004/02/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2004/02/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/generic/babel/babel.sty
+Package: babel 2004/11/20 v3.8d The Babel package
+
+(/usr/share/texmf/tex/generic/babel/spanish.ldf
+Language: spanish.ldf 2004/02/20 v4.2b Spanish support from the babel system
+
+(/usr/share/texmf/tex/generic/babel/babel.def
+File: babel.def 2004/11/20 v3.8d Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen105
+)
+\es@quottoks=\toks15
+\es@quotdepth=\count90
+Package babel Info: Making . an active character on input line 509.
+Package babel Info: Making " an active character on input line 540.
+Package babel Info: Making < an active character on input line 641.
+Package babel Info: Making > an active character on input line 642.
+))
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2004/02/05 v1.0d Input encoding file
+
+(/usr/share/texmf/tex/latex/base/latin1.def
+File: latin1.def 2004/02/05 v1.0d Input encoding file
+)) (./secuencias.aux)
+\openout1 = `secuencias.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Miscellaneous (2004.10.26)
+\protectiondepth=\count91
+\scratchcounter=\count92
+\scratchtoks=\toks16
+\scratchdimen=\dimen106
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen107
+\onepoint=\dimen108
+\onebasepoint=\dimen109
+\minusone=\count93
+\thousandpoint=\dimen110
+\onerealpoint=\dimen111
+\emptytoks=\toks17
+\nextbox=\box27
+\nextdepth=\dimen112
+\everyline=\toks18
+\!!counta=\count94
+\!!countb=\count95
+\recursecounter=\count96
+)
+loading : Context Support Macros / PDF (2004.03.26)
+\nofMPsegments=\count97
+\nofMParguments=\count98
+\MPscratchCnt=\count99
+\MPscratchDim=\dimen113
+\MPnumerator=\count100
+\everyMPtoPDFconversion=\toks19
+)
+Cap\'{\i }tulo 1.
+<Apriori/run.png, id=1, 1132.23pt x 794.97pt>
+File: Apriori/run.png Graphic file (type png)
+ <use Apriori/run.png>
+<Apriori/increaseSupport.png, id=2, 1524.69624pt x 1161.33875pt>
+File: Apriori/increaseSupport.png Graphic file (type png)
+
+<use Apriori/increaseSupport.png>
+<Apriori/CombinationsB.jpg, id=3, 1298.8525pt x 1972.36874pt>
+File: Apriori/CombinationsB.jpg Graphic file (type jpg)
+
+<use Apriori/CombinationsB.jpg>
+<Apriori/makeCandidates.png, id=4, 738.76pt x 835.12pt>
+File: Apriori/makeCandidates.png Graphic file (type png)
+
+<use Apriori/makeCandidates.png>
+<Apriori/pruneCandidates.png, id=5, 1581.91pt x 720.6925pt>
+File: Apriori/pruneCandidates.png Graphic file (type png)
+
+<use Apriori/pruneCandidates.png>
+<EquipAsso/findInDataSet.png, id=6, 2204.235pt x 1456.44125pt>
+File: EquipAsso/findInDataSet.png Graphic file (type png)
+
+<use EquipAsso/findInDataSet.png>
+<EquipAsso/pruneCandidate-recursive.png, id=7, 906.38625pt x 863.225pt>
+File: EquipAsso/pruneCandidate-recursive.png Graphic file (type png)
+
+<use EquipAsso/pruneCandidate-recursive.png>
+<EquipAsso/pruneCandidates.png, id=8, 612.2875pt x 326.21875pt>
+File: EquipAsso/pruneCandidates.png Graphic file (type png)
+
+<use EquipAsso/pruneCandidates.png>
+<EquipAsso/run.png, id=9, 1256.695pt x 862.22125pt>
+File: EquipAsso/run.png Graphic file (type png)
+ <use EquipAsso/run.png>
+<ItemSet/addItems.png, id=10, 475.7775pt x 255.95625pt>
+File: ItemSet/addItems.png Graphic file (type png)
+
+<use ItemSet/addItems.png>
+<ItemSet/sortItems.png, id=11, 375.4025pt x 215.80624pt>
+File: ItemSet/sortItems.png Graphic file (type png)
+
+<use ItemSet/sortItems.png>
+<ItemSet/compare.png, id=12, 1307.88625pt x 677.53125pt>
+File: ItemSet/compare.png Graphic file (type png)
+
+<use ItemSet/compare.png>
+<DataSet/buildDictionary.png, id=13, 943.525pt x 1039.885pt>
+File: DataSet/buildDictionary.png Graphic file (type png)
+
+<use DataSet/buildDictionary.png>
+<DataSet/buildNTree.png, id=14, 2187.17125pt x 1114.1625pt>
+File: DataSet/buildNTree.png Graphic file (type png)
+
+<use DataSet/buildNTree.png>
+
+LaTeX Warning: Float too large for page by 16.5478pt on input line 92.
+
+<DataSet/findAttrName.png, id=15, 836.12375pt x 698.61pt>
+File: DataSet/findAttrName.png Graphic file (type png)
+
+<use DataSet/findAttrName.png>
+<DataSet/pruneCandidatesOne.png, id=16, 1294.8375pt x 542.025pt>
+File: DataSet/pruneCandidatesOne.png Graphic file (type png)
+
+<use DataSet/pruneCandidatesOne.png>
+<DataSet/pruneCandidatesOne_public.png, id=17, 952.55875pt x 542.025pt>
+File: DataSet/pruneCandidatesOne_public.png Graphic file (type png)
+
+<use DataSet/pruneCandidatesOne_public.png> [1
+
+{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Apriori/run.png>] 
+[2 <./Apriori/increaseSupport.png>] [3 <./Apriori/CombinationsB.jpg>] [4 <./Apr
+iori/makeCandidates.png>]
+[5 <./Apriori/pruneCandidates.png> <./EquipAsso/findInDataSet.png>] [6 <./Equip
+Asso/pruneCandidate-recursive.png>] [7 <./EquipAsso/pruneCandidates.png> <./Equ
+ipAsso/run.png>] [8 <./ItemSet/addItems.png> <./ItemSet/sortItems.png>]
+[9 <./ItemSet/compare.png>] [10 <./DataSet/buildDictionary.png>] [11 <./DataSet
+/buildNTree.png>] [12 <./DataSet/findAttrName.png> <./DataSet/pruneCandidatesOn
+e.png>] [13 <./DataSet/pruneCandidatesOne_public.png>] (./secuencias.aux) ) 
+Here is how much of TeX's memory you used:
+ 1545 strings out of 94501
+ 19832 string characters out of 1173693
+ 72243 words of memory out of 1000000
+ 4731 multiletter control sequences out of 10000+50000
+ 5150 words of font info for 19 fonts, out of 500000 for 2000
+ 580 hyphenation exceptions out of 1000
+ 25i,6n,25p,226b,209s stack positions out of 1500i,500n,5000p,200000b,5000s
+PDF statistics:
+ 65 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 86 words of extra memory for PDF output out of 65536
+</us
+r/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bl
+uesky/cm/cmbx12.pfb>
+Output written on secuencias.pdf (13 pages, 897101 bytes).
