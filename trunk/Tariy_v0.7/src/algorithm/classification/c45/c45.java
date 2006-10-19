@@ -76,7 +76,7 @@ public class c45 {
             if(auxiliar == null){
                 ///System.out.println("Termine");
                 Clearequalsparcializados();
-                rules();
+                //rules();
                 break;
             }
             ArrayList positionFix = this.buildRoute(auxiliar);
@@ -201,9 +201,15 @@ public class c45 {
         //La clase C45TreeGUI es una JFrame que muestra el arbol n-ario dentro de un JTree
         //es necesario pasarle el arbol que quiero mostrar en el constructor y en
         //el metodo createAndShowGUI(Tree tree) por ahora.
-        C45TreeGUI view = new C45TreeGUI(finalTree);
-        view.createAndShowGUI(finalTree);
-        
+        //C45TreeGUI view = new C45TreeGUI(finalTree);
+//        ViewerClasification vc = new ViewerClasification(
+//                view.createAndShowGUI(finalTree), rules());
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                C45TreeGUI view = new C45TreeGUI(finalTree);
+                new ViewerClasification(view.createAndShowGUI(finalTree), rules()).setVisible(true);
+            }
+        });
     }
     
     public void equalsparcializados(Node node, int con){
@@ -341,7 +347,7 @@ public class c45 {
         return path;
     }
     
-    public void rules(){
+    public ArrayList rules(){
         Node auxr;
         String ruta = "";
         boolean bdand = false;
@@ -371,9 +377,10 @@ public class c45 {
             ruta = ruta.substring(6,ruta.length());
             ruta = "'IF' " + ruta;
             ruta = "\n RULE " + (i+1) + ": " + ruta;
-            System.out.println(ruta);
+            //System.out.println(ruta);
             rutas.add(ruta);
             ruta = "";
         }
+        return rutas;
     }
 }
