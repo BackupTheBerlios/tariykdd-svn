@@ -79,22 +79,23 @@ public class C45TreeGUI extends JPanel {
         }
     }
     
-   public static void createAndShowGUI(Tree tree) {
+   public static JPanel createAndShowGUI(Tree tree) {
         // Make sure we have nice window decorations.
-        JFrame.setDefaultLookAndFeelDecorated(true);
+        //JFrame.setDefaultLookAndFeelDecorated(true);
         
         // Create and set up the window.
-        JFrame frame = new JFrame("Show C4.5 Tree");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //JFrame frame = new JFrame("Show C4.5 Tree");
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Create and set up the content pane.
         C45TreeGUI contentPane = new C45TreeGUI(tree);
         contentPane.setOpaque(true); // Content pane must be opaque.
-        frame.setContentPane(contentPane);
+        return contentPane;
+        //frame.setContentPane(contentPane);
         
         // Display the window.
-        frame.pack();
-        frame.setVisible(true);
+        //frame.pack();
+        //frame.setVisible(true);
     }
     
     /**
