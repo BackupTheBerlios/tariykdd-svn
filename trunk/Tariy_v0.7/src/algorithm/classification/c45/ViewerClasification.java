@@ -9,6 +9,9 @@ package algorithm.classification.c45;
 import java.awt.TextArea;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -17,15 +20,15 @@ import java.util.StringTokenizer;
 public class ViewerClasification extends javax.swing.JFrame {
     
     /** Creates new form ViewerClasification */
-    public ViewerClasification() {
-        ArrayList rules = new ArrayList(5); // dimencionarlo con el array de llegada
-        rules.add("\n RULE 1: 'IF' ESTADO = nublado 'THEN' JTENNIS = si[4/4]");
-        rules.add("\n RULE 2: 'IF' ESTADO = Soleado  'AND'  HUMEDAD = Alta  'THEN'  JTENNIS = no [3/3]");
-        rules.add("\n RULE 3: 'IF' ESTADO = Soleado  'AND'  HUMEDAD = Normal  'THEN'  JTENNIS = si [2/2]");
-        rules.add("\n RULE 4: 'IF' ESTADO = Lluvioso 'AND'  VIENTO = Debil  'THEN'  JTENNIS = si [3/3]");
-        rules.add("\n RULE 5: 'IF' ESTADO = Lluvioso 'AND'  VIENTO = Fuerte  'THEN'  JTENNIS = no [2/2]");
-        initComponents();       
+    public ViewerClasification(JPanel panel, ArrayList rules) {
+        initComponents();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        TextRules = new javax.swing.JTextArea();
+        jScrollPane7.setViewportView(TextRules);
         TextRules.setText(rules.toString());
+        TabPanel.addTab("Tree", panel);
+        TabPanel.addTab("Rules", jScrollPane7);
+        
     }
     
     /** This method is called from within the constructor to
@@ -36,41 +39,11 @@ public class ViewerClasification extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel2 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Arbol = new javax.swing.JTree();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        TextRules = new javax.swing.JTextArea();
+        TabPanel = new javax.swing.JTabbedPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Viewer Clasification");
         jPanel2.setBackground(new java.awt.Color(81, 81, 133));
-        jScrollPane1.setViewportView(Arbol);
-
-        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jTabbedPane2.addTab("Tree", jPanel3);
-
-        TextRules.setColumns(20);
-        TextRules.setRows(5);
-        jScrollPane7.setViewportView(TextRules);
-
-        jTabbedPane2.addTab("Rules", jScrollPane7);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -78,14 +51,14 @@ public class ViewerClasification extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -93,11 +66,11 @@ public class ViewerClasification extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,21 +79,16 @@ public class ViewerClasification extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewerClasification().setVisible(true);
-            }
-        });
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTree Arbol;
-    private javax.swing.JTextArea TextRules;
+    private javax.swing.JTabbedPane TabPanel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
+
+    private JScrollPane jScrollPane7;
+
+    private JTextArea TextRules;
     
 }
