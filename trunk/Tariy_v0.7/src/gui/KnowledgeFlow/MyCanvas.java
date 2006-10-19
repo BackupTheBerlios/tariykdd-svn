@@ -9,6 +9,7 @@ package gui.KnowledgeFlow;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.DBConnection.DBConnectionIcon;
+import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Rules.RulesIcon;
 import java.awt.Canvas;
@@ -142,7 +143,11 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
                             ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                        } 
+                        }  else if (from instanceof FileIcon &&
+                                to instanceof AssociationIcon) {
+                            ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
+                            ((AssociationIcon)to).dataset.showNTree();
+                        }
                         
                         nuevoPresionado.seleccionado = true;
                         conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
