@@ -6,8 +6,8 @@
 package Utils;
 
 
-import EquipAsso.EquipAsso;
-import FPGrowth.FPGrowth;
+import algorithm.association.EquipAsso.EquipAsso;
+import algorithm.association.FPGrowth.FPGrowth;
 import java.util.*;
 import java.lang.*;
 

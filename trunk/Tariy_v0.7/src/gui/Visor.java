@@ -6,8 +6,8 @@
 
 package gui;
 
-import FPGrowth.FPGrowth;
-import FPGrowth.Stack;
+import algorithm.association.FPGrowth.FPGrowth;
+import algorithm.association.FPGrowth.Stack;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -9,9 +9,9 @@
 
 package gui.Icons.Association;
 
-import Apriori.Apriori;
-import EquipAsso.EquipAsso;
-import FPGrowth.FPGrowth;
+import algorithm.association.Apriori.Apriori;
+import algorithm.association.EquipAsso.EquipAsso;
+import algorithm.association.FPGrowth.FPGrowth;
 import Utils.DataSet;
 import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.Rules.RulesIcon;

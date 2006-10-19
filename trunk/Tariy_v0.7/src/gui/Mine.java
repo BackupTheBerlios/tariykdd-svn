@@ -6,13 +6,13 @@
 
 package gui;
 
-import Apriori.Apriori;
-import EquipAsso.EquipAsso;
-import FPGrowth.Stack;
+import algorithm.association.Apriori.Apriori;
+import algorithm.association.EquipAsso.EquipAsso;
+import algorithm.association.FPGrowth.Stack;
 import Utils.AvlNode;
 import Utils.AvlTree;
 import Utils.DataSet;
-import FPGrowth.FPGrowth;
+import algorithm.association.FPGrowth.FPGrowth;
 import Utils.FileManager;
 import java.util.Vector;
 import javax.swing.SpinnerNumberModel;
