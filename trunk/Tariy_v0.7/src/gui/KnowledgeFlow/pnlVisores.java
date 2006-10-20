@@ -33,7 +33,7 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
         jLabel11.setText("Tree");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel11.setName("Arbol");
+        jLabel11.setName("tree");
         jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
