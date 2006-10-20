@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -32,13 +33,15 @@ public class ClasificationIcon extends Icon{
     private JMenuItem mnuRun;
     private String algorithm;
     public AbstractTableModel dataIn;
+    public JPanel TreePanel;
+    public ArrayList RulesText;
     
     
     /** Creates a new instance of DBConnectionIcon */
     public ClasificationIcon(JLabel s, int x, int y) {
         super(s, x, y);
         super.constrainsTo = new ArrayList(1);
-        super.constrainsTo.add("");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
+        super.constrainsTo.add("TreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");
@@ -78,6 +81,8 @@ public class ClasificationIcon extends Icon{
             this.startAnimation();
             c45 c = new c45(dataIn);
             c.start();
+            TreePanel = c.view;
+            RulesText = c.rules();
             this.stopAnimation();
         } else if(algorithm.equals("Mate")){
             //this.startAnimation();
