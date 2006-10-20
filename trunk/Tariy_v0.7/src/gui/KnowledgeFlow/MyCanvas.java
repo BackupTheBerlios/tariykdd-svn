@@ -12,6 +12,7 @@ import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Rules.RulesIcon;
+import gui.Icons.Tree.TreeIcon;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Component;
@@ -143,11 +144,15 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
                             ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                        }  else if (from instanceof FileIcon &&
+                        } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
                             ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
-                            ((AssociationIcon)to).dataset.showNTree();
-                        }
+                            //((AssociationIcon)to).dataset.showNTree();
+                        } else if(from instanceof ClasificationIcon &&
+                                to instanceof TreeIcon){
+                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).TreePanel;
+                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).RulesText;
+                        } 
                         
                         nuevoPresionado.seleccionado = true;
                         conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
