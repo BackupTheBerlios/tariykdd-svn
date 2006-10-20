@@ -10,8 +10,7 @@
 package gui.Icons.Clasification;
 
 
-import c45.TariyTableModel;
-import c45.c45;
+import algorithm.classification.c45.c45;
 import gui.Icons.Filters.Selection.Seleccion;
 import gui.KnowledgeFlow.Icon;
 import gui.KnowledgeFlow.JackAnimation;
@@ -77,25 +76,11 @@ public class ClasificationIcon extends Icon{
         System.out.println(algorithm);
         if(algorithm.equals("C45")){
             this.startAnimation();
-            
-            final JFrame frame = new JFrame( "Arbol C 4.5" );
-            frame.addWindowListener( new WindowAdapter() {
-                public void windowClosing( WindowEvent evt ) {
-                    frame.dispose();
-                    //System.exit( 0 );
-                }
-            });
-            //c45 c = new c45(dataIn);
-            frame.getContentPane().add( new c45(dataIn),BorderLayout.CENTER );
-            frame.setSize( 300,500 );
-            frame.setVisible( true );
-            
-            
-            
+            c45 c = new c45(dataIn);
+            c.start();
             this.stopAnimation();
         } else if(algorithm.equals("Mate")){
             //this.startAnimation();
-            
         }
     }
 }
