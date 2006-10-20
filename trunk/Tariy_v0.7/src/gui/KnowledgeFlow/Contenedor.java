@@ -12,6 +12,7 @@ import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Rules.RulesIcon;
+import gui.Icons.Tree.TreeIcon;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -124,6 +125,8 @@ public class Contenedor extends JPanel {
                 icon = new FilterIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("c45")){
                 icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
+            } else if(nameIcon.equals("tree")){
+                icon = new TreeIcon((JLabel)presionado, p.x, p.y);
             } else {
                 icon = new Icon((JLabel)presionado, p.x, p.y);
             }
