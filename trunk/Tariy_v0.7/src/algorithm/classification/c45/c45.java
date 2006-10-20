@@ -37,7 +37,7 @@ public class c45 {
 //    String n = "";
     
     private Tree finalTree;
-    
+    public C45TreeGUI view;            //JPanel donde se mostrara el JTree con el arbol de reglas
     private Stack stack;
     
     /** Creates a new instance of c45 */
@@ -204,12 +204,15 @@ public class c45 {
         //C45TreeGUI view = new C45TreeGUI(finalTree);
 //        ViewerClasification vc = new ViewerClasification(
 //                view.createAndShowGUI(finalTree), rules());
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                C45TreeGUI view = new C45TreeGUI(finalTree);
-                new ViewerClasification(view.createAndShowGUI(finalTree), rules()).setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                C45TreeGUI view = new C45TreeGUI(finalTree);
+//                new ViewerClasification(view.createAndShowGUI(finalTree), rules()).setVisible(true);
+//            }
+//        });
+        
+        view = new C45TreeGUI(finalTree);
+        
     }
     
     public void equalsparcializados(Node node, int con){
