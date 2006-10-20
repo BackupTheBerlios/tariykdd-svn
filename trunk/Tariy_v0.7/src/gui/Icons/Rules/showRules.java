@@ -119,7 +119,7 @@ public class showRules extends javax.swing.JFrame {
 
         Save.setCurrentDirectory(new java.io.File("/home/ivan/tariy/Reportes"));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -134,17 +134,17 @@ public class showRules extends javax.swing.JFrame {
         jLabel1.setText("Analized Table:");
 
         lblTable.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblTable.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
+        lblTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
 
         jLabel2.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/text_strike.png")));
         jLabel2.setText("System Support:");
 
         lblSupport.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblSupport.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
+        lblSupport.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
 
         lblConfidence.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblConfidence.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
+        lblConfidence.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
 
         jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rules.png")));
