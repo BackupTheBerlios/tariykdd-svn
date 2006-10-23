@@ -9,6 +9,7 @@ package gui.KnowledgeFlow;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComponent;
@@ -21,7 +22,7 @@ import javax.swing.JPopupMenu;
  * @author  and
  */
 
-class Conexion{
+class Conexion implements Serializable{
     Conector de;
     Conector hacia;
     
