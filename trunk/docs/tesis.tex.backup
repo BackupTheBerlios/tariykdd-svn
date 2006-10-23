@@ -2,6 +2,7 @@
 \usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage[pdftex]{color, graphicx}
+\usepackage{multirow}
 %\pagestyle{empty}			%Estilo de pagina plain para que no muestre las cabeceras
 %\textheight=21cm			%Establece el alto de texto a 21cm por defecto es 19cm
 					%El ancho de texto por defecto es 14cm
@@ -9,7 +10,7 @@
 \addtolength{\textwidth}{1cm}
 \addtolength{\textheight}{1cm}
 
-\includeonly{descripcion}
+\includeonly{pruebas}
 
 \begin{document}
 \include{portada}
@@ -29,6 +30,7 @@
 \include{clases}
 \include{paquetes}
 \include{descripcion}
+\include{pruebas}
 \include{conclusiones}
 \bibliographystyle{plain}
 \bibliography{bibliografia}

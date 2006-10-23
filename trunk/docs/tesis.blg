@@ -16,6 +16,7 @@ A level-1 auxiliary file: colaboraciones.aux
 A level-1 auxiliary file: clases.aux
 A level-1 auxiliary file: paquetes.aux
 A level-1 auxiliary file: descripcion.aux
+A level-1 auxiliary file: pruebas.aux
 A level-1 auxiliary file: conclusiones.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
@@ -32,45 +33,45 @@ Warning--empty publisher in 23
 Warning--empty chapter and pages in 25
 Warning--empty publisher in 25
 Warning--empty publisher in 37
-You've used 52 entries,
+You've used 53 entries,
             2118 wiz_defined-function locations,
-            729 strings with 11053 characters,
-and the built_in function-call counts, 14217 in all, are:
-= -- 1259
-> -- 764
+            734 strings with 11151 characters,
+and the built_in function-call counts, 14425 in all, are:
+= -- 1279
+> -- 771
 < -- 6
-+ -- 310
-- -- 252
-* -- 789
-:= -- 2427
-add.period$ -- 156
-call.type$ -- 52
-change.case$ -- 273
++ -- 313
+- -- 254
+* -- 795
+:= -- 2462
+add.period$ -- 159
+call.type$ -- 53
+change.case$ -- 277
 chr.to.int$ -- 0
-cite$ -- 65
-duplicate$ -- 567
-empty$ -- 1249
-format.name$ -- 252
-if$ -- 2992
+cite$ -- 66
+duplicate$ -- 574
+empty$ -- 1271
+format.name$ -- 254
+if$ -- 3038
 int.to.chr$ -- 0
-int.to.str$ -- 52
+int.to.str$ -- 53
 missing$ -- 38
-newline$ -- 262
-num.names$ -- 104
-pop$ -- 476
+newline$ -- 267
+num.names$ -- 106
+pop$ -- 484
 preamble$ -- 1
-purify$ -- 230
+purify$ -- 233
 quote$ -- 0
-skip$ -- 367
+skip$ -- 374
 stack$ -- 0
-substring$ -- 294
-swap$ -- 81
+substring$ -- 299
+swap$ -- 82
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 192
+type$ -- 196
 warning$ -- 13
-while$ -- 106
-width$ -- 54
-write$ -- 528
+while$ -- 108
+width$ -- 55
+write$ -- 538
 (There were 13 warnings)

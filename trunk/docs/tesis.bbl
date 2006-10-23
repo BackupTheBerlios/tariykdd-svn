@@ -138,6 +138,11 @@ J.~Han, J.~Pei, and Y.~Yin.
 \newblock Mining frequent patterns without candidate generation.
 \newblock In {\em ACM SIGMOD}, Dallas, TX, 2000.
 
+\bibitem{abcjdbc}
+Java Hispano.
+\newblock El abc de jdbc.
+\newblock http://javahispano.org/tutorials.type.action?type=j2se, 2004.
+
 \bibitem{19}
 T.~Imielnski and H.~Mannila.
 \newblock A database perspective on knowledge discovery.

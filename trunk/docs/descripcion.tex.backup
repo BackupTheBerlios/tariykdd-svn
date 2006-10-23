@@ -2,20 +2,26 @@
 \subsection{Arquitectura de TariyKDD}
 Para el desarrollo de TariyKDD se utilizaron computadores con procesador AMD 64 bits, disco duro Serial ATA,
 \'util  al tomar los datos desde un repositorio y al momento de realizar pruebas de rendimiento de los
-algoritmos, ya que su velocidad de transferencia es de 150 MB/sg; adem\'as la RAM que se utilizo siempre fu\'e
+algoritmos, ya que su velocidad de transferencia es de 150 MB/sg; adem\'as la RAM que se utilizo fu\'e
 superior a los 512 MB, ya que la Miner\'ia de Datos requiere grandes cantidades de memoria por el tama\~no de
 los conjuntos de datos.\\
 \\
 El sistema operativo sobre el cual se trabajo durante la implementaci\'on de TariyKDD es Fedora Core en su
-versi\'on 3 y 5. El lenguaje de programaci\'on en el que esta elaborado TariyKDD es Java 5.0, 
+versiones 3 y 5. El lenguaje de programaci\'on en el que esta elaborado TariyKDD es Java 5.0, 
 actualizaci\'on 06.\\
 \\
 Dentro del proceso de Descubrimiento de Conocimiento, TariyKDD comprende las etapas de Selecci\'on,
 Preprocesamiento, Miner\'ia de Datos y Visualizaci\'on de Resultados. De esta forma la implementaci\'on de la
-herramienta se hizo a trav\'es de los siguientes modulos de software:
+herramienta se hizo a trav\'es de los siguientes m\'odulos de software cuya estructura se muestra en la figura 7.81.
 
-\subsubsection{Modulo de Conexi\'on}
-El Modulo de Conexi\'on permite al usuario acceder a los conjuntos de datos a trav\'es de un Archivo Plano o
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{images/arquitectura.png}
+\caption{\'Arquitectura TariyKDD}
+\end{figure}
+
+\subsubsection{M\'odulo de Conexi\'on}
+El M\'odulo de Conexi\'on permite al usuario acceder a los conjuntos de datos a trav\'es de un Archivo Plano o
 una Base de Datos.\\
 \\
 La opci\'on Archivo Plano le permite al usuario seleccionar un conjunto de datos que se encuentra en disco, en un
@@ -24,12 +30,16 @@ m\'as conocidos y tiene una estructura que lo hace f\'acil de comprender por ser
 de etiquetas).\\
 \\
 En cuanto a la Conexi\'on a Bases de Datos, TariyKDD puede conectarse con PostgreSQL a trav\'es de su manejador
-JDBC tipo 4. Este driver es el m\'as eficiente ya que traduce de forma directa las peticiones del API Java al
-protocolo nativo del Sistema Gestor, con la ventaja de que resulta sencilla la migraci\'on a otro diferente, lo
-\'unico que habr\'ia que hacer ser\'ia descargar el driver del fabricante adecuado.
+JDBC tipo 4 \cite{abcjdbc}. Este driver es el m\'as eficiente ya que traduce de forma directa las peticiones del
+API Java al protocolo nativo del Sistema Gestor, con la ventaja de que resulta sencilla la migraci\'on a otro
+diferente, lo \'unico que habr\'ia que hacer ser\'ia descargar el driver del fabricante adecuado.
 
 \subsubsection{Almacenamiento de datos en memoria}
-Una de las principales dificultades dentro del proceso de descubrimiento de conocimiento es el uso adecuado de
+Una vez se ha hecho la conexi\'on al conjunto de datos, ya sea a trav\'es de Archivo Plano o mediante Bases de
+Datos, el siguiente paso que se hace en TariyKDD es almacenar los datos en memoria principal, en una estructura
+especial que admi\-nistra de manera optima el tama\~no de los datos. La cual se describe en este m\'odulo.\\
+\\
+Una de las principales dificultades dentro del proceso de descubrimiento de conoci\-miento es el uso adecuado de
 los recursos del sistema y en especial de la memoria principal si tenemos en cuenta que se pretende trabajar con
 amplios vol\'umenes de datos.  Ya sea cargando un conjunto de datos desde un archivo plano o directamente desde
 una conexi\'on a un SGBD se espera organizar estos datos de una manera compacta con el objetivo de almacenar esta
@@ -72,7 +82,7 @@ nodos dentro del \'arbol N-Ario.
 \caption{\'Arbol N-Ario}
 \end{figure}
 
-Los valores entre par\'entesis en las hojas del \'arbol representan el número de repeticiones de la
+Los valores entre par\'entesis en las hojas del \'arbol representan el n\'umero de repeticiones de la
 transacci\'on, por ejemplo la n\'umero 3 es la misma transacci\'on 5, por tanto en el \'arbol N-Ario estos dos
 registros ser\'an almacenados en una sola rama, con la precauci\'on de contar su soporte.\\
 \\
@@ -80,26 +90,64 @@ Entre menos n\'umero de valores tenga un atributo y entre m\'as transacciones fo
 mayor posibilidad de encontrar coincidencias y aprovechar segmentos de transacciones ya almacenadas para guardar
 las nuevas que se repitan.\\
 
-Los siguientes modulos son la descripci\'on de los algoritmos que fuer\'on implementados en TariyKDD. Existe algo
-en com\'un para los algoritmos de asociaci\'on (Apriori, FPGrowth y EquipAsso) y es el hecho de que para almacenar
-los itemsets frecuentes se utilizo un vector de \'arboles AVL balanceados. Cada posici\'on del vector almacena un
-tipo de itemsets frecuentes en un \'arbol AVL. De esta forma la posici\'on 0 del vector almacena en un \'arbol AVL
-los itemsets frecuentes tipo 1.
+\subsubsection{M\'odulo Filtros}
+El m\'odulo filtros o data cleaning, se encarga de hacer un refinamiento de los datos en  dos etapas, por un lado
+hace un proceso de limpieza sobre datos corruptos, vacios, ruidosos, inconsistentes, duplicados, alterados etc,
+por otro lado hace una seleccion de estos datos para escojer aquellos que brinden informacion de calidad,
+aplicando muestreos, discretizaciones, etc. De esta forma obtenemos datos depurados seg\'un el objetivo del
+analista, para que posteriormente se pueda aplicar el nucleo KDD o de Miner\'ia de Datos sobre datos coherentes,
+limpios y consistentes.
 
-\subsubsection{Modulo Apriori}
-Este modulo implementa los m\'etodos necesarios para que el usuario pueda minar con el algoritmo Apriori. Primero
-el conjunto de datos se almacena en la estructura de datos que se explico en la secci\'on anterior. 
+A este m\'odulo, pertenecen los filtros de Remove Missing, Update Missing, Selection, Range, Reduction,
+Codification, Replace Value, Numeric Range y Discretize, los cuales se alimentan y presentan sus resultados a
+trav\'es de un TableModel que es el medio por el cual comunican sus flujos de datos.
+
+\subsubsection{M\'odulo algoritmos}
+Dentro de este m\'odulo se encuentran dos tipos de algoritmos, los de asociaci\'on y los de clasificaci\'on:
 
 \begin{enumerate}
-\item A trav\'es de una consulta SQL se obtienen los itemsets frecuentes tipo 1.
-\item A partir de la combinaci\'on de los datos del anterior conjunto se crean los itemsets frecuentes.
+\item Asociaci\'on: Los algoritmos de asociaci\'on implementados en TariyKDD son EquipAsso, FPGrowth y Apriori.
+Los tres algoritmos utilizan un vector de \'arboles AVL balanceados para almacenar los itemsets frecuentes. Cada
+posici\'on del vector almacena un tipo de itemsets frecuentes en un \'arbol AVL. De esta forma la posici\'on 0 del
+vector almacena un \'arbol AVL que contiene los itemsets frecuentes tipo 1. En este m\'odulo de TariyKDD, la mayor
+ventaja que proporcionan los \'arboles AVL es la rapidez con la que se realizan las busquedas a la hora de 
+determinar si un itemset frecuente ya existe.\\
+\\
+As\'i mismo los tres algoritmos usan el \'arbol N-Ario que se describio anteriormente para almacenar el conjunto
+de datos que se vaya a minar. Los datos comprimidos en esta estructura son tomados como entradas por los tres
+algoritmos, a partir de estos se aplican las t\'ecnicas de Miner\'ia de Datos correspondientes y el producto final
+son las reglas.
+
+\item Clasificaci\'on: Dentro de este m\'odulo en TariyKDD se implementaron los algoritmos Mate y C4.5. Para los
+algoritmos de clasificaci\'on igual que en los de asociaci\'on la estructura que se utilizo para su 
+implementaci\'on fu\'e un \'arbol N-Ario. En C4.5 y Mate para almacenar los datos en primera instancia. Ya que ha
+medida que se desarrollan los algoritmos este \'arbol va cambiando, as\'i, al final el \'arbol tiene las reglas
+de clasificaci\'on.\\
+\\
+La estructura utilizada para mostrar las reglas de clasificaci\'on es un \'arbol N-Ario que implementa los
+m\'etodos de la interfaz de Java, TreeModel , la cual define un modelo de datos adecuado para poder visualizarlos
+en un JTree o un control de Java que despliega las reglas jerarquicamente de acuerdo a la estructura en la que
+estan almacenadas, es decir el \'arbol N-Ario.
 \end{enumerate}
 
-\subsubsection{Modulo FPGrowth}
+\subsubsection{M\'odulo Visores}
+Este m\'odulo implementa las clases necesarias para mostrar de forma gr\'afica las reglas que se obtienen 
+despu\'es de haber realizado Miner\'ia de Datos.\\
+\\
+Si el usuario ha utilizado algoritmos de asociaci\'on obtiene como resultado reglas, que puede observar a
+trav\'es de una JTable, la cual es utilizada para desplegar y editar tablas de dos dimensiones. Para desplegar
+estas reglas, primero, se tiene un array con los datos que se van a mostrar, a partir de estos se construye un
+m\'odelo propio de tabla implementando los m\'etodos de la interfaz Java, TableModel. Des\-pu\'es simplemente el 
+m\'odelo se pasa al constructor de JTable para que esta clase se encarge de desplegar las reglas.\\
+\\
+Pero si durante el proceso de Miner\'ia de Datos se utilizaron algoritmos de clasificaci\'on, las reglas son 
+desplegadas en un \'arbol N-Ario que dentro de TariyKDD se ha llamado \'Arbol de Resultados. La construcci\'on de
+este se la realiza como se dijo anteriormente implementando los m\'etodos de la interfaz TreeModel, modelo que 
+luego es usado por un JTree para visualizar las reglas de manera jer\'arquica.
 
-\subsubsection{EquipAsso}
+\subsubsection{M\'odulo GUI}
 
-
+El m\'odulo de GUI es usado en los 4 m\'odulos anteriores y es el encargado de brindrar una interfaz gr\'afica amigable al usuario.  Para su desarrollo se utilizaron las funcionalidades del proyecto Matisse, proyecto encargado de proveer facilidades para la construccion de entornos gr\'aficos a los proyectos desarrollados con NetBeans y que da un soporte a las aplicaciones que usan Swing, el cual es un conjunto de clases y componentes usados en interfaces gr\'aficas desde botones hasta tablas y estructuras de \'arboles.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESCRIPCION DE CLASES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Descripci\'on de clases}
 
@@ -142,7 +190,7 @@ frecuentes existan.
 
 \subsubsection{Paquete EquipAsso}
 \begin{description}
-\item [Clase EquipAsso] Para ejecutar el algoritmo EquipAsso los parametros necesarios son: un soporte de tipo
+\item [Clase EquipAsso] Para ejecutar el algoritmo EquipAsso los parametros necesa\-rios son: un soporte de tipo
 short y un dataset (estructura de tipo \'arbol N-Ario en la cual los datos son comprimidos). Basicamente para
 obtener los itemsets frecuentes, lo primero que se debe hacer es recorrer el \'arbol N-Ario tomar cada una de
 sus transacciones, realizar todas sus combinaciones y ver cual de ellas pasa soporte y clasifica como itemset
@@ -161,7 +209,7 @@ un \'arbol AVL balanceado.
 los punteros necesarios para armar un \'arbol N-Ario, tiene un puntero al hijo, al padre y al hermano.
 \item [Clase BaseConditional] Clase que almacena los Patrones Condicionales Base a partir del \'arbol N-Ario de la 
 clase FPGrowth.
-\item [Clase BaseConditonals] Solo los nodos que pasan el soporte min\'imo se consideran frecuentes, estos, tienen
+\item [Clase BaseConditonals] Solo los nodos que pasan el soporte min\'imo se consi\-deran frecuentes, estos, tienen
 un puntero a cada uno de sus Patrones Condicionales Base, a partir de los cuales se obtienen los itemsets
 frecuentes.
 \end{description}
@@ -688,7 +736,7 @@ ACCI\'ON DEL ACTOR & RESPUESTA DEL SISTEMA \\ \hline
 ACCI\'ON DEL ACTOR & RESPUESTA DEL SISTEMA \\ \hline
 1. Cuando el usuario ha construido una secuencia de Miner\'ia de Datos, con cualquiera de los algoritmos, en A se
 encuentra en la secci\'on de vistas y en B (\'Area de opciones) ha hecho click en el icono generador.
-& 2. Entonces en C (\'Area de trabajo) aparece el icono del generador, a trav\'es del cual el usuario puede acceder a las opciones de este modulo. \\ \hline
+& 2. Entonces en C (\'Area de trabajo) aparece el icono del generador, a trav\'es del cual el usuario puede acceder a las opciones de este m\'odulo. \\ \hline
 \end{tabular}
 \end{center}
 \newpage
