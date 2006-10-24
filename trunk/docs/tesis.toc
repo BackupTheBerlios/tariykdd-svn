@@ -113,6 +113,8 @@
 \contentsline {subsubsection}{Opci\'on Configure}{144}
 \contentsline {subsubsection}{Opci\'on Run}{145}
 \contentsline {subsubsection}{Visor de Reglas}{146}
-\contentsline {chapter}{\numberline {8}Pruebas y resultados}{147}
-\contentsline {section}{\numberline {8.1}Rendimiento algoritmos de asociaci\'on}{147}
-\contentsline {chapter}{\numberline {9}Conclusiones}{154}
+\contentsline {chapter}{\numberline {8}Conclusiones}{147}
+\contentsline {chapter}{\numberline {9}ANEXOS}{150}
+\contentsline {section}{\numberline {9.1}Pruebas y resultados}{150}
+\contentsline {subsection}{\numberline {9.1.1}Rendimiento algoritmos de asociaci\'on}{150}
+\contentsline {subsection}{\numberline {9.1.2}Rendimiento formato de comprensi\'on Tariy - Formato ARFF}{156}

@@ -74,21 +74,27 @@ administraci\'on de la memoria.\\
 \end{center}
 
 Se puede ver que los cuatro primeros campos de las transacciones 1 y 2 son iguales por lo que pueden compartir
-nodos dentro del \'arbol N-Ario. 
+nodos dentro del \'arbol N-Ario.\\
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{images/nario2.png}
 \caption{\'Arbol N-Ario}
+\label{nario}
 \end{figure}
 
-Los valores entre par\'entesis en las hojas del \'arbol representan el n\'umero de repeticiones de la
-transacci\'on, por ejemplo la n\'umero 3 es la misma transacci\'on 5, por tanto en el \'arbol N-Ario estos dos
-registros ser\'an almacenados en una sola rama, con la precauci\'on de contar su soporte.\\
+Como se puede ver en la figura \ref{nario}, los valores entre par\'entesis en las hojas del \'arbol representan 
+el n\'umero de repeticiones de la transacci\'on, por ejemplo la n\'umero 3 es la misma transacci\'on 5, por tanto
+en el \'arbol N-Ario estos dos registros ser\'an almacenados en una sola rama, con la precauci\'on de contar su
+soporte.\\
 \\
 Entre menos n\'umero de valores tenga un atributo y entre m\'as transacciones formen el conjunto de datos, existe
 mayor posibilidad de encontrar coincidencias y aprovechar segmentos de transacciones ya almacenadas para guardar
 las nuevas que se repitan.\\
+\\
+Un an\'alisis del presente formato para compresi\'on de datos con respecto al formato ARFF se muestra en los
+anexos, en el cuadro \ref{formatos}, donde se registra el tama\~no en disco de cada formato al almacenar
+conjuntos de datos con diferente n\'umero de transacciones y atributos.
 
 \subsubsection{M\'odulo Filtros}
 El m\'odulo filtros o data cleaning, se encarga de hacer un refinamiento de los datos en  dos etapas, por un lado
@@ -96,8 +102,8 @@ hace un proceso de limpieza sobre datos corruptos, vacios, ruidosos, inconsisten
 por otro lado hace una seleccion de estos datos para escojer aquellos que brinden informacion de calidad,
 aplicando muestreos, discretizaciones, etc. De esta forma obtenemos datos depurados seg\'un el objetivo del
 analista, para que posteriormente se pueda aplicar el nucleo KDD o de Miner\'ia de Datos sobre datos coherentes,
-limpios y consistentes.
-
+limpios y consistentes.\\
+\\
 A este m\'odulo, pertenecen los filtros de Remove Missing, Update Missing, Selection, Range, Reduction,
 Codification, Replace Value, Numeric Range y Discretize, los cuales se alimentan y presentan sus resultados a
 trav\'es de un TableModel que es el medio por el cual comunican sus flujos de datos.
