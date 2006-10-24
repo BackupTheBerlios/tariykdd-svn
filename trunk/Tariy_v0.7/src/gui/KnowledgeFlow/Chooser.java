@@ -1,7 +1,7 @@
 /*
  * Chooser.java
  *
- * Created on 26 de abril de 2006, 06:15 AM
+ * Created on 26 de abril de 2006, 06:15 AM it work!!!
  */
 
 package gui.KnowledgeFlow;
