@@ -121,10 +121,6 @@ for ( $k=2;\ \ L_{k-1}\neq0;\ \  k++$  ) do begin\\
 \indent end\\
 \indent $L_{k}=$ \{ $c \in C_{k} | c.count \geq minsup$ \}\\
 end
-Answer $\cup_{k} L_{k}$\\
-
-La primera pasada del algoritmo simplemente cuenta las ocurrencias de los items para determinar el conjunto de
-los itemsets frecuentes 1. Una subsecuente pasada, recorre $k$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Estado del arte %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estado del Arte}

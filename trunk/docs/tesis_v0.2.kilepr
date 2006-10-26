@@ -39,10 +39,10 @@ open=false
 
 [item:descripcion.tex]
 archive=true
-column=37
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=96
+line=0
 open=false
 
 [item:funciones.tex]
@@ -103,10 +103,10 @@ open=false
 
 [item:pruebas.tex]
 archive=true
-column=0
+column=13
 encoding=UTF-8
 highlight=LaTeX
-line=202
+line=24
 open=false
 
 [item:secuencias2.tex]
@@ -146,8 +146,8 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=12
-open=false
+line=38
+open=true
 
 [item:tesis_v0.2.kilepr]
 archive=true

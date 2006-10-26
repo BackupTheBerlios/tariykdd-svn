@@ -15,15 +15,17 @@
 \contentsline {section}{\numberline {6.1}El Proceso de Descubrimiento de Conocimiento en Bases de Datos - DCBD}{14}
 \contentsline {section}{\numberline {6.2}Arquitecturas de Integraci\'on de las Herra\discretionary {-}{}{}mientas DCBD con un SGBD}{15}
 \contentsline {section}{\numberline {6.3}Implementaci\'on de Herramientas DCBD d\'ebilmente acopladas con un SGBD}{16}
-\contentsline {section}{\numberline {6.4}Estado del Arte}{17}
-\contentsline {subsection}{\numberline {6.4.1}WEKA - Waikato Environment for Knowledge Analysis}{17}
-\contentsline {subsection}{\numberline {6.4.2}ADaM - Algorithm Development and Mining System}{18}
-\contentsline {subsection}{\numberline {6.4.3}Orange - Data Mining Fruitful and Fun}{19}
-\contentsline {subsection}{\numberline {6.4.4}TANAGRA - A Free Software for Research and Academic Purposes}{21}
-\contentsline {subsection}{\numberline {6.4.5}AlphaMiner}{23}
-\contentsline {subsection}{\numberline {6.4.6}YALE - Yet Another Learning Environment}{25}
-\contentsline {subsubsection}{Modelando Procesos De Descubrimiento De Conocimiento Como Arboles De Operadores}{25}
-\contentsline {subsubsection}{Qu\'e Puede Hacer YALE?}{26}
+\contentsline {section}{\numberline {6.4}Algoritmos implementados en TariyKDD}{17}
+\contentsline {subsection}{\numberline {6.4.1}Apriori}{17}
+\contentsline {section}{\numberline {6.5}Estado del Arte}{17}
+\contentsline {subsection}{\numberline {6.5.1}WEKA - Waikato Environment for Knowledge Analysis}{17}
+\contentsline {subsection}{\numberline {6.5.2}ADaM - Algorithm Development and Mining System}{19}
+\contentsline {subsection}{\numberline {6.5.3}Orange - Data Mining Fruitful and Fun}{20}
+\contentsline {subsection}{\numberline {6.5.4}TANAGRA - A Free Software for Research and Academic Purposes}{22}
+\contentsline {subsection}{\numberline {6.5.5}AlphaMiner}{24}
+\contentsline {subsection}{\numberline {6.5.6}YALE - Yet Another Learning Environment}{25}
+\contentsline {subsubsection}{Modelando Procesos De Descubrimiento De Conocimiento Como Arboles De Operadores}{26}
+\contentsline {subsubsection}{Qu\'e Puede Hacer YALE?}{27}
 \contentsline {chapter}{\numberline {7}DESARROLLO DEL PROYECTO}{28}
 \contentsline {section}{\numberline {7.1}An\'alisis UML}{28}
 \contentsline {subsection}{\numberline {7.1.1}Funciones}{28}
@@ -113,8 +115,8 @@
 \contentsline {subsubsection}{Opci\'on Configure}{144}
 \contentsline {subsubsection}{Opci\'on Run}{145}
 \contentsline {subsubsection}{Visor de Reglas}{146}
-\contentsline {chapter}{\numberline {8}Conclusiones}{147}
-\contentsline {chapter}{\numberline {9}ANEXOS}{150}
-\contentsline {section}{\numberline {9.1}Pruebas y resultados}{150}
-\contentsline {subsection}{\numberline {9.1.1}Rendimiento algoritmos de asociaci\'on}{150}
-\contentsline {subsection}{\numberline {9.1.2}Rendimiento formato de comprensi\'on Tariy - Formato ARFF}{156}
+\contentsline {chapter}{\numberline {8}Pruebas y resultados}{147}
+\contentsline {section}{\numberline {8.1}Rendimiento algoritmos de asociaci\'on}{147}
+\contentsline {chapter}{\numberline {9}Conclusiones}{154}
+\contentsline {chapter}{\numberline {10}ANEXOS}{157}
+\contentsline {section}{\numberline {10.1}Rendimiento formato de comprensi\'on Tariy - Formato ARFF}{157}
