@@ -72,12 +72,10 @@ public class Apriori extends Thread{
         dataset.setPointers();
         while(i != 0){
             i = t.loadItemsets(dataset, (AvlTree)Trees.elementAt(0));
-            
             ArrayList articles = t.getArticles();
             Collections.sort(articles);
             short[] items = candidate.getItems();
             Arrays.sort(items);
-            
             if(contains(articles, items)){
                 candidate.increaseSupport();
             }
@@ -120,7 +118,7 @@ public class Apriori extends Thread{
      */
     public boolean makeCandidates(){
         if( auxTree.isEmpty( ) ){
-            System.out.println( "¡¡¡Arbol Vacio!!!" );
+            System.out.println( "Tree Empty" );
             return false;
         } else {
             AvlTree frequents = new AvlTree();
