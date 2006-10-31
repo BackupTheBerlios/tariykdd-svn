@@ -22,7 +22,7 @@ toma de muchas decisiones y se resumen en las siguientes etapas:
 \item Interpretaci\'on / evaluaci\'on.
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Integración herramientas DCBD con SGBD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Integraci\'on herramientas DCBD con SGBD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Arquitecturas de Integraci\'on de las Herra\-mientas DCBD con un SGBD}
 Las arquitecturas de integraci\'on de las herramientas DCBD con un SGBD se pueden ubicar
 en una de tres tipos:
@@ -108,23 +108,406 @@ de tuplas puede ser le\'ido al tiempo (figura 1).
 \section{Algoritmos implementados en TariyKDD}
 
 \subsection{Apriori}
-A continuaci\'on se muestra el algoritmo de Apriori:\\
+La notaci\'on del algoritmo Apriori \cite{4} es la siguiente:\\
 
-\noindent
-$L_{1} =$ \{Conjunto de itemsets frecuentes 1 \}\\
-for ( $k=2;\ \ L_{k-1}\neq0;\ \  k++$  ) do begin\\
-\indent $C_{k}=$ apriori-gen$(L_{k-1})$ // Nuevos candidatos\\
-\indent forall $transacciones\ \ t\in D$ do begin\\
-\indent\indent $C_{t}=$ subconjunto $(C_{k}, t);$ // Candidatos en t\\
-\indent\indent forall $candidatos\ \ c \in C_{t}$ do\\
-\indent\indent\indent $c.cont++;$\\
-\indent end\\
-\indent $L_{k}=$ \{ $c \in C_{k} | c.count \geq minsup$ \}\\
-end
-Answer $\cup_{k} L_{k}$\\
+\begin{table}[h]
+\caption{Notaci\'on algoritmo Apriori}
+\end{table}
+\begin{center}
+\begin{tabular}{|p{40mm}|p{40mm}|}\hline
+\textbf{$k$-itemset} & \textbf{Un itemset con $k$ items}\\ \hline
+$L_{k}$              & Conjunto de itemsets frecuentes $k$ (Aquellos con soporte m\'inimo).\\ \hline
+$C_{k}$              & Conjunto de itemsets candidatos $k$ (Itemstes potencialmente frecuentes)\\ \hline
+\end{tabular}
+\end{center}
 
-La primera pasada del algoritmo simplemente cuenta las ocurrencias de los items para determinar el conjunto de
-los itemsets frecuentes 1. Una subsecuente pasada, recorre $k$.
+
+A continuaci\'on se muestra el algoritmo Apriori:\\ \\
+\begin{footnotesize}
+\noindent 		$L_{1} =$ \{Conjunto de itemsets frecuentes 1 \}\\
+	  		for ( $k=2;\ \ L_{k-1}\neq0;\ \  k++$  ) do begin\\
+\indent   		$C_{k}=$ apriori-gen$(L_{k-1})$ // Nuevos candidatos\\
+\indent 		forall $transacciones\ \ t\in D$ do begin\\
+\indent\indent 			$C_{t}=$ subconjunto $(C_{k}, t);$ // Candidatos en t\\
+\indent\indent 			forall $candidatos\ \ c \in C_{t}$ do\\
+\indent\indent\indent 			$c.cont++;$\\
+\indent 			end\\
+\indent 		$L_{k}=$ \{ $c \in C_{k} | c.count \geq minsup$ \}\\
+			end
+			Answer $\cup_{k} L_{k}$\\
+\end{footnotesize}
+
+La primera pasada del algoritmo cuenta las ocurrencias de los items en todo el conjunto de datos para determinar
+los itemsets frecuentes 1. Los subsecuentes pasos del algoritmo son basicamente dos, primero, los itemsets
+frecuentes $L_{k-1}$ encontrados en la pasada $(k-1)$ son usados para generar los itemsets candidatos $C_{k}$,
+usando la funci\'on apriori-gen descrita en la siguiente subsecci\'on. Y segundo se cuenta el soporte de los
+itemsets candidatos $C_{k}$ a trav\'es de un nuevo recorrido a la base de datos. Se realiza el mismo proceso
+hasta que no se encuentren m\'as itemsets frecuentes.
+
+\subsubsection{Generaci\'on de candidatos en Apriori}
+La funci\'on apriori-gen toma como argumento $L_{k-1}$, o sea todos los itemsets frecuentes $(k-1)$. La funci\'on
+trabaja de la siguiente manera:\\
+
+\begin{footnotesize}
+\noindent 	insert into $C_{k}$\\
+	  	select $p.item_{1},\ \ p.item_{2},...,\ \ p.item_{k-1},\ \ q.item_{k-1}$\\
+		from $L_{k-1}\ \ p,\ \ L_{k-1}\ \ q$\\
+		where $p.item_{1}=q.item_{1},...,\ \ p.item_{k-2}=q.item_{k-2},$\\
+\indent			$p.item_{k-1}\<q.item_{k-1};$\\
+\end{footnotesize}
+
+A continuaci\'on, en el paso de poda, se borran todos los itemsets $c \in C_{k}$ tal que alg\'un subconjunto
+$(k-1)$ de $c$ no este en $L_{k-1}$:\\
+
+\begin{footnotesize}
+forall $itemsets\ \ c \in C_{k}$ do\\
+\indent forall subconjuntos $(k-1)\ \ s$ de $c$ do\\
+\indent\indent if $(s \notin L_{k-1})$ then\\
+\indent\indent\indent delete $c$ from $C_{k};$
+\end{footnotesize}
+
+
+\subsection{FPGrowth}
+Como se puede ver en \cite{15} la heur\'istica utilizada por Apriori logra buenos resultados, ganados por
+(posiblemente) la reducci\'on del tama\~no del conjunto de candidatos. Sin embargo, en situaciones con largos
+patrones, soportes demasiado peque\~nos, un algoritmo tipo Apriori podr\'ia sufrir de dos costos no triviales:
+
+\begin{itemize}
+\item Es costoso administrar un gran n\'umero de conjuntos candidatos. Por ejemplo, si hay $10^{4}$ Itemsets
+Frecuentes, el algoritmo Apriori necesitar\'a generar m\'as de $10^{7}$ Itemsets Candidatos, as\'i como acumular
+y probar su ocurrencia. Adem\'as, para descubrir un patr\'on frecuente de tama\~no 100, como
+${a_{1},...,a_{100}}$, se debe generar m\'as de $2^{100}$ candidatos en total.
+\item Es una tarea demasiado tediosa el tener que repetidamente leer la base de datos para revisar un gran
+conjunto de candidatos.
+\end{itemize}
+El cuello de botella de Apriori es la generaci\'on de candidatos \cite{15}. Este problema es atacado por los
+siguientes tres aspectos:\\
+
+Primero, una innovadora y compacta estructura de datos llamada \textit{\'Arbol de Patrones Frecuentes} o 
+\textit{FP-tree} por sus siglas en ingles (\textit{Frequent Pattern Tree}), la cual es una estructura que 
+almacena informaci\'on crucial y cuantitativa acerca de los patrones frecuentes. \'Unicamente los itemsets
+frecuentes 1 tendr\'an nodos en el \'arbol, el cual esta organizado de tal forma que los items m\'as
+frecuentes de una transacci\'on tendr\'an mayores oportunidades de compartir nodos en la estructura.\\ \\
+Segundo, un m\'etodo de Miner\'ia de patrones crecientes basado en un FP-tree. Este comienza con un patr\'on
+frecuente tipo 1 (como patr\'on sufijo inicial), examina sus Patrones Condicionales Base (una ''sub-base de
+datos'' que consiste en el conjunto de items frecuentes, que se encuentran en patr\'on sufijo), construye su
+FP-tree (condicional) y dentro de este lleva a cabo recursivamente Miner\'ia. El patr\'on creciente es 
+conseguido a trav\'es de la concatenaci\'on del patr\'on sufijo con los nuevos generados del FP-tree condicional.
+Un itemset frecuente en cualquier transacci\'on siempre se encuentra en una ruta de los \'arboles de Patrones
+Frecuentes.\\ \\
+Tercero, la t\'ecnica de busqueda empleada en la Miner\'ia esta basada en particionamiento, con el m\'etodo
+''divide y venceras''. Esto reduce dramaticamente el tama\~no del Patr\'on Condicional Base generado en el 
+siguiente nivel de busqueda, as\'i como el tama\~no de su correspondiente FP-tree. Es m\'as, en vez de buscar
+grandes patrones frecuentes, busca otros m\'as peque\~nos y los concatena al sufijo. Todas estas t\'ecnicas 
+reducen los costos de busqueda.
+
+\subsubsection{Dise\~no y construcci\'on del \'Arbol de Patrones Frecuentes (FP-tree)}
+Sea $I={a_{1},a_{2},...,a_{m}}$ un conjunto de items, y $DB={T_{1},T_{2},...,T_{m}}$ una base de datos de
+transacciones, donde $T_{i}(i \in [1...n])$ es una transacci\'on que contiene un conjunto de items en $I$. El
+soporte (u ocurrencia) de un patr\'on $A$ o conjunto de items, es el n\'umero de veces que $A$ esta contenida en
+$DB$. $A$ es un patr\'on frecuente, si el soporte de $A$ es mayor que el umbral o soporte m\'inimo, $\xi$.
+
+\paragraph{\'Arbol de Patrones Frecuentes}
+A trav\'es del siguiente ejemplo se examina como funciona el dise\~no de la estructura de datos para minar con
+eficiencia patrones frecuentes.
+
+\subparagraph{Ejemplo 1}
+Sea la base de datos de transacciones, cuadro \ref{tid} y $\xi=3$. Una estructura de datos puede ser dise\~nada de
+acuerdo a las siguientes observaciones:
+\begin{enumerate}
+\item Aunque solo los items frecuentes jugar\'an un rol en la Miner\'ia de Patrones Frecuentes, es necesario leer 
+la BD para identificar este conjunto de items.
+\item Si se almacenan items frecuentes de cada transacci\'on en una estructura compacta, se podr\'ia
+evitar el tener que leer repetidamente la BD.
+\item Si m\'ultiples transacciones comparten un conjunto id\'entico de items frecuentes, estas pueden ser
+fusionadas en una sola, con el n\'umero de ocurrencias como contador.
+\item Si dos transacciones comparten un prefijo com\'un, las partes compartidas pueden ser unidas usando una
+estructura prefija. Si los items frecuentes son ordenados descendientemente, habr\'a mayor probabilidad de que los
+prefijos de las cadenas esten compartidos.
+\end{enumerate}
+
+\begin{table}[h]
+\caption{Base de Datos de transacciones}
+\label{tid}
+\end{table}
+\begin{center}
+\begin{tabular}{|p{25mm}|p{30mm}|p{40mm}|}\hline
+\textbf{TID} & \textbf{Items} & \textbf{Items frecuentes (ordenados)}\\ \hline\hline
+100 & f,a,c,d,g,i,m,p & f,c,a,m,p\\ \hline
+200 & a,b,c,f,l,m,o   & f,c,a,b,m\\ \hline
+300 & b,f,h,j,o       & f,b\\ \hline
+400 & b,c,k,s,p       & c,b,p\\ \hline
+500 & a,f,c,e,l,p,m,n & f,c,a,m,p\\ \hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.6\textwidth]{images/fptree1.png}
+   \caption{Tabla de cabeceras y Arbol FP-tree del ejemplo 1}
+   \label{fptid}
+\end{figure}
+
+\newpage
+
+Con estas observaciones se puede construir un \'Arbol de Patrones Frecuentes de la siguiente forma:\\ \\
+Primero, el leer $DB$ genera una lista de items frecuentes, $\{(f:4),(c:4),(a:3),(b:3),(m:3),(p:3)\}$, (el
+n\'umero indica el soporte) ordenados descendientemente.\\ \\
+Segundo, crear la ra\'iz del \'arbol con un \textit{null}. Al leer la primera 
+transacci\'on se construye la primera rama del \'arbol $\{(f:1),(c:1),(a:1),(m:1),(p:1)\}$. Para la segunda 
+transacci\'on ya que su lista de items frecuentes $(f,c,a,b,m)$ comparte el prefijo com\'un $(f,c,a)$ con la rama
+existente $(f,c,a,m,p)$, el conteo de cada nodo en el \'arbol prefijo es incrementado en 1, dos nuevos nodos son
+creados, $(b:1)$ enlazado como hijo de $(a:2)$ y $(m:1)$ enlazado como hijo de $(b:1)$. Para la tercera 
+transacci\'on como su lista de frecuentes solamente es $(f,b)$ y el \'unico prefijo compartido es $(f)$, el
+soporte de $(f)$ se incrementa en 1, y un nuevo nodo $(b:1)$ es creado y enlazado como hijo de $(f:3)$. La
+lectura de la cuarta transacci\'on lleva a la construcci\'on de la segunda rama del \'arbol,
+$\{(c:1),(b:1),(p:1)\}$. Para la \'ultima transacci\'on ya que su lista de items frecuentes $(f,c,a,m,p)$ es
+identica a la primera, la ruta es compartida, incrementado el conteo de cada nodo en 1.\\ \\
+Para facilitar m\'as el funcionamiento del \'arbol una Tabla de Cabeceras es construida, en la cual cada item
+apunta a su ocurrencia en el \'arbol. Los nodos con el mismo nombre son enlazados en secuencia y despu\'es de
+leer todas las transacciones, se puede ver el \'arbol resultante en la figura \ref{fptid}.\\ \\
+Por tanto un \textbf{\'Arbol de Patrones Frecuentes (FP-tree)} es una estructura como se define a
+continuaci\'on:\\
+
+\begin{itemize}
+\item Consiste de una raiz etiquetada como \textit{null}, un conjunto de \'arboles hijos de la raiz y una Tabla de
+Cabeceras de items frecuentes.
+\item Los nodos del \'Arbol de Patrones Frecuentes o FP-tree tienen tres campos: nombre del item, contador y
+enlaces a los dem\'as nodos. El nombre del item registra que item este nodo representa, el contador registra el
+n\'umero de transacciones representadas por la porci\'on de la ruta que alcanzan a este nodo y los enlaces llevan
+al siguiente nodo en el FP-tree, que tiene el mismo nombre o a \textit{null} si no hay nada.
+\item Cada entrada en la Tabla de Cabeceras de items frecuentes tiene dos campos, nombre del item y el primer
+nodo enlazado, al cual apunta la cabecera con el mismo nombre.
+\end{itemize}
+
+\subsubsection{Minando Patrones Frecuentes con FP-tree}
+Existen ciertas propiedades del \'Arbol de Patrones Frecuentes que facilitar\'an la tarea de Miner\'ia de Patrones
+Frecuentes:
+
+\begin{enumerate}
+\item \textbf{Propiedad de nodos enlazados}. Para cualquier nodo frecuente $a_{i}$, todos los posibles Patrones
+Frecuentes que contenga $a_{i}$ pueden ser obtenidos siguiendo los nodos enlazados de $a_{i}$, comenzando desde
+$a_{i}$ en la Tabla de Cabeceras de items frecuentes.
+\end{enumerate}
+
+\subparagraph{Ejemplo 2}
+El siguiente es el proceso de Miner\'ia basado en el FP-tree de la figura \ref{fptid}. De acuerdo a la propiedad
+de nodos enlazados para obtener todos los Patrones Frecuentes de un nodo $a_{i}$, se comienza desde la cabeza de
+$a_{i}$ (en la Tabla de Cabeceras).\\ \\
+Comenzando por los nodos enlazados de $p$ su Patr\'on Frecuente resultante es $(p:3)$ y sus dos rutas en el
+FP-tree son $(f:4,c:3,a:3,m:2,p:2)$ y $(c:1,b:1,p:1)$. La primera ruta indica que la cadena ''$(f,c,a,m,p)$''
+aparece dos veces en la base de datos. Se puede observar que ''$(f,c,a)$'' aparece tres veces y ''$(f)$'' se
+encuentra cuatro veces, pero con $p$ solo aparecen dos veces. Adem\'as para estudiar que cadena aparece con $p$,
+unicamente cuenta el prefijo de $p$, $(f:4,c:3,a:3,m:2)$. Similarmente, la segunda ruta indica que la cadena
+''$(c,b,p)$'' aparece solo una vez en el conjunto de transacciones de $DB$, o que el prefijo de $p$ es
+$(c:1,b:1)$. Estos dos prefijos de $p$, $(f:2,c:2,a:2,m:2)$ y $(c:1,b:1)$, forman los Sub-Patrones Base de $p$ o
+llamados Patrones Condicionales Base. La construcci\'on de un FP-tree sobre este Patr\'on Condicional Base lleva
+a unicamente una rama $(c:3)$. As\'i que solo existe un Patr\'on Frecuente $(cp:3)$.\\ \\
+Para el nodo $m$, se obtiene el Patr\'on Frecuente $(m:3)$ y las rutas $(f:4,c:3,a:3,m:2)$ y
+$(f:4,c:3,a:3,b:1,m:1)$. Al igual que en el an\'alisis anterior se obtiene los Patrones Condicionales Base de m,
+que son $(f:2,c:2,a:2)$ y $(f:1,c:1,a:1,b:1)$. Al construir un FP-tree sobre estos, se obtiene que el FP-tree
+condicional de $m$ es $(f:3,c:3,a:3)$. Despu\'es se podr\'ia llamar recursivamente a una funci\'on de Miner\'ia
+basada en un FP-tree (mine$((f:3,c:3,a:3)|m)$).\\
+
+La figura \ref{fpcondicional} muestra como funciona (mine$((f:3,c:3,a:3)|m)$) y que incluye minar tres items
+$a, c, f$. La primera deriva en un Patr\'on Frecuente $(am:3)$, y una llamada a (mine$((f:3,c:3)|am)$); 
+la segunda deriva en un Patr\'on Frecuente $(cm:3)$, y una llamada a (mine$((f:3)|cm)$); y la tercera deriva en
+unicamente el Patr\'on Frecuente $(fm:3)$. Con adicionales llamadas recursivas a (mine$((f:3,c:3)|am)$) se obtiene
+$(cam:3)$, $(fam:3)$ y con una llamada a (mine$((f:3)|cam)$), se obtendr\'a el patr\'on m\'as largo $(fcam:3)$. 
+Similarmente con la llamada de (mine$((f:3)|cm)$), se obtiene el patr\'on $(fcm:3)$. Adem\'as todo el conjunto de 
+Patrones Frecuentes que tienen a $m$ es $\{(m:3),(am:3),(cm:3),(fm:3),(cam:3),(fam:3),(fcam:3),(fcm:3)\}$ o que 
+explicado de otra forma, por ejemplo para $m$ los Patrones Frecuentes son obtenidos combinando a $m$ con todos 
+sus Patrones Condicionales Base $(f:3,c:3,a:3)$, entonces sus Patrones Frecuentes ser\'ian los ya mencionados
+$\{(m:3),(am:3),(cm:3),(fm:3),(cam:3),(fam:3),(fcam:3),(fcm:3)\}$.
+.\\ \\
+As\'i mismo, con el nodo $b$ se obtiene $(b:3)$ y tres rutas: $(f:4,c:3,a:3,b:1)$, $(f:4,b:1)$ y $(c:1,b:1)$. Dado
+que los Patrones Condicionales Base de $b$: $(f:1,c:1,a:1)$, $(f:1)$ y $(c:1)$ no generan items frecuentes, el 
+proceso de Miner\'ia termina. Con el nodo $a$ solo se obtiene un Patr\'on Frecuente $\{(a:3)\}$ y un Patr\'on
+Condicional Base $\{(f:3,c:3)\}$. Adem\'as su conjunto de Patrones Frecuentes puede ser generado a partir de sus
+combinaciones. Concatenandolas con $(a:3)$, obtenemos $\{(fa:3),(ca:3),(fca:3),\}$. Del nodo $c$ se deriva
+$(c:4)$ y un Patr\'on Condicional Base $\{(f:3)\}$, y el conjunto de Patrones Frecuentes asociados con $(c:3)$ es
+$\{(fc:3)\}$. Con el nodo $f$ solo se obtiene $(f:4)$ sin Patrones Condicionales Base.\\
+
+\begin{figure}[t]
+   \centering
+   \includegraphics[width=1\textwidth]{images/fpcondicional.png}
+   \caption{FP-tree condicional para $m$}
+   \label{fpcondicional}
+\end{figure}
+
+En la siguiente tabla se muestran los Patrones Condicionales Base y los FP-trees generados.
+
+\begin{table}[h]
+\caption{Patrones Condicionales Base y FP-trees Condicionales}
+\end{table}
+\begin{center}
+\begin{tabular}{|p{10mm}|p{76mm}|p{42mm}|}\hline
+\textbf{Item} & \textbf{Patr\'on Condicional Base} & \textbf{FP-tree condicional}\\ \hline
+$p$ & $\{(f:2,c:2,a:2,m:2),(c:1,b:1)\}$			& $\{(c:3)\}|p$\\ \hline
+$m$ & $\{(f:2,c:2,a:2),(f:1,c:1,a:1,b:1)\}$		& $\{(f:3,c:3,a:3)\}|m$\\ \hline
+$b$ & $\{(f:1,c:1,a:1),(f:1),(c:1)\}$			& $\phi$\\ \hline
+$a$ & $\{(f:3,c:3)\}$					& $\{(f:3,c:3)\}|a$\\ \hline
+$c$ & $\{(f:3)\}$					& $\{(f:3)\}|c$\\ \hline
+$f$ & $\phi$						& $\phi$\\ \hline
+\end{tabular}
+\end{center}
+
+Como se dijo anteriormente los Patrones Frecuentes se obtienen a partir de las combinaciones de cada uno de los
+items con sus Patrones Condicionales Base. Por ejemplo para $m$, sus Patrones Frecuentes 
+$\{(m:3),(am:3),(cm:3),(fm:3),(cam:3),(fam:3),(fcam:3),(fcm:3)\}$, son obtenidos de combinar a $m$ con cada uno
+de sus Patrones Condicionales Base $\{(f:2,c:2,a:2),(f:1,c:1,a:1,b:1)\}$.
+
+\subsection{EquipAsso}
+
+\begin{enumerate}
+\item Nuevos Operadores Del Algebra Relacional Para Asociaci\'on.
+\begin{enumerate}
+\item Operador Associator ($\alpha$)\\
+Associator($\alpha$) es un operador algebraico unario que al contrario del operador Selecci\'on o 
+Restricci\'on ($\sigma$), aumenta la cardinalidad o el tama\~no de una relaci\'on ya que genera a partir de cada
+tupla de una relaci\'on, todas las posibles combinaciones de los valores de sus atributos, como tuplas de una
+nueva relaci\'on conservando el mismo esquema. Por esta raz\'on esta operaci\'on, debe ser posterior a la 
+mayor\'ia de operaciones en el proceso de optimizaci\'on de una consulta.\\ \\
+Su sintaxis es la siguiente:\\
+\begin{center}$\alpha_{tam_inicial, tam_final}$(R)\end{center}
+El operador Associator genera, por cada tupla de la relaci\'on R, todos sus posibles subconjuntos (itemsets)
+de diferente tama\~no. Associator toma cada tupla t de R y dos par\'ametros: $\<tam\_inicial\>$ y 
+$\<tam_final\>$ como entrada, y retorna, por cada tupla t, las diferentes combinaciones de atributos
+$X_{i}$, de tama\~no $\<tam\_inicial\>$ hasta tama\~no $\<tam\_final\>$, como tuplas en una nueva
+relaci\'on. El orden de los atributos en el esquema de R determina los atributos en los subconjuntos con valores,
+el resto se hacen nulos. El tama\~no m\'aximo de un itemset y por consiguiente el tama\~no final m\'aximo
+$(\<tam\_final\>)$ que se puede tomar como entrada es el correspondiente al valor del grado de la relaci\'on.\\
+Formalmente, sea $A=\{A_{1},...,A_{n}\}$ el conjunto de atributos de la relaci\'on R de grado n y cardinalidad m,
+IS y ES el tama\~no inicial y final respectivamente de los subconjuntos a obtener. El operador $\alpha$ aplicado
+a  R.
+
+\begin{center}
+$\alpha_{IS,ES}(R)=\{ \cup_{all}\ \ X_{i}\ \ |\ \ X_{i} \subseteq t_{i},\ \ t_{i} \in R, \forall_{i}
+\forall_{k}(X_{i}=
+\< v_{i}(A_{1}),v_{i}(A_{2}),null,...,v_{i}(A_{k}),null\>,v_{i}(A_{k})\< \> null),(i=(2^{n}-1)*m), (k=IS,...,ES),
+\ \ A_{1}\< A_{2}\< ...A_{k},\ \ IS=1,ES=n\}$
+\end{center}
+
+produce una nueva relaci\'on cuyo esquema R(A) es el mismo de R de grado n y cardinalidad $m'=(2^{n}-1)*m$ y cuya
+extensi\'on r(A) est\'a formada por todos los subconjuntos $X_{i}$ generados a partir de todas las combinaciones
+posibles de los valores no nulos $v_{i}(A_{k})$ de los atributos de cada tupla $t_{i}$ de R. En cada tupla $X_{i}$
+\'unicamente un grupo de atributos mayor o igual que IS y menor o igual que ES tienen valores, los dem\'as
+atributos se hacen nulos.\\ \\
+\textbf{Ejemplo 1}. Sea la relaci\'on R(A,B,C,D):
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+\textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\\ \hline
+a1 & b1 & c1 & d1\\ \hline
+a1 & b2 & c1 & d2\\ \hline
+\end{tabular}
+\end{center}
+
+El resultado de $R1=\alpha_{2,4}(R)$, se puede observar en la figura \ref{r1}.
+
+\item Operador Equikeep ($\chi$)\\
+Equikeep ($\chi$) es un operador unario que restringe los valores de los atributos de cada una de las tuplas de la
+relaci\'on R a \'unicamente los valores de los atributos que satisfacen una expresi\'on l\'ogica.\\ \\
+Su sintaxis es la siguiente:\\ \\
+$\chi_{expresion\_ logica}(R)$
+
+\begin{table}[ht]
+\caption{Resultado de $R1=\alpha_{2,4}(R)$}
+\label{r1}
+\end{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+\textbf{A}    & \textbf{B}    & \textbf{C}    & \textbf{D}\\ \hline
+a1   & b1   & null & null\\ \hline
+a1   & null & c1   & null\\ \hline
+a1   & null & null & d1\\ \hline
+null & b1   & c1   & null\\ \hline
+null & b1   & null & d1\\ \hline
+null & null & c1   & d1\\ \hline
+a1   & b1   & c1   & null\\ \hline
+a1   & b1   & null & d1\\ \hline
+a1   & null & c1   & d1\\ \hline
+null & b1   & c1   & d1\\ \hline
+a1   & b1   & c1   & d1\\ \hline
+a1   & b2   & null & null\\ \hline
+a1   & null & c1   & null\\ \hline
+a1   & null & null & d2\\ \hline
+null & b2   & c1   & null\\ \hline
+null & b2   & null & d2\\ \hline
+null & null & c1   & d2\\ \hline
+a1   & b2   & c1   & null\\ \hline
+a1   & b2   & null & d2\\ \hline
+a1   & null & c1   & d2\\ \hline
+null & b2   & c1   & d2\\ \hline
+a1   & b2   & c1   & d2\\ \hline
+\end{tabular}
+\end{center}
+
+El operador EquiKeep restringe los valores de los atributos de cada una de las tuplas de la relaci\'on R a
+\'unicamente los valores de los atributos que satisfacen una expresi\'on l\'ogica $\<expr\_log\>$, la cual esta
+formada por un conjunto de cl\'ausulas de la forma Atributo=Valor, y operaciones l\'ogicas AND, OR y NOT.
+En cada tupla, los valores de los atributos que no cumplen la condici\'on $\<expr\_log\>$ se hacen nulos.
+EquiKeep elimina las tuplas vac\'ias, i.e. las tuplas con todos los valores de sus atributos nulos.\\ \\
+Formalmente, sea $A={A_{1},...,A_{n}}$ el conjunto de atributos de la relaci\'on R de esquema R(A), de grado n y
+cardinalidad m. Sea p una expresi\'on l\'ogica integrada por cl\'ausulas de la forma $A_{i}=const$ unidas por los
+operadores booleanos AND (\^{}), OR $(v)$, NOT $(\neg)$. El operador $\chi$ aplicado a la relaci\'on R con la
+expresi\'on l\'ogica p:
+\begin{center}
+$\chi_{p}(R)=\{t_{i}(A)|\forall_{i}\forall_{j}(p(v_{i}(A_{j}))=v_{i}(A_{j})\ \ si\ \ p=true\ \ y\ \
+p(v_{i}(A_{j}))=null\ \ si\ \ p=false),i=1...m',j=1...n,\ \ m'\leq m \}$
+\end{center}
+produce una relaci\'on de igual esquema R(A) de grado n y cardinalidad $m'$, donde $m'\leq m$. En su extensi\'on,
+cada n-tupla $t_{i}$, esta formada por los valores de los atributos de R, $v_{i}(A_{j})$, que cumplan la
+expresi\'on l\'ogica p, es decir $p(v_{i}(Y_{j}))$ es verdadero, y por valores nulos si $p(v_{i}(Y_{j}))$ es
+falso.\\ \\
+\textbf{Ejemplo 2}. Sea la relaci\'on R(A,B,C,D) y la operaci\'on $\chi_{A=a1 \lor B=b1 \lor C=c2 \lor
+D=d1}(R)$:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+\textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\\ \hline
+a1 & b1 & c1 & d1\\ \hline
+a1 & b2 & c1 & d2\\ \hline
+a2 & b2 & c2 & d2\\ \hline
+a2 & b1 & c1 & d1\\ \hline
+a2 & b2 & c1 & d2\\ \hline
+a1 & b2 & c2 & d1\\ \hline
+\end{tabular}
+\end{center}
+
+El resultado de esta operaci\'on es la siguiente:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+\textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\\ \hline
+a1   & b1   & null & d1\\ \hline
+a1   & null & null & null\\ \hline
+null & null & c2   & null\\ \hline
+null & b1   & null & d1\\ \hline
+null & null & null & null\\ \hline
+a1   & null & c2   & d1\\ \hline
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+\item Algoritmo EquipAsso\\
+El primer paso del algoritmo simplemente cuenta el n\'umero de ocurrencias de cada item para determinar los
+1-itemsets frecuentes. En el subsiguiente paso, con el operador EquiKeep se extraen de todas las
+transacciones los itemsets frecuentes tama\~no 1 haciendo nulos el resto de valores. Luego se aplica el operador
+Associator desde $I_{s}=2$ hasta el grado n. A continuaci\'on se muestra el algoritmo Equipasso:
+
+\begin{footnotesize}
+$L1=\{1-itemsets\ \ frecuentes\};$\\
+forall $transacciones\ \ t\in D$ do begin\\
+\indent $R=\chi_{L1}(D)$\\
+\indent $K=2$\\
+\indent $g=grado(R)$\\
+\indent $R'=\alpha_{k,g}(R)$\\
+end\\
+$L_{k}=\{count(R')|c.count\geq minsup\}$\\
+Respuesta $=\cup L_{k};$
+\end{footnotesize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Estado del arte %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estado del Arte}

@@ -10,7 +10,7 @@
 \addtolength{\textwidth}{1cm}
 \addtolength{\textheight}{1cm}
 
-%\includeonly{mteorico}
+\includeonly{mteorico}
 
 \begin{document}
 \include{portada}

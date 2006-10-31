@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2006.7.28)  26 OCT 2006 09:17
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2006.7.28)  31 OCT 2006 11:39
 **tesis.tex
 (./tesis.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
@@ -134,20 +134,7 @@ loading : Context Support Macros / PDF
 \nofMPsegments=\count97
 \nofMParguments=\count98
 \everyMPtoPDFconversion=\toks19
-)
-\openout2 = `portada.aux'.
-
- (./portada.tex) [1
-
-
-{/usr/share/texmf/dvips/config/pdftex.map}]
-\openout2 = `subportada.aux'.
-
-
-(./subportada.tex) [2
-
-
-] (./tesis.toc
+) (./tesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -157,179 +144,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [3
 
 
-])
+
+
+{/usr/share/texmf/dvips/config/pdftex.map}])
 \tf@toc=\write4
 \openout4 = `tesis.toc'.
 
  [4]
-\openout2 = `introduccion.aux'.
-
- (./introduccion.tex
-Cap\'{\i }tulo 1.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 4--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--19
-
- []
-
-[5
-
-
-] [6]
-\openout2 = `tema.aux'.
-
- (./tema.tex
-Cap\'{\i }tulo 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 12--20
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--20
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--20
-
- []
-
-[7
-
-
-
-] [8]
-\openout2 = `problema.aux'.
-
- (./problema.tex
-Cap\'{\i }tulo 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--13
-
- []
-
-[9
-
-
-
-])
-Overfull \hbox (13.15529pt too wide) in paragraph at lines 14--21
-[]/cmr12/?`El de-sar-rol-lo de una her-ramien-ta gen^^Seri-ca para el De-s-cubr
-im-ien-to de Conocimien-
- []
-
-[10]
-\openout2 = `objetivos.aux'.
-
- (./objetivos.tex
-Cap\'{\i }tulo 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
-
- []
-
-[11
-
-
-
-]) [12]
-\openout2 = `justificacion.aux'.
-
- (./justificacion.tex
-Cap\'{\i }tulo 5.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 2--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--23
-
- []
-
-[13
-
-
-
-]
 \openout2 = `mteorico.aux'.
 
- (./mteorico.tex
+
+(./mteorico.tex
 Cap\'{\i }tulo 6.
 
 Overfull \hbox (16.34303pt too wide) in paragraph at lines 4--4
@@ -380,12 +205,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--76
 
 
 
+
+
+
+
 ] [15]
 Overfull \hbox (23.80293pt too wide) in paragraph at lines 77--77
 []/cmbx12@17.28pt/Implementaci^^Son de Her-ramien-tas DCBD d^^Sebil-
  []
 
-<imgsMteorico/arquitectura.jpg, id=55, 314.3745pt x 239.9364pt>
+<imgsMteorico/arquitectura.jpg, id=20, 314.3745pt x 239.9364pt>
 File: imgsMteorico/arquitectura.jpg Graphic file (type jpg)
 
 <use imgsMteorico/arquitectura.jpg>
@@ -394,1361 +223,375 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--112
  []
 
 [16 <./imgsMteorico/arquitectura.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
+Underfull \hbox (badness 3058) in paragraph at lines 120--120
+/cmr12/can-didatos $/cmmi12/k$ /cmr12/(Item-
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+/cmr12/stes po-ten-cial-mente
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 127.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 127.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
 
 (/usr/share/texmf/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--125
+Underfull \hbox (badness 10000) in paragraph at lines 125--139
 
  []
 
 
-Overfull \hbox (0.29501pt too wide) in paragraph at lines 135--135
-[]/cmbx12@14.4pt/WEKA - Waika-to En-vi-ron-ment for Knowl-edge Anal-
+Underfull \hbox (badness 10000) in paragraph at lines 125--139
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--142
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 143--148
+Underfull \hbox (badness 10000) in paragraph at lines 152--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--157
+Underfull \hbox (badness 10000) in paragraph at lines 183--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--163
+Underfull \hbox (badness 10000) in paragraph at lines 186--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
+Underfull \hbox (badness 10000) in paragraph at lines 186--203
+
+ []
+
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 235--235
+[]/cmbx12/Items fre-cuentes
+ []
+
+<images/fptree1.png, id=67, 544.0325pt x 477.785pt>
+File: images/fptree1.png Graphic file (type png)
+ <use images/fptree1.png>
+[20 <./images/fptree1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 253--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+Underfull \hbox (badness 10000) in paragraph at lines 253--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 176--180
+Underfull \hbox (badness 10000) in paragraph at lines 253--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--188
+Underfull \hbox (badness 10000) in paragraph at lines 253--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--194
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 195--200
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--204
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--211
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 221--224
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--231
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 262--268
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--273
+Underfull \hbox (badness 10000) in paragraph at lines 253--271
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 274--280
+Underfull \hbox (badness 10000) in paragraph at lines 294--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--292
+Underfull \hbox (badness 10000) in paragraph at lines 294--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--297
+Underfull \hbox (badness 10000) in paragraph at lines 294--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
+Underfull \hbox (badness 10000) in paragraph at lines 312--330
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--303
+Underfull \hbox (badness 10000) in paragraph at lines 312--330
 
  []
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 304--307
+[22] <images/fpcondicional.png, id=77, 937.5025pt x 381.425pt>
+File: images/fpcondicional.png Graphic file (type png)
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 308--312
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--316
+<use images/fpcondicional.png> [23 <./images/fpcondicional.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 365--372
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--320
+Underfull \hbox (badness 10000) in paragraph at lines 365--372
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--326
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 327--329
-
- []
-
-
-Overfull \hbox (38.11046pt too wide) in paragraph at lines 335--336
-[]/cmr12/Como muestreo, fil-tra-do, dis-cretizaci^^Son
- []
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 346--349
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--358
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 359--365
-
+Overfull \hbox (3.03809pt too wide) in paragraph at lines 373--383
+/cmr12/Formalmente, sea $/cmmi12/A /cmr12/= /cmsy10@12.0pt/f/cmmi12/A[]; :::; A
+[]/cmsy10@12.0pt/g$ /cmr12/el con-jun-to de atrib-u-tos de la relaci^^Son
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 383--389
+Underfull \hbox (badness 10000) in paragraph at lines 391--397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--404
+Underfull \hbox (badness 10000) in paragraph at lines 408--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--408
+Underfull \hbox (badness 10000) in paragraph at lines 408--413
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 417--426
+Underfull \hbox (badness 10000) in paragraph at lines 446--455
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 459--465
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--434
-
+Overfull \hbox (45.4046pt too wide) in paragraph at lines 459--465
+/cmbx12/Ejemplo 2/cmr12/. Sea la relaci^^Son R(A,B,C,D) y la op-eraci^^Son $/cm
+mi12/^^_[]/cmr12/(/cmmi12/R/cmr12/)$: 
  []
 
-[26]) [27]
-\openout2 = `funciones.aux'.
-
- (./funciones.tex
-Cap\'{\i }tulo 7.
-
-Underfull \hbox (badness 2809) in paragraph at lines 23--23
-[]/cmr12/Cuadros de di-al-o-go,
+[27]
+Overfull \hbox (0.29501pt too wide) in paragraph at lines 518--518
+[]/cmbx12@14.4pt/WEKA - Waika-to En-vi-ron-ment for Knowl-edge Anal-
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 24--24
-[]/cmr12/Permitir el es-tablec-
+Underfull \hbox (badness 10000) in paragraph at lines 519--525
+
  []
 
 
-Underfull \hbox (badness 2932) in paragraph at lines 25--25
-[]/cmr12/Autorizar conex-iones
+Underfull \hbox (badness 10000) in paragraph at lines 526--531
+
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 26--26
-[]/cmr12/Permitir la se-lec-ci^^Son
+Underfull \hbox (badness 10000) in paragraph at lines 532--535
+
  []
 
 
-Underfull \hbox (badness 4792) in paragraph at lines 27--27
-[]/cmr12/Establecer rela-ciones
+Underfull \hbox (badness 10000) in paragraph at lines 536--540
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 541--546
+
  []
 
 
-Underfull \hbox (badness 2932) in paragraph at lines 29--29
-[]/cmr12/Autorizar conex-iones
+Underfull \hbox (badness 10000) in paragraph at lines 547--550
+
  []
 
 
-Overfull \hbox (85.15198pt too wide) in paragraph at lines 18--32
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 551--554
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--36
-[]/cmr12/Recorrer archi-vo y
+Underfull \hbox (badness 10000) in paragraph at lines 555--558
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--36
-[]/cmr12/El archi-vo debe
+Underfull \hbox (badness 10000) in paragraph at lines 559--563
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
-[]/cmr12/Permitir re-mover
+Underfull \hbox (badness 10000) in paragraph at lines 568--571
+
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--39
-[]/cmr12/Permitir ac-tu-alizar
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
-[]/cmr12/Permitir se-lec-cionar
- []
-
-
-Underfull \hbox (badness 1152) in paragraph at lines 40--40
-/cmr12/un con-jun-to de reg-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
-[]/cmr12/Permitir se-lec-cionar
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
-/cmr12/un con-jun-to de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
-/cmr12/reg-istros seg^^Sun un
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 43--43
-[]/cmr12/Permitir re-ducir el
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--45
-[]/cmr12/Permitir reem-plazar
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--46
-[]/cmr12/Permitir se-lec-cionar
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--46
-/cmr12/una mues-tra del
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--47
-[]/cmr12/Permitir dis-cretizar
- []
-
-
-Underfull \hbox (badness 7012) in paragraph at lines 48--48
-[]/cmr12/Aplicar t^^Secni-cas de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
-[]/cmr12/Proveer al-go-rit-mos
- []
-
-
-Underfull \hbox (badness 4132) in paragraph at lines 49--49
-/cmr12/que cum-plan tar-eas
- []
-
-
-Underfull \hbox (badness 5417) in paragraph at lines 50--50
-[]/cmr12/Implementar al-go-rit-
- []
-
-
-Underfull \hbox (badness 5417) in paragraph at lines 51--51
-[]/cmr12/Implementar al-go-rit-
- []
-
-
-Underfull \hbox (badness 5417) in paragraph at lines 52--52
-[]/cmr12/Implementar al-go-rit-
- []
-
-
-Overfull \hbox (85.15198pt too wide) in paragraph at lines 33--55
- [][] 
- []
-
-[28
-
-
-
-]
-Overfull \vbox (4.24689pt too high) has occurred while \output is active []
-
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
-[]/cmr12/Proveer al-go-rit-mos
- []
-
-
-Underfull \hbox (badness 4132) in paragraph at lines 59--59
-/cmr12/que cum-plan tar-eas
- []
-
-
-Underfull \hbox (badness 5417) in paragraph at lines 60--60
-[]/cmr12/Implementar al-go-rit-
- []
-
-
-Underfull \hbox (badness 5417) in paragraph at lines 61--61
-[]/cmr12/Implementar al-go-rit-
- []
-
-
-Underfull \hbox (badness 1048) in paragraph at lines 65--65
-/cmr12/clasi-fi-caci^^Son a trav^^Ses
- []
-
-
-Overfull \hbox (68.6013pt too wide) in paragraph at lines 56--68
- [][] 
- []
-
-) [30]
-\openout2 = `desarrollo.aux'.
-
- (./desarrollo.tex
-<imgsCasosUso/01tariy.png, id=118, 645.41125pt x 359.3425pt>
-File: imgsCasosUso/01tariy.png Graphic file (type png)
-
-<use imgsCasosUso/01tariy.png> [31
-
-
- <./imgsCasosUso/01tariy.png>]
-<imgsCasosUso/02seleccion.png, id=123, 559.08875pt x 286.06876pt>
-File: imgsCasosUso/02seleccion.png Graphic file (type png)
-
-<use imgsCasosUso/02seleccion.png>
-<imgsCasosUso/04conexionBD.png, id=124, 928.46875pt x 425.59pt>
-File: imgsCasosUso/04conexionBD.png Graphic file (type png)
-
-<use imgsCasosUso/04conexionBD.png> [32 <./imgsCasosUso/02seleccion.png> <./img
-sCasosUso/04conexionBD.png>]
-<imgsCasosUso/03archivoPlano.png, id=128, 637.38126pt x 134.5025pt>
-File: imgsCasosUso/03archivoPlano.png Graphic file (type png)
-
-<use imgsCasosUso/03archivoPlano.png>
-<imgsCasosUso/05preprocesamiento.png, id=129, 735.74875pt x 374.39874pt>
-File: imgsCasosUso/05preprocesamiento.png Graphic file (type png)
-
-<use imgsCasosUso/05preprocesamiento.png> [33 <./imgsCasosUso/03archivoPlano.pn
-g> <./imgsCasosUso/05preprocesamiento.png>]
-<imgsCasosUso/06mineria.png, id=133, 672.5125pt x 381.425pt>
-File: imgsCasosUso/06mineria.png Graphic file (type png)
-
-<use imgsCasosUso/06mineria.png> [34 <./imgsCasosUso/06mineria.png>]
-<imgsCasosUso/07reglas.png, id=137, 608.2725pt x 438.63875pt>
-File: imgsCasosUso/07reglas.png Graphic file (type png)
-
-<use imgsCasosUso/07reglas.png> [35 <./imgsCasosUso/07reglas.png>]
-<imgsSecuencia/Apriori/run.png, id=141, 1132.23pt x 794.97pt>
-File: imgsSecuencia/Apriori/run.png Graphic file (type png)
-
-<use imgsSecuencia/Apriori/run.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 63--64
- [][] 
- []
-
-
-<imgsSecuencia/Apriori/increaseSupport.png, id=142, 1524.69624pt x 1161.33875pt
->
-File: imgsSecuencia/Apriori/increaseSupport.png Graphic file (type png)
- <use imgsSecuencia/Apriori/increaseSupport.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 69--70
- [][] 
- []
-
-<imgsSecuencia/Apriori/CombinationsB.jpg, id=143, 1298.8525pt x 1972.36874pt>
-File: imgsSecuencia/Apriori/CombinationsB.jpg Graphic file (type jpg)
-
-<use imgsSecuencia/Apriori/CombinationsB.jpg>
-<imgsSecuencia/Apriori/makeCandidates.png, id=144, 738.76pt x 835.12pt>
-File: imgsSecuencia/Apriori/makeCandidates.png Graphic file (type png)
-
-<use imgsSecuencia/Apriori/makeCandidates.png>
-<imgsSecuencia/Apriori/pruneCandidates.png, id=145, 1581.91pt x 720.6925pt>
-File: imgsSecuencia/Apriori/pruneCandidates.png Graphic file (type png)
-
-<use imgsSecuencia/Apriori/pruneCandidates.png>
-<imgsSecuencia/EquipAsso/findInDataSet.png, id=146, 2204.235pt x 1456.44125pt>
-File: imgsSecuencia/EquipAsso/findInDataSet.png Graphic file (type png)
-
-<use imgsSecuencia/EquipAsso/findInDataSet.png>
-<imgsSecuencia/EquipAsso/pruneCandidate-recursive.png, id=147, 906.38625pt x 86
-3.225pt>
-File: imgsSecuencia/EquipAsso/pruneCandidate-recursive.png Graphic file (type p
-ng)
- <use imgsSecuencia/EquipAsso/pruneCandidate-recursive.png>
-<imgsSecuencia/EquipAsso/pruneCandidates.png, id=148, 612.2875pt x 326.21875pt>
-File: imgsSecuencia/EquipAsso/pruneCandidates.png Graphic file (type png)
-<use imgsSecuencia/EquipAsso/pruneCandidates.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 108--109
- [][] 
- []
-
-<imgsSecuencia/EquipAsso/run.png, id=149, 1256.695pt x 862.22125pt>
-File: imgsSecuencia/EquipAsso/run.png Graphic file (type png)
-
-<use imgsSecuencia/EquipAsso/run.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 114--115
- [][] 
- []
-
-<imgsSecuencia/ItemSet/addItems.png, id=150, 475.7775pt x 255.95625pt>
-File: imgsSecuencia/ItemSet/addItems.png Graphic file (type png)
-
-<use imgsSecuencia/ItemSet/addItems.png>
-<imgsSecuencia/ItemSet/sortItems.png, id=151, 375.4025pt x 215.80624pt>
-File: imgsSecuencia/ItemSet/sortItems.png Graphic file (type png)
-
-<use imgsSecuencia/ItemSet/sortItems.png>
-<imgsSecuencia/ItemSet/compare.png, id=152, 1307.88625pt x 677.53125pt>
-File: imgsSecuencia/ItemSet/compare.png Graphic file (type png)
-
-<use imgsSecuencia/ItemSet/compare.png>
-<imgsSecuencia/DataSet/buildDictionary.png, id=153, 943.525pt x 1039.885pt>
-File: imgsSecuencia/DataSet/buildDictionary.png Graphic file (type png)
-
-<use imgsSecuencia/DataSet/buildDictionary.png>
-<imgsSecuencia/DataSet/buildNTree.png, id=154, 2187.17125pt x 1114.1625pt>
-File: imgsSecuencia/DataSet/buildNTree.png Graphic file (type png)
-
-<use imgsSecuencia/DataSet/buildNTree.png>
-<imgsSecuencia/DataSet/findAttrName.png, id=155, 836.12375pt x 698.61pt>
-File: imgsSecuencia/DataSet/findAttrName.png Graphic file (type png)
-
-<use imgsSecuencia/DataSet/findAttrName.png>
-<imgsSecuencia/DataSet/pruneCandidatesOne.png, id=156, 1294.8375pt x 542.025pt>
-File: imgsSecuencia/DataSet/pruneCandidatesOne.png Graphic file (type png)
-<use imgsSecuencia/DataSet/pruneCandidatesOne.png>
-<imgsSecuencia/DataSet/pruneCandidatesOne_public.png, id=157, 952.55875pt x 542
-.025pt>
-File: imgsSecuencia/DataSet/pruneCandidatesOne_public.png Graphic file (type pn
-g)
- <use imgsSecuencia/DataSet/pruneCandidatesOne_public.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 168--169
- [][] 
- []
-
-) [36 <./imgsSecuencia/Apriori/run.png>] [37 <./imgsSecuencia/Apriori/increaseS
-upport.png>] [38 <./imgsSecuencia/Apriori/CombinationsB.jpg>] [39 <./imgsSecuen
-cia/Apriori/makeCandidates.png>] [40 <./imgsSecuencia/Apriori/pruneCandidates.p
-ng>] [41 <./imgsSecuencia/EquipAsso/findInDataSet.png>] [42 <./imgsSecuencia/Eq
-uipAsso/pruneCandidate-recursive.png>] [43 <./imgsSecuencia/EquipAsso/pruneCand
-idates.png>] [44 <./imgsSecuencia/EquipAsso/run.png>] [45 <./imgsSecuencia/Item
-Set/addItems.png> <./imgsSecuencia/ItemSet/sortItems.png>] [46 <./imgsSecuencia
-/ItemSet/compare.png>] [47 <./imgsSecuencia/DataSet/buildDictionary.png>]
-[48 <./imgsSecuencia/DataSet/buildNTree.png>] [49 <./imgsSecuencia/DataSet/find
-AttrName.png>] [50 <./imgsSecuencia/DataSet/pruneCandidatesOne.png>] [51 <./img
-sSecuencia/DataSet/pruneCandidatesOne_public.png>]
-\openout2 = `secuencias2.aux'.
-
- (./secuencias2.tex
-<imgsSecuencia/FPGrowth/findNode.png, id=209, 958.58125pt x 457.71pt>
-File: imgsSecuencia/FPGrowth/findNode.png Graphic file (type png)
-
-<use imgsSecuencia/FPGrowth/findNode.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 16--17
- [][] 
- []
-
-
-<imgsSecuencia/FPGrowth/buildFrequentsNodes.png, id=210, 509.905pt x 899.36pt>
-File: imgsSecuencia/FPGrowth/buildFrequentsNodes.png Graphic file (type png)
-
-<use imgsSecuencia/FPGrowth/buildFrequentsNodes.png>
-<imgsSecuencia/FPGrowth/run.png, id=211, 880.28876pt x 850.17625pt>
-File: imgsSecuencia/FPGrowth/run.png Graphic file (type png)
-
-<use imgsSecuencia/FPGrowth/run.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 28--29
- [][] 
- []
-
-<imgsSecuencia/AvlTree/compareItemSet.png, id=212, 921.4425pt x 573.14125pt>
-File: imgsSecuencia/AvlTree/compareItemSet.png Graphic file (type png)
-
-<use imgsSecuencia/AvlTree/compareItemSet.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 36--37
-[][] 
- []
-
-<imgsSecuencia/AvlTree/find.png, id=213, 658.46pt x 541.02126pt>
-File: imgsSecuencia/AvlTree/find.png Graphic file (type png)
-
-<use imgsSecuencia/AvlTree/find.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 42--43
-[][] 
- []
-
-
-<imgsSecuencia/AvlTree/doubleWithRightChild.png, id=214, 425.59pt x 356.33125pt
->
-File: imgsSecuencia/AvlTree/doubleWithRightChild.png Graphic file (type png)
- <use imgsSecuencia/AvlTree/doubleWithRightChild.png>
-<imgsSecuencia/AvlTree/doubleWithLeftChild.png, id=215, 425.59pt x 356.33125pt>
-File: imgsSecuencia/AvlTree/doubleWithLeftChild.png Graphic file (type png)
-<use imgsSecuencia/AvlTree/doubleWithLeftChild.png>
-<imgsSecuencia/Transaction/loadItemsets2.png, id=216, 1688.3075pt x 906.38625pt
->
-File: imgsSecuencia/Transaction/loadItemsets2.png Graphic file (type png)
- <use imgsSecuencia/Transaction/loadItemsets2.png>
-<imgsSecuencia/Transaction/loadItemsets.png, id=217, 1115.16624pt x 858.20625pt
->
-File: imgsSecuencia/Transaction/loadItemsets.png Graphic file (type png)
- <use imgsSecuencia/Transaction/loadItemsets.png>
-<imgsSecuencia/Transaction/sortByItem.png, id=218, 568.1225pt x 237.88875pt>
-File: imgsSecuencia/Transaction/sortByItem.png Graphic file (type png)
-
-<use imgsSecuencia/Transaction/sortByItem.png>
-<imgsSecuencia/Transaction/sortBySupport.png, id=219, 684.5575pt x 388.45125pt>
-File: imgsSecuencia/Transaction/sortBySupport.png Graphic file (type png)
-<use imgsSecuencia/Transaction/sortBySupport.png>
-<imgsSecuencia/NodeF/getBranch.png, id=220, 670.505pt x 352.31625pt>
-File: imgsSecuencia/NodeF/getBranch.png Graphic file (type png)
-
-<use imgsSecuencia/NodeF/getBranch.png>
-<imgsSecuencia/NodeF/getPath.png, id=221, 662.475pt x 549.05125pt>
-File: imgsSecuencia/NodeF/getPath.png Graphic file (type png)
-
-<use imgsSecuencia/NodeF/getPath.png>
-<imgsSecuencia/NodeNoF/findBro.png, id=222, 1343.0175pt x 795.97375pt>
-File: imgsSecuencia/NodeNoF/findBro.png Graphic file (type png)
-
-<use imgsSecuencia/NodeNoF/findBro.png>
-<imgsSecuencia/NodeNoF/getChild.png, id=223, 713.66624pt x 225.84375pt>
-File: imgsSecuencia/NodeNoF/getChild.png Graphic file (type png)
-
-<use imgsSecuencia/NodeNoF/getChild.png>
-<imgsSecuencia/NodeNoF/getIndexOfChild.png, id=224, 773.89125pt x 388.45125pt>
-File: imgsSecuencia/NodeNoF/getIndexOfChild.png Graphic file (type png)
-
-<use imgsSecuencia/NodeNoF/getIndexOfChild.png>) [52 <./imgsSecuencia/FPGrowth/
-findNode.png>] [53 <./imgsSecuencia/FPGrowth/buildFrequentsNodes.png>] [54 <./i
-mgsSecuencia/FPGrowth/run.png>] [55 <./imgsSecuencia/AvlTree/compareItemSet.png
->] [56 <./imgsSecuencia/AvlTree/find.png>] [57 <./imgsSecuencia/AvlTree/doubleW
-ithRightChild.png>] [58 <./imgsSecuencia/AvlTree/doubleWithLeftChild.png>]
-[59 <./imgsSecuencia/Transaction/loadItemsets2.png>] [60 <./imgsSecuencia/Trans
-action/loadItemsets.png>] [61 <./imgsSecuencia/Transaction/sortByItem.png> <./i
-mgsSecuencia/Transaction/sortBySupport.png>] [62 <./imgsSecuencia/NodeF/getBran
-ch.png>] [63 <./imgsSecuencia/NodeF/getPath.png>] [64 <./imgsSecuencia/NodeNoF/
-findBro.png>] [65 <./imgsSecuencia/NodeNoF/getChild.png> <./imgsSecuencia/NodeN
-oF/getIndexOfChild.png>]
-\openout2 = `secuencias3.aux'.
-
- (./secuencias3.tex
-<imgsSecuencia/c45/C45Rules.png, id=269, 1722.435pt x 1188.44pt>
-File: imgsSecuencia/c45/C45Rules.png Graphic file (type png)
-
-<use imgsSecuencia/c45/C45Rules.png>
-<imgsSecuencia/myHasMap/addColumn.png, id=270, 1262.7175pt x 713.66624pt>
-File: imgsSecuencia/myHasMap/addColumn.png Graphic file (type png)
-
-<use imgsSecuencia/myHasMap/addColumn.png>
-<imgsSecuencia/myHasMap/SearchColumn.png, id=271, 1177.39874pt x 614.295pt>
-File: imgsSecuencia/myHasMap/SearchColumn.png Graphic file (type png)
-
-<use imgsSecuencia/myHasMap/SearchColumn.png>
-<imgsSecuencia/Route/avanceVariable.png, id=272, 569.12625pt x 193.72375pt>
-File: imgsSecuencia/Route/avanceVariable.png Graphic file (type png)
-
-<use imgsSecuencia/Route/avanceVariable.png>
-<imgsSecuencia/Route/getIndex.png, id=273, 551.05875pt x 420.57124pt>
-File: imgsSecuencia/Route/getIndex.png Graphic file (type png)
-
-<use imgsSecuencia/Route/getIndex.png>
-<imgsSecuencia/Route/setPoscicionVariable.png, id=274, 507.8975pt x 203.76125pt
->
-File: imgsSecuencia/Route/setPoscicionVariable.png Graphic file (type png)
- <use imgsSecuencia/Route/setPoscicionVariable.png>
-<imgsSecuencia/TreeCounter/gananciaInicial.png, id=275, 834.11626pt x 320.19624
-pt>
-File: imgsSecuencia/TreeCounter/gananciaInicial.png Graphic file (type png)
- <use imgsSecuencia/TreeCounter/gananciaInicial.png>
-<imgsSecuencia/TreeCounter/ganancia.png, id=276, 2734.215pt x 1167.36125pt>
-File: imgsSecuencia/TreeCounter/ganancia.png Graphic file (type png)
-
-<use imgsSecuencia/TreeCounter/ganancia.png>
-<imgsSecuencia/Attribute/log2.png, id=277, 404.51125pt x 245.91875pt>
-File: imgsSecuencia/Attribute/log2.png Graphic file (type png)
-
-<use imgsSecuencia/Attribute/log2.png>
-<imgsSecuencia/Attribute/setEntropia.png, id=278, 754.82pt x 348.30125pt>
-File: imgsSecuencia/Attribute/setEntropia.png Graphic file (type png)
-
-<use imgsSecuencia/Attribute/setEntropia.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 105--106
- [][] 
- []
-
-<imgsSecuencia/Node/addSon.png, id=279, 898.35625pt x 431.6125pt>
-File: imgsSecuencia/Node/addSon.png Graphic file (type png)
-
-<use imgsSecuencia/Node/addSon.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 116--117
- [][] 
- []
-
-<imgsSecuencia/Node/getIndexOfChild.png, id=280, 584.1825pt x 306.14375pt>
-File: imgsSecuencia/Node/getIndexOfChild.png Graphic file (type png)
-
-<use imgsSecuencia/Node/getIndexOfChild.png>) [66 <./imgsSecuencia/c45/C45Rules
-.png>] [67 <./imgsSecuencia/myHasMap/addColumn.png>] [68 <./imgsSecuencia/myHas
-Map/SearchColumn.png>] [69 <./imgsSecuencia/Route/avanceVariable.png> <./imgsSe
-cuencia/Route/getIndex.png>] [70 <./imgsSecuencia/Route/setPoscicionVariable.pn
-g> <./imgsSecuencia/TreeCounter/gananciaInicial.png>] [71 <./imgsSecuencia/Tree
-Counter/ganancia.png>] [72 <./imgsSecuencia/Attribute/log2.png> <./imgsSecuenci
-a/Attribute/setEntropia.png>] [73 <./imgsSecuencia/Node/addSon.png> <./imgsSecu
-encia/Node/getIndexOfChild.png>]
-\openout2 = `colaboraciones.aux'.
-
- (./colaboraciones.tex
-<imgsColaboracion/Apriori/Combinations.png, id=307, 1191.45125pt x 325.215pt>
-File: imgsColaboracion/Apriori/Combinations.png Graphic file (type png)
-
-<use imgsColaboracion/Apriori/Combinations.png>
-
-LaTeX Warning: Float too large for page by 31.01189pt on input line 21.
-
-<imgsColaboracion/Apriori/IncreaseSuport.png, id=308, 1013.7875pt x 337.26pt>
-File: imgsColaboracion/Apriori/IncreaseSuport.png Graphic file (type png)
-
-<use imgsColaboracion/Apriori/IncreaseSuport.png>
-<imgsColaboracion/Apriori/main.png, id=309, 941.5175pt x 358.33875pt>
-File: imgsColaboracion/Apriori/main.png Graphic file (type png)
-
-<use imgsColaboracion/Apriori/main.png>
-<imgsColaboracion/Apriori/makeCandidates.png, id=310, 866.23625pt x 303.1325pt>
-File: imgsColaboracion/Apriori/makeCandidates.png Graphic file (type png)
-<use imgsColaboracion/Apriori/makeCandidates.png>
-<imgsColaboracion/Apriori/pruneCandidate.png, id=311, 856.19875pt x 226.8475pt>
-File: imgsColaboracion/Apriori/pruneCandidate.png Graphic file (type png)
-<use imgsColaboracion/Apriori/pruneCandidate.png>
-<imgsColaboracion/EuipAsso/EquipAsso/main.png, id=312, 874.26625pt x 363.3575pt
->
-File: imgsColaboracion/EuipAsso/EquipAsso/main.png Graphic file (type png)
- <use imgsColaboracion/EuipAsso/EquipAsso/main.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 51--52
- [][] 
- []
-
-
-<imgsColaboracion/EuipAsso/EquipAsso/run.png, id=313, 830.10126pt x 340.27126pt
->
-File: imgsColaboracion/EuipAsso/EquipAsso/run.png Graphic file (type png)
- <use imgsColaboracion/EuipAsso/EquipAsso/run.png>
-Overfull \hbox (83.68927pt too wide) in paragraph at lines 57--58
- [][] 
- []
-
-
-<imgsColaboracion/EuipAsso/EquipAsso/pruneCandidates.png, id=314, 968.61874pt x
- 312.16624pt>
-File: imgsColaboracion/EuipAsso/EquipAsso/pruneCandidates.png Graphic file (typ
-e png)
- <use imgsColaboracion/EuipAsso/EquipAsso/pruneCandidates.png>
-<imgsColaboracion/EuipAsso/Combinations/combine7.png, id=315, 633.36626pt x 286
-.06876pt>
-File: imgsColaboracion/EuipAsso/Combinations/combine7.png Graphic file (type pn
-g)
- <use imgsColaboracion/EuipAsso/Combinations/combine7.png>
-<imgsColaboracion/EuipAsso/Combinations/letsCombine.png, id=316, 323.2075pt x 3
-44.28625pt>
-File: imgsColaboracion/EuipAsso/Combinations/letsCombine.png Graphic file (type
- png)
- <use imgsColaboracion/EuipAsso/Combinations/letsCombine.png>
-<imgsColaboracion/FPGrowth/BaseConditionals/addBaseConditionals.png, id=317, 26
-6.9975pt x 163.61125pt>
-File: imgsColaboracion/FPGrowth/BaseConditionals/addBaseConditionals.png Graphi
-c file (type png)
-
-<use imgsColaboracion/FPGrowth/BaseConditionals/addBaseConditionals.png>
-<imgsColaboracion/FPGrowth/BaseConditionals/findItem.png, id=318, 839.135pt x 2
-75.0275pt>
-File: imgsColaboracion/FPGrowth/BaseConditionals/findItem.png Graphic file (typ
-e png)
- <use imgsColaboracion/FPGrowth/BaseConditionals/findItem.png>
-<imgsColaboracion/FPGrowth/Combinations/addCandidates.png, id=319, 961.5925pt x
- 393.47pt>
-File: imgsColaboracion/FPGrowth/Combinations/addCandidates.png Graphic file (ty
-pe png)
- <use imgsColaboracion/FPGrowth/Combinations/addCandidates.png>
-<imgsColaboracion/FPGrowth/Combinations/Combine.png, id=320, 670.505pt x 288.07
-625pt>
-File: imgsColaboracion/FPGrowth/Combinations/Combine.png Graphic file (type png
-)
- <use imgsColaboracion/FPGrowth/Combinations/Combine.png>
-<imgsColaboracion/FPGrowth/FPGrowth/builtFrecuenceNode.png, id=321, 418.56375pt
- x 361.35pt>
-File: imgsColaboracion/FPGrowth/FPGrowth/builtFrecuenceNode.png Graphic file (t
-ype png)
- <use imgsColaboracion/FPGrowth/FPGrowth/builtFrecuenceNode.png>
-<imgsColaboracion/FPGrowth/FPGrowth/FrequentNode.png, id=322, 400.49625pt x 212
-.795pt>
-File: imgsColaboracion/FPGrowth/FPGrowth/FrequentNode.png Graphic file (type pn
-g)
- <use imgsColaboracion/FPGrowth/FPGrowth/FrequentNode.png>
-<imgsColaboracion/Utils/AvlTree/compareItems.png, id=323, 582.175pt x 248.93pt>
-File: imgsColaboracion/Utils/AvlTree/compareItems.png Graphic file (type png)
-<use imgsColaboracion/Utils/AvlTree/compareItems.png>
-<imgsColaboracion/Utils/AvlTree/insert.png, id=324, 375.4025pt x 312.16624pt>
-File: imgsColaboracion/Utils/AvlTree/insert.png Graphic file (type png)
-
-<use imgsColaboracion/Utils/AvlTree/insert.png>) [74 <./imgsColaboracion/Aprior
-i/Combinations.png>] [75 <./imgsColaboracion/Apriori/IncreaseSuport.png>]
-[76 <./imgsColaboracion/Apriori/main.png>] [77 <./imgsColaboracion/Apriori/make
-Candidates.png>] [78 <./imgsColaboracion/Apriori/pruneCandidate.png>] [79 <./im
-gsColaboracion/EuipAsso/EquipAsso/main.png> <./imgsColaboracion/EuipAsso/EquipA
-sso/run.png>] [80 <./imgsColaboracion/EuipAsso/EquipAsso/pruneCandidates.png>]
-[81 <./imgsColaboracion/EuipAsso/Combinations/combine7.png> <./imgsColaboracion
-/EuipAsso/Combinations/letsCombine.png>] [82 <./imgsColaboracion/FPGrowth/BaseC
-onditionals/addBaseConditionals.png> <./imgsColaboracion/FPGrowth/BaseCondition
-als/findItem.png>] [83 <./imgsColaboracion/FPGrowth/Combinations/addCandidates.
-png>] [84 <./imgsColaboracion/FPGrowth/Combinations/Combine.png>] [85 <./imgsCo
-laboracion/FPGrowth/FPGrowth/builtFrecuenceNode.png> <./imgsColaboracion/FPGrow
-th/FPGrowth/FrequentNode.png>] [86 <./imgsColaboracion/Utils/AvlTree/compareIte
-ms.png> <./imgsColaboracion/Utils/AvlTree/insert.png>]
-\openout2 = `clases.aux'.
-
- (./clases.tex
-<imgsClases/KnowledgeFlow.png, id=366, 1615.03375pt x 1343.0175pt>
-File: imgsClases/KnowledgeFlow.png Graphic file (type png)
-
-<use imgsClases/KnowledgeFlow.png>
-Overfull \hbox (41.84782pt too wide) in paragraph at lines 14--15
- [][] 
- []
-
-[87
-
-
-
-
-
-
-
-
- <./imgsClases/KnowledgeFlow.png>]
-<imgsClases/Utils.png, id=370, 1350.04375pt x 1746.525pt>
-File: imgsClases/Utils.png Graphic file (type png)
-
-<use imgsClases/Utils.png>
-<imgsClases/FPGrowth.png, id=371, 915.42pt x 1228.59pt>
-File: imgsClases/FPGrowth.png Graphic file (type png)
-
-<use imgsClases/FPGrowth.png>
-
-LaTeX Warning: Float too large for page by 11.47694pt on input line 30.
-
-<imgsClases/EquipAsso.png, id=372, 1959.32pt x 1081.03876pt>
-File: imgsClases/EquipAsso.png Graphic file (type png)
-
-<use imgsClases/EquipAsso.png>
-<imgsClases/Mate.png, id=373, 1325.95375pt x 978.65625pt>
-File: imgsClases/Mate.png Graphic file (type png)
-
-<use imgsClases/Mate.png>
-
-LaTeX Warning: Float too large for page by 16.83286pt on input line 44.
-
-<imgsClases/c45b.png, id=374, 2509.375pt x 2509.375pt>
-File: imgsClases/c45b.png Graphic file (type png)
-
-<use imgsClases/c45b.png>
-Overfull \hbox (125.5323pt too wide) in paragraph at lines 49--50
- [][] 
- []
-
-) [88 <./imgsClases/Utils.png>] [89 <./imgsClases/FPGrowth.png>] [90 <./imgsCla
-ses/EquipAsso.png>] [91 <./imgsClases/Mate.png>] [92 <./imgsClases/c45b.png>]
-\openout2 = `paquetes.aux'.
-
-
-(./paquetes.tex <imgsPaquetes/tariy.png, id=391, 746.79pt x 294.09875pt>
-File: imgsPaquetes/tariy.png Graphic file (type png)
-
-<use imgsPaquetes/tariy.png> [93
-
-
- <./imgsPaquetes/tariy.png>]
-<imgsPaquetes/algorithm.png, id=395, 1006.76125pt x 372.39125pt>
-File: imgsPaquetes/algorithm.png Graphic file (type png)
-
-<use imgsPaquetes/algorithm.png>
-<imgsPaquetes/gui.png, id=396, 926.46124pt x 594.22pt>
-File: imgsPaquetes/gui.png Graphic file (type png)
-
-<use imgsPaquetes/gui.png>
-<imgsPaquetes/filters.png, id=397, 706.64pt x 648.4225pt>
-File: imgsPaquetes/filters.png Graphic file (type png)
-
-<use imgsPaquetes/filters.png>) [94 <./imgsPaquetes/algorithm.png>] [95 <./imgs
-Paquetes/gui.png>] [96 <./imgsPaquetes/filters.png>]
-\openout2 = `descripcion.aux'.
-
- (./descripcion.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--16
-
- []
-
-
-Overfull \hbox (9.19978pt too wide) in paragraph at lines 3--16
-/cmr12/El sis-tema op-er-a-ti-vo so-bre el cual se tra-ba-jo du-rante la im-ple
--mentaci^^Son de TariyKDD
- []
+Underfull \hbox (badness 10000) in paragraph at lines 572--577
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--16
-
- []
-
-<images/arquitectura.png, id=407, 560.0925pt x 807.7678pt>
-File: images/arquitectura.png Graphic file (type png)
-
-<use images/arquitectura.png>
-Underfull \hbox (badness 10000) in paragraph at lines 24--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--63
-
- []
-
-[97
-
-
-] [98 <./images/arquitectura.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 76--78
-
- []
-
-<images/nario2.png, id=415, 295.1025pt x 215.80624pt>
-File: images/nario2.png Graphic file (type png)
- <use images/nario2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 86--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--98
-
- []
-
-[99]
-Underfull \hbox (badness 10000) in paragraph at lines 100--110
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--126
-
- []
-
-[100 <./images/nario2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 127--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 140--153
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--153
+Underfull \hbox (badness 10000) in paragraph at lines 578--583
 
  []
 
-[101]
-Overfull \hbox (1.82184pt too wide) in paragraph at lines 167--170
-[]/cmr12/Esta clase ges-tiona to-do lo rela-ciona-do con flu-jos de archivos,
- []
 
+Underfull \hbox (badness 10000) in paragraph at lines 584--587
 
-Overfull \hbox (0.96875pt too wide) in paragraph at lines 177--179
-[]/cmr12/Los item-sets fre-cuentes gen-er-a-dos por los al-go-rit-mos de aso-ci
-aci^^Son
  []
 
-[102] [103] [104] <images/01.png, id=435, 581.6429pt x 366.57434pt>
-File: images/01.png Graphic file (type png)
-
-<use images/01.png> [105 <./images/01.png>]
-<images/02.png, id=439, 581.6429pt x 366.57434pt>
-File: images/02.png Graphic file (type png)
- <use images/02.png> [106 <./images/02.png>] <images/03.png, id=443, 581.6429pt
- x 366.57434pt>
-File: images/03.png Graphic file (type png)
-
-<use images/03.png> [107 <./images/03.png>]
-<images/04.png, id=447, 581.6429pt x 366.57434pt>
-File: images/04.png Graphic file (type png)
- <use images/04.png> [108 <./images/04.png>] <images/05.png, id=451, 581.6429pt
- x 366.57434pt>
-File: images/05.png Graphic file (type png)
-
-<use images/05.png> [109 <./images/05.png>]
-<images/06.png, id=456, 581.6429pt x 366.57434pt>
-File: images/06.png Graphic file (type png)
- <use images/06.png> [110 <./images/06.png>] <images/07.png, id=460, 581.6429pt
- x 366.57434pt>
-File: images/07.png Graphic file (type png)
-
-<use images/07.png> [111 <./images/07.png>]
-<images/08.png, id=464, 581.6429pt x 366.57434pt>
-File: images/08.png Graphic file (type png)
- <use images/08.png> [112 <./images/08.png>] <images/11.png, id=468, 506.76073p
-t x 235.9659pt>
-File: images/11.png Graphic file (type png)
-
-<use images/11.png> [113 <./images/11.png>]
-<images/09.png, id=472, 581.6429pt x 390.95457pt>
-File: images/09.png Graphic file (type png)
- <use images/09.png> [114 <./images/09.png>] <images/attverMark.png, id=476, 81
-5.86736pt x 534.62386pt>
-File: images/attverMark.png Graphic file (type png)
-
-<use images/attverMark.png> [115 <./images/attverMark.png>] [116]
-<images/17.png, id=484, 520.69229pt x 410.9812pt>
-File: images/17.png Graphic file (type png)
- <use images/17.png>
-Underfull \hbox (badness 10000) in paragraph at lines 412--412
-[]/cmr12/4. El ^^S^^Pcono cor-re-spon-di-ente
- []
 
-[117 <./images/17.png>] <images/19.png, id=488, 891.62024pt x 628.66193pt>
-File: images/19.png Graphic file (type png)
-
-<use images/19.png> [118 <./images/19.png>]
-<images/f1.png, id=492, 891.62024pt x 628.66193pt>
-File: images/f1.png Graphic file (type png)
- <use images/f1.png> [119 <./images/f1.png>] [120] <images/fv1.png, id=499, 613
-.85963pt x 327.3918pt>
-File: images/fv1.png Graphic file (type png)
-
-<use images/fv1.png> <images/fv2.png, id=500, 613.85963pt x 327.3918pt>
-File: images/fv2.png Graphic file (type png)
-
-<use images/fv2.png> [121 <./images/fv1.png> <./images/fv2.png>] [122]
-<images/fi2.png, id=508, 891.62024pt x 628.66193pt>
-File: images/fi2.png Graphic file (type png)
- <use images/fi2.png>
-[123 <./images/fi2.png>]
-<images/fi3ver.png, id=512, 891.62024pt x 628.66193pt>
-File: images/fi3ver.png Graphic file (type png)
- <use images/fi3ver.png>
-Underfull \hbox (badness 3417) in paragraph at lines 498--498
-[]/cmr12/2. Se mues-tra B la ven-tana
- []
+Underfull \hbox (badness 10000) in paragraph at lines 588--594
 
-[124 <./images/fi3ver.png>] [125]
-<images/fi4.png, id=519, 891.62024pt x 628.66193pt>
-File: images/fi4.png Graphic file (type png)
- <use images/fi4.png>
-Underfull \hbox (badness 3417) in paragraph at lines 514--514
-[]/cmr12/2. Se mues-tra B la ven-tana
  []
 
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 604--607
 
-Underfull \hbox (badness 2547) in paragraph at lines 514--514
-/cmr12/al fil-tro 'Range'. Los cam-pos
  []
 
-[126 <./images/fi4.png>] <images/fi5.png, id=523, 891.62024pt x 628.66193pt>
-File: images/fi5.png Graphic file (type png)
 
-<use images/fi5.png>
-Underfull \hbox (badness 1968) in paragraph at lines 530--530
-/cmr12/fil-tro 'Re-duc-tion'. Los cam-pos
- []
+Underfull \hbox (badness 10000) in paragraph at lines 608--614
 
-[127 <./images/fi5.png>] [128]
-<images/fi6.png, id=531, 891.62024pt x 628.66193pt>
-File: images/fi6.png Graphic file (type png)
- <use images/fi6.png>
-[129 <./images/fi6.png>] <images/fi7.png, id=535, 891.62024pt x 628.66193pt>
-File: images/fi7.png Graphic file (type png)
-
-<use images/fi7.png> [130 <./images/fi7.png>]
-<images/fi8.png, id=539, 891.62024pt x 628.66193pt>
-File: images/fi8.png Graphic file (type png)
- <use images/fi8.png>
-[131 <./images/fi8.png>] [132]
-<images/fi9.png, id=546, 891.62024pt x 628.66193pt>
-File: images/fi9.png Graphic file (type png)
- <use images/fi9.png>
-Underfull \hbox (badness 2922) in paragraph at lines 595--595
-/cmr12/fil-tro 'Dis-cretize'. Los cam-pos
  []
 
-
-Underfull \hbox (badness 1708) in paragraph at lines 595--595
-/cmr12/son: /cmbx12/Atrib-u-to/cmr12/, en el cual se
- []
 
+Underfull \hbox (badness 10000) in paragraph at lines 615--617
 
-Underfull \hbox (badness 2057) in paragraph at lines 595--595
-/cmr12/crear. 'Tama~no del ran-go': se
  []
 
-[133 <./images/fi9.png>] <images/a1.png, id=551, 830.66963pt x 521.56302pt>
-File: images/a1.png Graphic file (type png)
-
-<use images/a1.png> [134 <./images/a1.png>]
-<images/am1.png, id=555, 830.66963pt x 521.56302pt>
-File: images/am1.png Graphic file (type png)
- <use images/am1.png>
-[135 <./images/am1.png>] <images/am2.png, id=559, 830.66963pt x 521.56302pt>
-File: images/am2.png Graphic file (type png)
-
-<use images/am2.png>
-Underfull \hbox (badness 4168) in paragraph at lines 645--646
-[]/cmr12/2. So-bre el ^^Sarea de tra-ba-jo
- []
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 645--651
 
-[136 <./images/am2.png>] <images/am3.png, id=563, 830.66963pt x 521.56302pt>
-File: images/am3.png Graphic file (type png)
-
-<use images/am3.png> [137 <./images/am3.png>]
-<images/a2.png, id=567, 830.66963pt x 521.56302pt>
-File: images/a2.png Graphic file (type png)
- <use images/a2.png> [138 <./images/a2.png>] <images/a3.png, id=571, 830.66963p
-t x 521.56302pt>
-File: images/a3.png Graphic file (type png)
-
-<use images/a3.png> [139 <./images/a3.png>]
-<images/a4.png, id=576, 830.66963pt x 521.56302pt>
-File: images/a4.png Graphic file (type png)
- <use images/a4.png> [140 <./images/a4.png>] <images/a5.png, id=580, 830.66963p
-t x 521.56302pt>
-File: images/a5.png Graphic file (type png)
-
-<use images/a5.png> [141 <./images/a5.png>]
-<images/v01.png, id=584, 830.66963pt x 521.56302pt>
-File: images/v01.png Graphic file (type png)
- <use images/v01.png>
-[142 <./images/v01.png>] <images/v0m1.png, id=588, 830.66963pt x 521.56302pt>
-File: images/v0m1.png Graphic file (type png)
-
-<use images/v0m1.png> [143 <./images/v0m1.png>]
-<images/v0m2.png, id=592, 830.66963pt x 521.56302pt>
-File: images/v0m2.png Graphic file (type png)
- <use images/v0m2.png>
-Underfull \hbox (badness 4168) in paragraph at lines 778--779
-[]/cmr12/2. So-bre el ^^Sarea de tra-ba-jo
  []
-
-[144 <./images/v0m2.png>] <images/v0m3.png, id=596, 830.66963pt x 521.56302pt>
-File: images/v0m3.png Graphic file (type png)
-
-<use images/v0m3.png> [145 <./images/v0m3.png>]
-<images/v0r.png, id=601, 891.62024pt x 628.66193pt>
-File: images/v0r.png Graphic file (type png)
- <use images/v0r.png>)
-[146 <./images/v0r.png>]
-\openout2 = `pruebas.aux'.
 
- (./pruebas.tex
-Cap\'{\i }tulo 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--13
+Underfull \hbox (badness 10000) in paragraph at lines 652--656
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--13
-
- []
 
+Underfull \hbox (badness 10000) in paragraph at lines 657--663
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-[]/cmbx12/Numero de
  []
 
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 670--675
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-[]/cmbx12/Numero de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
-[]/cmbx12/Promedio
- []
+Underfull \hbox (badness 10000) in paragraph at lines 676--680
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
-/cmbx12/items por
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--36
+Underfull \hbox (badness 10000) in paragraph at lines 681--683
 
  []
-
-[147
-
-
-
-] <images/bd85kt7.png, id=608, 364.36125pt x 273.02pt>
-File: images/bd85kt7.png Graphic file (type png)
-
-<use images/bd85kt7.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
-[148 <./images/bd85kt7.png>]
-<images/bd40kt5.png, id=612, 363.3575pt x 272.01625pt>
-File: images/bd40kt5.png Graphic file (type png)
+Underfull \hbox (badness 10000) in paragraph at lines 684--686
 
-<use images/bd40kt5.png> [149 <./images/bd40kt5.png>]
-<images/bd10kt10.png, id=616, 364.36125pt x 275.0275pt>
-File: images/bd10kt10.png Graphic file (type png)
-
-<use images/bd10kt10.png> [150 <./images/bd10kt10.png>]
-<images/bd85kt72.png, id=620, 361.35pt x 273.02pt>
-File: images/bd85kt72.png Graphic file (type png)
- <use images/bd85kt72.png>
-[151 <./images/bd85kt72.png>]
-<images/bd40kt52.png, id=625, 364.36125pt x 274.02374pt>
-File: images/bd40kt52.png Graphic file (type png)
-
-<use images/bd40kt52.png> [152 <./images/bd40kt52.png>]
-<images/bd10kt102.png, id=629, 365.365pt x 276.03125pt>
-File: images/bd10kt102.png Graphic file (type png)
-
-<use images/bd10kt102.png>) [153 <./images/bd10kt102.png>]
-\openout2 = `conclusiones.aux'.
-
- (./conclusiones.tex
-Cap\'{\i }tulo 9.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 687--690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 691--695
 
  []
 
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 696--699
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 700--703
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 704--709
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 710--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
-
+Overfull \hbox (38.11046pt too wide) in paragraph at lines 718--719
+[]/cmr12/Como muestreo, fil-tra-do, dis-cretizaci^^Son
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 729--732
 
  []
-
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 733--741
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--27
+Underfull \hbox (badness 10000) in paragraph at lines 742--748
 
  []
-
-[154
-
-
 
-] [155])
-Underfull \hbox (badness 10000) in paragraph at lines 36--34
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 766--772
 
  []
 
-[156]
-\openout2 = `anexos.aux'.
 
- (./anexos.tex
-Cap\'{\i }tulo 10.
+Underfull \hbox (badness 10000) in paragraph at lines 782--787
 
-Overfull \hbox (4.31497pt too wide) in paragraph at lines 2--2
-[]/cmbx12@17.28pt/Rendimiento for-ma-to de com-pren-si^^Son Tariy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-[]/cmbx12/Archivo
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-[]/cmbx12/N^^Sum.
- []
+Underfull \hbox (badness 10000) in paragraph at lines 788--791
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-[]/cmbx12/Tam.
  []
 
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 800--809
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-/cmbx12/ARFF
  []
-
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]/cmbx12/Tam.
- []
 
+Underfull \hbox (badness 10000) in paragraph at lines 810--817
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-/cmbx12/Tariy
  []
-
-<images/formatos.png, id=642, 473.77pt x 310.15875pt>
-File: images/formatos.png Graphic file (type png)
-
-<use images/formatos.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [157
-
-
 
-] [158 <./images/formatos.png>] (./tesis.bbl
+[37]) [38] (./tesis.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 59--62
 []/cmr12/IBM Cor-po-ra-tion.  In-tel-li-gent min-er.  http://www-
  []
@@ -1770,7 +613,18 @@ Underfull \hbox (badness 1810) in paragraph at lines 64--70
 ve-nia,
  []
 
-[159
+[162
+
+
+
+
+
+
+
+
+
+
+
 
 
 ]
@@ -1783,7 +637,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--91
 []/cmr12/Waikato ML Group.  Col-lec-tions of datasets.  $/cmmi12/http /cmr12/:
  []
 
-[160]
+[163]
 Overfull \hbox (41.96426pt too wide) in paragraph at lines 142--145
 []/cmr12/Java His-pano.  El abc de jd-bc.  http://javahispano.org/tutorials.typ
 e.action?type=j2se,
@@ -1804,7 +658,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--196
 []/cmr12/Goverment of Hong Kong.  In-no-va-tion and tech-nol-o-gy fund.
  []
 
-[161]
+[164]
 Underfull \hbox (badness 10000) in paragraph at lines 241--245
 []/cmr12/Information Tech-nol-o-gy The Uni-ver-si-ty of Al-aba-ma in
  []
@@ -1825,30 +679,34 @@ Underfull \hbox (badness 3623) in paragraph at lines 247--251
 /cmr12/and Sys-tems Cen-ter.  Al-go-rithm de-vel-op-ment and min-ing sys-tem.
  []
 
-[162]) [163] (./tesis.aux (./portada.aux) (./subportada.aux)
+[165]) [166] (./tesis.aux (./portada.aux) (./subportada.aux)
 (./introduccion.aux) (./tema.aux) (./problema.aux) (./objetivos.aux)
 (./justificacion.aux) (./mteorico.aux) (./funciones.aux) (./desarrollo.aux)
 (./secuencias2.aux) (./secuencias3.aux) (./colaboraciones.aux) (./clases.aux)
 (./paquetes.aux) (./descripcion.aux) (./pruebas.aux) (./conclusiones.aux)
 (./anexos.aux)) ) 
 Here is how much of TeX's memory you used:
- 2476 strings out of 95437
- 41199 string characters out of 1190233
- 86364 words of memory out of 1000001
- 5207 multiletter control sequences out of 10000+50000
+ 1823 strings out of 95437
+ 21850 string characters out of 1190233
+ 84419 words of memory out of 1000001
+ 4729 multiletter control sequences out of 10000+50000
  9199 words of font info for 32 fonts, out of 500000 for 1000
  14 hyphenation exceptions out of 1000
- 25i,10n,25p,1118b,398s stack positions out of 1500i,500n,5000p,200000b,5000s
- 671 PDF objects out of 300000
+ 25i,10n,25p,241b,436s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 150 PDF objects out of 300000
  0 named destinations out of 131072
- 635 words of extra memory for PDF output out of 65536
+ 15 words of extra memory for PDF output out of 65536
 {/usr/share/texmf/dvips/tetex/74afc74c.enc}</usr/share/texmf/f
-onts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti12
-.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</usr/share/texmf/fonts/type1/b
-luesky/cm/cmsy8.pfb>{/usr/share/texmf/dvips/tetex/aae443f0.enc}</usr/share/texm
-f/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cms
-y10.pfb>{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/texmf/fonts/type
-1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr
-/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/blu
-esky/cm/cmbx12.pfb>
-Output written on tesis.pdf (163 pages, 4075129 bytes).
+onts/type1/bluesky/cm/cmti8.pfb>{/usr/share/texmf/dvips/tetex/aae443f0.enc}</us
+r/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bl
+uesky/cm/cmti12.pfb>{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/texm
+f/fonts/type1/bluesky/cm/cmr8.pfb>{/usr/share/texmf/dvips/tetex/bbad153f.enc}</
+usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/
+bluesky/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/s
+hare/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/
+texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+bx12.pfb>
+Output written on tesis.pdf (32 pages, 307552 bytes).

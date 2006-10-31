@@ -42,7 +42,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=109
 open=false
 
 [item:funciones.tex]
@@ -67,6 +67,14 @@ column=25
 encoding=UTF-8
 highlight=LaTeX
 line=0
+open=false
+
+[item:mteorico.tex]
+archive=true
+column=29
+encoding=UTF-8
+highlight=LaTeX
+line=451
 open=false
 
 [item:objetivos.tex]
@@ -103,10 +111,10 @@ open=false
 
 [item:pruebas.tex]
 archive=true
-column=13
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=24
+line=0
 open=false
 
 [item:secuencias2.tex]
@@ -143,10 +151,10 @@ open=false
 
 [item:tesis.tex]
 archive=true
-column=0
+column=16
 encoding=UTF-8
 highlight=LaTeX
-line=38
+line=17
 open=true
 
 [item:tesis_v0.2.kilepr]
