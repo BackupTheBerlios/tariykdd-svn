@@ -8,6 +8,7 @@
  */
 
 package algorithm.classification.c45;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -18,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author and
+ * @author Proyecto Tariy
  */
 public class c45 {
     ArrayList gains;
