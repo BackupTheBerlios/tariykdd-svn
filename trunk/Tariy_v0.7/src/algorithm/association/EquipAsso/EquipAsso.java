@@ -55,7 +55,7 @@ public class EquipAsso extends Thread{
      * Recorre el dataset, carga cada transaccion, realiza todas sus
      * combinaciones y cuenta su soporte, aquellos itemsets que sobrepasen o
      * igualen el soporte minimo del sistema se consideran frecuentes y se
-     * almacenan en un árbol Avl.
+     * almacenan en un árbol AvlTree.
      *
      * @param type Indica el tipo o tamaño de los itemsets frecuentes que se
      *             desean obtener.
