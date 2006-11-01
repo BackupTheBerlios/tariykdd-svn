@@ -52,10 +52,11 @@ public class Chooser extends javax.swing.JFrame {
         jOptionPane1 = new javax.swing.JOptionPane();
         chooser = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        mnuActions = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        mnuAbout = new javax.swing.JMenuItem();
+        mnuAction = new javax.swing.JMenu();
+        optNew = new javax.swing.JMenuItem();
+        optSave = new javax.swing.JMenuItem();
+        mnuAbout = new javax.swing.JMenu();
+        optAbout = new javax.swing.JMenuItem();
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,31 +95,40 @@ public class Chooser extends javax.swing.JFrame {
             }
         });
 
-        jMenu2.setText("Actions");
-        mnuActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b_play.png")));
-        mnuActions.setMnemonic('n');
-        mnuActions.setText("New Experiment");
-        mnuActions.addActionListener(new java.awt.event.ActionListener() {
+        mnuAction.setText("Actions");
+        optNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b_play.png")));
+        optNew.setMnemonic('n');
+        optNew.setText("New Experiment");
+        optNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuActionsActionPerformed(evt);
+                optNewActionPerformed(evt);
             }
         });
 
-        jMenu2.add(mnuActions);
+        mnuAction.add(optNew);
 
-        jMenuBar1.add(jMenu2);
-
-        jMenu1.setText("About");
-        mnuAbout.setText("About ...");
-        mnuAbout.addActionListener(new java.awt.event.ActionListener() {
+        optSave.setText("Item");
+        optSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuAboutActionPerformed(evt);
+                optSaveActionPerformed(evt);
             }
         });
 
-        jMenu1.add(mnuAbout);
+        mnuAction.add(optSave);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuAction);
+
+        mnuAbout.setText("About");
+        optAbout.setText("About ...");
+        optAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optAboutActionPerformed(evt);
+            }
+        });
+
+        mnuAbout.add(optAbout);
+
+        jMenuBar1.add(mnuAbout);
 
         setJMenuBar(jMenuBar1);
 
@@ -141,20 +151,25 @@ public class Chooser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuActionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuActionsActionPerformed
+    private void optSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optSaveActionPerformed
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_optSaveActionPerformed
+
+    private void optNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNewActionPerformed
 // TODO add your handling code here:
         canvas.conexiones.clear();
         canvas.removeAll();
         canvas.repaint();
-    }//GEN-LAST:event_mnuActionsActionPerformed
+    }//GEN-LAST:event_optNewActionPerformed
 
-    private void mnuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutActionPerformed
+    private void optAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optAboutActionPerformed
 // TODO add your handling code here:
 //        JOptionPane.showMessageDialog(this, "The Tariy Project\nUniversidad de Nariño",
 //                "The Tariy Project.",JOptionPane.INFORMATION_MESSAGE);
         //jOptionPane1.showMessageDialog(this, "The Tariy Project\nUniversidad de Nariño");
         new frmCredits().setVisible(true);
-    }//GEN-LAST:event_mnuAboutActionPerformed
+    }//GEN-LAST:event_optAboutActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 // TODO add your handling code here:
@@ -222,12 +237,13 @@ public class Chooser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane chooser;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JMenuItem mnuAbout;
-    private javax.swing.JMenuItem mnuActions;
+    private javax.swing.JMenu mnuAbout;
+    private javax.swing.JMenu mnuAction;
+    private javax.swing.JMenuItem optAbout;
+    private javax.swing.JMenuItem optNew;
+    private javax.swing.JMenuItem optSave;
     // End of variables declaration//GEN-END:variables
     
 }

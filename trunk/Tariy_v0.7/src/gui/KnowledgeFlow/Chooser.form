@@ -42,12 +42,12 @@
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="mnuAction">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actions"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuActions">
+            <MenuItem class="javax.swing.JMenuItem" name="optNew">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/b_play.png"/>
@@ -56,22 +56,30 @@
                 <Property name="text" type="java.lang.String" value="New Experiment"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuActionsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optNewActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="optSave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Item"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optSaveActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="mnuAbout">
           <Properties>
             <Property name="text" type="java.lang.String" value="About"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuAbout">
+            <MenuItem class="javax.swing.JMenuItem" name="optAbout">
               <Properties>
                 <Property name="text" type="java.lang.String" value="About ..."/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAboutActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="optAboutActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
