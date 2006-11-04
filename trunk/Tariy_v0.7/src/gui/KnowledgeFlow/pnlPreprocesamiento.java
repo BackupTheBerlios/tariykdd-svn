@@ -34,14 +34,14 @@ public class pnlPreprocesamiento extends javax.swing.JPanel {
         setName("otro");
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Conexion/Conexion BD")));
-        jLabel11.setText("Conexion BD");
+        jLabel11.setText(" Connection DB ");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel11.setName("Conexion BD");
         jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Conexion/plaintext")));
-        jLabel12.setText("Archivo Plano");
+        jLabel12.setText(" Plain Text ");
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel12.setName("plaintext");
         jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -53,8 +53,8 @@ public class pnlPreprocesamiento extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                    .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
