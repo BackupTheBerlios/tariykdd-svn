@@ -35,8 +35,7 @@ public class Contenedor extends JPanel {
         selector = s;
         canvas = c;
         scrollPanel.setViewportView(canvas);
-        scrollSelector.setViewportView(selector);
-        contenedor.setLeftComponent(scrollSelector);
+        contenedor.setLeftComponent(selector);
         contenedor.setRightComponent(scrollPanel);
     }
     
@@ -49,7 +48,6 @@ public class Contenedor extends JPanel {
     private void initComponents() {
         contenedor = new javax.swing.JSplitPane();
         scrollPanel = new javax.swing.JScrollPane();
-        scrollSelector = new javax.swing.JScrollPane();
 
         contenedor.setOneTouchExpandable(true);
         contenedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -62,8 +60,6 @@ public class Contenedor extends JPanel {
         });
 
         contenedor.setRightComponent(scrollPanel);
-
-        contenedor.setLeftComponent(scrollSelector);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -82,8 +78,7 @@ public class Contenedor extends JPanel {
     }
     
     public void cambiarPanel(JPanel p){
-        scrollSelector.setViewportView(p);
-        contenedor.setLeftComponent(scrollSelector);
+        contenedor.setLeftComponent(p);
     }
     
     private void contenedorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorMouseReleased
@@ -161,7 +156,6 @@ public class Contenedor extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane contenedor;
     private javax.swing.JScrollPane scrollPanel;
-    private javax.swing.JScrollPane scrollSelector;
     // End of variables declaration//GEN-END:variables
     
 }
