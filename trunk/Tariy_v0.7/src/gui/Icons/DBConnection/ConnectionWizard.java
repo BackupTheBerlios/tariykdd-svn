@@ -36,7 +36,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         initComponents();
         DriverName = "jdbc:postgresql://";
         spnPuerto.setValue(5432);
-        lblStatusBar.setIcon(new ImageIcon("/images/no_conectado"));
+        lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
         selector = null;
     }
     
@@ -45,7 +45,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         myDBConnectionIcon = dbci;
         DriverName = "jdbc:postgresql://";
         spnPuerto.setValue(5432);
-        lblStatusBar.setIcon(new ImageIcon("/images/no_conectado"));
+        lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
         selector = null;
     }
     
@@ -81,7 +81,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Connection", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")));
-        lblDriver.setText("Jdbc Driver:");
+        lblDriver.setText("Driver JDBC:");
 
         lblUsuario.setText("User:");
 
@@ -130,9 +130,9 @@ public class ConnectionWizard extends javax.swing.JFrame {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, lblDriver))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtBD, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtUsuario, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtHost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtBD, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtUsuario, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtHost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, lblPuerto)
@@ -258,8 +258,8 @@ public class ConnectionWizard extends javax.swing.JFrame {
 //                    "");
             CONEXION_EXITOSA = true;
             // Conexion exitosa...
-            lblStatusBar.setIcon(new ImageIcon("/images/conectado"));
-            lblStatusBar.setText("Conexion Exitosa!!!");
+            lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
+            lblStatusBar.setText("Success Connection");
         } catch(SQLException e1){
             System.out.println("2. " + e1);
         } catch(ClassNotFoundException e){
