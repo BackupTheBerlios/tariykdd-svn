@@ -60,16 +60,16 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Algoritmos/c45")));
-        jLabel13.setText("C45");
+        jLabel13.setText("  C45  ");
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel13.setName("c45");
         jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Algoritmos/Mate")));
-        jLabel14.setText("Mate");
+        jLabel14.setText("  Mate  ");
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel14.setName("Mate");
+        jLabel14.setName("mate");
         jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);

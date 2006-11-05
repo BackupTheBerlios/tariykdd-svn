@@ -125,6 +125,8 @@ public class Contenedor extends JPanel {
                 icon = new FilterIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("c45")){
                 icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
+            } else if(nameIcon.equals("mate")){
+                icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("tree")){
                 icon = new TreeIcon((JLabel)presionado, p.x, p.y);
             } else {

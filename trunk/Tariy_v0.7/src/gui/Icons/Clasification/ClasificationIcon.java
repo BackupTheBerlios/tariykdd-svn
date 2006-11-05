@@ -43,14 +43,14 @@ public class ClasificationIcon extends Icon{
         super.constrainsTo = new ArrayList(1);
         super.constrainsTo.add("TreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
-        mnuConfigure = new javax.swing.JMenuItem();
-        mnuConfigure.setText("Configure...");
-        mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConfigureActionPerformed(evt);
-            }
-        });
-        super.pupMenu.add(mnuConfigure);
+//        mnuConfigure = new javax.swing.JMenuItem();
+//        mnuConfigure.setText("Configure...");
+//        mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                mnuConfigureActionPerformed(evt);
+//            }
+//        });
+//        super.pupMenu.add(mnuConfigure);
         
         mnuRun = new javax.swing.JMenuItem();
         mnuRun.setText("Run...");
@@ -62,13 +62,13 @@ public class ClasificationIcon extends Icon{
         super.pupMenu.add(mnuRun);
     }
     
-    private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }
+//    private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                
+//            }
+//        });
+//    }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
         JackAnimation jack = new JackAnimation();

@@ -100,7 +100,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/Algoritmos/c45"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="C45"/>
+        <Property name="text" type="java.lang.String" value="  C45  "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="c45"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
@@ -112,9 +112,9 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/Algoritmos/Mate"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Mate"/>
+        <Property name="text" type="java.lang.String" value="  Mate  "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="Mate"/>
+        <Property name="name" type="java.lang.String" value="mate"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
