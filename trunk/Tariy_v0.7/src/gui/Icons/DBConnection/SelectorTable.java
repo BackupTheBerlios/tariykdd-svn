@@ -96,7 +96,7 @@ public class SelectorTable extends javax.swing.JFrame
             }
         });
 
-        seeRelacion.setText("Ver Relaciones");
+        seeRelacion.setText("View Relations");
         seeRelacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         seeRelacion.setMargin(new java.awt.Insets(0, 0, 0, 0));
         seeRelacion.addItemListener(new java.awt.event.ItemListener() {
@@ -231,8 +231,6 @@ public class SelectorTable extends javax.swing.JFrame
     
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
 // TODO add your handling code here:
-        //setVisible(false);
-        //loadMultiValuedDataSet();
         int rows = tableModel.getRowCount();
         int columns = tableModel.getColumnCount();
         Object[][] data = new Object[rows][columns];
@@ -275,10 +273,6 @@ public class SelectorTable extends javax.swing.JFrame
                     }
                 }
             }
-//            Iterator it = elementsDictionary.iterator();
-//            while(it.hasNext()){
-//                System.out.println((String)it.next());
-//            }
             dataset.buildMultiValuedDictionary(elementsDictionary);
             dataset.showDictionary();
             
@@ -324,8 +318,6 @@ public class SelectorTable extends javax.swing.JFrame
         }
         boolean inicio, fin;
         int nfilas = tableModel.getRowCount() - 1;
-        //tableModel.getColumnClass(1).
-        //System.
         Integer aux = (Integer)(tableModel.getValueAt(0, 0));
         String item;
         Short itemShort;
@@ -360,7 +352,6 @@ public class SelectorTable extends javax.swing.JFrame
         }
         item = (String)(tableModel.getValueAt(nfilas, 1).toString());
         dataset.buildNTree(dataset.codeAttribute(item), id);
-//        dataset.showNTree();
         System.out.println(Runtime.getRuntime().freeMemory());
         System.gc();
         System.out.println(Runtime.getRuntime().freeMemory());
@@ -381,8 +372,6 @@ public class SelectorTable extends javax.swing.JFrame
         tableModel = new ScrollableTableModel(connection,
                 txtQuery.getText()/* + " limit 20"*/);
         tblPreview.setModel(tableModel);
-        //myIcon.connectionTableModel = tableModel;
-        
     }//GEN-LAST:event_btnExecuteActionPerformed
     
     private void cbxTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTableActionPerformed
