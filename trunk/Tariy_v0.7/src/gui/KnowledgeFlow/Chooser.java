@@ -98,7 +98,7 @@ public class Chooser extends javax.swing.JFrame {
 
         status.setFont(new java.awt.Font("Verdana", 0, 10));
         status.setText("Running...");
-        status.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+        status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(199, 206, 213)));
 
         mnuAction.setText("Actions");
         optNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b_play.png")));
