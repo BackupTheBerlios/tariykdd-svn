@@ -38,7 +38,14 @@ public class Chooser extends javax.swing.JFrame {
         chooser.addTab("Filters", p);
         chooser.addTab("Algorithms", p);
         chooser.addTab("Views", p);
-        
+        status.setToolTipText("<html>In case you thought that tooltips had to be<p>" +
+                "boring, one line descriptions, the <font color=blue size=+2>" +
+                "Swing!</font> team<p> is happy to shatter your illusions.<p>" +
+                "In Swing, they can use HTML to <ul><li>Have Lists<li><b>Bold</b> " +
+                "text<li><em>emphasized</em> text<li>text with <font color=red>Color" +
+                "</font><li>text in different <font size=+3>sizes</font><li>and " +
+                "<font face=AvantGarde>Fonts</font></ul>" +
+                "Oh, and they can be multi-line, too.</html>");
     }
     
     /** This method is called from within the constructor to
