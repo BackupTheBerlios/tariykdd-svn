@@ -117,7 +117,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="chooser" alignment="1" pref="959" max="32767" attributes="0"/>
-                  <Component id="status" alignment="1" pref="959" max="32767" attributes="0"/>
+                  <Component id="status" alignment="1" min="-2" pref="959" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

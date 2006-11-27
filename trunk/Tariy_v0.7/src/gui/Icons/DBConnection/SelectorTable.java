@@ -8,6 +8,7 @@ package gui.Icons.DBConnection;
 
 import Utils.DataSet;
 import gui.Icons.Filters.TariyTableModel;
+import gui.KnowledgeFlow.Chooser;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.sql.CallableStatement;
@@ -243,7 +244,7 @@ public class SelectorTable extends javax.swing.JFrame
         }
         
         myIcon.connectionTableModel = new TariyTableModel(data, columnsName);
-        
+        Chooser.setStatus("Attribute Selected: [ " + canvas.selectToString() + "]");
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
@@ -263,7 +264,7 @@ public class SelectorTable extends javax.swing.JFrame
                 posOrderBy= queryFrom.indexOf("\nORDER BY ");
                 String query = "SELECT distinct " + column + queryFrom.substring(posFrom, posOrderBy) +
                         " ORDER BY " + column;
-                System.out.println(query);
+                Chooser.status.setText(query);
                 rs = stm.executeQuery(query);
                 column = column.substring(column.indexOf(".") + 1);
                 while(rs.next()){
@@ -290,7 +291,7 @@ public class SelectorTable extends javax.swing.JFrame
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("Exception: " + ex.getSQLState());
+            Chooser.status.setText("Exception: " + ex.getSQLState());
         } finally{
             return dataset;
         }
@@ -306,9 +307,9 @@ public class SelectorTable extends javax.swing.JFrame
             int posOrderBy= queryFrom.indexOf("\nORDER BY ");
             String query = "SELECT distinct " + column2 + queryFrom.substring(posFrom, posOrderBy) +
                     " ORDER BY " + column2;
-            System.out.println(query);
+            Chooser.status.setText(query);
             ResultSet rs = stm.executeQuery(query);
-            System.out.println(rs.getMetaData().getColumnTypeName(1) + " - " +
+            Chooser.status.setText(rs.getMetaData().getColumnTypeName(1) + " - " +
                     rs.getMetaData().getColumnClassName(1));
             dataset.buildDictionary(rs);
             //dataset.showDictionary();
@@ -352,9 +353,9 @@ public class SelectorTable extends javax.swing.JFrame
         }
         item = (String)(tableModel.getValueAt(nfilas, 1).toString());
         dataset.buildNTree(dataset.codeAttribute(item), id);
-        System.out.println(Runtime.getRuntime().freeMemory());
         System.gc();
-        System.out.println(Runtime.getRuntime().freeMemory());
+        Chooser.status.setText("Free Memory: " + Runtime.getRuntime().freeMemory()
+                                            + " bits");
         try {
             dataset.setName(connection.getCatalog());
         } catch (SQLException ex) {
@@ -403,14 +404,14 @@ public class SelectorTable extends javax.swing.JFrame
             otherTable = ((Table)tables[i]).getName();
             references = this.getCrossReference(otherTable, table);
             if(references.size() > 0){
-                System.out.println(references.toString());
+                Chooser.status.setText(references.toString());
                 Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
                 Conector2 c2 = t.getConector((String)references.elementAt(1));
                 canvas.edges.add(new Edge(c1, c2));
             }
             references = this.getCrossReference(table, otherTable);
             if(references.size() > 0){
-                System.out.println(references.toString());
+                Chooser.status.setText(references.toString());
                 Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
                 Conector2 c2 = t.getConector((String)references.elementAt(1));
                 canvas.edges.add(new Edge(c1, c2));
@@ -550,7 +551,7 @@ public class SelectorTable extends javax.swing.JFrame
     
     public void columnMoved(TableColumnModelEvent e) {
         if(e.getFromIndex() != e.getToIndex()){
-//            System.out.println("Funciona!!! " + e.getFromIndex() +  " "
+//            Chooser.status.setText("Funciona!!! " + e.getFromIndex() +  " "
 //                    + e.getToIndex());
             Vector select = canvas.getSelect();
             String from = (String)select.elementAt(e.getFromIndex());

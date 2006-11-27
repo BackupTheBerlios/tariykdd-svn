@@ -145,7 +145,7 @@ public class Chooser extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, status, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 959, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -232,6 +232,11 @@ public class Chooser extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_chooserMouseClicked
+    
+    public static void setStatus(String str){
+        status.setText(str);
+        status.setToolTipText(str);
+    }
     
     /**
      * @param args the command line arguments

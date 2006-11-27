@@ -5,6 +5,7 @@
  */
 package gui.Icons.DBConnection;
 
+import gui.KnowledgeFlow.Chooser;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -119,7 +120,7 @@ public class MyCanvasTable extends JPanel {
         if(press.getName().equals("Table")){
             tableSelected = (Table)press.getParent();
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
-                //System.out.println(t.getPopupMenu());
+                //Chooser.status.setText(t.getPopupMenu());
                 tableSelected.getPopupMenu().show(evt.getComponent(),
                         evt.getX(), evt.getY());
             }
@@ -127,7 +128,7 @@ public class MyCanvasTable extends JPanel {
             Conector2 conectorPress = (Conector2)press;
             if(conectorPress.seleccionado){
                 this.removeConector(conectorPress);
-                //System.out.println(selectToString());
+                //Chooser.status.setText(selectToString());
             }
         }
     }//GEN-LAST:event_formMouseClicked
@@ -143,18 +144,17 @@ public class MyCanvasTable extends JPanel {
             return;
         }
         Component presionado = this.findComponentAt(evt.getPoint());
-        System.out.println(presionado.getName() + "Release!");
         if(presionado.getName().equals("Conector") && conectorFixed != null){
             Conector2 conectorFix = (Conector2)presionado;
             if(!conectorFix.getTable().equals(conectorFixed.getTable())){
                 conectorFix.seleccionado = true;
                 edges.add(new Edge(conectorFixed, conectorFix));
-                System.out.println(selectToString());
+                Chooser.status.setText(selectToString());
                 mySelectorTable.setQuery(selectToString());
             } else {
                 conectorFixed.seleccionado = false;
             }
-        } else /*if(presionado.getName().equals("CanvasTable"))*/{
+        } else {
             if(conectorFixed != null && conectorFixed.conections == 0){
                 conectorFixed.seleccionado = false;
             }
@@ -167,9 +167,7 @@ public class MyCanvasTable extends JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
-        System.out.println(presionado.getName());
         if(presionado.getName().equals("Table")){
-            System.out.println("Press Table");
             tableSelected = (Table)presionado.getParent();
         } else if(presionado.getName().equals("Campo")){
             Campo campo = (Campo)presionado;
@@ -185,9 +183,7 @@ public class MyCanvasTable extends JPanel {
                 select.addElement(new String( ((Table)campo.getParent().getParent()).getName()
                 + "." + campo.getText()));
             }
-            //Collections.sort(select);
-            //System.out.println(select);
-            System.out.println(selectToString());
+            Chooser.status.setText(selectToString());
             mySelectorTable.setQuery(selectToString());
         } else if(presionado.getName().equals("Conector")){
             conectorFixed = (Conector2)presionado;
@@ -357,7 +353,7 @@ public class MyCanvasTable extends JPanel {
             e.from.decreaseConection();
             e.to.decreaseConection();
             it.remove();
-            System.out.println(selectToString());
+            Chooser.setStatus(selectToString());
             mySelectorTable.setQuery(selectToString());
             break;
         }
@@ -378,7 +374,7 @@ public class MyCanvasTable extends JPanel {
                 }
                 e.to.decreaseConection();
                 it.remove();
-                System.out.println(selectToString());
+                Chooser.setStatus(selectToString());
                 mySelectorTable.setQuery(selectToString());
                 break;
             }
