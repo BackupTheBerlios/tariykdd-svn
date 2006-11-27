@@ -6,6 +6,7 @@
 
 package gui.Icons.DBConnection;
 
+import gui.KnowledgeFlow.Chooser;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -254,16 +255,18 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     + txtBD.getText();
             connection = DriverManager.getConnection(url, txtUsuario.getText(),
                     new String(txtPassword.getPassword()));
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/prueba", "prueba",
-//                    "");
             CONEXION_EXITOSA = true;
             // Conexion exitosa...
             lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
             lblStatusBar.setText("Success Connection");
+            Chooser.status.setText("Success Connection to " + txtBD.getText() 
+                                                + " in " + txtHost.getText());
+            myDBConnectionIcon.setToolTipText("Connecting to " + txtBD.getText()
+                                                + " in " + txtHost.getText());
         } catch(SQLException e1){
-            System.out.println("2. " + e1);
+            Chooser.status.setText("SQLException: " + e1);
         } catch(ClassNotFoundException e){
-            System.out.println("1. " + e);
+            Chooser.status.setText("SQLException: " + e);
         }
     }//GEN-LAST:event_btnConectarActionPerformed
     
