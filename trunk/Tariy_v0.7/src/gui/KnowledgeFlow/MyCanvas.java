@@ -97,7 +97,7 @@ public class MyCanvas extends javax.swing.JPanel {
             if(seleccionado.froms.size() > 0){
                 Iterator it = seleccionado.froms.iterator();
                 while(it.hasNext()){
-                    System.out.println( ((Icon)it.next()).icono.getText() );
+                    Chooser.status.setText( ((Icon)it.next()).icono.getText() );
                 }
             }
             seleccionado = null;
@@ -119,7 +119,7 @@ public class MyCanvas extends javax.swing.JPanel {
                 if(!conectorPresionado.getParent().equals(nuevoPresionado.getParent())){
                     Icon from = ((Icon)conectorPresionado.getParent());
                     Icon to = ((Icon)nuevoPresionado.getParent());
-                    System.out.println(to.getIconType());
+                    Chooser.status.setText(to.getIconType());
                     if(from.constrainsTo.contains(to.getIconType())){
                         to.froms.add(from);
                         from.tos.add(to);
@@ -175,10 +175,10 @@ public class MyCanvas extends javax.swing.JPanel {
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
         if(presionado.getClass().getSimpleName().equals("MyIcon")){
-            System.out.println(presionado.getClass().getSimpleName());
+            Chooser.status.setText(presionado.getClass().getSimpleName());
             seleccionado = (Icon)(presionado.getParent());
         } else if(presionado.getClass().getSimpleName().equals("Conector")){
-            System.out.println(presionado.getClass().getSimpleName() + " - "
+            Chooser.status.setText(presionado.getClass().getSimpleName() + " - "
                     + presionado.getParent().getName());
             conectorPresionado = (Conector)presionado;
             if(conectorPresionado.seleccionado){

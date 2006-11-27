@@ -51,6 +51,7 @@ public class Chooser extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jOptionPane1 = new javax.swing.JOptionPane();
         chooser = new javax.swing.JTabbedPane();
+        status = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuAction = new javax.swing.JMenu();
         optNew = new javax.swing.JMenuItem();
@@ -95,6 +96,10 @@ public class Chooser extends javax.swing.JFrame {
             }
         });
 
+        status.setFont(new java.awt.Font("Verdana", 0, 10));
+        status.setText("Running...");
+        status.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+
         mnuAction.setText("Actions");
         optNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b_play.png")));
         optNew.setMnemonic('n');
@@ -138,17 +143,22 @@ public class Chooser extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(status, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-991)/2, (screenSize.height-685)/2, 991, 685);
     }// </editor-fold>//GEN-END:initComponents
 
     private void optSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optSaveActionPerformed
@@ -244,6 +254,7 @@ public class Chooser extends javax.swing.JFrame {
     private javax.swing.JMenuItem optAbout;
     private javax.swing.JMenuItem optNew;
     private javax.swing.JMenuItem optSave;
+    public static javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
     
 }

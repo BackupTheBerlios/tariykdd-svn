@@ -2,16 +2,6 @@
 
 <Form version="1.0" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
-    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-        <TitledBorder title="Work Area">
-          <FontInfo PropertyName="font" relative="false">
-            <Font name="Arial" size="10" style="0"/>
-          </FontInfo>
-          <Color PropertyName="color" blue="cc" green="b8" id="Button.focus" palette="3" red="a3" type="palette"/>
-        </TitledBorder>
-      </Border>
-    </Property>
     <Property name="name" type="java.lang.String" value="miCanvas"/>
   </Properties>
   <Events>
