@@ -149,7 +149,7 @@ public class Visor extends javax.swing.JFrame {
                 fin = true;
                 aux = (Integer)(table.getValueAt(i + 1, 0));
             }
-            item = (Short)(table.getValueAt(i, 1));
+            item = ((Integer)(table.getValueAt(i, 1))).shortValue();
             if(inicio) {
                 //  System.out.print("{");
                 id = 0;
@@ -173,7 +173,7 @@ public class Visor extends javax.swing.JFrame {
         } else {
             id = -1;
         }
-        item = (Short)(table.getValueAt(nfilas, 1));
+        item = ((Integer)(table.getValueAt(nfilas, 1))).shortValue();
         dataset.buildNTree(item.shortValue(), id);
         //System.out.println((Short)(table.getValueAt(nfilas, 1)) + " }");
         System.out.println(Runtime.getRuntime().freeMemory());
