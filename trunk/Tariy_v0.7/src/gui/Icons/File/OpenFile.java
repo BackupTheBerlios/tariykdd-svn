@@ -77,7 +77,8 @@ public class OpenFile extends javax.swing.JFrame {
 
         openFile.setCurrentDirectory(new java.io.File("/home/ivan/tariy/cDatos/arff"));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Open File ...");
         lblFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Conexion/file.png")));
         lblFile.setText("Data File");
 
