@@ -30,6 +30,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ChangeEvent;
@@ -67,6 +68,7 @@ public class SelectorTable extends javax.swing.JFrame
         //tblPreview.setColumnModel(new myTableColumnModel());
         tblPreview.getColumnModel().addColumnModelListener(this);
         dataset = new DataSet("");
+        
     }
     
     /** This method is called from within the constructor to
@@ -79,8 +81,6 @@ public class SelectorTable extends javax.swing.JFrame
         buttonGroup1 = new javax.swing.ButtonGroup();
         seeRelacion = new javax.swing.JRadioButton();
         cbxTable = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtQuery = new javax.swing.JTextArea();
         btnExecute = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPreview = new javax.swing.JTable();
@@ -88,6 +88,8 @@ public class SelectorTable extends javax.swing.JFrame
         marketBasket = new javax.swing.JRadioButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         scrollTable = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtQuery2 = new JEditorPane("text/html", "<html>In case you thought that...</html>");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Attribute Selector");
@@ -112,10 +114,6 @@ public class SelectorTable extends javax.swing.JFrame
                 cbxTableActionPerformed(evt);
             }
         });
-
-        txtQuery.setColumns(20);
-        txtQuery.setRows(5);
-        jScrollPane1.setViewportView(txtQuery);
 
         btnExecute.setText("Execute...");
         btnExecute.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +161,9 @@ public class SelectorTable extends javax.swing.JFrame
 
         scrollTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Attribute Selector", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Courier", 1, 12), javax.swing.UIManager.getDefaults().getColor("Checkbox.select")));
 
+        txtQuery2.setFont(new java.awt.Font("Courier New", 0, 10));
+        jScrollPane3.setViewportView(txtQuery2);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,7 +183,7 @@ public class SelectorTable extends javax.swing.JFrame
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jRadioButton1))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                        .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnExecute)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -202,13 +203,13 @@ public class SelectorTable extends javax.swing.JFrame
                     .add(marketBasket)
                     .add(jRadioButton1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(btnAccept)
                         .add(btnExecute))
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -255,7 +256,7 @@ public class SelectorTable extends javax.swing.JFrame
         ArrayList elementsDictionary = new ArrayList();
         try {
             stm = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String queryFrom = txtQuery.getText();
+            String queryFrom = txtQuery2.getToolTipText();
             String column;
             int posFrom, posOrderBy;
             for(int i = 0; i < ncolumns; i++){
@@ -302,7 +303,7 @@ public class SelectorTable extends javax.swing.JFrame
         try {
             stm = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             String column2 = (String)canvas.getSelect().elementAt(1);
-            String queryFrom = txtQuery.getText();
+            String queryFrom = txtQuery2.getToolTipText();
             int posFrom = queryFrom.indexOf("\nFROM ");
             int posOrderBy= queryFrom.indexOf("\nORDER BY ");
             String query = "SELECT distinct " + column2 + queryFrom.substring(posFrom, posOrderBy) +
@@ -371,7 +372,7 @@ public class SelectorTable extends javax.swing.JFrame
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
 // TODO add your handling code here:
         tableModel = new ScrollableTableModel(connection,
-                txtQuery.getText()/* + " limit 20"*/);
+                txtQuery2.getToolTipText()/* + " limit 20"*/);
         tblPreview.setModel(tableModel);
     }//GEN-LAST:event_btnExecuteActionPerformed
     
@@ -523,9 +524,20 @@ public class SelectorTable extends javax.swing.JFrame
     }
     
     public void setQuery(String query){
-        this.txtQuery.setText(query);
+        this.txtQuery2.setToolTipText(query);
+        this.setQuery2(query);
     }
     
+    public void setQuery2(String query){
+        query = query.replaceFirst("SELECT", "<font color=blue>SELECT</font>");
+        query = query.replaceFirst("DISTINCT", "<font color=blue>DISTINCT</font>");
+        query = query.replaceFirst("FROM", "<font color=blue>FROM</font>");
+        query = query.replaceFirst("WHERE", "<font color=blue>WHERE</font>");
+        query = query.replaceFirst("ORDER BY", "<font color=blue>ORDER BY</font>");
+        query = query.replaceAll("\n", "<br>");
+        query = "<html><body face=\"Arial\" size=\"-1\">".concat(query).concat("</body></html>");
+        this.txtQuery2.setText(query);
+    }
     /**
      * @param args the command line arguments
      */
@@ -559,7 +571,7 @@ public class SelectorTable extends javax.swing.JFrame
             select.setElementAt(from, e.getToIndex());
             select.setElementAt(to, e.getFromIndex());
             canvas.setSelect(select);
-            txtQuery.setText(canvas.selectToString());
+            setQuery(canvas.selectToString());
         }
     }
     
@@ -569,13 +581,13 @@ public class SelectorTable extends javax.swing.JFrame
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbxTable;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JRadioButton marketBasket;
     private javax.swing.JScrollPane scrollTable;
     private javax.swing.JRadioButton seeRelacion;
     private javax.swing.JTable tblPreview;
-    private javax.swing.JTextArea txtQuery;
+    private javax.swing.JEditorPane txtQuery2;
     // End of variables declaration//GEN-END:variables
     
 }

@@ -89,6 +89,7 @@ public class MyCanvas extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 // TODO add your handling code here:
         Component press = this.findComponentAt(evt.getPoint());
+        Chooser.setStatus(press.getName());
         if(press.getClass().getSimpleName().equals("MyIcon")){
             seleccionado = (Icon)press.getParent();
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
@@ -174,6 +175,8 @@ public class MyCanvas extends javax.swing.JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
+        Chooser.setStatus(presionado.getName());
+            
         if(presionado.getClass().getSimpleName().equals("MyIcon")){
             Chooser.status.setText(presionado.getClass().getSimpleName());
             seleccionado = (Icon)(presionado.getParent());

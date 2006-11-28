@@ -261,7 +261,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
             lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
             lblStatusBar.setText("Success Connection to " + txtBD.getText()
                                     + " in " + txtHost.getText());
-            Chooser.status.setText("Success Connection to " + txtBD.getText()
+            Chooser.setStatus("Success Connection to " + txtBD.getText()
                                     + " in " + txtHost.getText());
         } catch(SQLException e1){
             Chooser.status.setText("SQLException: " + e1);
