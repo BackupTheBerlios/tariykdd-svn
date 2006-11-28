@@ -232,6 +232,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
 // TODO add your handling code here:
         myDBConnectionIcon.connection = this.connection;
+       
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
@@ -258,11 +259,10 @@ public class ConnectionWizard extends javax.swing.JFrame {
             CONEXION_EXITOSA = true;
             // Conexion exitosa...
             lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
-            lblStatusBar.setText("Success Connection");
-            Chooser.status.setText("Success Connection to " + txtBD.getText() 
-                                                + " in " + txtHost.getText());
-            myDBConnectionIcon.setToolTipText("Connecting to " + txtBD.getText()
-                                                + " in " + txtHost.getText());
+            lblStatusBar.setText("Success Connection to " + txtBD.getText()
+                                    + " in " + txtHost.getText());
+            Chooser.status.setText("Success Connection to " + txtBD.getText()
+                                    + " in " + txtHost.getText());
         } catch(SQLException e1){
             Chooser.status.setText("SQLException: " + e1);
         } catch(ClassNotFoundException e){
