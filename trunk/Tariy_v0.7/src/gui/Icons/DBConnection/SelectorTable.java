@@ -243,7 +243,6 @@ public class SelectorTable extends javax.swing.JFrame
             }
             columnsName[i] = tableModel.getColumnName(i);
         }
-        
         myIcon.connectionTableModel = new TariyTableModel(data, columnsName);
         Chooser.setStatus("Attribute Selected: [ " + canvas.selectToString() + "]");
         this.dispose();
@@ -265,7 +264,6 @@ public class SelectorTable extends javax.swing.JFrame
                 posOrderBy= queryFrom.indexOf("\nORDER BY ");
                 String query = "SELECT distinct " + column + queryFrom.substring(posFrom, posOrderBy) +
                         " ORDER BY " + column;
-                Chooser.status.setText(query);
                 rs = stm.executeQuery(query);
                 column = column.substring(column.indexOf(".") + 1);
                 while(rs.next()){
@@ -276,8 +274,6 @@ public class SelectorTable extends javax.swing.JFrame
                 }
             }
             dataset.buildMultiValuedDictionary(elementsDictionary);
-            dataset.showDictionary();
-            
             for(int i = 0; i < tableModel.getRowCount(); i++){
                 for(int j = 0; j < tableModel.getColumnCount(); j++){
                     if(tableModel.getValueAt(i, j) != null){
@@ -288,8 +284,6 @@ public class SelectorTable extends javax.swing.JFrame
                     }
                 }
             }
-            dataset.showNTree();
-            
         } catch (SQLException ex) {
             ex.printStackTrace();
             Chooser.status.setText("Exception: " + ex.getSQLState());
@@ -308,15 +302,10 @@ public class SelectorTable extends javax.swing.JFrame
             int posOrderBy= queryFrom.indexOf("\nORDER BY ");
             String query = "SELECT distinct " + column2 + queryFrom.substring(posFrom, posOrderBy) +
                     " ORDER BY " + column2;
-            Chooser.status.setText(query);
             ResultSet rs = stm.executeQuery(query);
-            Chooser.status.setText(rs.getMetaData().getColumnTypeName(1) + " - " +
-                    rs.getMetaData().getColumnClassName(1));
             dataset.buildDictionary(rs);
-            //dataset.showDictionary();
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.err.println("Error al construir Diccionario...");
+            Chooser.setStatus(ex.getMessage() + " Error in build dictionary");
         }
         boolean inicio, fin;
         int nfilas = tableModel.getRowCount() - 1;
@@ -360,7 +349,7 @@ public class SelectorTable extends javax.swing.JFrame
         try {
             dataset.setName(connection.getCatalog());
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            Chooser.setStatus(ex.getMessage());
         }
         return dataset;
     }
@@ -372,7 +361,7 @@ public class SelectorTable extends javax.swing.JFrame
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
 // TODO add your handling code here:
         tableModel = new ScrollableTableModel(connection,
-                txtQuery2.getToolTipText()/* + " limit 20"*/);
+                txtQuery2.getToolTipText());
         tblPreview.setModel(tableModel);
     }//GEN-LAST:event_btnExecuteActionPerformed
     
@@ -538,16 +527,6 @@ public class SelectorTable extends javax.swing.JFrame
         query = "<html><body face=\"Arial\" size=\"-1\">".concat(query).concat("</body></html>");
         this.txtQuery2.setText(query);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new SelectorTable().setVisible(true);
-            }
-        });
-    }
     
     public void columnAdded(TableColumnModelEvent e) {
     }
@@ -563,8 +542,6 @@ public class SelectorTable extends javax.swing.JFrame
     
     public void columnMoved(TableColumnModelEvent e) {
         if(e.getFromIndex() != e.getToIndex()){
-//            Chooser.status.setText("Funciona!!! " + e.getFromIndex() +  " "
-//                    + e.getToIndex());
             Vector select = canvas.getSelect();
             String from = (String)select.elementAt(e.getFromIndex());
             String to = (String)select.elementAt(e.getToIndex());
@@ -589,5 +566,4 @@ public class SelectorTable extends javax.swing.JFrame
     private javax.swing.JTable tblPreview;
     private javax.swing.JEditorPane txtQuery2;
     // End of variables declaration//GEN-END:variables
-    
 }
