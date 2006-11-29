@@ -12,6 +12,7 @@ package gui.Icons.DBConnection;
 import Utils.DataSet;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.DBConnection.ConnectionWizard;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import gui.Icons.DBConnection.SelectorTable;
 import java.sql.Connection;
@@ -101,7 +102,6 @@ public class DBConnectionIcon extends Icon{
     }
     
     private void mnuLoadActionPerformed(java.awt.event.ActionEvent evt) {
-        //final DBConnectionIcon thisIcon = this;
         Thread load = new Thread(new Runnable() {
             public void run() {
                 if(mySelectorTable.isMarketBasket){
@@ -110,7 +110,8 @@ public class DBConnectionIcon extends Icon{
                     dataset = mySelectorTable.loadMultiValuedDataSet();
                     
                 }
-                dataset.showNTree();
+                Chooser.setStatus("Load " + dataset.getNtransactions() 
+                                                                + " Instances");
                 stopAnimation();
                 Iterator it = tos.iterator();
                 while(it.hasNext()){
