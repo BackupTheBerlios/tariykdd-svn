@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author  andress c use SVN plug-in from NetBeans 5.5
+ * @author  endimeon
  */
 public class Chooser extends javax.swing.JFrame {
     Contenedor c1;
