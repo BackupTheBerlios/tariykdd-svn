@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author  endimeon
+ * @author andress
  */
 public class Chooser extends javax.swing.JFrame {
     Contenedor c1;
