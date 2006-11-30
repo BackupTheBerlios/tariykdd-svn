@@ -175,7 +175,7 @@ public class MyCanvas extends javax.swing.JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
-        Chooser.setStatus(presionado.getName());
+        //Chooser.setStatus(presionado.getName());
             
         if(presionado.getClass().getSimpleName().equals("MyIcon")){
             Chooser.status.setText(presionado.getClass().getSimpleName());
