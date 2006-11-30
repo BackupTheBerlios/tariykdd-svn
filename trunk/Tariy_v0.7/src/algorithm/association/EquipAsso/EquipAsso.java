@@ -135,14 +135,17 @@ public class EquipAsso extends Thread{
     /**
      * Representación tipo cadena de los itemsets frecuentes.
      */
-    public void showFrequents(){
+    public int  showFrequents(){
         AvlTree arbol;
+        int count = 0;
         
         for(int j = 0; j < Trees.size(); j++){
             arbol = (AvlTree) Trees.elementAt(j);
             System.out.println("Type " + arbol.getTipo());
             arbol.printTree();
+            count += arbol.howMany();
         }
+        return count;
     }
     
     /**
@@ -154,19 +157,15 @@ public class EquipAsso extends Thread{
     
     public void run() {
         long time = System.currentTimeMillis();
-        
+        int count = 0;
         int type = 2;
+        
         while(this.findInDataset(type++));
         
         long executionTime = System.currentTimeMillis() - time;
-        try{
-            this.showFrequents();
-        } catch(NullPointerException npe){
-            double d = ((support*100)/dataset.getNtransactions()); 
-            Chooser.setStatus("No large itemsets for " 
-                    + d + "%");
-        }
-        System.out.println("EquipAsso en " + executionTime + "ms " + "Soporte: " + support);
+        count = this.showFrequents();
+        Chooser.setStatus("EquipAsso: " + count + " large itemsets in " +
+                executionTime + "ms");
         animation.stop();
     }
     

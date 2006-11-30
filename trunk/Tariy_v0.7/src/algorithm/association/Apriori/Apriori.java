@@ -9,6 +9,7 @@
 package algorithm.association.Apriori;
 
 import gui.KnowledgeFlow.AnimationLabel;
+import gui.KnowledgeFlow.Chooser;
 import java.util.*;
 import Utils.*;
 
@@ -96,12 +97,16 @@ public class Apriori extends Thread{
     /**
      * Representación tipo cadena de los itemsets frecuentes.
      */
-    public void showFrequents(){
+    public int showFrequents(){
+        int count = 0;
+        
         for(int i = 0; i < Trees.size(); i++){
             AvlTree arbol = (AvlTree)Trees.elementAt(i);
             System.out.println("Type " + (i+1));
             arbol.printTree();
+            count += arbol.howMany();
         }
+        return count;
     }
     
     /**
@@ -260,12 +265,14 @@ public class Apriori extends Thread{
     
     public void run() {
         long time = System.currentTimeMillis();
+        int count = 0;
         
         while(this.makeCandidates());
         
         long executionTime = System.currentTimeMillis() - time;
-        this.showFrequents();
-        System.out.println("Apriori en " + executionTime + "ms " + "Soporte: " + support);
+        count = this.showFrequents();
+        Chooser.setStatus("Apriori: " + count + " large itemsets in " +
+                executionTime + "ms");
         animation.stop();
     }
 }

@@ -8,10 +8,11 @@ package algorithm.association.FPGrowth;
 
 import Utils.*;
 import gui.KnowledgeFlow.AnimationLabel;
+import gui.KnowledgeFlow.Chooser;
 import java.util.*;
 
 public class FPGrowth extends Thread{
-    /** 
+    /**
      * Al crear el árbol N-Ario del algoritmo FPGrowth, controla si un nuevo
      * nodo se inserta como hermano o si este ya se encontraba en el árbol se
      * incrementa su soporte.
@@ -23,16 +24,16 @@ public class FPGrowth extends Thread{
      */
     int n;
     
-    /** 
+    /**
      * Referencias a Nodos FPGrowth {@link FPGrowthNode}. A traves de estas
      * referencias se construye el árbol N-Ario para el algoritmo FPGrowth.
      */
     FPGrowthNode cab;
     FPGrowthNode nue, aux, auxh, ant, show;
-
+    
     /** Los datos a minar contenidos en un arbol N-Ario. */
     public static DataSet dataset;
-
+    
     /** Soporte con el que se van a evaluar los datos.*/
     private static short support;
     
@@ -42,16 +43,16 @@ public class FPGrowth extends Thread{
      * algoritmo FPGrowth.
      */
     private FrequentNode[] frequentsOne;
-
+    
     private AnimationLabel animation;
     
-    /** 
+    /**
      * Vector de arboles AvlTree donde se almacenan los distintos itemsets
      * frecuentes.
      */
     Vector Trees;
     
-    /** 
+    /**
      * Construye una instancia de la clase FPGrowth.
      *
      *  @param dataset Conjunto de datos contenidos en un arbol N-Ario.
@@ -87,11 +88,11 @@ public class FPGrowth extends Thread{
     }
     
     /**
-     * Construye una estructura que tiene objetos de tipo {@link FrequentNode}, 
-     * contiene a los itemsets frecuentes tipo 1 y además una referencia al 
+     * Construye una estructura que tiene objetos de tipo {@link FrequentNode},
+     * contiene a los itemsets frecuentes tipo 1 y además una referencia al
      * árbol N-Ario del algoritmo FPGrowth.
      *
-     * @param t El nodo del árbol Avl donde se encuentran los itemsets 
+     * @param t El nodo del árbol Avl donde se encuentran los itemsets
      * frecuentes tipo 1.
      */
     public void buildFrequentsNodes(AvlNode t) {
@@ -104,12 +105,12 @@ public class FPGrowth extends Thread{
     }
     
     /**
-     * Retorna el nodo asociado al item que se encuentra en la estructura de 
+     * Retorna el nodo asociado al item que se encuentra en la estructura de
      * nodos frecuentes {@link FrequentNode}.
      *
      * @param item El item a buscar dentro de la estructura {@link FrequentNode}.
      * @return La referencia al nodo frecuente, si y solo si se encuentra en la
-     *         estructura {@link FrequentNode}; <code>null</code> en caso 
+     *         estructura {@link FrequentNode}; <code>null</code> en caso
      *         contrario.
      */
     public FrequentNode findNode(short item) {
@@ -231,10 +232,10 @@ public class FPGrowth extends Thread{
     }
     
     /**
-     * Representación tipo cadena en in-order del árbol N-Ario propio del 
+     * Representación tipo cadena en in-order del árbol N-Ario propio del
      * algoritmo FPGrowth.
      *
-     * @param stack La pila de referencias al árbol N-Ario que previamente se 
+     * @param stack La pila de referencias al árbol N-Ario que previamente se
      *              debio de haber construido.
      */
     public void showTree(Stack stack) {
@@ -258,9 +259,9 @@ public class FPGrowth extends Thread{
 //    public void goToRoot(){
 //        aux = cab.son;
 //    }
-
+    
     /**
-     * Retorna el vector de arboles AvlTree donde se almacenan los distintos 
+     * Retorna el vector de arboles AvlTree donde se almacenan los distintos
      * itemsets frecuentes.
      *
      * @return El vector de arboles AvlTree.
@@ -270,7 +271,7 @@ public class FPGrowth extends Thread{
     }
     
     /**
-     * Construye el vector de árboles Avl de itemsets frecuentes a partir de 
+     * Construye el vector de árboles Avl de itemsets frecuentes a partir de
      * cada rama o path de los nodos frecuentes {@link FrequentNode}.
      *
      * @exception ArrayIndexOutOfBoundsException
@@ -284,7 +285,7 @@ public class FPGrowth extends Thread{
         try{
             aux = cab.son;
             FPGrowthNode pcb, pcab;
-
+            
             Arrays.sort(frequentsOne, new compareFrequentNode());
             
             for(int i = frequentsOne.length - 1; i >= 0; i--){
@@ -311,23 +312,25 @@ public class FPGrowth extends Thread{
                 Trees = bcs.buildConditionals(Trees);
             }
         } catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println(e.getMessage() + "aqui");
+            Chooser.setStatus(e.getMessage());
         }
     }
     
     /**
      * Representación tipo cadena de los itemsets frecuentes.
      */
-    public void showFrequents(){
+    public int showFrequents(){
         AvlTree arbol;
-        
+        int countItemset = 0;
         for(int j = 0; j < Trees.size(); j++){
             arbol = (AvlTree) Trees.elementAt(j);
             System.out.println("Type " + arbol.getTipo());
             if(arbol.isEmpty() != true){
                 arbol.printTree();
+                countItemset += arbol.howMany();
             }
         }
+        return countItemset;
     }
     
     /**
@@ -339,17 +342,19 @@ public class FPGrowth extends Thread{
     
     public void run() {
         long time = System.currentTimeMillis();
+        int count = 0;
         
         this.buildTree();
         this.buildFrequents();
-
+        
         long executionTime = System.currentTimeMillis() - time;
-        this.showFrequents();        
-        System.out.println("FPGrowth en " + executionTime + "ms"  + " Soporte: " + support);
+        count = this.showFrequents();
+        Chooser.setStatus("FPGrowth: " + count + " large itemsets in " +
+                executionTime + "ms");
         animation.stop();
-    }    
+    }
     
     public void setAnimation(AnimationLabel animation){
         this.animation = animation;
-    }    
+    }
 }
