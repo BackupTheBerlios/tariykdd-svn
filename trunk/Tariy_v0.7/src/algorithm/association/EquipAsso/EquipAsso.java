@@ -10,6 +10,7 @@ package algorithm.association.EquipAsso;
 
 import Utils.*;
 import gui.KnowledgeFlow.AnimationLabel;
+import gui.KnowledgeFlow.Chooser;
 import java.util.*;
 
 public class EquipAsso extends Thread{
@@ -33,7 +34,7 @@ public class EquipAsso extends Thread{
     
     /** Árbol que almacena itemsets candidatos para su posterior poda. */
     AvlTree treeCandidates = new AvlTree();
-
+    
     private AnimationLabel animation;
     
     /**
@@ -158,7 +159,13 @@ public class EquipAsso extends Thread{
         while(this.findInDataset(type++));
         
         long executionTime = System.currentTimeMillis() - time;
-        this.showFrequents();
+        try{
+            this.showFrequents();
+        } catch(NullPointerException npe){
+            double d = ((support*100)/dataset.getNtransactions()); 
+            Chooser.setStatus("No large itemsets for " 
+                    + d + "%");
+        }
         System.out.println("EquipAsso en " + executionTime + "ms " + "Soporte: " + support);
         animation.stop();
     }

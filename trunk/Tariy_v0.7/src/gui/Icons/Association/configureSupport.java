@@ -6,6 +6,7 @@
 
 package gui.Icons.Association;
 
+import gui.KnowledgeFlow.Chooser;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.SpinnerNumberModel;
@@ -106,6 +107,7 @@ public class configureSupport extends javax.swing.JFrame {
 // TODO add your handling code here:
         Double s = (Double)spnSupport.getValue(); 
         ai.support = s.doubleValue();
+        Chooser.setStatus("Support in " + ai.algorithm + " is " + s + "%");
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     

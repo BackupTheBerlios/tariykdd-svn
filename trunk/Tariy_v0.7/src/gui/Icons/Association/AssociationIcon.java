@@ -15,6 +15,7 @@ import algorithm.association.FPGrowth.FPGrowth;
 import Utils.DataSet;
 import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.Rules.RulesIcon;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import gui.KnowledgeFlow.JackAnimation;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import javax.swing.JMenuItem;
 public class AssociationIcon extends Icon{
     private JMenuItem mnuConfigure;
     private JMenuItem mnuRun;
-    private String algorithm;
+    public String algorithm;
     public configureSupport cs;
     public DataSet dataset;
     public double  support;
@@ -77,6 +78,7 @@ public class AssociationIcon extends Icon{
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
         short s = (short) ( (support * dataset.getNtransactions()) / 100 );
+        System.out.println("Support " + s + " for " + algorithm);
         JackAnimation jack = new JackAnimation();
         this.add(jack);
         this.setComponentZOrder(jack, 0);
