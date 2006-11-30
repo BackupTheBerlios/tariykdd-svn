@@ -9,6 +9,7 @@
 
 package gui.Icons.Association;
 
+import Utils.AvlTree;
 import algorithm.association.Apriori.Apriori;
 import algorithm.association.EquipAsso.EquipAsso;
 import algorithm.association.FPGrowth.FPGrowth;
@@ -84,34 +85,40 @@ public class AssociationIcon extends Icon{
         this.setComponentZOrder(jack, 0);
         jack.setBounds(this.animation.getX(), this.animation.getY(), 36, 36);
         this.setAnimation(jack);
-        if(algorithm.equals("Apriori")){
-            Apriori apriori = new Apriori(dataset, s);
-            this.startAnimation();
-            apriori.setAnimation(jack);
-            apriori.start();
-            trees = apriori.getFrequents();
-        } else if(algorithm.equals("FPGrowth")){
-            FPGrowth fpgrowth = new FPGrowth(dataset, s);
-            this.startAnimation();
-            fpgrowth.setAnimation(this.animation);
-            fpgrowth.start();
-            trees = fpgrowth.getFrequents();
-        } else if(algorithm.equals("EquipAsso")){
-            EquipAsso equipasso = new EquipAsso(dataset, s);
-            this.startAnimation();
-            equipasso.setAnimation(this.animation);
-            equipasso.start();
-            trees = equipasso.getFrequents();
-        }
-        Iterator it = tos.iterator();
-        while(it.hasNext()){
-            Icon icon = (Icon)it.next();
-            if(icon instanceof RulesIcon){
-                ((RulesIcon)icon).trees = trees;
-                ((RulesIcon)icon).dataset = dataset;
-                ((RulesIcon)icon).support = s;
-                ((RulesIcon)icon).title = algorithm;
+        AvlTree frequentsOne = new AvlTree();
+        dataset.pruneCandidatesOne(s, frequentsOne);
+        if(frequentsOne.howMany() > 0){
+            if(algorithm.equals("Apriori")){
+                Apriori apriori = new Apriori(dataset, s);
+                this.startAnimation();
+                apriori.setAnimation(jack);
+                apriori.start();
+                trees = apriori.getFrequents();
+            } else if(algorithm.equals("FPGrowth")){
+                FPGrowth fpgrowth = new FPGrowth(dataset, s);
+                this.startAnimation();
+                fpgrowth.setAnimation(this.animation);
+                fpgrowth.start();
+                trees = fpgrowth.getFrequents();
+            } else if(algorithm.equals("EquipAsso")){
+                EquipAsso equipasso = new EquipAsso(dataset, s);
+                this.startAnimation();
+                equipasso.setAnimation(this.animation);
+                equipasso.start();
+                trees = equipasso.getFrequents();
             }
+            Iterator it = tos.iterator();
+            while(it.hasNext()){
+                Icon icon = (Icon)it.next();
+                if(icon instanceof RulesIcon){
+                    ((RulesIcon)icon).trees = trees;
+                    ((RulesIcon)icon).dataset = dataset;
+                    ((RulesIcon)icon).support = s;
+                    ((RulesIcon)icon).title = algorithm;
+                }
+            }
+        } else {
+            Chooser.setStatus("Not Found larges itemsets");
         }
     }
 }
