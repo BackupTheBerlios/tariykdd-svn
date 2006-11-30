@@ -44,6 +44,7 @@ public class AssociationIcon extends Icon{
         super.constrainsTo = new ArrayList(1);
         super.constrainsTo.add("RulesIcon");
         algorithm = s.getText();
+        support = 50.0;
         
         if(super.froms.size() > 0){
             dataset = ((DBConnectionIcon)super.froms.get(0)).dataset;

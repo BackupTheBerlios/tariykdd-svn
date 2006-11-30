@@ -18,12 +18,13 @@ import javax.swing.text.NumberFormatter;
  * @author  ivan
  */
 public class configureSupport extends javax.swing.JFrame {
-    private SpinnerNumberModel snm = new SpinnerNumberModel(0.1, 0.01, 100.0, 0.1);
+    private SpinnerNumberModel snm;
     AssociationIcon ai;
     /** Creates new form configureSupport */
     public configureSupport(AssociationIcon ai) {
         initComponents();
         this.ai = ai;
+        snm = new SpinnerNumberModel(ai.support, 0.5, 100.0, 0.5);
         spnSupport.setModel(snm);
     }
     
