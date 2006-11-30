@@ -89,7 +89,7 @@ public class MyCanvas extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 // TODO add your handling code here:
         Component press = this.findComponentAt(evt.getPoint());
-        //Chooser.setStatus(press.getName());
+        System.out.println(press.getName());
         if(press.getClass().getSimpleName().equals("MyIcon")){
             seleccionado = (Icon)press.getParent();
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
@@ -120,7 +120,7 @@ public class MyCanvas extends javax.swing.JPanel {
                 if(!conectorPresionado.getParent().equals(nuevoPresionado.getParent())){
                     Icon from = ((Icon)conectorPresionado.getParent());
                     Icon to = ((Icon)nuevoPresionado.getParent());
-                    Chooser.status.setText(to.getIconType());
+                    System.out.println(to.getIconType());
                     if(from.constrainsTo.contains(to.getIconType())){
                         to.froms.add(from);
                         from.tos.add(to);
@@ -175,13 +175,13 @@ public class MyCanvas extends javax.swing.JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
-        //Chooser.setStatus(presionado.getName());
+        System.out.println(presionado.getName());
             
         if(presionado.getClass().getSimpleName().equals("MyIcon")){
-            Chooser.status.setText(presionado.getClass().getSimpleName());
+            System.out.println(presionado.getClass().getSimpleName());
             seleccionado = (Icon)(presionado.getParent());
         } else if(presionado.getClass().getSimpleName().equals("Conector")){
-            Chooser.status.setText(presionado.getClass().getSimpleName() + " - "
+            System.out.println(presionado.getClass().getSimpleName() + " - "
                     + presionado.getParent().getName());
             conectorPresionado = (Conector)presionado;
             if(conectorPresionado.seleccionado){
