@@ -77,7 +77,7 @@ public class ClasificationIcon extends Icon{
         jack.setBounds(this.animation.getX(), this.animation.getY(), 36, 36);
         this.setAnimation(jack);
         System.out.println(algorithm);
-        if(algorithm.equals("C45")){
+        if(algorithm.equals("  C45  ")){
             this.startAnimation();
             c45 c = new c45(dataIn);
             c.start();
