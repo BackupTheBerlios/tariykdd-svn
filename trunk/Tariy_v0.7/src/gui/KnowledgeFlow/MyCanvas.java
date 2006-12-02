@@ -20,6 +20,8 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComponent;
@@ -47,6 +49,7 @@ public class MyCanvas extends javax.swing.JPanel {
     /** Creates new form Canvas */
     public MyCanvas() {
         initComponents();
+        this.setToolTipText("");
     }
     
     public void addIcono(Icon icono){
@@ -92,6 +95,8 @@ public class MyCanvas extends javax.swing.JPanel {
         System.out.println(press.getName());
         if(press.getClass().getSimpleName().equals("MyIcon")){
             seleccionado = (Icon)press.getParent();
+            Chooser.setStatus( seleccionado.getInfo() );
+            //this.setToolTipText(((Icon)seleccionado).getInfo());
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
                 seleccionado.getPupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
             }
@@ -153,7 +158,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof TreeIcon){
                             ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).TreePanel;
                             ((TreeIcon)to).RulesText = ((ClasificationIcon)from).RulesText;
-                        } 
+                        }
                         
                         nuevoPresionado.seleccionado = true;
                         conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
@@ -176,7 +181,7 @@ public class MyCanvas extends javax.swing.JPanel {
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
         System.out.println(presionado.getName());
-            
+        
         if(presionado.getClass().getSimpleName().equals("MyIcon")){
             System.out.println(presionado.getClass().getSimpleName());
             seleccionado = (Icon)(presionado.getParent());
@@ -234,8 +239,6 @@ public class MyCanvas extends javax.swing.JPanel {
             offgraphics = offscreen.getGraphics();
         }
         Iterator it = conexiones.iterator();
-        //offgraphics.setColor(colorBg);
-        //offgraphics.fillRect(0, 0, d.width, d.height);
         
         super.paint(offgraphics);
         while(it.hasNext()){
@@ -253,6 +256,27 @@ public class MyCanvas extends javax.swing.JPanel {
             offgraphics.drawLine(ix, iy, fx, fy);
         }
         g.drawImage(offscreen, 0, 0, null);
+    }
+    
+    public Point getToolTipLocation(MouseEvent event) {
+        Component press = findComponentAt(event.getPoint());
+        System.out.println(press.getName());
+        if(press.getParent() instanceof Icon){
+            this.setIconInfo(((Icon)press.getParent()).getInfo());
+            //return press.getParent().getLocation();
+            //return new Point(0, 0);
+            //return event.getPoint();
+            return new Point(this.getWidth(), 0);
+        } else {
+            this.setToolTipText("");
+            return new Point(this.getWidth(), 0);
+        }
+    }
+    
+    private void setIconInfo(String str){
+        str = str.replaceAll("\n", "<p>");
+        str = "<html>".concat(str).concat("</html>");
+        this.setToolTipText(str);        
     }
     
     private void moveConector(Conector conector) {

@@ -7,8 +7,11 @@
 package gui.KnowledgeFlow;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -112,16 +115,27 @@ public class Icon extends javax.swing.JPanel {
     public ArrayList constrainsTo = null;
     public ArrayList froms = new ArrayList(1);
     public ArrayList tos = new ArrayList(1);
+    public String info;
     
     public Icon(JLabel s, int x, int y) {
         initComponents();
         setName("Icono");
         setLocation(x, y);
+        info = new String("Icon Type: " + s.getText()
+        + "\n [The information of this icon here]");
         icono = new MyIcon(s);
         animation = new AnimationLabel();
         animation.setVisible(false);
         //animationThread = null;
         addIcono(icono);
+    }
+    
+    public void setInfo(String info) {
+        this.info = info;
+    }
+    
+    public String getInfo() {
+        return info;
     }
     
     public void addIcono(MyIcon icono){
@@ -174,7 +188,7 @@ public class Icon extends javax.swing.JPanel {
         conectores[7].setBounds(w, h, c, c);
         conectores[7].setName("7");
     }
-
+    
     public void setAnimation(AnimationLabel animation) {
         this.animation = animation;
     }
@@ -256,7 +270,7 @@ public class Icon extends javax.swing.JPanel {
         parent.remove(this);
         parent.repaint();
     }//GEN-LAST:event_mnuDeleteActionPerformed
-        // Variables declaration - do not modify//GEN-BEGIN:variables
+            // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem mnuDelete;
     protected javax.swing.JPopupMenu pupMenu;
     // End of variables declaration//GEN-END:variables
