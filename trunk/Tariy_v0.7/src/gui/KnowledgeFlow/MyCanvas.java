@@ -260,13 +260,16 @@ public class MyCanvas extends javax.swing.JPanel {
     
     public Point getToolTipLocation(MouseEvent event) {
         Component press = findComponentAt(event.getPoint());
-        System.out.println(press.getName());
+        //System.out.println(press.getName());
         if(press.getParent() instanceof Icon){
             this.setIconInfo(((Icon)press.getParent()).getInfo());
             //return press.getParent().getLocation();
             //return new Point(0, 0);
             //return event.getPoint();
-            return new Point(this.getWidth(), 0);
+            //return new Point(this.getWidth(), 0);
+            return new Point(press.getParent().getLocation().x + 
+                             press.getParent().getWidth(), 
+                             press.getParent().getLocation().y);
         } else {
             this.setToolTipText("");
             return new Point(this.getWidth(), 0);

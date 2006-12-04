@@ -121,8 +121,8 @@ public class Icon extends javax.swing.JPanel {
         initComponents();
         setName("Icono");
         setLocation(x, y);
-        info = new String("Icon Type: " + s.getText()
-        + "\n [The information of this icon here]");
+        info = new String(s.getText()
+        + "\n [The Icon's \n info here]");
         icono = new MyIcon(s);
         animation = new AnimationLabel();
         animation.setVisible(false);
