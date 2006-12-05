@@ -35,6 +35,7 @@ public class RulesIcon extends Icon{
     public RulesIcon(JLabel s, int x, int y) {
         super(s, x, y);
         super.constrainsTo = new ArrayList(0);
+        confidence = 50.0;
         
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");

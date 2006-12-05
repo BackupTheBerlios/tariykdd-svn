@@ -14,12 +14,13 @@ import javax.swing.SpinnerNumberModel;
  */
 public class configureConfidence extends javax.swing.JFrame {
     public RulesIcon ri;
-    private SpinnerNumberModel snm = new SpinnerNumberModel(50.0, 1.0, 100.0, 5.0);
+    private SpinnerNumberModel snm;
     
     /** Creates new form configureConfidence */
     public configureConfidence(RulesIcon ri) {
         initComponents();
         this.ri = ri;
+        snm = new SpinnerNumberModel(ri.confidence, 1.0, 100.0, 5.0);
         spnConfidence.setModel(snm);
     }
     
