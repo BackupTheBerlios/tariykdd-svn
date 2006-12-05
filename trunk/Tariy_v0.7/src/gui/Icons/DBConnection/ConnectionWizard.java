@@ -103,7 +103,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         txtUsuario.setText("postgres");
 
-        txtBD.setText("farmaco");
+        txtBD.setText("mine");
 
         txtHost.setText("192.168.10.80");
 
@@ -173,7 +173,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnConectar)
                     .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -232,7 +232,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
 // TODO add your handling code here:
         myDBConnectionIcon.connection = this.connection;
-       
+        myDBConnectionIcon.info = lblStatusBar.getText();
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     

@@ -119,10 +119,9 @@ public class Icon extends javax.swing.JPanel {
     
     public Icon(JLabel s, int x, int y) {
         initComponents();
-        setName("Icono");
+        setName(s.getText());
         setLocation(x, y);
-        info = new String(s.getText()
-        + "\n [The Icon's \n info here]");
+        info = new String("[Not run]");
         icono = new MyIcon(s);
         animation = new AnimationLabel();
         animation.setVisible(false);

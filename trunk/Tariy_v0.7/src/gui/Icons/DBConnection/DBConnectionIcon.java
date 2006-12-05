@@ -112,6 +112,7 @@ public class DBConnectionIcon extends Icon{
                 }
                 Chooser.setStatus("Load " + dataset.getNtransactions() 
                                                                 + " Instances");
+                setInfo("Load " + dataset.getNtransactions() + " Instances");
                 stopAnimation();
                 Iterator it = tos.iterator();
                 while(it.hasNext()){

@@ -262,7 +262,9 @@ public class MyCanvas extends javax.swing.JPanel {
         Component press = findComponentAt(event.getPoint());
         //System.out.println(press.getName());
         if(press.getParent() instanceof Icon){
-            this.setIconInfo(((Icon)press.getParent()).getInfo());
+            Icon iconPress = (Icon)press.getParent();
+            this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
+                    iconPress.getInfo());
             //return press.getParent().getLocation();
             //return new Point(0, 0);
             //return event.getPoint();

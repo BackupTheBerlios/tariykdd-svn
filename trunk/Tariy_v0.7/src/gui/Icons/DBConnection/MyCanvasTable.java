@@ -421,11 +421,7 @@ public class MyCanvasTable extends JPanel {
             if(tables.contains(edge.from.getTableName()) &&
                     tables.contains(edge.to.getTableName()) ){
                 relation = edge.getRelation();
-                //if(i < length - 1){
                 relations.append(relation + " AND ");
-                //} else {
-                //    relations.append(relation);
-                //}
             }
         }
         return "SELECT " +
