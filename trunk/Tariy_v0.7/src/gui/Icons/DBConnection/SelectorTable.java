@@ -245,6 +245,7 @@ public class SelectorTable extends javax.swing.JFrame
         }
         myIcon.connectionTableModel = new TariyTableModel(data, columnsName);
         myIcon.info = canvas.selectToString();
+        myIcon.getMnuLoad().setEnabled(true);
         Chooser.setStatus("Load SQL: " + canvas.selectToString());
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed

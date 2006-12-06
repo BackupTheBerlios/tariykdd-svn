@@ -59,6 +59,7 @@ public class DBConnectionIcon extends Icon{
                 mnuSelectorActionPerformed(evt);
             }
         });
+        mnuSelector.setEnabled(false);
         super.pupMenu.add(mnuSelector);
         
         mnuLoad = new javax.swing.JMenuItem();
@@ -68,6 +69,7 @@ public class DBConnectionIcon extends Icon{
                 mnuLoadActionPerformed(evt);
             }
         });
+        mnuLoad.setEnabled(false);
         super.pupMenu.add(mnuLoad);
     }
     
@@ -125,5 +127,13 @@ public class DBConnectionIcon extends Icon{
         });
         this.startAnimation();
         load.start();
+    }
+
+    public JMenuItem getMnuSelector() {
+        return mnuSelector;
+    }
+
+    public JMenuItem getMnuLoad() {
+        return mnuLoad;
     }
 }
