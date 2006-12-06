@@ -221,7 +221,7 @@ public class FileManager {
             boolean buildDictionary = true;
             
             while (pos < fileSize) {
-                if (!read.equalsIgnoreCase("@data")) {
+                if (!read.trim().equalsIgnoreCase("@data")) {
                     read = outChannel.readLine();
                     pos = outChannel.getFilePointer();
                     
@@ -236,20 +236,37 @@ public class FileManager {
                         dataset.buildMultivaluedDictionary(attrs);
                         dataset.sortDictionary();
                         dictionary = dataset.getDictionary();
+                        buildDictionary = false;
                     }
-                    // Despues de haber leido @data almacenar la cadena leida en
+                    
+                    // Se lee el primer byte para saber si se trata de un
+                    // comentario (%) o un salto de linea.
+                    Byte b = outChannel.readByte();
+                    
+                    // Se decrementa en uno el flujo de la cadena para despues
+                    // poder leer la linea completa.
+                    outChannel.seek(pos--);
+
+                    // Despues de haber leido @data cada linea se almacena en 
                     // una cadena para los datos.
                     read = outChannel.readLine();
                     pos = outChannel.getFilePointer();
-                    // Las lineas son separadas a traves del salto de linea.
-                    dat = dat + read + ",/n,";
-                    rows++;
-                    if (rows == 100 && noAll) {
-                        break;
+                    
+                    // Si la linea leida es un comentario (37 - %) o un salto de 
+                    // linea (10) entonces se ignora.
+                    if (b != 37 && b != 10) {
+
+                        // Las lineas son separadas a traves del salto de linea.
+                        dat = dat + read + ",/n,";
+                        rows++;
+                        if (rows == 100 && noAll) {
+                            break;
+                        }
                     }
                     read = "@data";
                 }
             }
+            
             // Se elimina la coma sobrante al final de leer los datos.
             dat = dat.substring(0, dat.length()-3);
         } catch (IOException e) {
@@ -306,11 +323,12 @@ public class FileManager {
                     c++;
                 }
             }
+            System.out.println("");
         }
     }
     
     /**
-     * Retorna la representaciÃ³n textual del archivo plano relacionado con esta
+     * Retorna la representacion textual del archivo plano relacionado con esta
      * clase.
      */
     public String toString() {
@@ -505,13 +523,13 @@ public class FileManager {
                     tree.buildNTree(node1, id);
                     node1 = node2;
                 }
+                if (start) {
+                    id = -2;
+                } else {
+                    id = -1;
+                }
+                tree.buildNTree(node1, id);
             }
-            if (start) {
-                id = -2;
-            } else {
-                id = -1;
-            }
-            tree.buildNTree(node1, id);
         } catch (EOFException e1) {
             this.closeFile();
         } catch (IOException e2) {
