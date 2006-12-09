@@ -76,7 +76,7 @@ public class c45 {
             auxiliar = finalTree.show;
             if(auxiliar == null){
                 ///System.out.println("Termine");
-                Clearequalsparcializados();
+//                Clearequalsparcializados();
                 //rules();
                 break;
             }
@@ -223,20 +223,6 @@ public class c45 {
         Node auxnode;
         StringTokenizer st;
         String vl, cad;
-        //---------------------
-        
-//        if(node.father.name.equals(finalTree.root.name)){  // no se si ira
-//            bdf = false;
-//            n = "";
-//        }
-        
-//        else{
-//            if(!n.equals(node.father.father.father.name)){
-//                bdf = false;
-//            }
-        
-//            n = node.father.father.father.name;
-//        }
         
         valueParci.clear();
         conequalvals = 1;
@@ -245,7 +231,7 @@ public class c45 {
         auxnode = node.son;
         
         for(int i = 0; i < numChilds; i++){
-            if(auxnode.son.son.parcializado == true){
+            if(auxnode.son.son.parcializado == true && auxnode.son.son.son == null){
                 cad = auxnode.son.son.name;
                 st = new StringTokenizer(cad,"[");
                 vl = st.nextToken();
@@ -317,7 +303,11 @@ public class c45 {
             nodesParcializados = null;
             nodesParcializados = nodesParcializados2;
             nodesParcializados2 = null;
-            Clearequalsparcializados();
+            
+//            if(Nodeaux != null){
+               Clearequalsparcializados();
+//            }
+            
         }
     }
     
