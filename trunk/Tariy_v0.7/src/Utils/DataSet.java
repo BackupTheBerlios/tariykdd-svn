@@ -622,6 +622,15 @@ public class DataSet {
         return this.lroot;
     }
     
+    public void reset() {
+        this.root = new NodeNoF();
+        this.current = root;
+        this.lroot = null;
+        this.candidatesOne = new AvlTree();
+        this.ntransactions = 0;
+        this.attrNames = new ArrayList();        
+    }
+    
 //    public void passDictio() {
 //        root.setDictionary(dictionary);
 //    }
