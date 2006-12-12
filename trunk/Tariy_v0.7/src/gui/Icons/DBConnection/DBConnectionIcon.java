@@ -104,8 +104,10 @@ public class DBConnectionIcon extends Icon{
     }
     
     private void mnuLoadActionPerformed(java.awt.event.ActionEvent evt) {
+        //dataset.reset();
         Thread load = new Thread(new Runnable() {
             public void run() {
+                mySelectorTable.dataset.reset();
                 if(mySelectorTable.isMarketBasket){
                     dataset = mySelectorTable.loadDataSet();
                 } else {
