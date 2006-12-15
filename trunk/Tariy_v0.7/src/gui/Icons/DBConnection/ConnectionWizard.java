@@ -75,6 +75,8 @@ public class ConnectionWizard extends javax.swing.JFrame {
         btnAccept = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Configure Connection...");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -103,7 +105,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         txtUsuario.setText("postgres");
 
-        txtBD.setText("mine");
+        txtBD.setText("udenar");
 
         txtHost.setText("192.168.10.80");
 
@@ -173,7 +175,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnConectar)
                     .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
