@@ -430,6 +430,6 @@ public class MyCanvasTable extends JPanel {
                 + tables.substring(0, tables.length() - 2)
                 + (relations.length() == 0 ? "": " \nWHERE "
                 + relations.toString().substring(0, relations.length() - 4))
-                + (select.size() > 1 ? " \nORDER BY " + select.elementAt(0) : "");
+                + (select.size() > 1 ? " \nORDER BY " + select.lastElement() : "");
     }
 }
