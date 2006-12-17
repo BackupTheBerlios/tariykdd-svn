@@ -424,12 +424,20 @@ public class MyCanvasTable extends JPanel {
                 relations.append(relation + " AND ");
             }
         }
+        String orderby = "";
+        if(select.size() > 1){
+            if(mySelectorTable.isMarketBasket){
+                orderby = "\nORDER BY " + (String) select.firstElement();
+            } else {
+                orderby = "\nORDER BY " + (String) select.lastElement();
+            }
+        }
         return "SELECT " +
                 (mySelectorTable.isMarketBasket ? "DISTINCT " : "")
                 + str.toString() + " \nFROM "
                 + tables.substring(0, tables.length() - 2)
                 + (relations.length() == 0 ? "": " \nWHERE "
                 + relations.toString().substring(0, relations.length() - 4))
-                + (select.size() > 1 ? " \nORDER BY " + select.lastElement() : "");
+                + orderby;
     }
 }
