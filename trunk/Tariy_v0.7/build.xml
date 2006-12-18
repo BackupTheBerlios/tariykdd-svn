@@ -2,8 +2,8 @@
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
 <!-- (If you delete it and reopen the project it will be recreated.) -->
-<project name="Tariy_v0.5" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Tariy_v0.5.</description>
+<project name="Tariy_v0.7" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Tariy_v0.7.</description>
     <import file="nbproject/build-impl.xml"/>
 
     <import file="nbproject/profiler-build-impl.xml"/>    <!--
