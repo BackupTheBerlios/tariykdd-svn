@@ -19,8 +19,8 @@ import java.io.Serializable;
 
 public class NodeNoF {
     
-    private short item;
-    NodeNoF dad, son, bro;
+    public short item;
+    public NodeNoF dad, son, bro;
     
     /** Creates a new instance of Node */
     public NodeNoF(short d) {
@@ -89,7 +89,8 @@ public class NodeNoF {
         NodeF nf;
         while(aux != null) {
             if(aux.getItem() == n) {
-                if(aux.getClass().getSimpleName().compareTo("NodeF") == 0 && 
+                if(/*aux.getClass().getSimpleName().compareTo("NodeF") == 0*/
+                        aux instanceof NodeF && 
                         (type == -1 || type == -2)) {
                     nf = (NodeF) aux;
                     nf.incFrec();
