@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
  * asociaciÃ³n utilizan para almacenar los datos de tal forma que ocupan menos
  * espacio en memoria. La estructura que utiliza <code>DataSet</code> es un
  * Ã¡rbol N-Ario con los datos a minar codificados como datos tipo short, en esta
- * estructura se aprovecha en una sola rama los items de distintas transacciones 
+ * estructura se aprovecha en una sola rama los items de distintas transacciones
  * con datos repetidos controlando su nÃºmero de apariciones o soporte.
  *
  * @author Proyecto Tariy
@@ -34,13 +34,13 @@ public class DataSet {
     private String name;
     
     /** La raiz del DataSet. */
-    private NodeNoF root;
+    protected  NodeNoF root;
     
     /** El Ãºltimo nodo insertado en el DataSet. */
-    private NodeNoF current;
+    protected  NodeNoF current;
     
-    /** 
-     * La raÃ­z de una lista que referencia a todos los nodos del DataSet que 
+    /**
+     * La raÃ­z de una lista que referencia a todos los nodos del DataSet que
      * tienen soporte.
      */
     public NodeF lroot;
@@ -58,14 +58,14 @@ public class DataSet {
     private AvlTree candidatesOne;
     
     /** El nÃºmero de transacciones en el DataSet. */
-    private int ntransactions;
+    protected int ntransactions;
     
     /** Diccionario de los datos con su respectiva codificaciÃ³n. */
     private ArrayList dictionary;
     
     /** Lista de los nombres de los atributos del conjunto de datos. */
     private ArrayList attrNames;
-
+    
     /**
      * Crea una nueva instancia de la clase DataSet.
      *
@@ -80,22 +80,32 @@ public class DataSet {
         this.ntransactions = 0;
         this.attrNames = new ArrayList();
     }
-
+    
+    public DataSet() {
+        this.name = "";
+        this.root = new NodeNoF();
+        this.current = root;
+        this.lroot = null;
+        //this.candidatesOne = new AvlTree();
+        this.ntransactions = 0;
+        this.attrNames = new ArrayList();
+    }
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     /**
      * Retorna el diccionario de datos con su codificaciÃ³n dentro del DataSet.
      */
     public ArrayList getDictionary() {
         return dictionary;
     }
-
+    
     public void setDictionary(ArrayList dictionary) {
         this.dictionary = dictionary;
     }
@@ -138,7 +148,7 @@ public class DataSet {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }    
+    }
     
     private void buildStringDictionary(ResultSet rs){
         try {
@@ -149,8 +159,8 @@ public class DataSet {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }    
-
+    }
+    
     /**
      * Construye el diccionario a partir de un archivo de acceso aleatorio tipo
      * .arff.
@@ -222,7 +232,7 @@ public class DataSet {
     /**
      * Construye el diccionario de datos para un conjunto de datos univaluado
      * o binario, a partir de un archivo de acceso aleatorio .arff.
-     * 
+     *
      * @param attrs Cadena que tiene la linea @attribute, junto con los nombres
      *              de los datos del atributo correspondiente.
      */
@@ -239,7 +249,7 @@ public class DataSet {
             dictionary.add(attributes.nextToken().trim());
         }
     }
-
+    
     /**
      * Ordena alfabeticamente el diccionario de datos. ***
      */
@@ -277,7 +287,7 @@ public class DataSet {
         }
         return index;
     }
-
+    
     /**
      * Retorna la codificaciÃ³n de un atributo.
      *
@@ -351,7 +361,7 @@ public class DataSet {
             }
         } else {
             NodeNoF aux = current.findBro(n, id);
-           
+            
             if(aux.getItem() == n) {
                 current = aux;
                 if((id == -1 || id == -2) && ((NodeF)current).getSupport() == 1){
@@ -382,7 +392,7 @@ public class DataSet {
     }
     
     /**
-     * MÃ©todo interno poda los itemsets candidatos tipo 1, construye los 
+     * MÃ©todo interno poda los itemsets candidatos tipo 1, construye los
      * itemsets frecuentes tipo 1 y los almacena en un Ã¡rbol Avl.
      */
     private void pruneCandidatesOne( AvlNode t, int minSupport, AvlTree frequentsOne){
@@ -419,7 +429,7 @@ public class DataSet {
     }
     
     /**
-     * Establece una referencia a la raÃ­z de la lista de nodos hoja o con 
+     * Establece una referencia a la raÃ­z de la lista de nodos hoja o con
      * soporte. MÃ©todo Ãºtil para recorrer la lista alterna.
      */
     public void setPointers(){
@@ -628,7 +638,7 @@ public class DataSet {
         this.lroot = null;
         this.candidatesOne = new AvlTree();
         this.ntransactions = 0;
-        this.attrNames = new ArrayList();        
+        this.attrNames = new ArrayList();
     }
     
 //    public void passDictio() {
