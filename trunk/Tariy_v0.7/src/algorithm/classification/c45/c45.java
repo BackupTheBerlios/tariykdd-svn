@@ -28,10 +28,10 @@ public class c45 {
     TreeCounter tree;
     ArrayList trees = new ArrayList();
     ArrayList atributos_insertados = new ArrayList(1);
-    ListParcializados nodesParcializados = null;
+//    ListParcializados nodesParcializados = null;
     ListParcializados currentNode = null;
-    ListParcializados nodesParcializados2 = null;
-    ListParcializados currentNode2 = null;
+//    ListParcializados nodesParcializados2 = null;
+//    ListParcializados currentNode2 = null;
     boolean bdf = false;
     ArrayList leaves = new ArrayList(1);
     
@@ -137,18 +137,6 @@ public class c45 {
                         //  leaves.add(target);
                         leaves.add(target.son);
                         
-                        if(nodesParcializados == null || target.getLevel() > currentNode.node.getLevel()){ //  meter de alguna forma solo los del mayor nivel 777777777
-                            nodesParcializados = new ListParcializados(target);
-                            currentNode = nodesParcializados;
-                            bd = true;
-                        }else if(bd == false && (target.getLevel() == currentNode.node.getLevel())) {
-                            currentNode.next = new ListParcializados(target);
-                            currentNode = currentNode.next;
-                            bd = true;
-                        }
-                        
-                        childsParcializados++;
-                        
                     } else if(route.getSize() == data.getColumnCount()){
                         aux.parcializado = true;
                         Node target = auxSon.addSon(0, finalTree.root.name, -1.0, "");
@@ -172,26 +160,13 @@ public class c45 {
                         //  leaves.add(target);
                         leaves.add(target.son);
                         
-                        if(nodesParcializados == null || target.getLevel() > currentNode.node.getLevel()){
-                            nodesParcializados = new ListParcializados(target);
-                            currentNode = nodesParcializados;
-                            bd = true;
-                        } //else if(bd == false){
-                        else if(bd == false && (target.getLevel() == currentNode.node.getLevel())) {
-                            currentNode.next = new ListParcializados(target);
-                            currentNode = currentNode.next;
-                            bd = true;
-                        }
-                        
-                        childsParcializados++;
-                        
                     }
                     aux.route = findPath(auxSon);
                     atributos_insertados.add(aux);
                     aux = aux.brother;
                 }
                 if(childsCount == childsParcializados){
-                    auxiliar.father.parcializado = true;//parcializo el padre de auxiliar
+                    auxiliar.father.parcializado = true;
                 }
                 auxiliar = auxiliar2;
             }
@@ -199,118 +174,12 @@ public class c45 {
             auxiliar = finalTree.root;
             finalTree.show = null;
         }
-        //La clase C45TreeGUI es una JFrame que muestra el arbol n-ario dentro de un JTree
-        //es necesario pasarle el arbol que quiero mostrar en el constructor y en
-        //el metodo createAndShowGUI(Tree tree) por ahora.
-        //C45TreeGUI view = new C45TreeGUI(finalTree);
-//        ViewerClasification vc = new ViewerClasification(
-//                view.createAndShowGUI(finalTree), rules());
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                C45TreeGUI view = new C45TreeGUI(finalTree);
-//                new ViewerClasification(view.createAndShowGUI(finalTree), rules()).setVisible(true);
-//            }
-//        });
-        
+
         view = new C45TreeGUI(finalTree);
         
     }
     
-    public void equalsparcializados(Node node, int con){
-        ArrayList valueParci = new ArrayList(1);
-        int conequalvals, numChilds, pe, pca, pcc;
-        int valnum, valdem, totnum = 0, totdem = 0;
-        Node auxnode;
-        StringTokenizer st;
-        String vl, cad;
-        
-        valueParci.clear();
-        conequalvals = 1;
-        
-        numChilds = node.getChildCount();
-        auxnode = node.son;
-        
-        for(int i = 0; i < numChilds; i++){
-            if(auxnode.son.son.parcializado == true && auxnode.son.son.son == null){
-                cad = auxnode.son.son.name;
-                st = new StringTokenizer(cad,"[");
-                vl = st.nextToken();
-                
-                pe = cad.indexOf("/");
-                pca = cad.indexOf("[")+1;
-                pcc = cad.indexOf("]");
-                
-                valnum = Integer.parseInt(cad.substring(pca,pe));
-                valdem = Integer.parseInt(cad.substring(pe+1,pcc));
-                
-                
-                if(valueParci.contains(vl)){
-                    totnum = totnum + valnum;
-                    totdem = totdem + valdem;
-                    conequalvals++;
-                } else if(valueParci.isEmpty()){
-                    totnum = totnum + valnum;
-                    totdem = totdem + valdem;
-                    valueParci.add(vl);
-                }
-            }
-            auxnode = auxnode.brother;
-        }
-        
-        if(numChilds == conequalvals){
-            node.name = finalTree.root.name;
-            node.son.name = valueParci.get(0).toString() + "[" + totnum + "/" + totdem + "]";
-            node.son.brother = null;
-            node.son.son = null;
-            node.son.parcializado = true;
-            
-            leaves.set(con,node.son);
-            for(int i = 1; i < numChilds; i++){
-                con = con + i;
-                leaves.set(con,null);
-            }
-            
-//            if(nodesParcializados2 == null){
-            if(nodesParcializados2 == null || node.getLevel() > currentNode2.node.getLevel()){
-                nodesParcializados2 = new ListParcializados(node);
-                currentNode2 = nodesParcializados2;
-                bdf = true;
-            } //else if(bdf == false){
-            else if(bdf == false && (node.getLevel() == currentNode2.node.getLevel())) {
-                currentNode2.next = new ListParcializados(node);
-                currentNode2 = currentNode2.next;
-                bdf = true;
-            }
-        }
-        
-        
-    }
-    
-    public void Clearequalsparcializados(){
-        int positionLeaf = 0, vals = 0;
-        Node npar;
-        if(nodesParcializados != null){
-            int lim;
-            ListParcializados Nodeaux = nodesParcializados;
-            bdf = false;
-            while(Nodeaux != null){
-                npar = Nodeaux.node.father.father;
-                vals = npar.getChildCount();
-                equalsparcializados(npar,positionLeaf);
-                positionLeaf = positionLeaf + vals;
-                Nodeaux = Nodeaux.next;
-            }
-            nodesParcializados = null;
-            nodesParcializados = nodesParcializados2;
-            nodesParcializados2 = null;
-            
-//            if(Nodeaux != null){
-               Clearequalsparcializados();
-//            }
-            
-        }
-    }
-    
+
     static public void main(String arg[]){
         c45 c = new c45(new TariyTableModel());
         c.start();
