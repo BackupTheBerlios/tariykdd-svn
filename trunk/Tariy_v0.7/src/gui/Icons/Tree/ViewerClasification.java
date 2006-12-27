@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 public class ViewerClasification extends javax.swing.JFrame {
     
     /** Creates new form ViewerClasification */
-    public ViewerClasification(JPanel panel, ArrayList rules) {
+    public ViewerClasification(JPanel panel, StringBuffer rules) {
         initComponents();
         jScrollPane7 = new javax.swing.JScrollPane();
         TextRules = new javax.swing.JTextArea();

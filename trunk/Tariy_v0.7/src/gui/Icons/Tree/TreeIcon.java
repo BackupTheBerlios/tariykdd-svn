@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class TreeIcon extends Icon{
     private JMenuItem mnuView;
     public JPanel TreePanel;
-    public ArrayList RulesText;
+    public StringBuffer RulesText;
     
     /** Creates a new instance of DBConnectionIcon */
     public TreeIcon(JLabel s, int x, int y) {
