@@ -86,9 +86,9 @@ public class ClasificationIcon extends Icon{
             TariyTableModel tariyData = this.changeToTariyModel();
             long time = System.currentTimeMillis();
             Attribute root = c.decisionTree(tariyData);
-            c.seeTest(root);
+            c.pruneLeafs();
             long executionTime = System.currentTimeMillis() - time;
-            c.seeTree(root);
+            c.seeTree();
             System.out.println("decisionTree : " + executionTime + "ms ");
 
             //c45 c = new c45(dataIn);
