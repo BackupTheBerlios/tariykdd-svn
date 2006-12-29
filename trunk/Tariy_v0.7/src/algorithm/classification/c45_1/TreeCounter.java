@@ -33,6 +33,7 @@ public class TreeCounter {
     public C45TreeGUI view;            //JPanel donde se mostrara el JTree con el arbol de decision
     public int count;
     private int t;
+    public String theClass;
     
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
@@ -211,30 +212,28 @@ public class TreeCounter {
     }
     
     public Attribute chooseBestAttribute(AbstractTableModel data){
-        TreeCounter c = new TreeCounter();
+        TreeCounter finalTree = null;
         int treeFinal = 0;
         int columns = data.getColumnCount();
         double minEntropy = Double.MAX_VALUE;
         double entropy;
-        boolean firstTime = true;
         LinkedList trees = new LinkedList();
         
         for(int i = 0; i < columns - 1; i++){
-            trees.add(new TreeCounter());
-            c = ((TreeCounter)trees.get(i));
+            TreeCounter c = new TreeCounter();
             c.setData(data);
             c.countTree(i);
             entropy = c.getEntropy(c.rows);
             if(entropy < minEntropy){
                 minEntropy = entropy;
-                treeFinal = i;
+                finalTree = c;
             }
         }
-        c = ((TreeCounter)trees.get(treeFinal));
-        return c.root;
+        return finalTree.root;
     }
     
     public Attribute decisionTree(TariyTableModel data){
+        this.theClass = data.getColumnName(data.getColumnCount() - 1);
         Attribute attribute = new Attribute("", null, null);
         attribute.entropia = 1.0;
         this.root = decisionTree(data, attribute);
@@ -243,11 +242,11 @@ public class TreeCounter {
     
     private Attribute decisionTree(TariyTableModel data, Attribute byDefault){
         if(byDefault.entropia == 0.0){
-            byDefault.son.name = data.getColumnName(data.getColumnCount() - 1) + "=" + byDefault.son.name;
+            byDefault.son.name = theClass + "=" + byDefault.son.name;
             byDefault.son.frecuenceFather = byDefault.son.frecuence;
             return byDefault.son;
         } else if(data.getColumnCount() == 1){
-            return byDefault.bestChild(data.getColumnName(data.getColumnCount() - 1));
+            return byDefault.bestChild(theClass);
         } else {
             Attribute attribute = null;
             attribute = this.chooseBestAttribute(data);
