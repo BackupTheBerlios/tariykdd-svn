@@ -31,15 +31,15 @@ public class Leaf {
         int size = path.size();
         
         for(int i = 0; i < size; i++){
-            if(i % 2 == 0){
-                str.append(path.get(i) + "=");
-            }else{
+            //if(i % 2 == 0){
+            //    str.append(path.get(i) + "=");
+            //}else{
                 if(i != size - 1){
                     str.append(path.get(i) + " and ");
                 } else {
                     str.append(path.get(i));
                 }
-            }
+            //}
         }
         return str.toString();
     }
