@@ -119,8 +119,6 @@ public class Attribute {
     }
     
     public String toString(){
-//        return new String("[" + this.name + ", " + this.frecuence + ", " +
-//                this.entropia + "]");
         if(this.isLeaf() == null){
             return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
         } else {
