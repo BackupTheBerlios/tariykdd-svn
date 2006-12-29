@@ -37,6 +37,7 @@ public class TreeCounter {
     
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
+        root = new Attribute("", null, null);
     }
     
     public void setData(AbstractTableModel dataIn){
@@ -113,6 +114,10 @@ public class TreeCounter {
         return entropy * (-1.0);
     }
     
+    public void seeTree(){
+        seeTree(root.son);
+    }
+    
     public void seeTree(Attribute auxiliar){
         tabs(t);
         System.out.println(auxiliar);
@@ -136,7 +141,7 @@ public class TreeCounter {
         StringBuffer orderLeafs = new StringBuffer();
         ArrayList leafs = new ArrayList();
         LinkedList path = new LinkedList();
-        seeLeafs(root, path, leafs);
+        seeLeafs(root.son, path, leafs);
         Collections.sort(leafs, new compareConfidence());
         Iterator it = leafs.iterator();
         int order = 1;
@@ -169,8 +174,7 @@ public class TreeCounter {
     public void pruneLeafs(){
         Attribute auxiliar = this.root;
         Stack stack = new Stack();
-        stack.push(auxiliar);
-        crossTree(auxiliar.son, stack);
+        crossTree(auxiliar, stack);
         while(!stack.isEmpty()){
             pruneSameBranch((Attribute)stack.pop());
         }
@@ -181,8 +185,8 @@ public class TreeCounter {
             crossTree(auxiliar.brother, stack);
         }
         if(auxiliar.son.isLeaf() != null){
-            stack.push(auxiliar.son);
-            crossTree(auxiliar.son.son, stack);
+            stack.push(auxiliar);
+            crossTree(auxiliar.son, stack);
         }
     }
     
@@ -204,10 +208,11 @@ public class TreeCounter {
             childrens = childrens.brother;
         }
         if(isEquals){
-            node.frecuence = frecuences;
-            node.frecuenceFather = frecuencesFather;
-            node.name = node.son.son.name;
-            node.son = null;
+            node.son.frecuence = frecuences;
+            node.son.frecuenceFather = frecuencesFather;
+            node.son.name = node.son.son.name;
+            node.son.son = null;
+            node.son.brother = null;
         }
     }
     
@@ -236,7 +241,7 @@ public class TreeCounter {
         this.theClass = data.getColumnName(data.getColumnCount() - 1);
         Attribute attribute = new Attribute("", null, null);
         attribute.entropia = 1.0;
-        this.root = decisionTree(data, attribute);
+        this.root.son = decisionTree(data, attribute);
         return this.root;
     }
     
@@ -253,8 +258,10 @@ public class TreeCounter {
             LinkedList values = data.splitData(attribute);
             String[] names = data.newNames(attribute.name);
             Iterator it = values.iterator();
+            
             Attribute auxiliar = attribute.son;
             while(it.hasNext()){
+                auxiliar.name = attribute.name + "=" + auxiliar.name;
                 Object[][] newData = ((Split)it.next()).data;
                 data.setDatos(newData);
                 data.setNomcol(names);
@@ -262,7 +269,7 @@ public class TreeCounter {
                 auxiliar = auxiliar.brother;
             }
             
-            return attribute;
+            return attribute.son;
         }
     }
     
@@ -273,11 +280,11 @@ public class TreeCounter {
         c.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         //c.seeTree(root);
-        //c.amplitud(root);
-        c.seeTree(root);
+        //c.pruneLeafs();
+        c.seeTree();
         System.out.println("decisionTree : " + executionTime + "ms ");
-//        ViewerClasification vc = new ViewerClasification(
-//                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-//        vc.setVisible(true);
+        ViewerClasification vc = new ViewerClasification(
+                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
+        vc.setVisible(true);
     }
 }
