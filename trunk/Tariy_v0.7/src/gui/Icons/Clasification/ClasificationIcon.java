@@ -10,7 +10,6 @@
 package gui.Icons.Clasification;
 
 
-import algorithm.classification.c45.c45;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.TariyTableModel;
 import algorithm.classification.c45_1.TreeCounter;
