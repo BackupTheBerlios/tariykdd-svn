@@ -114,7 +114,6 @@ public class TreeCounter {
     
     public void seeTree(Attribute auxiliar){
         tabs(t);
-//        System.out.println(auxiliar.name + "(" + auxiliar.frecuence + ") " + auxiliar.entropia);
         System.out.println(auxiliar);
         if(auxiliar.son != null){
             t++;
@@ -140,14 +139,11 @@ public class TreeCounter {
         Collections.sort(leafs, new compareConfidence());
         Iterator it = leafs.iterator();
         int order = 1;
-        int count = 0;
         while(it.hasNext()){
             Leaf oneLeaf = (Leaf)it.next();
             orderLeafs.append(order + ") " + oneLeaf + "\n");
-            count += oneLeaf.leaf.frecuenceFather;
             order++;
         }
-        System.out.println("The Leaf count: " + count);
         return orderLeafs;
     }
     
@@ -169,27 +165,27 @@ public class TreeCounter {
         return Math.log(value)/LOG2;
     }
     
-    public void seeTest(Attribute auxiliar){
+    public void pruneLeafs(){
+        Attribute auxiliar = this.root;
         Stack stack = new Stack();
         stack.push(auxiliar);
-        seeTest(auxiliar.son, stack);
-        //System.out.println(stack);
+        crossTree(auxiliar.son, stack);
         while(!stack.isEmpty()){
-            amplitud((Attribute)stack.pop());
+            pruneSameBranch((Attribute)stack.pop());
         }
     }
     
-    public void seeTest(Attribute auxiliar, Stack stack){
+    public void crossTree(Attribute auxiliar, Stack stack){
         if(auxiliar.brother != null){
-            seeTest(auxiliar.brother, stack);
+            crossTree(auxiliar.brother, stack);
         }
         if(auxiliar.son.isLeaf() != null){
             stack.push(auxiliar.son);
-            seeTest(auxiliar.son.son, stack);
+            crossTree(auxiliar.son.son, stack);
         }
     }
     
-    public void amplitud(Attribute node) {
+    public void pruneSameBranch(Attribute node) {
         if(node.son.son.isLeaf() != null) return;
         String grandSon = node.son.son.name;
         int frecuences = node.son.son.frecuence;
@@ -213,47 +209,6 @@ public class TreeCounter {
             node.son = null;
         }
     }
-    
-//    public void seeTest(Attribute auxiliar, Stack stack){
-//        stack.push(auxiliar);
-//        if(auxiliar.brother != null){
-//            seeTest(auxiliar.brother, stack);
-//        }
-//        if( ((Attribute)stack.peek()).son.son.isLeaf() == null){
-//            System.out.println( stack );
-//            System.out.println( ((Attribute)stack.peek()).son.son + "Stack!!!");
-//            Attribute node = (Attribute)stack.pop();
-//            String grandSon = node.son.son.name;
-//            int frecuences = node.son.son.frecuence;
-//            int frecuencesFather = node.son.son.frecuenceFather;
-//            Attribute childrens = node.son.brother;
-//            boolean isEquals = true;
-//            while(childrens != null){
-//                if(!childrens.son.name.equals(grandSon)){
-//                    isEquals = false;
-//                    break;
-//                } else {
-//                    frecuences += childrens.son.frecuence;
-//                    frecuencesFather += childrens.son.frecuenceFather;
-//                }
-//                childrens = childrens.brother;
-//            }
-//            if(isEquals){
-//                Attribute fatherNode = (Attribute)stack.pop();
-//                node.son.son.frecuence = frecuences;
-//                node.son.son.frecuenceFather = frecuencesFather;
-//                fatherNode.son = node.son.son;
-//            } else {
-//                stack.pop();
-//                auxiliar = (Attribute)stack.peek();
-//                seeTest(auxiliar.son, stack);
-//            }
-//            System.out.println(stack);
-//        } else {
-//            //if(auxiliar.son != null){
-//            seeTest(auxiliar.son, stack);
-//        }
-//    }
     
     public Attribute chooseBestAttribute(AbstractTableModel data){
         TreeCounter c = new TreeCounter();
@@ -282,7 +237,8 @@ public class TreeCounter {
     public Attribute decisionTree(TariyTableModel data){
         Attribute attribute = new Attribute("", null, null);
         attribute.entropia = 1.0;
-        return decisionTree(data, attribute);
+        this.root = decisionTree(data, attribute);
+        return this.root;
     }
     
     private Attribute decisionTree(TariyTableModel data, Attribute byDefault){
@@ -315,7 +271,7 @@ public class TreeCounter {
         TreeCounter c = new TreeCounter();
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree(new TariyTableModel());
-        c.seeTest(root);
+        c.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         //c.seeTree(root);
         //c.amplitud(root);
