@@ -11,6 +11,10 @@ package gui.Icons.Clasification;
 
 
 import algorithm.classification.c45.c45;
+import algorithm.classification.c45_1.Attribute;
+import algorithm.classification.c45_1.TariyTableModel;
+import algorithm.classification.c45_1.TreeCounter;
+import algorithm.classification.c45_1.TreeViewer;
 import gui.Icons.Filters.Selection.Seleccion;
 import gui.KnowledgeFlow.Icon;
 import gui.KnowledgeFlow.JackAnimation;
@@ -34,7 +38,7 @@ public class ClasificationIcon extends Icon{
     private String algorithm;
     public AbstractTableModel dataIn;
     public JPanel TreePanel;
-    public ArrayList RulesText;
+    public StringBuffer RulesText;
     
     
     /** Creates a new instance of DBConnectionIcon */
@@ -65,7 +69,7 @@ public class ClasificationIcon extends Icon{
 //    private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                
+//
 //            }
 //        });
 //    }
@@ -79,13 +83,45 @@ public class ClasificationIcon extends Icon{
         System.out.println(algorithm);
         if(algorithm.equals("  C45  ")){
             this.startAnimation();
-            c45 c = new c45(dataIn);
-            c.start();
-            TreePanel = c.view;
-            RulesText = c.rules();
+            TreeCounter c = new TreeCounter();
+            TariyTableModel tariyData = this.changeToTariyModel();
+            long time = System.currentTimeMillis();
+            Attribute root = c.decisionTree(tariyData);
+            c.seeTest(root);
+            long executionTime = System.currentTimeMillis() - time;
+            c.seeTree(root);
+            System.out.println("decisionTree : " + executionTime + "ms ");
+
+            //c45 c = new c45(dataIn);
+            //c.start();
+            //long time = System.currentTimeMillis();
+            //c.start();
+            //long executionTime = System.currentTimeMillis() - time;
+            //System.out.println("C4.5 evaluated in " +
+            //        executionTime + "ms");
+            TreePanel = c.view.createAndShowGUI(new TreeViewer(root));
+            RulesText = c.seeLeafs(root);
             this.stopAnimation();
         } else if(algorithm.equals("Mate")){
             //this.startAnimation();
         }
+    }
+    
+    public TariyTableModel changeToTariyModel(){
+        int rows = dataIn.getRowCount();
+        int columns = dataIn.getColumnCount();
+        Object[][] data = new Object[rows][columns];
+        String[] columnsName = new String[columns];
+        for(int i = 0; i < columns; i++){
+            for(int j = 0; j < rows; j++){
+                data[j][i] = dataIn.getValueAt(j ,i);
+            }
+            columnsName[i] = dataIn.getColumnName(i);
+        }
+        TariyTableModel tariyModel = new TariyTableModel();
+        tariyModel.setDatos(data);
+        tariyModel.setNomcol(columnsName);
+        
+        return tariyModel;
     }
 }
