@@ -82,7 +82,7 @@ public class ClasificationIcon extends Icon{
         System.out.println(algorithm);
         if(algorithm.equals("  C45  ")){
             this.startAnimation();
-            TreeCounter c = new TreeCounter();
+            TreeCounter c = new TreeCounter(200);
             TariyTableModel tariyData = this.changeToTariyModel();
             long time = System.currentTimeMillis();
             Attribute root = c.decisionTree(tariyData);
