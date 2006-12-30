@@ -34,9 +34,16 @@ public class TreeCounter {
     public int count;
     private int t;
     public String theClass;
+
+    public int MIN_ROWS;
     
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
+        root = new Attribute("", null, null);
+    }
+
+    public TreeCounter(int min_rows) {
+        MIN_ROWS = min_rows;
         root = new Attribute("", null, null);
     }
     
@@ -252,6 +259,8 @@ public class TreeCounter {
             return byDefault.son;
         } else if(data.getColumnCount() == 1){
             return byDefault.bestChild(theClass);
+        } else if(data.getRowCount() < MIN_ROWS){
+            return byDefault.bestChild(theClass);
         } else {
             Attribute attribute = null;
             attribute = this.chooseBestAttribute(data);
@@ -274,17 +283,18 @@ public class TreeCounter {
     }
     
     static public void main(String arg[]){
-        TreeCounter c = new TreeCounter();
+        TreeCounter c = new TreeCounter(200);
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree(new TariyTableModel());
-        c.pruneLeafs();
-        long executionTime = System.currentTimeMillis() - time;
-        //c.seeTree(root);
         //c.pruneLeafs();
+        long executionTime = System.currentTimeMillis() - time;
+        c.seeTree();
+        c.pruneLeafs();
         c.seeTree();
         System.out.println("decisionTree : " + executionTime + "ms ");
-        ViewerClasification vc = new ViewerClasification(
-                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-        vc.setVisible(true);
+        
+//        ViewerClasification vc = new ViewerClasification(
+//                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
+//        vc.setVisible(true);
     }
 }
