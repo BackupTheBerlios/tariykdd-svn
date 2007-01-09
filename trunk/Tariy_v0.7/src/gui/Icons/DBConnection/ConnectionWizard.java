@@ -107,7 +107,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         txtBD.setText("udenar");
 
-        txtHost.setText("192.168.10.80");
+        txtHost.setText("localhost");
 
         btnConectar.setText("Connect...");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnConectar)
                     .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -237,6 +237,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
             myDBConnectionIcon.connection = this.connection;
             myDBConnectionIcon.info = lblStatusBar.getText();
             myDBConnectionIcon.getMnuSelector().setEnabled(true);
+            myDBConnectionIcon.getMnuLoad().setEnabled(false);
         }
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
