@@ -11,6 +11,7 @@ package gui.Icons.Rules;
 
 import Utils.AssocRules;
 import Utils.DataSet;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -36,7 +37,8 @@ public class RulesIcon extends Icon{
         super(s, x, y);
         super.constrainsTo = new ArrayList(0);
         confidence = 50.0;
-        
+        setInfo("Confidence in " + confidence + "%");
+
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");
         mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +73,7 @@ public class RulesIcon extends Icon{
         AssocRules ar = new AssocRules(trees, dataset.getDictionary(), (int)confidence);
         ar.buildRules();
         new showRules(ar,dataset.getName() + " - " + title, Double.toString(support), Double.toString(confidence)).setVisible(true);
+        this.setInfo(Chooser.getStatus());
     }
     
     /** Creates a new instance of AssociationIcon */
