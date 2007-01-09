@@ -24,7 +24,7 @@ public class configureSupport extends javax.swing.JFrame {
     public configureSupport(AssociationIcon ai) {
         initComponents();
         this.ai = ai;
-        snm = new SpinnerNumberModel(ai.support, 0.5, 100.0, 0.5);
+        snm = new SpinnerNumberModel(ai.support, 0.0, 100.0, 0.5);
         spnSupport.setModel(snm);
     }
     
@@ -109,6 +109,7 @@ public class configureSupport extends javax.swing.JFrame {
         Double s = (Double)spnSupport.getValue(); 
         ai.support = s.doubleValue();
         Chooser.setStatus("Support in " + ai.algorithm + " is " + s + "%");
+        ai.setInfo("Support in " + s + "%");
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
