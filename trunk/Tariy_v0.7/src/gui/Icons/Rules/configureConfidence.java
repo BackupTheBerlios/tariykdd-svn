@@ -101,6 +101,7 @@ public class configureConfidence extends javax.swing.JFrame {
 // TODO add your handling code here:
         Double c = (Double)spnConfidence.getValue();
         ri.confidence = c.doubleValue();
+        ri.setInfo("Confidence in " + ri.confidence + "%");
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
