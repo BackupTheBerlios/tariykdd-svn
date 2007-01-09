@@ -7,6 +7,7 @@
 package algorithm.association.FPGrowth;
 
 import Utils.*;
+import gui.Icons.Association.AssociationIcon;
 import gui.KnowledgeFlow.AnimationLabel;
 import gui.KnowledgeFlow.Chooser;
 import java.util.*;
@@ -45,7 +46,7 @@ public class FPGrowth extends Thread{
     private FrequentNode[] frequentsOne;
     
     private AnimationLabel animation;
-    
+    private AssociationIcon ai;
     /**
      * Vector de arboles AvlTree donde se almacenan los distintos itemsets
      * frecuentes.
@@ -58,7 +59,8 @@ public class FPGrowth extends Thread{
      *  @param dataset Conjunto de datos contenidos en un arbol N-Ario.
      *  @param support Soporte con el que los datos seran minados.
      */
-    public FPGrowth(DataSet dataset, short support) {
+    public FPGrowth(DataSet dataset, short support, AssociationIcon ai) {
+        this.ai = ai;
         n = 0;
         cab = new FPGrowthNode();
         nue = new FPGrowthNode();
@@ -349,8 +351,11 @@ public class FPGrowth extends Thread{
         
         long executionTime = System.currentTimeMillis() - time;
         count = this.showFrequents();
-        Chooser.setStatus("FPGrowth: " + count + " large itemsets in " +
+        Chooser.setStatus("FPGrowth: " + count + " large itemsets " +
+                "with support " + ai.support + "% " + " in " +
                 executionTime + "ms");
+        ai.setInfo(count + " large itemsets found\nin " + executionTime + "ms "
+                + "with support " + ai.support + "%");
         animation.stop();
     }
     
