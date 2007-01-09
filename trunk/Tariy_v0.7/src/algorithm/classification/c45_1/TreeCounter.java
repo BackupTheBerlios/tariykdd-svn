@@ -10,6 +10,7 @@
 package algorithm.classification.c45_1;
 
 import gui.Icons.Tree.ViewerClasification;
+import gui.KnowledgeFlow.AnimationLabel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,34 +18,44 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+import javax.swing.JPanel;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author and
  */
-public class TreeCounter {
+public class TreeCounter extends Thread{
     int rows;
     int columns;
     static final double LOG2 = Math.log(2);;
-    Attribute root;
+    public Attribute root;
     Attribute aux;
     AbstractTableModel dataIn;
     public C45TreeGUI view;            //JPanel donde se mostrara el JTree con el arbol de decision
     public int count;
     private int t;
     public String theClass;
-
+    private AnimationLabel animation = null;
     public int MIN_ROWS;
-    
+    public TariyTableModel data = null;
+
+    public JPanel TreePanel;
+
+    public StringBuffer RulesText;
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
         root = new Attribute("", null, null);
     }
-
-    public TreeCounter(int min_rows) {
+    
+    public TreeCounter(int min_rows, TariyTableModel data) {
+        this.data = data;
         MIN_ROWS = min_rows;
         root = new Attribute("", null, null);
+    }
+    
+    public void setAnimation(AnimationLabel animation){
+        this.animation = animation;
     }
     
     public void setData(AbstractTableModel dataIn){
@@ -244,7 +255,7 @@ public class TreeCounter {
         return finalTree.root;
     }
     
-    public Attribute decisionTree(TariyTableModel data){
+    public Attribute decisionTree(){
         this.theClass = data.getColumnName(data.getColumnCount() - 1);
         Attribute attribute = new Attribute("", null, null);
         attribute.entropia = 1.0;
@@ -282,19 +293,33 @@ public class TreeCounter {
         }
     }
     
-    static public void main(String arg[]){
-        TreeCounter c = new TreeCounter(200);
+    public void run(){
         long time = System.currentTimeMillis();
-        Attribute root = c.decisionTree(new TariyTableModel());
-        //c.pruneLeafs();
+        this.decisionTree();
+        this.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
-        c.seeTree();
+        this.seeTree();
+        TreePanel = this.view.createAndShowGUI(new TreeViewer(root));
+        RulesText = this.seeLeafs(root);
+        System.out.println("decisionTree : " + executionTime + "ms ");
+        animation.stop();
+    }
+    
+    static public void main(String arg[]){
+        TreeCounter c = new TreeCounter(2, new TariyTableModel());
+        long time = System.currentTimeMillis();
+        Attribute root = c.decisionTree();
         c.pruneLeafs();
+        long executionTime = System.currentTimeMillis() - time;
+        //c.seeTree();
+        //c.pruneLeafs();
         c.seeTree();
         System.out.println("decisionTree : " + executionTime + "ms ");
         
 //        ViewerClasification vc = new ViewerClasification(
 //                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
 //        vc.setVisible(true);
+//        TreeCounter c = new TreeCounter(2, new TariyTableModel());
+//        c.start();
     }
 }
