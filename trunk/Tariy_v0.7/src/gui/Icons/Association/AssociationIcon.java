@@ -45,6 +45,7 @@ public class AssociationIcon extends Icon{
         super.constrainsTo.add("RulesIcon");
         algorithm = s.getText();
         support = 50.0;
+        setInfo("Support in " + support + "%");
         
         if(super.froms.size() > 0){
             dataset = ((DBConnectionIcon)super.froms.get(0)).dataset;
@@ -90,19 +91,19 @@ public class AssociationIcon extends Icon{
         dataset.pruneCandidatesOne(s, frequentsOne);
         if(frequentsOne.howMany() > 0){
             if(algorithm.equals("Apriori")){
-                Apriori apriori = new Apriori(dataset, s);
+                Apriori apriori = new Apriori(dataset, s, this);
                 this.startAnimation();
                 apriori.setAnimation(jack);
                 apriori.start();
                 trees = apriori.getFrequents();
             } else if(algorithm.equals("FPGrowth")){
-                FPGrowth fpgrowth = new FPGrowth(dataset, s);
+                FPGrowth fpgrowth = new FPGrowth(dataset, s, this);
                 this.startAnimation();
                 fpgrowth.setAnimation(this.animation);
                 fpgrowth.start();
                 trees = fpgrowth.getFrequents();
             } else if(algorithm.equals("EquipAsso")){
-                EquipAsso equipasso = new EquipAsso(dataset, s);
+                EquipAsso equipasso = new EquipAsso(dataset, s, this);
                 this.startAnimation();
                 equipasso.setAnimation(this.animation);
                 equipasso.start();
@@ -118,6 +119,7 @@ public class AssociationIcon extends Icon{
                     ((RulesIcon)icon).title = algorithm;
                 }
             }
+            
         } else {
             Chooser.setStatus("Not Found larges itemsets");
         }
