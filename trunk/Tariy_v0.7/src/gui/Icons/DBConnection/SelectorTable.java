@@ -304,8 +304,11 @@ public class SelectorTable extends javax.swing.JFrame
             int posOrderBy= queryFrom.indexOf("\nORDER BY ");
             String query = "SELECT distinct " + column2 + queryFrom.substring(posFrom, posOrderBy) +
                     " ORDER BY " + column2;
+            System.out.println(query);
             ResultSet rs = stm.executeQuery(query);
             dataset.buildDictionary(rs);
+            //dataset.showDictionary();
+            //dataset.showNTree();
         } catch (SQLException ex) {
             Chooser.setStatus(ex.getMessage() + " Error in build dictionary");
         }
