@@ -36,24 +36,24 @@ public class ClasificationIcon extends Icon{
     private JMenuItem mnuRun;
     private String algorithm;
     public AbstractTableModel dataIn;
-    public JPanel TreePanel;
-    public StringBuffer RulesText;
-    
-    
+    public TreeCounter c;
+    public configureParameters cp;
+    public double minRows = 25.0;
     /** Creates a new instance of DBConnectionIcon */
     public ClasificationIcon(JLabel s, int x, int y) {
         super(s, x, y);
         super.constrainsTo = new ArrayList(1);
         super.constrainsTo.add("TreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
-//        mnuConfigure = new javax.swing.JMenuItem();
-//        mnuConfigure.setText("Configure...");
-//        mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                mnuConfigureActionPerformed(evt);
-//            }
-//        });
-//        super.pupMenu.add(mnuConfigure);
+        
+        mnuConfigure = new javax.swing.JMenuItem();
+        mnuConfigure.setText("Configure...");
+        mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConfigureActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuConfigure);
         
         mnuRun = new javax.swing.JMenuItem();
         mnuRun.setText("Run...");
@@ -62,16 +62,19 @@ public class ClasificationIcon extends Icon{
                 mnuRunActionPerformed(evt);
             }
         });
+        //mnuRun.setEnabled(false);
         super.pupMenu.add(mnuRun);
     }
     
-//    private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//
-//            }
-//        });
-//    }
+    private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
+        final ClasificationIcon ci = this;
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                cp = new configureParameters(ci);
+                cp.setVisible(true);
+            }
+        });
+    }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
         JackAnimation jack = new JackAnimation();
@@ -82,25 +85,13 @@ public class ClasificationIcon extends Icon{
         System.out.println(algorithm);
         if(algorithm.equals("  C45  ")){
             this.startAnimation();
-            TreeCounter c = new TreeCounter(200);
             TariyTableModel tariyData = this.changeToTariyModel();
-            long time = System.currentTimeMillis();
-            Attribute root = c.decisionTree(tariyData);
-            c.pruneLeafs();
-            long executionTime = System.currentTimeMillis() - time;
-            c.seeTree();
-            System.out.println("decisionTree : " + executionTime + "ms ");
-
-            //c45 c = new c45(dataIn);
-            //c.start();
-            //long time = System.currentTimeMillis();
-            //c.start();
-            //long executionTime = System.currentTimeMillis() - time;
-            //System.out.println("C4.5 evaluated in " +
-            //        executionTime + "ms");
-            TreePanel = c.view.createAndShowGUI(new TreeViewer(root));
-            RulesText = c.seeLeafs(root);
-            this.stopAnimation();
+            System.out.println(cp.minRows);
+            int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
+            c = new TreeCounter(minIntegerRows, tariyData);
+            this.startAnimation();
+            c.setAnimation(jack);
+            c.start();
         } else if(algorithm.equals("Mate")){
             //this.startAnimation();
         }
