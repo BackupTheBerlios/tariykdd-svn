@@ -44,12 +44,14 @@ public class MyCanvas extends javax.swing.JPanel {
     Graphics offgraphics;
     final Color colorEdge = new Color(124, 136, 135);
     final Color colorLine = new Color(148,167,179);                    //229,192,255
-    
+    private Component oldTipToolText;
+    private Point oldPoint;
     
     /** Creates new form Canvas */
     public MyCanvas() {
         initComponents();
         this.setToolTipText("");
+        oldTipToolText = this;
     }
     
     public void addIcono(Icon icono){
@@ -95,17 +97,17 @@ public class MyCanvas extends javax.swing.JPanel {
         System.out.println(press.getName());
         if(press.getClass().getSimpleName().equals("MyIcon")){
             seleccionado = (Icon)press.getParent();
-            Chooser.setStatus( seleccionado.getInfo() );
+            //Chooser.setStatus( seleccionado.getInfo() );
             //this.setToolTipText(((Icon)seleccionado).getInfo());
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
                 seleccionado.getPupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
             }
-            if(seleccionado.froms.size() > 0){
-                Iterator it = seleccionado.froms.iterator();
-                while(it.hasNext()){
-                    Chooser.status.setText( ((Icon)it.next()).icono.getText() );
-                }
-            }
+//            if(seleccionado.froms.size() > 0){
+//                Iterator it = seleccionado.froms.iterator();
+//                while(it.hasNext()){
+//                    Chooser.status.setText( ((Icon)it.next()).icono.getText() );
+//                }
+//            }
             seleccionado = null;
         } else if(press.getClass().getSimpleName().equals("Conector")){
             Conector conectorPress = (Conector)press;
@@ -156,8 +158,8 @@ public class MyCanvas extends javax.swing.JPanel {
                             //((AssociationIcon)to).dataset.showNTree();
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof TreeIcon){
-                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).TreePanel;
-                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).RulesText;
+                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
+                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
                         }
                         
                         nuevoPresionado.seleccionado = true;
@@ -258,30 +260,40 @@ public class MyCanvas extends javax.swing.JPanel {
         g.drawImage(offscreen, 0, 0, null);
     }
     
-    public Point getToolTipLocation(MouseEvent event) {
+    public String getToolTipText(MouseEvent event){
         Component press = findComponentAt(event.getPoint());
-        //System.out.println(press.getName());
         if(press.getParent() instanceof Icon){
             Icon iconPress = (Icon)press.getParent();
-            this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
+            return this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
                     iconPress.getInfo());
-            //return press.getParent().getLocation();
-            //return new Point(0, 0);
-            //return event.getPoint();
-            //return new Point(this.getWidth(), 0);
-            return new Point(press.getParent().getLocation().x + 
-                             press.getParent().getWidth(), 
-                             press.getParent().getLocation().y);
         } else {
-            this.setToolTipText("");
-            return new Point(this.getWidth(), 0);
-        }
+            return null;
+        }        
     }
     
-    private void setIconInfo(String str){
+//    public Point getToolTipLocation(MouseEvent event) {
+//        Component press = findComponentAt(event.getPoint());
+//        Point point;
+//        if(press.getParent() instanceof Icon){
+//            Icon iconPress = (Icon)press.getParent();
+//            this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
+//                    iconPress.getInfo());
+//            oldTipToolText = press;
+//            point = new Point(press.getParent().getLocation().x +
+//                    press.getParent().getWidth(),
+//                    press.getParent().getLocation().y);
+//            oldPoint = point;
+//            return point;
+//        } else {
+//            return null;
+//        }
+//
+//    }
+    
+    private String setIconInfo(String str){
         str = str.replaceAll("\n", "<p>");
         str = "<html>".concat(str).concat("</html>");
-        this.setToolTipText(str);        
+        return str;
     }
     
     private void moveConector(Conector conector) {
