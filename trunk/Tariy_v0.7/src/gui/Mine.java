@@ -14,7 +14,9 @@ import Utils.AvlTree;
 import Utils.DataSet;
 import algorithm.association.FPGrowth.FPGrowth;
 import Utils.FileManager;
+import gui.Icons.Association.AssociationIcon;
 import java.util.Vector;
+import javax.swing.JLabel;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -149,7 +151,7 @@ public class Mine extends javax.swing.JFrame {
         short support = (short)( dataset.getNtransactions() * s / 100); 
         long time = System.currentTimeMillis();
         
-        Apriori a = new Apriori(dataset, support);
+        Apriori a = new Apriori(dataset, support, new AssociationIcon(new JLabel(),0,0));
         while(a.makeCandidates());
         executionTime = System.currentTimeMillis() - time;
         trees = a.getFrequents();
@@ -167,7 +169,7 @@ public class Mine extends javax.swing.JFrame {
         short support = (short)( dataset.getNtransactions() * s / 100); 
         long time = System.currentTimeMillis();
         
-        EquipAsso equi = new EquipAsso(dataset, support);
+        EquipAsso equi = new EquipAsso(dataset, support,new AssociationIcon(new JLabel(),0,0));
         int type = 2;
         while(equi.findInDataset(type++)){
             //equi.
@@ -192,7 +194,7 @@ public class Mine extends javax.swing.JFrame {
         long time = System.currentTimeMillis();
         
         //dataset.showNTree();
-        FPGrowth arbol = new FPGrowth(dataset, support);
+        FPGrowth arbol = new FPGrowth(dataset, support,new AssociationIcon(new JLabel(),0,0));
         arbol.buildTree();
         //arbol.goToRoot();
         //arbol.showTree(new Stack());
