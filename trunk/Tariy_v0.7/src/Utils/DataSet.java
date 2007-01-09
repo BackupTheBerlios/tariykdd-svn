@@ -127,10 +127,13 @@ public class DataSet {
             rs.first();
             
             String typeColumn = rs.getMetaData().getColumnClassName(1);
-            if(typeColumn.equals("java.lang.Short")){
+            System.out.println(typeColumn);
+            if(typeColumn.equals("java.lang.Short") ){
                 buildShortDictionary(rs);
             } else if(typeColumn.equals("java.lang.String")){
                 buildStringDictionary(rs);
+            } else {
+                buildShortDictionary(rs);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -140,10 +143,10 @@ public class DataSet {
     
     private void buildShortDictionary(ResultSet rs){
         try {
-            dictionary.add(Short.toString(rs.getShort(1)));
+            dictionary.add(rs.getObject(1).toString());
             //dictionary.add(rs.getShort(1));
             while(rs.next()){
-                dictionary.add(Short.toString(rs.getShort(1)));
+                dictionary.add(rs.getObject(1).toString());
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
