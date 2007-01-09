@@ -55,7 +55,6 @@ public class Chooser extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuAction = new javax.swing.JMenu();
         optNew = new javax.swing.JMenuItem();
-        optSave = new javax.swing.JMenuItem();
         mnuAbout = new javax.swing.JMenu();
         optAbout = new javax.swing.JMenuItem();
 
@@ -81,7 +80,7 @@ public class Chooser extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Proyecto Tariy");
+        setTitle("The TariyKDD Project");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -111,15 +110,6 @@ public class Chooser extends javax.swing.JFrame {
         });
 
         mnuAction.add(optNew);
-
-        optSave.setText("Item");
-        optSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                optSaveActionPerformed(evt);
-            }
-        });
-
-        mnuAction.add(optSave);
 
         jMenuBar1.add(mnuAction);
 
@@ -160,11 +150,6 @@ public class Chooser extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-991)/2, (screenSize.height-685)/2, 991, 685);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void optSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optSaveActionPerformed
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_optSaveActionPerformed
 
     private void optNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNewActionPerformed
 // TODO add your handling code here:
@@ -237,6 +222,10 @@ public class Chooser extends javax.swing.JFrame {
         status.setToolTipText(str);
     }
     
+    public static String getStatus(){
+        return status.getText();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -257,7 +246,6 @@ public class Chooser extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAction;
     private javax.swing.JMenuItem optAbout;
     private javax.swing.JMenuItem optNew;
-    private javax.swing.JMenuItem optSave;
     public static javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
     
