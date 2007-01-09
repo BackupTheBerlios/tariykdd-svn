@@ -9,6 +9,7 @@ package gui.Icons.Rules;
 import Utils.AssocRules;
 import Utils.ExampleFileFilter;
 import Utils.FileManager;
+import gui.KnowledgeFlow.Chooser;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
@@ -46,7 +47,8 @@ public class showRules extends javax.swing.JFrame {
         if(rules.getRules().size() != 0) {
             RulesTableModel model = new RulesTableModel(rules.getRules());
             tblRules.setModel(model);
-
+            Chooser.setStatus("Generate " + tblRules.getRowCount() + " rules with confidence "
+                    + confidence + "%");
 //            columnSizes();
         } else {
             // No hay resultados //
