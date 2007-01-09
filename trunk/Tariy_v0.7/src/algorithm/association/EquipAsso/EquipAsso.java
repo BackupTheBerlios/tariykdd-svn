@@ -9,6 +9,7 @@
 package algorithm.association.EquipAsso;
 
 import Utils.*;
+import gui.Icons.Association.AssociationIcon;
 import gui.KnowledgeFlow.AnimationLabel;
 import gui.KnowledgeFlow.Chooser;
 import java.util.*;
@@ -36,14 +37,15 @@ public class EquipAsso extends Thread{
     AvlTree treeCandidates = new AvlTree();
     
     private AnimationLabel animation;
-    
+    private AssociationIcon ai;
     /**
      * Construye una instancia de la clase EquipAsso.
      *
      *  @param dataset Conjunto de datos contenidos en un arbol N-Ario.
      *  @param support Soporte con el que los datos seran minados.
      */
-    public EquipAsso(DataSet dataset, short support) {
+    public EquipAsso(DataSet dataset, short support, AssociationIcon ai) {
+        this.ai = ai;
         this.support = support;
         AvlTree frequentsOne = new AvlTree();
         dataset.pruneCandidatesOne(support, frequentsOne);
@@ -164,8 +166,11 @@ public class EquipAsso extends Thread{
         
         long executionTime = System.currentTimeMillis() - time;
         count = this.showFrequents();
-        Chooser.setStatus("EquipAsso: " + count + " large itemsets in " +
+        Chooser.setStatus("EquipAsso: " + count + " large itemsets " +
+                "with support " + ai.support + "% " + " in " +
                 executionTime + "ms");
+        ai.setInfo(count + " large itemsets found\nin " + executionTime + "ms "
+                + "with support " + ai.support + "%");
         animation.stop();
     }
     
