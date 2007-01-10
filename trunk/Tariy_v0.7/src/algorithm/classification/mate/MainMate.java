@@ -82,14 +82,7 @@ public class MainMate {
         // Ordena alfabeticamente el diccionario
         Collections.sort(dictionary);
     }
-    
-    /**
-     * Muestra el diccionario.
-     */
-    public String showDictionary() {
-        return dictionary.toString();
-    }
-    
+        
     public void dataCombination() {
         // Indice de la clase del conjunto de datos
         int classInd;
@@ -131,6 +124,107 @@ public class MainMate {
                     }
                 }
             }
+        }
+    }
+    
+    public void calcEntropy() {
+        Entropy winatt = null;
+        double entro=-100000.0;
+        String winner = new String();
+        Collection set = attributes.values();
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            Entropy elem = (Entropy) it.next();
+            elem.entropy();
+            if (elem.getEntro() > entro) {
+                entro = elem.getEntro();
+                winner = elem.getAttribute();
+                winatt = elem;
+            }
+        }
+        HashMap values = winatt.getValues();
+        buildTree(winner, values);
+    }
+    
+    public void buildTree(String winner, HashMap values) {
+        /** 
+        System.out.println("");-------------------------------------------------
+        System.out.println("Atributo::" + winner); -----------------------------
+        */
+        if (desc.isEmpty()) {
+            Describe d = new Describe(0,-1, winner, "-1", "-1");
+            desc.add(d);
+        }
+        int index = desc.size()-1;
+        Set set = values.keySet();
+        Iterator it = set.iterator();
+        ArrayList combinations;
+        while (it.hasNext()) {
+            short key = (Short) it.next();
+            combinations = (ArrayList) values.get(key);
+            //System.out.print(" Value " + decode(key));------------------------
+            if (combinations.size() == 2) {
+                String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
+                boolean flag = false;
+                Iterator i = combinations.iterator();  
+                while (i.hasNext()) {
+                    Object elem = (Object) i.next();
+                    if (elem instanceof ItemSet) {
+                        short[] s = ((ItemSet) elem).getItems();
+                        Describe d = null;
+                        for (int h=0; h<s.length; h++) {
+                            String cad = decode(s[h]);
+                            StringTokenizer st = new StringTokenizer(cad, "=");
+                            String attr = st.nextToken();
+                            String value = st.nextToken();
+                            int a = dataSrc.getColumnIndex(attr);
+                            if (!(winners.containsValue(value)&& winners.containsKey(a))) {
+                                if (attr.compareTo(classe) == 0) {
+                                    int l = desc.size()-1;
+                                    d = new Describe(l+1,l, attr, value, "-1");
+                                    flag = false;
+                                } else {
+                                    
+                                    d = new Describe(desc.size(),index,attr, value, classe);
+                                    flag = true;
+                                }
+                                desc.add(d);
+                            }
+                            /**-------------------------------------------------
+                            if (s[h] != key) {
+                                System.out.print(" parcilized " + decode(s[h]));
+                            }-------------------------------------------------*/
+                        }
+                        if(flag){
+                            int l = desc.size()-2;
+                            Describe a = (Describe) desc.get(l);
+                            a.setFather(l+1);
+                            desc.set(l,a);
+                        }
+                        //System.out.println("");-------------------------------
+                    }
+                }
+            } else {
+                String value = decode((short) key);
+                StringTokenizer st = new StringTokenizer(value, "=");
+                st.nextToken();
+                value = st.nextToken();
+                int k = dataSrc.getColumnIndex(winner);
+                if (winners.containsKey(k)) {
+                    winners.remove(k);
+                }
+                winners.put(k, value);
+                Describe d = new Describe(desc.size(),index, winner, value, "-1");
+                desc.add(d);
+                dataCombination();
+                if (!attributes.isEmpty()) {
+                    calcEntropy();
+                }
+            }
+        }
+        int k = dataSrc.getColumnIndex(winner);
+        if (winners.containsKey(k)) {
+            winners.remove(k);
         }
     }
     
@@ -180,106 +274,11 @@ public class MainMate {
         this.winners.put(key, winner);
     }
     
-    public void calcEntropy() {
-        Entropy winatt = null;
-        double entro=-100000.0;
-        String winner = new String();
-        Collection set = attributes.values();
-        Iterator it = set.iterator();
-        while (it.hasNext()) {
-            Entropy elem = (Entropy) it.next();
-            elem.entropy();
-            if (elem.getEntro() > entro) {
-                entro = elem.getEntro();
-                winner = elem.getAttribute();
-                winatt = elem;
-            }
-        }
-        HashMap values = winatt.getValues();
-        buildTree(winner, values);
-    }
-    
-    public void buildTree(String winner, HashMap values) {
-        System.out.println(""); //****
-        System.out.println("Atributo::" + winner); //****
-        
-        if (desc.isEmpty()) {
-            Describe d = new Describe(0,-1, winner, "-1", "-1");
-            desc.add(d);
-        }
-        int index = desc.size()-1;
-        //Tree t = new Tree(winner, );
-        Set set = values.keySet();
-        Iterator it = set.iterator();
-        ArrayList combinations;
-        while (it.hasNext()) {
-            short key = (Short) it.next();
-            combinations = (ArrayList) values.get(key);
-            System.out.print(" Value " + decode(key));  //********
-            if (combinations.size() == 2) {
-                // Valor parcializado. Construir arbol de decision
-                // nombre de la clase
-                String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
-                boolean flag = false;
-                Iterator i = combinations.iterator();  //********
-                while (i.hasNext()) {
-                    Object elem = (Object) i.next();
-                    if (elem instanceof ItemSet) {
-                        short[] s = ((ItemSet) elem).getItems();
-                        Describe d = null;
-                        for (int h=0; h<s.length; h++) {
-                            String cad = decode(s[h]);
-                            StringTokenizer st = new StringTokenizer(cad, "=");
-                            String attr = st.nextToken();
-                            String value = st.nextToken();
-                            int a = dataSrc.getColumnIndex(attr);
-                            if (!(winners.containsValue(value)&& winners.containsKey(a))) {
-                                if (attr.compareTo(classe) == 0) {
-                                    int l = desc.size()-1;
-                                    d = new Describe(l+1,l, attr, value, "-1");
-                                    flag = false;
-                                } else {
-                                    
-                                    d = new Describe(desc.size(),index,attr, value, classe);
-                                    flag = true;
-                                }
-                                desc.add(d);
-                            }
-                            if (s[h] != key) {
-                                System.out.print(" parcilized " + decode(s[h]));
-                            }
-                        }
-                        if(flag){
-                            int l = desc.size()-2;
-                            Describe a = (Describe) desc.get(l);
-                            a.setFather(l+1);
-                            desc.set(l,a);
-                        }
-                        System.out.println("");
-                    }
-                } //********
-            } else {
-                String value = decode((short) key);
-                StringTokenizer st = new StringTokenizer(value, "=");
-                st.nextToken();
-                value = st.nextToken();
-                int k = dataSrc.getColumnIndex(winner);
-                if (winners.containsKey(k)) {
-                    winners.remove(k);
-                }
-                winners.put(k, value);
-                Describe d = new Describe(desc.size(),index, winner, value, "-1");
-                desc.add(d);
-                dataCombination();
-                if (!attributes.isEmpty()) {
-                    calcEntropy();
-                }
-            }
-        }
-        int k = dataSrc.getColumnIndex(winner);
-        if (winners.containsKey(k)) {
-            winners.remove(k);
-        }
+    /**
+     * Muestra el diccionario.
+     */
+    public String showDictionary() {
+        return dictionary.toString();
     }
     
     /**
@@ -296,7 +295,6 @@ public class MainMate {
     }
     
     public void showDesc(){
-        System.out.println("\n");
         Collections.sort(desc, new compareDaddy());
         for (int i = 0; i < desc.size(); i++){
             Describe a = (Describe) desc.get(i);
