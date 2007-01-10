@@ -157,7 +157,7 @@ public class TariyTableModel extends AbstractTableModel {
 
 //______________________________________________________
 // TITANIC
-/**    
+    /**
     Object [][] datos = {
         {	"1",	"adulto",	"hombre",	"y"	},
         {	"1",	"adulto",	"hombre",	"y"	},
@@ -2368,7 +2368,7 @@ public class TariyTableModel extends AbstractTableModel {
         "sex",
         "survived"
     };    
-    */   
+       */
 //______________________________________________________
 // GRIPA 3
 /*
