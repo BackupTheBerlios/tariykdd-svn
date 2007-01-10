@@ -16,21 +16,19 @@ import java.util.ArrayList;
  * @author ivan
  */
 public class Describe {
-    public static int node=0;
+    private int node=0;
     private int father;
     private String attribute;
     private String value;
     private String classe;
     
     /** Creates a new instance of Tree */
-    public Describe(int father, String attribute, String value, String classe) {
+    public Describe(int node, int father, String attribute, String value, String classe) {
+        this.node = node;
         this.father = father;
         this.attribute = attribute;
         this.value = value;
         this.classe = classe;
-    }
-    
-    public Describe() {
     }
     
     public void incNode() {
@@ -59,5 +57,9 @@ public class Describe {
     
     public void setFather(int i){
         father = i;
+    }
+    
+    public void setNoder(int i){
+        node = i;
     }
 }
