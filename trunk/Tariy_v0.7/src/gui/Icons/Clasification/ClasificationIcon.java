@@ -14,6 +14,7 @@ import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.TariyTableModel;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
+import algorithm.classification.mate.MainMate;
 import gui.Icons.Filters.Selection.Seleccion;
 import gui.KnowledgeFlow.Icon;
 import gui.KnowledgeFlow.JackAnimation;
@@ -92,8 +93,27 @@ public class ClasificationIcon extends Icon{
             this.startAnimation();
             c.setAnimation(jack);
             c.start();
-        } else if(algorithm.equals("Mate")){
-            //this.startAnimation();
+        } else if(algorithm.trim().equals("Mate")){
+            int rows = dataIn.getRowCount();
+            int columns = dataIn.getColumnCount();
+            Object[][] data = new Object[rows][columns];
+            String[] columnsName = new String[columns];
+            for(int i = 0; i < columns; i++){
+                for(int j = 0; j < rows; j++){
+                    data[j][i] = dataIn.getValueAt(j ,i);
+                }
+                columnsName[i] = dataIn.getColumnName(i);
+            }
+//            Object[][] data = ((gui.Icons.Filters.TariyTableModel)dataIn).data;
+//            String[] names = ((gui.Icons.Filters.TariyTableModel)dataIn).columnName;
+            gui.Icons.Filters.TariyTableModel tariyData
+                    = new gui.Icons.Filters.TariyTableModel(data, columnsName);
+            MainMate mm = new MainMate(tariyData);
+            mm.buildDictionary();
+            mm.dataCombination();
+            mm.calcEntropy();
+            mm.showDesc();
+            c = mm.erectTree();
         }
     }
     
