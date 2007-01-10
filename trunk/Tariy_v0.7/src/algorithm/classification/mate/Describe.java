@@ -22,6 +22,7 @@ public class Describe {
     private String value;
     private String classe;
     
+    
     /** Creates a new instance of Tree */
     public Describe(int node, int father, String attribute, String value, String classe) {
         this.node = node;
