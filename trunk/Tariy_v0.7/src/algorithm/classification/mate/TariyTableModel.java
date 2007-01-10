@@ -129,7 +129,7 @@ public class TariyTableModel extends AbstractTableModel {
 */   
 //______________________________________________________
 // CLIMA
-
+/**
         Object [][] datos = {
         { "Soleado","Caliente","Alta","Debil","no" },
         { "Soleado","Caliente","Alta","Fuerte","no" },
@@ -154,10 +154,10 @@ public class TariyTableModel extends AbstractTableModel {
         "viento",
         "jtennis"
     };
-
+*/
 //______________________________________________________
 // TITANIC
-    /**
+  
     Object [][] datos = {
         {	"1",	"adulto",	"hombre",	"y"	},
         {	"1",	"adulto",	"hombre",	"y"	},
@@ -2368,7 +2368,7 @@ public class TariyTableModel extends AbstractTableModel {
         "sex",
         "survived"
     };    
-       */
+       
 //______________________________________________________
 // GRIPA 3
 /*
