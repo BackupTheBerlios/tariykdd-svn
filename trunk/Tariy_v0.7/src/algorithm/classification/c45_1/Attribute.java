@@ -9,6 +9,8 @@
 
 package algorithm.classification.c45_1;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author and
@@ -20,6 +22,7 @@ public class Attribute {
     int frecuenceFather;
     Attribute son;
     Attribute brother;
+    public LinkedList childrens;
     
     /** Creates a new instance of Attribute */
     public Attribute(String name, Attribute son, Attribute brother) {
