@@ -28,7 +28,7 @@ import javax.swing.table.AbstractTableModel;
 public class TreeCounter extends Thread{
     int rows;
     int columns;
-    static final double LOG2 = Math.log(2);;
+    static final double LOG2 = Math.log(2);
     public Attribute root;
     Attribute aux;
     AbstractTableModel dataIn;
@@ -39,10 +39,12 @@ public class TreeCounter extends Thread{
     private AnimationLabel animation = null;
     public int MIN_ROWS;
     public TariyTableModel data = null;
-
+    
     public JPanel TreePanel;
-
+    
     public StringBuffer RulesText;
+
+    private Attribute backer;
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
         root = new Attribute("", null, null);
@@ -234,6 +236,20 @@ public class TreeCounter extends Thread{
         }
     }
     
+    public Attribute searchTreeDesc(Attribute node, int aux){
+        if(node.id == aux){
+            backer = node;
+            return backer;
+        }
+        if(node.son != null){
+            searchTreeDesc(node.son,aux);
+        }
+        if(node.brother != null){
+            searchTreeDesc(node.brother,aux);
+        }
+        return backer;
+    }
+    
     public Attribute chooseBestAttribute(AbstractTableModel data){
         TreeCounter finalTree = null;
         int treeFinal = 0;
@@ -309,7 +325,7 @@ public class TreeCounter extends Thread{
         TreeCounter c = new TreeCounter(2, new TariyTableModel());
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree();
-        c.pruneLeafs();
+        //c.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         //c.seeTree();
         //c.pruneLeafs();
