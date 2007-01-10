@@ -12,6 +12,8 @@ package algorithm.classification.mate;
 
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.TreeCounter;
+import algorithm.classification.c45_1.TreeViewer;
+import gui.Icons.Tree.ViewerClasification;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,7 +31,7 @@ import Utils.ItemSet;
 public class MainMate {
     
     /** Fuente de datos */
-    private TariyTableModel dataSrc;
+    private gui.Icons.Filters.TariyTableModel dataSrc;
     
     /** Diccionario de datos */
     private ArrayList dictionary;
@@ -45,10 +47,12 @@ public class MainMate {
      * decision.
      */
     private ArrayList desc;
+
+    public TreeCounter c;
     
     /** Creates a new instance of MainMate */
-    public MainMate() {
-        dataSrc = new TariyTableModel();
+    public MainMate(gui.Icons.Filters.TariyTableModel data) {
+        dataSrc = data;
         dictionary = new ArrayList();
         winners = new HashMap();
         desc = new ArrayList();
@@ -90,7 +94,7 @@ public class MainMate {
         // Indice de la clase del conjunto de datos
         int classInd;
         // Conjunto de datos
-        Object[][] datos = dataSrc.datos;
+        Object[][] datos = dataSrc.data;
         // Almacena las combinaciones atributo-ganadores
         Vector comb = new Vector();
         // Vector de ganadores
@@ -102,7 +106,7 @@ public class MainMate {
         Entropy attrib;
         // Un nuevo HashMap por cada nivel del arbol
         attributes = new HashMap();
-        for (int r=0; r<dataSrc.datos.length; r++) {
+        for (int r=0; r<dataSrc.data.length; r++) {
             win = winnersIn(datos[r]);
             classInd = dataSrc.getColumnCount()-1;
             value = dataSrc.getColumnName(classInd);
@@ -301,19 +305,20 @@ public class MainMate {
         }
     }
     
-    public void erectTree(){
+    public TreeCounter erectTree(){
         Describe a1 = (Describe) desc.get(0);
-        Attribute root = new Attribute(a1.getAttribute(),0,null,null);
+        Attribute root = new Attribute(a1.getAttribute(),null,null);
         
-        TreeCounter aux1 = new TreeCounter();
+        c = new TreeCounter();
         Attribute aux2;
         for(int i = 1; i < desc.size(); i++){
             a1 = (Describe) desc.get(i);
             String str = a1.getAttribute();
             str = str + "=" + a1.getValue();
             
-            aux2 = (Attribute) aux1.searchTreeDesc(root,a1.getFather());
-            Attribute a2 = new Attribute(str,a1.getNode(),null,null);
+            aux2 = (Attribute) c.searchTreeDesc(root,a1.getFather());
+            Attribute a2 = new Attribute(str,null,null);
+            a2.setId(a1.getNode());
             if(aux2.getSon() != null){
                 aux2 = aux2.getSon();
                 aux2 = aux2.getBro(aux2);
@@ -322,10 +327,16 @@ public class MainMate {
                 aux2.setSon(a2);
             }
         }
+        c.seeTree(root.getSon());
+        ViewerClasification vc = new ViewerClasification(
+                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
+        vc.setVisible(true);
+        
+        return c;
     }
     
     public static void main(String args[]) {
-        MainMate mm = new MainMate();
+        MainMate mm = new MainMate(new gui.Icons.Filters.TariyTableModel());
         mm.buildDictionary();
         mm.dataCombination();
         mm.calcEntropy();
