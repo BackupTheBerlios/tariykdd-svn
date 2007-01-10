@@ -20,15 +20,17 @@ public class Attribute {
     double entropia;
     int frecuence;
     int frecuenceFather;
+    int id;
     Attribute son;
     Attribute brother;
     public LinkedList childrens;
     
     /** Creates a new instance of Attribute */
-    public Attribute(String name, Attribute son, Attribute brother) {
+    public Attribute(String name,Attribute son, Attribute brother) {
         this.name = name;
         frecuence = 1;
         entropia = 0.0;
+        id = 0;
         this.son = son;
         this.brother = brother;
     }
@@ -40,8 +42,12 @@ public class Attribute {
     public void incrementFrecuence(){
         frecuence++;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
-    
+
     public double setEntropia(){
         double probabilidadInterna = 0.0;
         float division;
@@ -100,6 +106,16 @@ public class Attribute {
         return children;
     }
     
+    public Attribute getBro(Attribute a){
+        while(a.brother != null){
+            a = a.brother;
+        }
+        return a;
+    }
+    
+    public void setBro(Attribute b){
+        brother = b;
+    }
     //este devuelve dependiendo el nodo que le pasemos cual es su indice como hijo de este nodo
     public int getIndexOfChild(Object child) {
         Attribute attribute = this.son;
@@ -119,6 +135,14 @@ public class Attribute {
     public Attribute isLeaf() {
         Attribute attribute = this;
         return attribute.son;
+    }
+    
+    public Attribute getSon(){
+        return son;
+    }
+    
+    public void setSon(Attribute s){
+        son = s;
     }
     
     public String toString(){
