@@ -9,15 +9,18 @@
 
 package algorithm.classification.mate;
 
+
+import algorithm.classification.c45_1.Attribute;
+import algorithm.classification.c45_1.TreeCounter;
+import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.StringTokenizer;
 import java.util.Vector;
-import utils.ItemSet;
+import Utils.ItemSet;
 
 /**
  *
@@ -96,7 +99,7 @@ public class MainMate {
         String value;
         // Codifica a los elementos del conjunto de datos
         short cod;
-        Attribute attrib;
+        Entropy attrib;
         // Un nuevo HashMap por cada nivel del arbol
         attributes = new HashMap();
         for (int r=0; r<dataSrc.datos.length; r++) {
@@ -110,10 +113,10 @@ public class MainMate {
                     if (!winners.containsKey(c)) {
                         value = dataSrc.getColumnName(c);
                         if (!attributes.containsKey(c)) {
-                            attrib = new Attribute(value);
+                            attrib = new Entropy(value);
                             attributes.put(c, attrib);
                         } else {
-                            attrib = (Attribute) attributes.get(c);
+                            attrib = (Entropy) attributes.get(c);
                         }
                         value = value + "=" + (String) datos[r][c];
                         comb.addElement(code(value));
@@ -174,13 +177,13 @@ public class MainMate {
     }
     
     public void calcEntropy() {
-        Attribute winatt = null;
+        Entropy winatt = null;
         double entro=-100000.0;
         String winner = new String();
         Collection set = attributes.values();
         Iterator it = set.iterator();
         while (it.hasNext()) {
-            Attribute elem = (Attribute) it.next();
+            Entropy elem = (Entropy) it.next();
             elem.entropy();
             if (elem.getEntro() > entro) {
                 entro = elem.getEntro();
@@ -197,7 +200,7 @@ public class MainMate {
         System.out.println("Atributo::" + winner); //****
         
         if (desc.isEmpty()) {
-            Describe d = new Describe(-1, winner, "-1", "-1");
+            Describe d = new Describe(0,-1, winner, "-1", "-1");
             desc.add(d);
         }
         int index = desc.size()-1;
@@ -229,11 +232,11 @@ public class MainMate {
                             if (!(winners.containsValue(value)&& winners.containsKey(a))) {
                                 if (attr.compareTo(classe) == 0) {
                                     int l = desc.size()-1;
-                                    d = new Describe(l, attr, value, "-1");
+                                    d = new Describe(l+1,l, attr, value, "-1");
                                     flag = false;
                                 } else {
                                     
-                                    d = new Describe(index,attr, value, classe);
+                                    d = new Describe(desc.size(),index,attr, value, classe);
                                     flag = true;
                                 }
                                 desc.add(d);
@@ -261,7 +264,7 @@ public class MainMate {
                     winners.remove(k);
                 }
                 winners.put(k, value);
-                Describe d = new Describe(index, winner, value, "-1");
+                Describe d = new Describe(desc.size(),index, winner, value, "-1");
                 desc.add(d);
                 dataCombination();
                 if (!attributes.isEmpty()) {
@@ -283,17 +286,41 @@ public class MainMate {
         Collection set = attributes.values();
         Iterator it = set.iterator();
         while (it.hasNext()) {
-            Attribute elem = (Attribute) it.next();
+            Entropy elem = (Entropy) it.next();
             elem.showAttributes();
         }
     }
     
     public void showDesc(){
         System.out.println("\n");
+        Collections.sort(desc, new compareDaddy());
         for (int i = 0; i < desc.size(); i++){
             Describe a = (Describe) desc.get(i);
-            System.out.println("Nod: "+i+" Dad: "+a.getFather()+" Attr: "+
-            a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse());
+            System.out.println("Nod: "+a.getNode()+" Dad: "+a.getFather()+" Attr: "+
+                    a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse());
+        }
+    }
+    
+    public void erectTree(){
+        Describe a1 = (Describe) desc.get(0);
+        Attribute root = new Attribute(a1.getAttribute(),0,null,null);
+        
+        TreeCounter aux1 = new TreeCounter();
+        Attribute aux2;
+        for(int i = 1; i < desc.size(); i++){
+            a1 = (Describe) desc.get(i);
+            String str = a1.getAttribute();
+            str = str + "=" + a1.getValue();
+            
+            aux2 = (Attribute) aux1.searchTreeDesc(root,a1.getFather());
+            Attribute a2 = new Attribute(str,a1.getNode(),null,null);
+            if(aux2.getSon() != null){
+                aux2 = aux2.getSon();
+                aux2 = aux2.getBro(aux2);
+                aux2.setBro(a2);
+            }else{
+                aux2.setSon(a2);
+            }
         }
     }
     
@@ -303,6 +330,7 @@ public class MainMate {
         mm.dataCombination();
         mm.calcEntropy();
         mm.showDesc();
+        mm.erectTree();
         //mm.showAttributes();
     }
 }
