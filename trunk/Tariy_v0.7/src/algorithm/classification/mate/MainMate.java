@@ -10,6 +10,7 @@
 package algorithm.classification.mate;
 
 
+import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
@@ -47,7 +48,7 @@ public class MainMate {
      * decision.
      */
     private ArrayList desc;
-
+    
     public TreeCounter c;
     
     /** Creates a new instance of MainMate */
@@ -82,7 +83,7 @@ public class MainMate {
         // Ordena alfabeticamente el diccionario
         Collections.sort(dictionary);
     }
-        
+    
     public void dataCombination() {
         // Indice de la clase del conjunto de datos
         int classInd;
@@ -127,7 +128,7 @@ public class MainMate {
         }
     }
     
-    public void calcEntropy() {
+    public void calcEntropy(int score) {
         Entropy winatt = null;
         double entro=-100000.0;
         String winner = new String();
@@ -143,30 +144,32 @@ public class MainMate {
             }
         }
         HashMap values = winatt.getValues();
-        buildTree(winner, values);
+        buildTree(winner, values,winatt.getSup());
     }
     
-    public void buildTree(String winner, HashMap values) {
-        /** 
-        System.out.println("");-------------------------------------------------
-        System.out.println("Atributo::" + winner); -----------------------------
-        */
+    public void buildTree(String winner, HashMap values, int score) {
+        /**
+         * System.out.println("");----------------------------------------------
+         * System.out.println("Atributo::" + winner); --------------------------
+         */
+        ArrayList and = null;
         if (desc.isEmpty()) {
-            Describe d = new Describe(0,-1, winner, "-1", "-1");
+            Describe d = new Describe(0,-1, winner, "-1", "-1",null,0);
             desc.add(d);
         }
         int index = desc.size()-1;
         Set set = values.keySet();
         Iterator it = set.iterator();
         ArrayList combinations;
+        String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
         while (it.hasNext()) {
             short key = (Short) it.next();
             combinations = (ArrayList) values.get(key);
             //System.out.print(" Value " + decode(key));------------------------
             if (combinations.size() == 2) {
-                String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
+                
                 boolean flag = false;
-                Iterator i = combinations.iterator();  
+                Iterator i = combinations.iterator();
                 while (i.hasNext()) {
                     Object elem = (Object) i.next();
                     if (elem instanceof ItemSet) {
@@ -181,19 +184,27 @@ public class MainMate {
                             if (!(winners.containsValue(value)&& winners.containsKey(a))) {
                                 if (attr.compareTo(classe) == 0) {
                                     int l = desc.size()-1;
-                                    d = new Describe(l+1,l, attr, value, "-1");
+                                    String cad2 = decode(s[0]);
+                                    StringTokenizer st2 = new StringTokenizer(cad2, "=");
+                                    st2.nextToken();
+                                    value = st2.nextToken();
+                                    and = counterClass(values, classe,value);
+                                    value = fixCounter(and);
+                                    d = new Describe(l+1,l, attr, value, "-1", and,score);
                                     flag = false;
                                 } else {
-                                    
-                                    d = new Describe(desc.size(),index,attr, value, classe);
+                                    and = counterClass(values, classe,value);
+                                    d = new Describe(desc.size(),index,attr, value, classe,and,score);
                                     flag = true;
                                 }
                                 desc.add(d);
                             }
+                            score = ((Value)and.get(and.size()-1)).getFrecuence();
+                            //Aqui puede ir el score del papa
                             /**-------------------------------------------------
-                            if (s[h] != key) {
-                                System.out.print(" parcilized " + decode(s[h]));
-                            }-------------------------------------------------*/
+                             * if (s[h] != key) {
+                             * System.out.print(" parcilized " + decode(s[h]));
+                             * }-------------------------------------------------*/
                         }
                         if(flag){
                             int l = desc.size()-2;
@@ -214,11 +225,24 @@ public class MainMate {
                     winners.remove(k);
                 }
                 winners.put(k, value);
-                Describe d = new Describe(desc.size(),index, winner, value, "-1");
+                and = counterClass(values, classe,value);
+                Describe d = new Describe(desc.size(),index, winner, value, "-1",and,score);
                 desc.add(d);
+                score = ((Value)and.get(and.size()-1)).getFrecuence();
+                int so = 0;
+                if(!and.isEmpty()){
+                       so = getF(and);
+                }
                 dataCombination();
                 if (!attributes.isEmpty()) {
-                    calcEntropy();
+                    calcEntropy(score);
+                }else{
+                //Aqui vamos-----------
+                    int l = desc.size()-1;
+                    and = counterClass(values, classe,value);
+                    value = fixCounter(and);
+                    d = new Describe(l+1,l, classe, value, "-1", and,score);
+                    desc.add(d);
                 }
             }
         }
@@ -228,6 +252,20 @@ public class MainMate {
         }
     }
     
+    public int getF(ArrayList a){
+        if(a != null){
+            Value v = (Value) a.get(a.size()-1);
+            return v.getFrecuence();
+        }
+        return 0;
+    }
+    public int sum(ArrayList a){
+        int aux = 0;
+        for(int i = 0; i < a.size(); i++){
+            aux += ((Value)a.get(i)).getFrecuence();
+        }
+        return aux;
+    }
     /**
      * Verifica que los valores de los atributos ganadores se encuentren en un
      * determinado registro del conjunto de datos.
@@ -258,6 +296,82 @@ public class MainMate {
      */
     public short code(String attr) {
         return (short) Collections.binarySearch(dictionary, attr);
+    }
+    
+    /**This method returns the number of accurrences of each value of the class
+     *for every node
+     */
+    public ArrayList counterClass(HashMap values, String classe, String value){
+        ArrayList<Value> counter = new ArrayList<Value>();
+        int frec = 0;
+        boolean flag;
+        Set set = values.keySet();
+        Iterator it = set.iterator();
+        ArrayList combinations;
+        while (it.hasNext()) {
+            short key = (Short) it.next();
+            combinations = (ArrayList) values.get(key);
+            Iterator i = combinations.iterator();
+                while (i.hasNext()) {
+                    Object elem = (Object) i.next();
+                    if (elem instanceof ItemSet) {
+                        short[] elements = ((ItemSet) elem).getItems();
+                        flag = false;
+                        for (int j=0; j<elements.length; j++) {
+                            String str1 = decode(elements[j]);
+                            StringTokenizer st = new StringTokenizer(str1,"=");
+                            String attr = st.nextToken();
+                            String valu = st.nextToken();
+                            if(value.compareTo(valu)==0) flag = true;
+                            if(classe.compareTo(attr) == 0 && flag == true){
+                                if(!counter.isEmpty()){
+                                    Value w = isIn(counter,valu);
+                                    if(w != null){
+                                        frec += ((ItemSet)elem).getSupport();
+                                        w.incFrecuence(((ItemSet)elem).getSupport());
+                                    }else{
+                                        frec += ((ItemSet)elem).getSupport();
+                                        Value v = new Value(valu,((ItemSet)elem).getSupport());
+                                        counter.add(v);
+                                    }
+                                }else{
+                                    frec += ((ItemSet)elem).getSupport();
+                                    Value v = new Value(valu,((ItemSet)elem).getSupport());
+                                    counter.add(v);
+                                } 
+                            }
+                        }
+                    }    
+                }    
+        }    
+        Value v = new Value("",frec);
+        counter.add(v);
+        return counter;
+    }
+    
+    public String fixCounter(ArrayList a){
+        int b = ((Value)a.get(0)).getFrecuence();
+        String str1 = ((Value)a.get(0)).getName();
+        for(int i = 1; i<a.size()-1; i++){
+            int c = ((Value)a.get(i)).getFrecuence();
+            if(b < c){
+                b = c;
+                str1 = ((Value)a.get(i)).getName();
+            }
+        }
+        a.clear();
+        Value d = new Value(str1,b);
+        a.add(d);
+        return str1;
+    }
+    public Value isIn(ArrayList a, String v){
+        for(int i = 0; i< a.size(); i++){
+            String s = ((Value) a.get(i)).getName();
+            if(s.compareTo(v) == 0){
+                return (Value) a.get(i);
+            }
+        }
+        return null;
     }
     
     /**
@@ -299,23 +413,22 @@ public class MainMate {
         for (int i = 0; i < desc.size(); i++){
             Describe a = (Describe) desc.get(i);
             System.out.println("Nod: "+a.getNode()+" Dad: "+a.getFather()+" Attr: "+
-                    a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse());
+                    a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse()+
+                    " MyFrec: "+ getF(a.getCounter())+" DadFrec: "+a.getDadScore());
         }
     }
     
     public TreeCounter erectTree(){
         Describe a1 = (Describe) desc.get(0);
-        Attribute root = new Attribute(a1.getAttribute(),null,null);
-        
+        Attribute root = new Attribute(a1.getAttribute(),getF(a1.getCounter()),a1.getDadScore());
         c = new TreeCounter();
         Attribute aux2;
         for(int i = 1; i < desc.size(); i++){
             a1 = (Describe) desc.get(i);
             String str = a1.getAttribute();
             str = str + "=" + a1.getValue();
-            
             aux2 = (Attribute) c.searchTreeDesc(root,a1.getFather());
-            Attribute a2 = new Attribute(str,null,null);
+            Attribute a2 = new Attribute(str,getF(a1.getCounter()),a1.getDadScore());
             a2.setId(a1.getNode());
             if(aux2.getSon() != null){
                 aux2 = aux2.getSon();
@@ -329,7 +442,9 @@ public class MainMate {
         ViewerClasification vc = new ViewerClasification(
                 c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
         vc.setVisible(true);
-        
+        c.root = root;
+        c.pruneLeafs();
+        root.viewWekaTree();
         return c;
     }
     
@@ -337,7 +452,7 @@ public class MainMate {
         MainMate mm = new MainMate(new gui.Icons.Filters.TariyTableModel());
         mm.buildDictionary();
         mm.dataCombination();
-        mm.calcEntropy();
+        mm.calcEntropy(0);
         mm.showDesc();
         mm.erectTree();
         //mm.showAttributes();
