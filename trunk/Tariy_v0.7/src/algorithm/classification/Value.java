@@ -34,6 +34,10 @@ public class Value {
     public void setFrecuence(int frecuence) {
         this.frecuence = frecuence;
     }
+    
+    public void incFrecuence(int frecuence) {
+        this.frecuence += frecuence;
+    }
 
     public void setName(String name) {
         this.name = name;
