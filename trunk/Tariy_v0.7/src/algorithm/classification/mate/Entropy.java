@@ -156,4 +156,9 @@ public class Entropy {
     public HashMap getValues() {
         return values;
     }
+
+    public short getSup() {
+        return sup;
+    }
+
 }
