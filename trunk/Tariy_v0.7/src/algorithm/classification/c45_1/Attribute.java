@@ -9,7 +9,17 @@
 
 package algorithm.classification.c45_1;
 
+import Utils.TreeViewer.Node;
+import Utils.TreeViewer.NodePlace;
+import Utils.TreeViewer.PlaceNode2;
+import Utils.TreeViewer.TreeBuild;
+import Utils.TreeViewer.TreeVisualizer;
+import algorithm.classification.Value;
+import java.awt.Container;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -21,9 +31,11 @@ public class Attribute {
     int frecuence;
     int frecuenceFather;
     int id;
+    ArrayList valuesClass;
     Attribute son;
     Attribute brother;
-    public LinkedList childrens;
+    
+    private String fatherA;
     
     /** Creates a new instance of Attribute */
     public Attribute(String name,Attribute son, Attribute brother) {
@@ -31,6 +43,7 @@ public class Attribute {
         frecuence = 1;
         entropia = 0.0;
         id = 0;
+        valuesClass = new ArrayList();
         this.son = son;
         this.brother = brother;
     }
@@ -42,12 +55,23 @@ public class Attribute {
     public void incrementFrecuence(){
         frecuence++;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
     
-
+    public void setValuesClass(){
+        Attribute aux = this.son;
+        while(aux != null){
+            valuesClass.add(new Value(aux.name, aux.frecuence));
+            aux = aux.brother;
+        }
+    }
+    
+    public ArrayList getValuesClass() {
+        return valuesClass;
+    }
+    
     public double setEntropia(){
         double probabilidadInterna = 0.0;
         float division;
@@ -67,7 +91,7 @@ public class Attribute {
         return Math.log(value)/TreeCounter.LOG2;
     }
     
-    public Attribute bestChild(String target){
+    public Attribute bestChild(String target, int id){
         Attribute major = this.son;
         Attribute next = this.son.brother;
         
@@ -80,6 +104,7 @@ public class Attribute {
         major.name = target + "=" + major.name;
         major.frecuenceFather = this.frecuence;
         major.brother = null;
+        major.id = id;
         return major;
     }
     
@@ -151,5 +176,59 @@ public class Attribute {
         } else {
             return name;
         }
+    }
+    
+    private String getAfterEqual(){
+        return this.toString().substring(toString().indexOf("=") + 1, toString().length());
+    }
+    
+    private String getBeforeEqual(){
+        return this.toString().substring(0, toString().indexOf("="));
+    }
+    
+    public String buildStringTree(){
+        StringBuffer tree = new StringBuffer();
+        LinkedList path = new LinkedList();
+        path.addLast(this);
+        tree.append("digraph TariyImplementation {\n");
+        tree.append(this.son.id + "[label=\"" + this.son.getBeforeEqual() + "\"]\n");
+        buildStringTree(this.son, path, tree);
+        tree.append("}");
+        
+        return tree.toString();
+    }
+    
+    private void buildStringTree(Attribute auxiliar, LinkedList path, StringBuffer tree){
+        if(auxiliar.son != null){
+            tree.append(((Attribute)path.getLast()).son.id + "->");
+            tree.append(auxiliar.son.id + "[label=\"" + auxiliar.getAfterEqual() + "\"]\n");
+            if(auxiliar.son.isLeaf() == null){
+                tree.append(auxiliar.son.id + "[label=\"" + auxiliar.son.getAfterEqual() + "\" shape=box style=filled ]\n");
+            } else {
+                tree.append(auxiliar.son.id + "[label=\"" + auxiliar.son.getBeforeEqual() + "\"]\n");
+            }
+            path.addLast(auxiliar);
+            buildStringTree(auxiliar.son, path, tree);
+            path.removeLast();
+        }
+        if(auxiliar.brother != null){
+            buildStringTree(auxiliar.brother, path, tree);
+        }
+    }
+    public void viewWekaTree() {
+        TreeBuild builder = new TreeBuild();
+        Node top = null;
+        NodePlace arrange = new PlaceNode2();
+        top = builder.create(new StringReader(this.buildStringTree()));
+        int num = top.getCount(top,0);
+        TreeVisualizer a = new TreeVisualizer(null, top, arrange);
+        a.setSize(800 ,600);
+        JFrame f;
+        f = new JFrame();
+        Container contentPane = f.getContentPane();
+        contentPane.add(a);
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setSize(800,600);
+        f.setVisible(true);
     }
 }
