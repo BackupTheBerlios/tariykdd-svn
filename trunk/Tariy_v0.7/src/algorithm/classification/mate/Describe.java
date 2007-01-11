@@ -21,21 +21,33 @@ public class Describe {
     private String attribute;
     private String value;
     private String classe;
-    
+    private ArrayList counter;
+    private int dadScore;
     
     /** Creates a new instance of Tree */
-    public Describe(int node, int father, String attribute, String value, String classe) {
+    public Describe(int node, int father, String attribute, String value, 
+            String classe, ArrayList counter,int dadScore) {
         this.node = node;
         this.father = father;
         this.attribute = attribute;
         this.value = value;
         this.classe = classe;
+        this.counter = counter;
+        this.dadScore = dadScore;
     }
     
     public void incNode() {
         node++;
     }
 
+    public int getDadScore() {
+        return dadScore;
+    }
+
+    public ArrayList getCounter() {
+        return counter;
+    }
+    
     public int getNode() {
         return node;
     }
