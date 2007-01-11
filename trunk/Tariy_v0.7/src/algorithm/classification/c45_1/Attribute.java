@@ -48,6 +48,17 @@ public class Attribute {
         this.brother = brother;
     }
     
+    /** Creates a new instance of Attribute for Fercho*/
+    public Attribute(String name,int f,int daddyF) {
+        this.name = name;
+        frecuence = f;
+        frecuenceFather = daddyF;
+        entropia = 0.0;
+        id = 0;
+        this.son = null;
+        this.brother = null;
+    }
+    
     public int getFrecuence() {
         return frecuence;
     }
