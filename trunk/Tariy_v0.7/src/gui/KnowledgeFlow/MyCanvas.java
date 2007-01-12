@@ -11,6 +11,7 @@ import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
+import gui.Icons.Prediction.PredictionIcon;
 import gui.Icons.Rules.RulesIcon;
 import gui.Icons.Tree.TreeIcon;
 import java.awt.Canvas;
@@ -160,6 +161,14 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof TreeIcon){
                             ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
                             ((TreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
+                        }
+                        else if(from instanceof ClasificationIcon &&
+                                to instanceof PredictionIcon){
+                            ((PredictionIcon)to).root = ((ClasificationIcon)from).c.root;
+                        }
+                        else if(from instanceof DBConnectionIcon &&
+                                to instanceof PredictionIcon){
+                            ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
                         }
                         
                         nuevoPresionado.seleccionado = true;
