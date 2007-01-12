@@ -59,7 +59,10 @@ public class Prediction extends AbstractTableModel{
             
             StringTokenizer token = new StringTokenizer(auxiliar.name,"=");
             cad = token.nextToken().trim();
-            colnode = getColNode(cad);
+            if(auxiliar.son!=null){
+              colnode = getColNode(cad);   
+            }   
+            else colnode = 0; 
             cad = token.nextToken().trim();
             atri = datos[f][colnode].toString();
             
@@ -104,7 +107,8 @@ public class Prediction extends AbstractTableModel{
         if(!compatibilidad){
            JOptionPane.showMessageDialog(null, "Tablas Incompatibles","Error en Prediction.",JOptionPane.ERROR_MESSAGE);
            // de alguna forma debo salir para que no siga ejecutando esto
-           // y devolver una tabla vacia y no permitir que se ejecute el view 
+           // y devolver una tabla vacia y no permitir que se ejecute el view
+           // con los que clasifique de esta forma se puede saber el porcentaje de certeza
         }
         return numcol;
     }
