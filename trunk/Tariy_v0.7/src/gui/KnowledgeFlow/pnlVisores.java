@@ -45,7 +45,7 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Prediction")));
         jLabel13.setText("Prediction");
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel13.setName("Prediction");
