@@ -26,14 +26,14 @@ import javax.swing.JFrame;
  * @author and
  */
 public class Attribute {
-    String name;
+    public String name;
     double entropia;
     int frecuence;
     int frecuenceFather;
     int id;
     ArrayList valuesClass;
-    Attribute son;
-    Attribute brother;
+    public Attribute son;
+    public Attribute brother;
     
     private String fatherA;
     
