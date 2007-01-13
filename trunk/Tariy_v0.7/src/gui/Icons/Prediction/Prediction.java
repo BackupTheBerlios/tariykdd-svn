@@ -9,8 +9,13 @@
 
 package gui.Icons.Prediction;
 
+import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
+import algorithm.classification.compareValues;
+//import algorithm.classification.
 import gui.Icons.Filters.TariyTableModel;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
@@ -77,8 +82,22 @@ public class Prediction extends AbstractTableModel{
             if(auxiliar.brother != null){
                 NewTable(auxiliar.brother);
             }
-            else {
-                  // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
+            else { // por probar
+                // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
+                int vlrv = 0;
+                String cadv = "";
+                ArrayList values = auxiliar.getValuesClass();
+                Collections.sort(values, new compareValues());
+                for(int v=0; v < values.size(); v++){  // busca el valor parcializado con mayor frecuencia ejm si ono con mas apaariciones
+                   Value value = (Value)values.get(v);
+                   if(value.getFrecuence()>vlrv){
+                      vlrv =  value.getFrecuence();
+                      cadv = value.getName();
+                   } 
+                }
+               datos[f][columns] = cadv;
+               f++;
+               NewTable(ax);
             }
         }
     }
