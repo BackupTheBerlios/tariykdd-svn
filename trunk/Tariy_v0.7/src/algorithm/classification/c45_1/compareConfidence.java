@@ -8,6 +8,7 @@
  */
 
 package algorithm.classification.c45_1;
+import algorithm.classification.Value;
 import java.util.*;
 
 /**
@@ -23,3 +24,4 @@ public class compareConfidence implements Comparator {
         return s2 - s1;
     }
 }
+
