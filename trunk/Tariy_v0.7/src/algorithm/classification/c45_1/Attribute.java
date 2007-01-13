@@ -49,10 +49,11 @@ public class Attribute {
     }
     
     /** Creates a new instance of Attribute for Fercho*/
-    public Attribute(String name,int f,int daddyF) {
+    public Attribute(String name,int f,int daddyF, ArrayList vc) {
         this.name = name;
         frecuence = f;
         frecuenceFather = daddyF;
+        valuesClass = vc;
         entropia = 0.0;
         id = 0;
         this.son = null;
@@ -107,7 +108,7 @@ public class Attribute {
         Attribute next = this.son.brother;
         
         while(next != null){
-            if(major.frecuence < next.frecuence){
+            if(major.frecuence <= next.frecuence){
                 major = next;
             }
             next = next.brother;
@@ -116,6 +117,7 @@ public class Attribute {
         major.frecuenceFather = this.frecuence;
         major.brother = null;
         major.id = id;
+        major.valuesClass = this.valuesClass;
         return major;
     }
     
@@ -184,6 +186,7 @@ public class Attribute {
     public String toString(){
         if(this.isLeaf() == null){
             return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
+                     //+ "  |  " + valuesClass;
         } else {
             return name;
         }

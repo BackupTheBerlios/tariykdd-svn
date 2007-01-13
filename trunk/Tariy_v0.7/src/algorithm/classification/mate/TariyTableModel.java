@@ -69,7 +69,7 @@ public class TariyTableModel extends AbstractTableModel {
 */
 //______________________________________________________
 // GRIPA
-/**
+
     Object [][] datos = {
                         {"no","si","alta","si"},
                         {"si","no","alta","si"},
@@ -86,7 +86,6 @@ public class TariyTableModel extends AbstractTableModel {
                         "temperatura",
                         "gripa"
                       };
-*/
 //______________________________________________________
 // GRIPA NO PARCIAL
 /*
@@ -157,7 +156,7 @@ public class TariyTableModel extends AbstractTableModel {
 */
 //______________________________________________________
 // TITANIC
-  
+/**  
     Object [][] datos = {
         {	"1",	"adulto",	"hombre",	"y"	},
         {	"1",	"adulto",	"hombre",	"y"	},
@@ -2368,7 +2367,7 @@ public class TariyTableModel extends AbstractTableModel {
         "sex",
         "survived"
     };    
-       
+*/       
 //______________________________________________________
 // GRIPA 3
 /*
@@ -2392,7 +2391,8 @@ public class TariyTableModel extends AbstractTableModel {
 */
 //______________________________________________________
 // TIC - TAC - TOE
-  /**  Object [][] datos = {
+    /**
+    Object [][] datos = {
 {	"x",	"x",	"x",	"x",	"o",	"o",	"x",	"o",	"o",	"positive"},
 {	"x",	"x",	"x",	"x",	"o",	"o",	"o",	"x",	"o",	"positive"},
 {	"x",	"x",	"x",	"x",	"o",	"o",	"o",	"o",	"x",	"positive"},

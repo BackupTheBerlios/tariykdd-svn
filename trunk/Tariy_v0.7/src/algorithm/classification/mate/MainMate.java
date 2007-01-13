@@ -364,6 +364,7 @@ public class MainMate {
     
     public ArrayList prune2(ArrayList a,String classe) {
         ArrayList b = new ArrayList(1);
+        int counter = 0;
         float big = 0F;
         int c = 0;
         Object aux = null;
@@ -378,23 +379,16 @@ public class MainMate {
                 big = y;
                 aux = elem;
             }
-            if(y > this.prune2){
-                if(b.isEmpty()){
-                    b.add((short)x);
-                }    
-                b.add((ItemSet) elem);
-                c++;
-            }
+            counter += y;
         }
-        if(c > 0){
-            a.clear();
-            a.addAll(b);
+        if(counter > this.prune2){
             return a;
-        }
-        a.clear();
-        a.add((short)x);
-        a.add((ItemSet) aux);
+        }else{
+            a.clear();
+            a.add((short)x);
+            a.add((ItemSet) aux);
         return a;
+        }
     }
     
     public String fixCounter(ArrayList a){
@@ -459,7 +453,7 @@ public class MainMate {
     
     public TreeCounter erectTree(){
         Describe a1 = (Describe) desc.get(0);
-        Attribute root = new Attribute(a1.getAttribute(),getF(a1.getCounter()),a1.getDadScore());
+        Attribute root = new Attribute(a1.getAttribute(),getF(a1.getCounter()),a1.getDadScore(), a1.getCounter());
         c = new TreeCounter();
         Attribute aux2;
         for(int i = 1; i < desc.size(); i++){
@@ -467,7 +461,7 @@ public class MainMate {
             String str = a1.getAttribute();
             str = str + "=" + a1.getValue();
             aux2 = (Attribute) c.searchTreeDesc(root,a1.getFather());
-            Attribute a2 = new Attribute(str,getF(a1.getCounter()),a1.getDadScore());
+            Attribute a2 = new Attribute(str,getF(a1.getCounter()),a1.getDadScore(), a1.getCounter());
             a2.setId(a1.getNode());
             if(aux2.getSon() != null){
                 aux2 = aux2.getSon();
@@ -478,11 +472,11 @@ public class MainMate {
             }
         }
         c.seeTree(root.getSon());
+        c.root = root;
+        c.pruneLeafs();
         ViewerClasification vc = new ViewerClasification(
                 c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
         vc.setVisible(true);
-        c.root = root;
-        c.pruneLeafs();
         root.viewWekaTree();
         return c;
     }

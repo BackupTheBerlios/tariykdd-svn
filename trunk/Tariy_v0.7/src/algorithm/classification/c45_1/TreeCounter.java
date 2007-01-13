@@ -240,6 +240,7 @@ public class TreeCounter extends Thread{
             node.son.frecuence = frecuences;
             node.son.frecuenceFather = frecuencesFather;
             node.son.name = node.son.son.name;
+            node.son.valuesClass = node.valuesClass; 
             node.son.son = null;
             node.son.brother = null;
         }
@@ -298,6 +299,7 @@ public class TreeCounter extends Thread{
             byDefault.son.name = theClass + "=" + byDefault.son.name;
             byDefault.son.frecuenceFather = byDefault.son.frecuence;
             byDefault.son.id = totalNodes++;
+            byDefault.son.valuesClass = byDefault.valuesClass;
             return byDefault.son;
         } else if(data.getColumnCount() == 1){
             return byDefault.bestChild(theClass, totalNodes++);
@@ -319,6 +321,7 @@ public class TreeCounter extends Thread{
                 data.setNomcol(names);
                 auxiliar.setValuesClass();
                 auxiliar.son = decisionTree(data, auxiliar);
+                //auxiliar.son.valuesClass = auxiliar.valuesClass;
                 auxiliar = auxiliar.brother;
             }
 
@@ -339,21 +342,21 @@ public class TreeCounter extends Thread{
     }
     
     static public void main(String arg[]){
-        TreeCounter c = new TreeCounter(200, new TariyTableModel());
+        TreeCounter c = new TreeCounter(1, new TariyTableModel());
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree();
         //c.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
-        //c.seeTree();
+        c.seeTree();
         c.pruneLeafs();
         c.seeTree();
         System.out.println("decisionTree : " + executionTime + "ms ");
         //System.out.println("digraph J48Tree {\nN0 [label=\"SEX\" ]\nN0->N1 [label=\"= 0\"]\nN1 [label=\"CLASS\" ]\nN1->N2 [label=\"= 0\"]\nN2 [label=\"1 (23.0/3.0)\" shape=box style=filled ]\nN1->N3 [label=\"= 1\"]\nN3 [label=\"1 (145.0/4.0)\" shape=box style=filled ]\nN1->N4 [label=\"= 2\"]\nN4 [label=\"1 (106.0/13.0)\" shape=box style=filled ]\nN1->N5 [label=\"= 3\"]\nN5 [label=\"0 (196.0/90.0)\" shape=box style=filled ]\nN0->N6 [label=\"= 1\"]\nN6 [label=\"CLASS\" ]\nN6->N7 [label=\"= 0\"]\nN7 [label=\"0 (862.0/192.0)\" shape=box style=filled ]\nN6->N8 [label=\"= 1\"]\nN8 [label=\"AGE\" ]\nN8->N9 [label=\"= 0\"]\nN9 [label=\"1 (5.0)\" shape=box style=filled ]\nN8->N10 [label=\"= 1\"]\nN10 [label=\"0 (175.0/57.0)\" shape=box style=filled ]\nN6->N11 [label=\"= 2\"]\nN11 [label=\"AGE\" ]\nN11->N12 [label=\"= 0\"]\nN12 [label=\"1 (11.0)\" shape=box style=filled ]\nN11->N13 [label=\"= 1\"]\nN13 [label=\"0 (168.0/14.0)\" shape=box style=filled ]\nN6->N14 [label=\"= 3\"]\nN14 [label=\"0 (510.0/88.0)\" shape=box style=filled ]\n}\n");
         //System.out.println(root.buildStringTree());
         root.viewWekaTree();
-//        ViewerClasification vc = new ViewerClasification(
-//                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-//        vc.setVisible(true);
+        ViewerClasification vc = new ViewerClasification(
+                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
+        vc.setVisible(true);
 //        TreeCounter c = new TreeCounter(2, new TariyTableModel());
 //        c.start();
     }

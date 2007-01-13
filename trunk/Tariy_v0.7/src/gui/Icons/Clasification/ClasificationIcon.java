@@ -108,7 +108,8 @@ public class ClasificationIcon extends Icon{
 //            String[] names = ((gui.Icons.Filters.TariyTableModel)dataIn).columnName;
             gui.Icons.Filters.TariyTableModel tariyData
                     = new gui.Icons.Filters.TariyTableModel(data, columnsName);
-            MainMate mm = new MainMate(tariyData);
+            int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
+            MainMate mm = new MainMate(tariyData,100, minIntegerRows);
             mm.buildDictionary();
             mm.dataCombination();
             mm.calcEntropy();
