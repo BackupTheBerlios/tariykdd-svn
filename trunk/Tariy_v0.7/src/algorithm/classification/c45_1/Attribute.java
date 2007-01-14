@@ -185,10 +185,10 @@ public class Attribute {
     
     public String toString(){
         if(this.isLeaf() == null){
-            return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
-                     //+ "  |  " + valuesClass;
+            return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]"
+                     + "  |  " + id;
         } else {
-            return name;
+            return name + "  |  " + id;
         }
     }
     
