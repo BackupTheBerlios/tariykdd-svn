@@ -9,6 +9,7 @@
 
 package algorithm.classification.c45_1;
 
+import Utils.GraphDistribution.Grafico;
 import Utils.TreeViewer.TreeVisualizer;
 import gui.Icons.Tree.ViewerClasification;
 import gui.KnowledgeFlow.AnimationLabel;
@@ -354,9 +355,12 @@ public class TreeCounter extends Thread{
         //System.out.println("digraph J48Tree {\nN0 [label=\"SEX\" ]\nN0->N1 [label=\"= 0\"]\nN1 [label=\"CLASS\" ]\nN1->N2 [label=\"= 0\"]\nN2 [label=\"1 (23.0/3.0)\" shape=box style=filled ]\nN1->N3 [label=\"= 1\"]\nN3 [label=\"1 (145.0/4.0)\" shape=box style=filled ]\nN1->N4 [label=\"= 2\"]\nN4 [label=\"1 (106.0/13.0)\" shape=box style=filled ]\nN1->N5 [label=\"= 3\"]\nN5 [label=\"0 (196.0/90.0)\" shape=box style=filled ]\nN0->N6 [label=\"= 1\"]\nN6 [label=\"CLASS\" ]\nN6->N7 [label=\"= 0\"]\nN7 [label=\"0 (862.0/192.0)\" shape=box style=filled ]\nN6->N8 [label=\"= 1\"]\nN8 [label=\"AGE\" ]\nN8->N9 [label=\"= 0\"]\nN9 [label=\"1 (5.0)\" shape=box style=filled ]\nN8->N10 [label=\"= 1\"]\nN10 [label=\"0 (175.0/57.0)\" shape=box style=filled ]\nN6->N11 [label=\"= 2\"]\nN11 [label=\"AGE\" ]\nN11->N12 [label=\"= 0\"]\nN12 [label=\"1 (11.0)\" shape=box style=filled ]\nN11->N13 [label=\"= 1\"]\nN13 [label=\"0 (168.0/14.0)\" shape=box style=filled ]\nN6->N14 [label=\"= 3\"]\nN14 [label=\"0 (510.0/88.0)\" shape=box style=filled ]\n}\n");
         //System.out.println(root.buildStringTree());
         root.viewWekaTree();
-        ViewerClasification vc = new ViewerClasification(
-                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-        vc.setVisible(true);
+        Grafico g = new Grafico(root.son.getValuesClass());
+        g.setVisible(true);
+        //g.run();
+//        ViewerClasification vc = new ViewerClasification(
+//                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
+//        vc.setVisible(true);
 //        TreeCounter c = new TreeCounter(2, new TariyTableModel());
 //        c.start();
     }
