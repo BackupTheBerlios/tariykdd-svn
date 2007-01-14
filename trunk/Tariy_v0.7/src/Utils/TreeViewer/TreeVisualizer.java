@@ -24,6 +24,7 @@
 package Utils.TreeViewer;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
@@ -786,7 +787,19 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
             //keep the focus on the middle of the screen and call animate
         } else if (e.getActionCommand().equals("Visualize The Node")) {
             String who = m_nodes[m_focusNode].m_node.getRefer();
-            System.out.println(who + " Here!!!");
+            ArrayList str = new ArrayList();
+            Node target = m_nodes[m_focusNode].m_node;
+            Edge edgeTarget = target.getParent(0);
+            while(edgeTarget != null){
+                String edge = edgeTarget.getLabel();
+                System.out.println(edge);
+                target = edgeTarget.getSource();
+                String node = target.getLabel();
+                System.out.println(node);
+                edgeTarget = target.getParent(0);
+                str.add(node + "=" + edge);
+            }
+            System.out.println(str);
             System.out.println(m_nodes[m_focusNode].m_node.getColor());
             m_nodes[m_focusNode].m_node.setColor(Color.GREEN);
             repaint();
