@@ -30,7 +30,7 @@ public class Arcos extends JPanel {
         for(int i = 0; i < n; i++){
             Value value = (Value)values.get(i);
             text.add(value.getName() + ": " + df.format(value.getFrecuence()*100/total) + "% ["
-                    + value.getFrecuence() + "/" + total + "]");
+                    + value.getFrecuence() + "/" + (int)total + "]");
         }
     }
     
@@ -63,7 +63,7 @@ public class Arcos extends JPanel {
             case 0:
                 return Color.BLUE;
             case 1:
-                return Color.GREEN;
+                return Color.GREEN.darker();
             case 2:
                 return Color.RED;
             case 3:

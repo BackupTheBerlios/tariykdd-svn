@@ -5,20 +5,18 @@
  */
 
 package Utils.GraphDistribution;
+import algorithm.classification.c45_1.Attribute;
 import java.awt.*;
-import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
 import javax.swing.JList;
 /**
  *
  * @author  Flia Calder�n Romero
  */
 public class Grafico extends javax.swing.JFrame {
+    Arcos sp;
     
     /** Creates new form Grafico */
     public Grafico() {
@@ -29,13 +27,18 @@ public class Grafico extends javax.swing.JFrame {
         values.add(225);
         values.add(22);
         values.add(5);
+        sp = new Arcos(values);
         Collections.sort(values);
-        run(values);
+        run();
     }
     
-    public Grafico(ArrayList values) {
+    public Grafico(Attribute node) {
         initComponents();
-        run(values);
+        sp = new Arcos(node.getValuesClass());
+        sp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, node.name, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10), Color.BLACK));
+        scrollGraph.setViewportView(sp);
+        run();
+        this.setVisible(true);
     }
     
     /** This method is called from within the constructor to
@@ -47,6 +50,7 @@ public class Grafico extends javax.swing.JFrame {
     private void initComponents() {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        scrollGraph = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -59,26 +63,30 @@ public class Grafico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, scrollGraph, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(180, Short.MAX_VALUE)
+                .addContainerGap()
+                .add(scrollGraph, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-230)/2, (screenSize.height-277)/2, 230, 277);
+        setBounds((screenSize.width-240)/2, (screenSize.height-299)/2, 240, 299);
     }// </editor-fold>//GEN-END:initComponents
     
-    public void run(ArrayList values){
-        Arcos sp = new Arcos(values);
-        getContentPane().add(sp);
-        sp.setBounds(10, 10, 200, 190);
+    public void run(){
+        
+        //getContentPane().add(sp);
+        //sp.setBounds(10, 10, 200, 190);
         final ArrayList t = sp.text;
         jList1.setModel(new javax.swing.AbstractListModel() {
             //String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -102,6 +110,7 @@ public class Grafico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane scrollGraph;
     // End of variables declaration//GEN-END:variables
     class CompanyLogoListCellRenderer extends DefaultListCellRenderer {
         public Component getListCellRendererComponent(
