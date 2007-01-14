@@ -33,6 +33,11 @@ public class Grafico extends javax.swing.JFrame {
         run(values);
     }
     
+    public Grafico(ArrayList values) {
+        initComponents();
+        run(values);
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -82,7 +87,7 @@ public class Grafico extends javax.swing.JFrame {
                 return (String)t.get(i);
             }
         });
-        jList1.setCellRenderer(new CompanyLogoListCellRenderer()); 
+        jList1.setCellRenderer(new CompanyLogoListCellRenderer());
     }
     /**
      * @param args the command line arguments

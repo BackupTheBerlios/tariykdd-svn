@@ -1,4 +1,5 @@
 package Utils.GraphDistribution;
+import algorithm.classification.Value;
 import java.awt.geom.*;
 import java.text.*;
 import java.awt.*;
@@ -23,12 +24,13 @@ public class Arcos extends JPanel {
         total = 0;
         n = values.size();
         for(int i = 0; i < n; i++){
-            int value = (Integer)values.get(i);
+            int value = ((Value)values.get(i)).getFrecuence();
             total += value;
         }
         for(int i = 0; i < n; i++){
-            int value = (Integer)values.get(i);
-            text.add("Values: " + i + " " + df.format(value*100/total) + "%]");
+            Value value = (Value)values.get(i);
+            text.add(value.getName() + ": " + df.format(value.getFrecuence()*100/total) + "% ["
+                    + value.getFrecuence() + "/" + total + "]");
         }
     }
     
@@ -42,7 +44,7 @@ public class Arcos extends JPanel {
         
         for(int i = 0; i < 25; i++){
             for(int j = 0; j < n; j++){
-                int value = (Integer)values.get(j);
+                int value = ((Value)values.get(j)).getFrecuence();
                 grados = value * 360 / total;
                 color = this.getColor(j);
                 g2.setPaint(color);
