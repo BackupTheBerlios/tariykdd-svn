@@ -52,7 +52,7 @@ public class Grafico extends javax.swing.JFrame {
         jList1 = new javax.swing.JList();
         scrollGraph = new javax.swing.JScrollPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frm_graficos");
