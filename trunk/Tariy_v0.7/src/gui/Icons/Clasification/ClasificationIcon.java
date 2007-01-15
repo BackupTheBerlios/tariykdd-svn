@@ -39,7 +39,8 @@ public class ClasificationIcon extends Icon{
     private JMenuItem mnuRun;
     private String algorithm;
     public AbstractTableModel dataIn;
-    public TreeCounter c;
+    public TreeCounter c;  //en lugar de un TreeCounter deberia almacenarse un
+    public Attribute root; //Attribute con la raiz del arbol de decision
     public configureParameters cp;
     public double minRows = 25.0;
     AbstractTableModel dataOut1;
@@ -92,9 +93,9 @@ public class ClasificationIcon extends Icon{
         if(algorithm.equals("  C45  ")){
             this.startAnimation();
             TariyTableModel tariyData = this.changeToTariyModel();
-            System.out.println(cp.minRows);
+            //System.out.println(cp.minRows);
             int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
-            c = new TreeCounter(minIntegerRows, tariyData);
+            c = new TreeCounter(minIntegerRows, tariyData, this);
             this.startAnimation();
             c.setAnimation(jack);
             c.start();
@@ -120,6 +121,7 @@ public class ClasificationIcon extends Icon{
 //            mm.calcEntropy();
             mm.showDesc();
             c = mm.erectTree();
+            //c.root
         }
     }
     
