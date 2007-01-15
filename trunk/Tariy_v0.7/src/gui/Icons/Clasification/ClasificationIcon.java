@@ -11,11 +11,13 @@ package gui.Icons.Clasification;
 
 
 import algorithm.classification.c45_1.Attribute;
+//import algorithm.classification.c45_1.Prediction;
 import algorithm.classification.c45_1.TariyTableModel;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
 import algorithm.classification.mate.MainMate;
 import gui.Icons.Filters.Selection.Seleccion;
+import gui.Icons.Prediction.Prediction;
 import gui.KnowledgeFlow.Icon;
 import gui.KnowledgeFlow.JackAnimation;
 import java.awt.BorderLayout;
@@ -40,11 +42,14 @@ public class ClasificationIcon extends Icon{
     public TreeCounter c;
     public configureParameters cp;
     public double minRows = 25.0;
+    AbstractTableModel dataOut1;
+    AbstractTableModel dataOut2;  // este aqui no va
     /** Creates a new instance of DBConnectionIcon */
     public ClasificationIcon(JLabel s, int x, int y) {
         super(s, x, y);
         super.constrainsTo = new ArrayList(1);
         super.constrainsTo.add("TreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
+        super.constrainsTo.add("PredictionIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
         
         mnuConfigure = new javax.swing.JMenuItem();
@@ -72,7 +77,7 @@ public class ClasificationIcon extends Icon{
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 cp = new configureParameters(ci);
-                cp.setVisible(true);
+                cp.setVisible(true);       
             }
         });
     }
@@ -94,15 +99,15 @@ public class ClasificationIcon extends Icon{
             c.setAnimation(jack);
             c.start();
         } else if(algorithm.trim().equals("Mate")){
-            int rows = dataIn.getRowCount();
-            int columns = dataIn.getColumnCount();
+            int rows = dataOut1.getRowCount();
+            int columns = dataOut1.getColumnCount();
             Object[][] data = new Object[rows][columns];
             String[] columnsName = new String[columns];
             for(int i = 0; i < columns; i++){
                 for(int j = 0; j < rows; j++){
-                    data[j][i] = dataIn.getValueAt(j ,i);
+                    data[j][i] = dataOut1.getValueAt(j ,i);
                 }
-                columnsName[i] = dataIn.getColumnName(i);
+                columnsName[i] = dataOut1.getColumnName(i);
             }
 //            Object[][] data = ((gui.Icons.Filters.TariyTableModel)dataIn).data;
 //            String[] names = ((gui.Icons.Filters.TariyTableModel)dataIn).columnName;
@@ -112,22 +117,22 @@ public class ClasificationIcon extends Icon{
             MainMate mm = new MainMate(tariyData,100, minIntegerRows);
             mm.buildDictionary();
             mm.dataCombination();
-            mm.calcEntropy();
+//            mm.calcEntropy();
             mm.showDesc();
             c = mm.erectTree();
         }
     }
     
     public TariyTableModel changeToTariyModel(){
-        int rows = dataIn.getRowCount();
-        int columns = dataIn.getColumnCount();
+        int rows = dataOut1.getRowCount();
+        int columns = dataOut1.getColumnCount();
         Object[][] data = new Object[rows][columns];
         String[] columnsName = new String[columns];
         for(int i = 0; i < columns; i++){
             for(int j = 0; j < rows; j++){
-                data[j][i] = dataIn.getValueAt(j ,i);
+                data[j][i] = dataOut1.getValueAt(j ,i);
             }
-            columnsName[i] = dataIn.getColumnName(i);
+            columnsName[i] = dataOut1.getColumnName(i);
         }
         TariyTableModel tariyModel = new TariyTableModel();
         tariyModel.setDatos(data);
