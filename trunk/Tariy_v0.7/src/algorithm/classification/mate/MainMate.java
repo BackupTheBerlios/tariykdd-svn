@@ -134,11 +134,7 @@ public class MainMate {
         }
     }
     
-    public void calcEntropy(){
-        calcEntropy(0);
-    }
-    
-    public void calcEntropy(int score) {
+    public void calcEntropy() {
         Entropy winatt = null;
         double entro=-100000.0;
         String winner = new String();
@@ -164,13 +160,14 @@ public class MainMate {
             combinations = prune2(combinations,classe);
             combinations = prune1(combinations,classe);
         }
-        buildTree(winner, values,winatt.getSup(),prune1,prune2);
+        buildTree(winner, values,prune1,prune2);
     }
     
-    public void buildTree(String winner, HashMap values, int score,float prune1,int prune2) {
+    public void buildTree(String winner, HashMap values, float prune1,int prune2) {
         ArrayList and = new ArrayList(1);
         if (desc.isEmpty()) {
-            Describe d = new Describe(0,-1, winner, "-1", "-1",null,0);
+            //ArrayList sc = counterClass(key)
+            Describe d = new Describe(0,-1, winner, "-1", "-1",null,getScore(values));
             desc.add(d);
         }
         int index = desc.size()-1;
@@ -200,12 +197,15 @@ public class MainMate {
                                     int l = desc.size()-1;
                                     and = counterClass(values,key,classe);
                                     value = fixCounter(and);
+                                    Object o = (Short) combinations.get(0);
+                                    int score = (Short)o;
                                     d = new Describe(l+1,l, attr, value, "-1", and,score);
                                     flag = false;
                                 } else {
                                     and = counterClass(values,key,classe);
+                                    Object o = (Short) combinations.get(0);
+                                    int score = (Short)o;
                                     d = new Describe(desc.size(),index,attr, value, classe,and,score);
-                                    score = ((Value)and.get(and.size()-1)).getFrecuence();
                                     flag = true;
                                 }
                                 desc.add(d);
@@ -230,17 +230,30 @@ public class MainMate {
                 }
                 winners.put(k, value);
                 and = counterClass(values,key,classe);
+                int score = getScore(values);
                 Describe d = new Describe(desc.size(),index, winner, value, "-1",and,score);
                 desc.add(d);
-                score = ((Value)and.get(and.size()-1)).getFrecuence();
                 dataCombination();
                 if (!attributes.isEmpty()) {
-                    calcEntropy(score);
+                    calcEntropy();
                 }else{
                     int l = desc.size()-1;
                     and = counterClass(values,key,classe);
+                    ArrayList and2 = (ArrayList) and.clone();
+                    and2.remove(and2.size()-1);
                     value = fixCounter(and);
-                    d = new Describe(l+1,l, classe, value, "-1", and,score);
+                    String str2 = ((Value)and.get(0)).getName();
+                    for(int i = 0; i < and2.size(); i++){
+                        String st1 = ((Value)and2.get(i)).getName();
+                        if(str2.equals(st1)){
+                            and2.remove(i);
+                            break;
+                        }
+                    }
+                    and2.add(and.get(0));
+                    Object o = (Short) combinations.get(0);
+                    score = (Short)o;
+                    d = new Describe(l+1,l, classe, value, "-1", and2,score);
                     desc.add(d);
                 }
             }
@@ -349,14 +362,14 @@ public class MainMate {
                 b.add((ItemSet) elem);
             }
         }
-        if(c == 1){
+        if(c == 1){//Only one is good enough
             a.clear();
             a.addAll(b);
             return a;
-        }else if(c == 0){
+        }else if(c == 0){//None is good but nothing happens
             return null;
         }
-        a.clear();
+        a.clear();//Both of them are good enough but just the bigger is returned
         a.add((short)x);
         a.add((ItemSet) aux);
         return a;
@@ -381,10 +394,10 @@ public class MainMate {
             }
             counter += y;
         }
-        if(counter > this.prune2){
-            return a;
+        if(counter > this.prune2){ //if the sum of class values is bigger than 
+            return a;              //prune2 a is returned the same
         }else{
-            a.clear();
+            a.clear();             //if not only the biggest one is returned
             a.add((short)x);
             a.add((ItemSet) aux);
         return a;
@@ -414,6 +427,19 @@ public class MainMate {
         return (String) dictionary.get(i);
     }
     
+    private short getScore(HashMap values) {
+        short s = 0;
+        Set set = values.keySet();
+        Iterator it = set.iterator();
+        ArrayList combinations;
+        //String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
+        while (it.hasNext()) {
+            short key = (Short) it.next();
+            combinations = (ArrayList) values.get(key);
+            s += (Short)combinations.get(0);
+        }
+        return s;
+    }
     /**
      * Adiciona un valor al mapa de atributos ganadores.
      */
@@ -453,7 +479,10 @@ public class MainMate {
     
     public TreeCounter erectTree(){
         Describe a1 = (Describe) desc.get(0);
-        Attribute root = new Attribute(a1.getAttribute(),getF(a1.getCounter()),a1.getDadScore(), a1.getCounter());
+        int fe = getF(a1.getCounter());
+        if(fe != 0 && a1.getCounter().size() == 3) 
+            a1.getCounter().remove(a1.getCounter().size()-1);
+        Attribute root = new Attribute(a1.getAttribute(),fe,a1.getDadScore(), a1.getCounter());
         c = new TreeCounter();
         Attribute aux2;
         for(int i = 1; i < desc.size(); i++){
@@ -461,7 +490,10 @@ public class MainMate {
             String str = a1.getAttribute();
             str = str + "=" + a1.getValue();
             aux2 = (Attribute) c.searchTreeDesc(root,a1.getFather());
-            Attribute a2 = new Attribute(str,getF(a1.getCounter()),a1.getDadScore(), a1.getCounter());
+            fe = getF(a1.getCounter());
+            if(fe != 0 && a1.getCounter().size() == 3) 
+                a1.getCounter().remove(a1.getCounter().size()-1);
+            Attribute a2 = new Attribute(str,fe,a1.getDadScore(), a1.getCounter());
             a2.setId(a1.getNode());
             if(aux2.getSon() != null){
                 aux2 = aux2.getSon();
@@ -473,7 +505,7 @@ public class MainMate {
         }
         c.seeTree(root.getSon());
         c.root = root;
-        c.pruneLeafs();
+        //c.pruneLeafs();
         ViewerClasification vc = new ViewerClasification(
                 c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
         vc.setVisible(true);
@@ -482,7 +514,7 @@ public class MainMate {
     }
     
     public static void main(String args[]) {
-        MainMate mm = new MainMate(new gui.Icons.Filters.TariyTableModel(),100,200);
+        MainMate mm = new MainMate(new gui.Icons.Filters.TariyTableModel(),100,0);
         mm.buildDictionary();
         long time = System.currentTimeMillis();
         mm.dataCombination();
