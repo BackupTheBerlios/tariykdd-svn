@@ -199,7 +199,7 @@ public class Attribute {
         if(this.isLeaf() == null){
             return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
         } else {
-            return name;
+            return name; // + "  |  " + valuesClass;
         }
     }
     
