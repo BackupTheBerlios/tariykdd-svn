@@ -18,8 +18,8 @@ import java.util.*;
 public class compareConfidence implements Comparator {
     
     public int compare(Object obj1, Object obj2) {
-        int s1 = ((Leaf)obj1).leaf.frecuenceFather;
-        int s2 = ((Leaf)obj2).leaf.frecuenceFather;
+        int s1 = ((Attribute)((Leaf)obj1).getLeaf()).getFrecuenceFather();
+        int s2 = ((Attribute)((Leaf)obj2).getLeaf()).getFrecuenceFather();
         
         return s2 - s1;
     }

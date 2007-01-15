@@ -18,6 +18,8 @@ import algorithm.classification.Value;
 import java.awt.Container;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.JFrame;
 
@@ -63,7 +65,11 @@ public class Attribute {
     public int getFrecuence() {
         return frecuence;
     }
-    
+
+    public int getFrecuenceFather() {
+        return frecuenceFather;
+    }
+
     public void incrementFrecuence(){
         frecuence++;
     }
@@ -131,7 +137,7 @@ public class Attribute {
         }
         return attribute;
     }
-
+    
     public Attribute getChild(String name) {
         Attribute attribute = this.son;
         
@@ -200,6 +206,35 @@ public class Attribute {
             return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
         } else {
             return name; // + "  |  " + valuesClass;
+        }
+    }
+    
+    public LinkedList getLeafs(){
+        StringBuffer orderLeafs = new StringBuffer();
+        LinkedList leafs = new LinkedList();
+        LinkedList path = new LinkedList();
+        getLeafs(this.son, path, leafs);
+        Collections.sort(leafs, new compareConfidence());
+        Iterator it = leafs.iterator();
+        int order = 1;
+        while(it.hasNext()){
+            Leaf oneLeaf = (Leaf)it.next();
+            orderLeafs.append(order + ") " + oneLeaf + "\n");
+            order++;
+        }
+        return leafs;
+    }
+    
+    private void getLeafs(Attribute auxiliar, LinkedList path, LinkedList leafs){
+        if(auxiliar.son != null){
+            path.add(auxiliar);
+            getLeafs(auxiliar.son, path, leafs);
+            path.removeLast();
+        } else {
+            leafs.add(new Leaf(auxiliar, path));
+        }
+        if(auxiliar.brother != null){
+            getLeafs(auxiliar.brother, path, leafs);
         }
     }
     
