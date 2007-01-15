@@ -67,38 +67,44 @@ public class Prediction extends AbstractTableModel{
             if(auxiliar.son!=null){
               colnode = getColNode(cad);   
             }   
-            else colnode = 0; 
-            cad = token.nextToken().trim();
-            atri = datos[f][colnode].toString();
-            
-            if(auxiliar.son == null){
-               datos[f][columns] =  cad;
-               f++;
-               NewTable(ax);
-            }
-            if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
-                NewTable(auxiliar.son);
-            }
-            if(auxiliar.brother != null){
-                NewTable(auxiliar.brother);
-            }
-            else { // por probar
-                // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
-                int vlrv = 0;
-                String cadv = "";
-                ArrayList values = auxiliar.getValuesClass();
-                Collections.sort(values, new compareValues());
-                for(int v=0; v < values.size(); v++){  // busca el valor parcializado con mayor frecuencia ejm si ono con mas apaariciones
-                   Value value = (Value)values.get(v);
-                   if(value.getFrecuence()>vlrv){
-                      vlrv =  value.getFrecuence();
-                      cadv = value.getName();
-                   } 
+//            else colnode = 0; 
+            if(colnode != -1){
+                cad = token.nextToken().trim();
+                atri = datos[f][colnode].toString();
+
+                if(auxiliar.son == null){
+                   datos[f][columns] =  cad;
+                   f++;
+                   NewTable(ax);
                 }
-               datos[f][columns] = cadv;
-               f++;
-               NewTable(ax);
+                if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
+                    NewTable(auxiliar.son);
+                }
+                if(auxiliar.brother != null){
+                    NewTable(auxiliar.brother);
+                }
+                else { // por probar
+                    // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
+                    int vlrv = 0;
+                    String cadv = "";
+                    ArrayList values = auxiliar.getValuesClass();
+                    Collections.sort(values, new compareValues());
+                    for(int v=0; v < values.size(); v++){  // busca el valor parcializado con mayor frecuencia ejm si ono con mas apaariciones
+                       Value value = (Value)values.get(v);
+                       if(value.getFrecuence()>vlrv){
+                          vlrv =  value.getFrecuence();
+                          cadv = value.getName();
+                       } 
+                    }
+                   datos[f][columns] = cadv;
+                   f++;
+                   NewTable(ax);
+                }
             }
+            else f = rows;
+        }
+        else {
+            System.out.println("fila" + f);
         }
     }
     
@@ -124,12 +130,16 @@ public class Prediction extends AbstractTableModel{
             }
         }
         if(!compatibilidad){
+            for(int f = 0; f < rows; f++ ){             
+                  datos[f][columns] = "x";       
+            }
            JOptionPane.showMessageDialog(null, "Tablas Incompatibles","Error en Prediction.",JOptionPane.ERROR_MESSAGE);
+           return -1;
            // de alguna forma debo salir para que no siga ejecutando esto
            // y devolver una tabla vacia y no permitir que se ejecute el view
            // con los que clasifique de esta forma se puede saber el porcentaje de certeza
         }
-        return numcol;
+        else return numcol;
     }
     
     public int getColumnCount() {
