@@ -23,8 +23,11 @@
 
 package Utils.TreeViewer;
 
+import Utils.GraphDistribution.Grafico;
+import algorithm.classification.c45_1.Attribute;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Stack;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
@@ -219,7 +222,7 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
     private JTextField m_searchString;
     private JDialog m_searchWin;
     private JRadioButton m_caseSen;
-    
+    private Attribute root;
     ///////////////////
     
     //this is the event fireing stuff
@@ -786,35 +789,24 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
             autoScale();  //this will figure the best scale value
             //keep the focus on the middle of the screen and call animate
         } else if (e.getActionCommand().equals("Visualize The Node")) {
-            String who = m_nodes[m_focusNode].m_node.getRefer();
-            ArrayList str = new ArrayList();
+            Stack stack = new Stack();
             Node target = m_nodes[m_focusNode].m_node;
             Edge edgeTarget = target.getParent(0);
             while(edgeTarget != null){
                 String edge = edgeTarget.getLabel();
-                System.out.println(edge);
                 target = edgeTarget.getSource();
                 String node = target.getLabel();
-                System.out.println(node);
                 edgeTarget = target.getParent(0);
-                str.add(node + "=" + edge);
+                stack.push(node + "=" + edge);
             }
-            System.out.println(str);
-            System.out.println(m_nodes[m_focusNode].m_node.getColor());
+            Attribute auxSon = root;
+            while(!stack.empty()){
+                String node = (String) stack.pop();
+                auxSon = auxSon.getChild(node);
+            }
+            new Grafico(auxSon);
             m_nodes[m_focusNode].m_node.setColor(Color.GREEN);
             repaint();
-            //send the node data to the visualizer
-//      if (m_focusNode >= 0) {
-//	//Instances inst;
-//	if ((inst = m_nodes[m_focusNode].m_node.getInstances()) != null) {
-//	  VisualizePanel pan = new VisualizePanel();
-//	  pan.setInstances(inst);
-//	  JFrame nf = new JFrame();
-//	  nf.setSize(400, 300);
-//	  nf.getContentPane().add(pan);
-//	  nf.setVisible(true);
-//	}
-//	else {
 //	  JOptionPane.showMessageDialog(this, "Sorry, there is no " +
 //					"availble Instances data for " +
 //					"this Node.", "Sorry!",
@@ -2050,6 +2042,14 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setSize(800,600);
         f.setVisible(true);
+    }
+
+    public Attribute getRoot() {
+        return root;
+    }
+
+    public void setRoot(Attribute root) {
+        this.root = root;
     }
 }
 
