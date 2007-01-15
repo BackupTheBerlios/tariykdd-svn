@@ -131,6 +131,18 @@ public class Attribute {
         }
         return attribute;
     }
+
+    public Attribute getChild(String name) {
+        Attribute attribute = this.son;
+        
+        while(attribute != null) {
+            if(attribute.toString().equals(name)){
+                return attribute;
+            }
+            attribute = attribute.brother;
+        }
+        return null;
+    }
     
     //este devuelve cuantos hijos tiene este nodo
     public int getChildCount() {
@@ -185,10 +197,9 @@ public class Attribute {
     
     public String toString(){
         if(this.isLeaf() == null){
-            return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]"
-                     + "  |  " + id;
+            return name + " [" + this.frecuence + "/" + this.frecuenceFather + "]";
         } else {
-            return name + "  |  " + id;
+            return name;
         }
     }
     
@@ -236,6 +247,7 @@ public class Attribute {
         top = builder.create(new StringReader(this.buildStringTree()));
         int num = top.getCount(top,0);
         TreeVisualizer a = new TreeVisualizer(null, top, arrange);
+        a.setRoot(this);
         a.setSize(800 ,600);
         JFrame f;
         f = new JFrame();
