@@ -336,6 +336,7 @@ public class TreeCounter extends Thread{
         this.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         this.seeTree();
+        this.root.viewWekaTree();
         TreePanel = this.view.createAndShowGUI(new TreeViewer(root));
         RulesText = this.seeLeafs(root);
         System.out.println("decisionTree : " + executionTime + "ms ");
