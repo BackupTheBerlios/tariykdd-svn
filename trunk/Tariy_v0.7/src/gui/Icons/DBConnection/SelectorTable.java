@@ -263,7 +263,8 @@ public class SelectorTable extends javax.swing.JFrame
             for(int i = 0; i < ncolumns; i++){
                 column = (String)canvas.getSelect().elementAt(i);
                 posFrom = queryFrom.indexOf("\nFROM ");
-                posOrderBy= queryFrom.indexOf("\nORDER BY ");
+                //posOrderBy= queryFrom.indexOf("\nORDER BY ");
+                posOrderBy = queryFrom.length();
                 String query = "SELECT distinct " + column + queryFrom.substring(posFrom, posOrderBy) +
                         " ORDER BY " + column;
                 rs = stm.executeQuery(query);
