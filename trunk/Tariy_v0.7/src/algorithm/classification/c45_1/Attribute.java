@@ -65,11 +65,11 @@ public class Attribute {
     public int getFrecuence() {
         return frecuence;
     }
-
+    
     public int getFrecuenceFather() {
         return frecuenceFather;
     }
-
+    
     public void incrementFrecuence(){
         frecuence++;
     }
@@ -82,6 +82,27 @@ public class Attribute {
         Attribute aux = this.son;
         while(aux != null){
             valuesClass.add(new Value(aux.name, aux.frecuence));
+            aux = aux.brother;
+        }
+    }
+    
+    public void setRootValuesClass(){
+        Attribute aux = this.son;
+        ArrayList firts = aux.valuesClass;
+        Iterator ite = firts.iterator();
+        while(ite.hasNext()){
+            Value value = (Value)ite.next();
+            this.valuesClass.add(new Value(value.getName(),value.getFrecuence()));
+        }
+        aux = aux.brother;
+        while(aux != null){
+            ArrayList values = aux.valuesClass;
+            Iterator it = values.iterator();
+            int i = 0;
+            while(it.hasNext()){
+                Value value = (Value)it.next();
+                ((Value)valuesClass.get(i++)).incFrecuence(value.getFrecuence());
+            }
             aux = aux.brother;
         }
     }
