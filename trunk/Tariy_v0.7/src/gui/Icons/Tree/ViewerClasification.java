@@ -35,6 +35,7 @@ public class ViewerClasification extends javax.swing.JFrame {
         TextRules.setText(RulesText.toString());
         TabPanel.addTab("Tree", TreePanel);
         TabPanel.addTab("Rules", scrollTree);
+        root.viewWekaTree();
     }
     
     /** This method is called from within the constructor to
