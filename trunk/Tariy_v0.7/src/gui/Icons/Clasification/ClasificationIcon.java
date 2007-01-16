@@ -118,10 +118,10 @@ public class ClasificationIcon extends Icon{
             MainMate mm = new MainMate(tariyData,100, minIntegerRows);
             mm.buildDictionary();
             mm.dataCombination();
-//            mm.calcEntropy();
+            mm.calcEntropy();
             mm.showDesc();
             c = mm.erectTree();
-            //c.root
+            root = mm.root;
         }
     }
     
