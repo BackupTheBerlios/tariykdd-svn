@@ -9,6 +9,7 @@
 
 package gui.Icons.Tree;
 
+import algorithm.classification.c45_1.Attribute;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -24,6 +25,7 @@ public class TreeIcon extends Icon{
     private JMenuItem mnuView;
     public JPanel TreePanel;
     public StringBuffer RulesText;
+    public Attribute root;
     
     /** Creates a new instance of DBConnectionIcon */
     public TreeIcon(JLabel s, int x, int y) {
@@ -31,7 +33,7 @@ public class TreeIcon extends Icon{
         super.constrainsTo = new ArrayList(0);
         
         mnuView = new javax.swing.JMenuItem();
-        mnuView.setText("Run...");
+        mnuView.setText("View...");
         mnuView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuViewActionPerformed(evt);
@@ -43,7 +45,7 @@ public class TreeIcon extends Icon{
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewerClasification(TreePanel, RulesText).setVisible(true);
+                new ViewerClasification(root).setVisible(true);
             }
         });
     }

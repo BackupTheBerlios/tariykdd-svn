@@ -6,9 +6,12 @@
 
 package gui.Icons.Tree;
 
+import algorithm.classification.c45_1.Attribute;
+import algorithm.classification.c45_1.C45TreeGUI;
+import algorithm.classification.c45_1.TreeCounter;
+import algorithm.classification.c45_1.TreeViewer;
 import java.awt.TextArea;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -20,15 +23,18 @@ import javax.swing.JTextArea;
 public class ViewerClasification extends javax.swing.JFrame {
     
     /** Creates new form ViewerClasification */
-    public ViewerClasification(JPanel panel, StringBuffer rules) {
+    public ViewerClasification(Attribute root) {
         initComponents();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
+        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
+                                           //  debe cambiar a un TreeTableModel
+        StringBuffer RulesText = c.seeLeafs(root);
+        scrollTree = new javax.swing.JScrollPane();
         TextRules = new javax.swing.JTextArea();
-        jScrollPane7.setViewportView(TextRules);
-        TextRules.setText(rules.toString());
-        TabPanel.addTab("Tree", panel);
-        TabPanel.addTab("Rules", jScrollPane7);
-        
+        scrollTree.setViewportView(TextRules);
+        TextRules.setText(RulesText.toString());
+        TabPanel.addTab("Tree", TreePanel);
+        TabPanel.addTab("Rules", scrollTree);
     }
     
     /** This method is called from within the constructor to
@@ -86,9 +92,9 @@ public class ViewerClasification extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TabPanel;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
-    private JScrollPane jScrollPane7;
-
+    
+    private JScrollPane scrollTree;
+    
     private JTextArea TextRules;
     
 }
