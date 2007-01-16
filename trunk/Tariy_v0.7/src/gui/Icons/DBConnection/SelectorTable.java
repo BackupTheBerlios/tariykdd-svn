@@ -33,11 +33,17 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -68,7 +74,8 @@ public class SelectorTable extends javax.swing.JFrame
         //tblPreview.setColumnModel(new myTableColumnModel());
         tblPreview.getColumnModel().addColumnModelListener(this);
         dataset = new DataSet("");
-        
+        tblPreview.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //this.setOptimalColumnWidth(tblPreview);
     }
     
     /** This method is called from within the constructor to
@@ -369,6 +376,7 @@ public class SelectorTable extends javax.swing.JFrame
         tableModel = new ScrollableTableModel(connection,
                 txtQuery2.getToolTipText());
         tblPreview.setModel(tableModel);
+        this.setOptimalColumnWidth(tblPreview);
     }//GEN-LAST:event_btnExecuteActionPerformed
     
     private void cbxTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTableActionPerformed
@@ -572,4 +580,81 @@ public class SelectorTable extends javax.swing.JFrame
     private javax.swing.JTable tblPreview;
     private javax.swing.JEditorPane txtQuery2;
     // End of variables declaration//GEN-END:variables
+    public static void setOptimalColumnWidth(JTable jtable) {
+        int            i;
+        
+        for (i = 0; i < jtable.getColumnModel().getColumnCount(); i++)
+            setOptimalColumnWidth(jtable, i);
+    }
+    
+    public static void setOptimalColumnWidth(JTable jtable, int col) {
+        int            width;
+        TableColumn    column;
+        JTableHeader   header;
+        
+        if ( (col >= 0) && (col < jtable.getColumnModel().getColumnCount()) ) {
+            width = calcColumnWidth(jtable, col);
+            
+            if (width >= 0) {
+                header = jtable.getTableHeader();
+                column = jtable.getColumnModel().getColumn(col);
+                column.setPreferredWidth(width);
+                jtable.sizeColumnsToFit(-1);
+                header.repaint();
+            }
+        }
+    }
+    
+    public static int calcColumnWidth(JTable table, int col) {
+        int width = calcHeaderWidth(table, col);
+        if (width == -1)
+            return width;
+        
+        TableColumnModel columns = table.getColumnModel();
+        TableModel data = table.getModel();
+        int rowCount = data.getRowCount();
+        TableColumn column = columns.getColumn(col);
+        try {
+            for (int row = rowCount - 1; row >= 0; --row) {
+                Component c = table.prepareRenderer(
+                        table.getCellRenderer(row, col),
+                        row, col);
+                width = Math.max(width, c.getPreferredSize().width + 10);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return width;
+    }
+    public static int calcHeaderWidth(JTable table, int col) {
+        if (table == null)
+            return -1;
+        
+        if (col < 0 || col > table.getColumnCount()) {
+            System.out.println("invalid col " + col);
+            return -1;
+        }
+        
+        JTableHeader header = table.getTableHeader();
+        TableCellRenderer defaultHeaderRenderer = null;
+        if (header != null) defaultHeaderRenderer = header.getDefaultRenderer();
+        TableColumnModel columns = table.getColumnModel();
+        TableModel data = table.getModel();
+        TableColumn column = columns.getColumn(col);
+        int width = -1;
+        TableCellRenderer h = column.getHeaderRenderer();
+        if (h == null) h = defaultHeaderRenderer;
+        if (h != null) {
+            // Not explicitly impossible
+            Component c = h.getTableCellRendererComponent(
+                    table,
+                    column.getHeaderValue(),
+                    false, false, -1, col);
+            width = c.getPreferredSize().width + 5;
+        }
+        
+        return width;
+    }
+
 }
