@@ -6,13 +6,17 @@
 
 package gui.Icons.Tree;
 
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -30,7 +34,8 @@ public class ShowClassificationRules extends javax.swing.JFrame {
         this.rules = rules;
         TreeTableModel model = new TreeTableModel(rules);
         tblRules.setModel(model);
-        tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        this.setOptimalColumnWidth(tblRules);
         this.addJTableHeaderListener();
     }
     
@@ -79,14 +84,14 @@ public class ShowClassificationRules extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pack();
@@ -100,13 +105,11 @@ public class ShowClassificationRules extends javax.swing.JFrame {
                 if(e.getClickCount() == 1 && column != -1) {
                     if(column == 2) {
                         Collections.sort(rules, new compareClass());
-                        TreeTableModel ttm = new TreeTableModel(rules);
-                        tblRules.setModel(ttm);
+                        tblRules.updateUI();
                     } else if(column == 3) {
                         Collections.sort(rules, new compareConfidence());
                         Collections.sort(rules, new compareFrecuence());
-                        TreeTableModel ttm = new TreeTableModel(rules);
-                        tblRules.setModel(ttm);
+                        tblRules.updateUI();
                     }
                 }
             }
@@ -129,4 +132,81 @@ public class ShowClassificationRules extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRules;
     // End of variables declaration//GEN-END:variables
+    public static void setOptimalColumnWidth(JTable jtable) {
+        int            i;
+        
+        for (i = 0; i < jtable.getColumnModel().getColumnCount(); i++)
+            setOptimalColumnWidth(jtable, i);
+    }
+    
+    public static void setOptimalColumnWidth(JTable jtable, int col) {
+        int            width;
+        TableColumn    column;
+        JTableHeader   header;
+        
+        if ( (col >= 0) && (col < jtable.getColumnModel().getColumnCount()) ) {
+            width = calcColumnWidth(jtable, col);
+            
+            if (width >= 0) {
+                header = jtable.getTableHeader();
+                column = jtable.getColumnModel().getColumn(col);
+                column.setPreferredWidth(width);
+                jtable.sizeColumnsToFit(-1);
+                header.repaint();
+            }
+        }
+    }
+    
+    public static int calcColumnWidth(JTable table, int col) {
+        int width = calcHeaderWidth(table, col);
+        if (width == -1)
+            return width;
+        
+        TableColumnModel columns = table.getColumnModel();
+        TableModel data = table.getModel();
+        int rowCount = data.getRowCount();
+        TableColumn column = columns.getColumn(col);
+        try {
+            for (int row = rowCount - 1; row >= 0; --row) {
+                Component c = table.prepareRenderer(
+                        table.getCellRenderer(row, col),
+                        row, col);
+                width = Math.max(width, c.getPreferredSize().width + 10);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return width;
+    }
+    public static int calcHeaderWidth(JTable table, int col) {
+        if (table == null)
+            return -1;
+        
+        if (col < 0 || col > table.getColumnCount()) {
+            System.out.println("invalid col " + col);
+            return -1;
+        }
+        
+        JTableHeader header = table.getTableHeader();
+        TableCellRenderer defaultHeaderRenderer = null;
+        if (header != null) defaultHeaderRenderer = header.getDefaultRenderer();
+        TableColumnModel columns = table.getColumnModel();
+        TableModel data = table.getModel();
+        TableColumn column = columns.getColumn(col);
+        int width = -1;
+        TableCellRenderer h = column.getHeaderRenderer();
+        if (h == null) h = defaultHeaderRenderer;
+        if (h != null) {
+            // Not explicitly impossible
+            Component c = h.getTableCellRendererComponent(
+                    table,
+                    column.getHeaderValue(),
+                    false, false, -1, col);
+            width = c.getPreferredSize().width + 5;
+        }
+        
+        return width;
+    }
+    
 }
