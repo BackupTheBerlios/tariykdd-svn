@@ -159,8 +159,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             //((AssociationIcon)to).dataset.showNTree();
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof TreeIcon){
-                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
-                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
+//                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
+//                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
+                            ((TreeIcon)to).root = ((ClasificationIcon)from).root;
                         }
                         else if(from instanceof ClasificationIcon &&
                                 to instanceof PredictionIcon){
