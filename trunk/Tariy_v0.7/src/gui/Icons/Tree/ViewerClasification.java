@@ -11,23 +11,31 @@ import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
 import java.awt.TextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author  endimeon
  */
 public class ViewerClasification extends javax.swing.JFrame {
-    
+    private LinkedList rules;
     /** Creates new form ViewerClasification */
+    
     public ViewerClasification(Attribute root) {
         initComponents();
         JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
         TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
-                                           //  debe cambiar a un TreeTableModel
+        //  debe cambiar a un TreeTableModel
         StringBuffer RulesText = c.seeLeafs(root);
         scrollTree = new javax.swing.JScrollPane();
         TextRules = new javax.swing.JTextArea();
@@ -35,7 +43,40 @@ public class ViewerClasification extends javax.swing.JFrame {
         TextRules.setText(RulesText.toString());
         TabPanel.addTab("Tree", TreePanel);
         TabPanel.addTab("Rules", scrollTree);
+        scrollTable = new javax.swing.JScrollPane();
+        tblRules = new javax.swing.JTable();
+        rules = root.getLeafs();
+        TreeTableModel tblModel = new TreeTableModel(rules);
+        tblRules.setModel(tblModel);
+        tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        ShowClassificationRules.setOptimalColumnWidth(tblRules);
+        
+        scrollTable.setViewportView(tblRules);
+        TabPanel.addTab("Table", scrollTable);
+        this.addJTableHeaderListener();
         root.viewWekaTree();
+    }
+    
+    public void addJTableHeaderListener() {
+        MouseAdapter mouseListener = new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                TableColumnModel columnModel = tblRules.getColumnModel();
+                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
+                int column = tblRules.convertColumnIndexToModel(viewColumn);
+                if(e.getClickCount() == 1 && column != -1) {
+                    if(column == 2) {
+                        Collections.sort(rules, new compareClass());
+                        tblRules.updateUI();
+                    } else if(column == 3) {
+                        Collections.sort(rules, new compareConfidence());
+                        Collections.sort(rules, new compareFrecuence());
+                        tblRules.updateUI();
+                    }
+                }
+            }
+        };
+        JTableHeader header = tblRules.getTableHeader();
+        header.addMouseListener(mouseListener);
     }
     
     /** This method is called from within the constructor to
@@ -93,9 +134,8 @@ public class ViewerClasification extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TabPanel;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-    
     private JScrollPane scrollTree;
-    
     private JTextArea TextRules;
-    
+    private javax.swing.JScrollPane scrollTable;
+    private javax.swing.JTable tblRules;
 }
