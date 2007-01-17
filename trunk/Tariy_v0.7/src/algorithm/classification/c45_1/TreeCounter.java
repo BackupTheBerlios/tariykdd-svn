@@ -64,6 +64,7 @@ public class TreeCounter extends Thread{
         MIN_ROWS = min_rows;
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
+        root.frecuence = data.getRowCount();
         totalNodes = 0;
     }
     
@@ -73,6 +74,7 @@ public class TreeCounter extends Thread{
         MIN_ROWS = min_rows;
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
+        root.frecuence = data.getRowCount();
         totalNodes = 0;
     }
     

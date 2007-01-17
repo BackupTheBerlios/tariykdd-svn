@@ -5,8 +5,10 @@
  */
 
 package Utils.GraphDistribution;
+import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.DefaultListCellRenderer;
@@ -17,7 +19,8 @@ import javax.swing.JList;
  */
 public class Grafico extends javax.swing.JFrame {
     Arcos sp;
-    
+    Attribute node;
+    DecimalFormat df = new DecimalFormat();
     /** Creates new form Grafico */
     public Grafico() {
         initComponents();
@@ -27,14 +30,16 @@ public class Grafico extends javax.swing.JFrame {
         values.add(225);
         values.add(22);
         values.add(5);
-        sp = new Arcos(values);
+        sp = new Arcos(values, 452);
         Collections.sort(values);
         run();
     }
     
     public Grafico(Attribute node) {
         initComponents();
-        sp = new Arcos(node.getValuesClass());
+        df.setMaximumFractionDigits(2);
+        this.node = node;
+        sp = new Arcos(node.getValuesClass(), node.getFrecuence());
         sp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, node.name, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10), Color.BLACK));
         scrollGraph.setViewportView(sp);
         run();
@@ -84,15 +89,17 @@ public class Grafico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void run(){
-        
-        //getContentPane().add(sp);
-        //sp.setBounds(10, 10, 200, 190);
-        final ArrayList t = sp.text;
+        final ArrayList t = node.getValuesClass();
         jList1.setModel(new javax.swing.AbstractListModel() {
-            //String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return t.size(); }
             public Object getElementAt(int i) {
-                return (String)t.get(i);
+                Value value = (Value)t.get(i);
+                int total = node.getFrecuence();
+                Double confidence = new Double((double)value.getFrecuence()/(double)total);
+                String item = value.getName() + ": " 
+                        + df.format(confidence * 100) + "% [" 
+                        + value.getFrecuence() + "/" + total + "]";
+                return item;
             }
         });
         jList1.setCellRenderer(new CompanyLogoListCellRenderer());

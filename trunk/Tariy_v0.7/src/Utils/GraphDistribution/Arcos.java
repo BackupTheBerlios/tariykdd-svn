@@ -1,37 +1,22 @@
 package Utils.GraphDistribution;
 import algorithm.classification.Value;
-import java.awt.geom.*;
-import java.text.*;
 import java.awt.*;
+import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 import javax.swing.*;
-import java.awt.print.*;
 
 public class Arcos extends JPanel {
     private double ini;
     private Color color;
     ArrayList values;
-    DecimalFormat df = new DecimalFormat();
-    public ArrayList text;
     double total;
     int n;
     
-    public Arcos(ArrayList values) {
+    public Arcos(ArrayList values, int total) {
         setBackground(Color.WHITE);
-        df.setMaximumFractionDigits(2);
         this.values = values;
-        text = new ArrayList(values.size());
-        total = 0;
+        this.total = (double)total;
         n = values.size();
-        for(int i = 0; i < n; i++){
-            int value = ((Value)values.get(i)).getFrecuence();
-            total += value;
-        }
-        for(int i = 0; i < n; i++){
-            Value value = (Value)values.get(i);
-            text.add(value.getName() + ": " + df.format(value.getFrecuence()*100/total) + "% ["
-                    + value.getFrecuence() + "/" + (int)total + "]");
-        }
     }
     
     public void porValores(Graphics2D g2) {
@@ -44,8 +29,8 @@ public class Arcos extends JPanel {
         
         for(int i = 0; i < 25; i++){
             for(int j = 0; j < n; j++){
-                int value = ((Value)values.get(j)).getFrecuence();
-                grados = value * 360 / total;
+                double value = (double)((Value)values.get(j)).getFrecuence();
+                grados = (value * 360) / total;
                 color = this.getColor(j);
                 g2.setPaint(color);
                 g2.fill(new Arc2D.Double(x, y - i, ancho, alto, ini, grados, 2));
