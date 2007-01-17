@@ -50,11 +50,13 @@ public class ViewerClasification extends javax.swing.JFrame {
         tblRules.setModel(tblModel);
         tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         ShowClassificationRules.setOptimalColumnWidth(tblRules);
-        
         scrollTable.setViewportView(tblRules);
         TabPanel.addTab("Table", scrollTable);
         this.addJTableHeaderListener();
-        root.viewWekaTree();
+        scrollWekaTree = new javax.swing.JScrollPane();
+        pnlWekaTree = root.getWekaTree();
+        scrollWekaTree.setViewportView(pnlWekaTree);
+        TabPanel.addTab("Weka", scrollWekaTree);
     }
     
     public void addJTableHeaderListener() {
@@ -138,4 +140,6 @@ public class ViewerClasification extends javax.swing.JFrame {
     private JTextArea TextRules;
     private javax.swing.JScrollPane scrollTable;
     private javax.swing.JTable tblRules;
+    private javax.swing.JScrollPane scrollWekaTree;
+    private javax.swing.JPanel pnlWekaTree;
 }
