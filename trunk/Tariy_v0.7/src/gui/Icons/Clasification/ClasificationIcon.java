@@ -36,15 +36,18 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ClasificationIcon extends Icon{
     private JMenuItem mnuConfigure;
-    private JMenuItem mnuRun;
+    public JMenuItem mnuRun;
     private String algorithm;
     public AbstractTableModel dataIn;
     public TreeCounter c;  //en lugar de un TreeCounter deberia almacenarse un
     public Attribute root; //Attribute con la raiz del arbol de decision
     public configureParameters cp;
     public double minRows = 25.0;
+    public double trainingSet = 100.0;
     AbstractTableModel dataOut1;
     AbstractTableModel dataOut2;  // este aqui no va
+    
+    public double threshold = 100.0;
     /** Creates a new instance of DBConnectionIcon */
     public ClasificationIcon(JLabel s, int x, int y) {
         super(s, x, y);
@@ -69,8 +72,9 @@ public class ClasificationIcon extends Icon{
                 mnuRunActionPerformed(evt);
             }
         });
-        //mnuRun.setEnabled(false);
+        mnuRun.setEnabled(false);
         super.pupMenu.add(mnuRun);
+        this.setInfo("Without\nParameters...");
     }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +82,7 @@ public class ClasificationIcon extends Icon{
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 cp = new configureParameters(ci);
-                cp.setVisible(true);       
+                cp.setVisible(true);
             }
         });
     }
@@ -95,7 +99,7 @@ public class ClasificationIcon extends Icon{
             TariyTableModel tariyData = this.changeToTariyModel();
             //System.out.println(cp.minRows);
             int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
-            c = new TreeCounter(minIntegerRows, tariyData, this);
+            c = new TreeCounter(tariyData, minIntegerRows, threshold, this);
             this.startAnimation();
             c.setAnimation(jack);
             c.start();
