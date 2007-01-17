@@ -100,14 +100,13 @@ public class Prediction extends AbstractTableModel{
                           cadv = value.getName();
                        } 
                     }
-                   datos[f][columns] = cadv;
+                   datos[f][columns] = cadv; 
                    f++;
                    auxiliar = ax;
                 }
             }
             else f = rows;
         }
-        System.out.println("fila" + f);
     }
     
     public void nameColTarget(Attribute aux){
