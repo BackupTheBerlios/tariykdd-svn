@@ -42,6 +42,7 @@ public class TreeCounter extends Thread{
     public String theClass;
     private AnimationLabel animation = null;
     public int MIN_ROWS;
+    public double THRESHOLD;
     public TariyTableModel data = null;
     
     public JPanel TreePanel;
@@ -59,19 +60,21 @@ public class TreeCounter extends Thread{
         totalNodes = 0;
     }
     
-    public TreeCounter(int min_rows, TariyTableModel data) {
+    public TreeCounter(TariyTableModel data, int min_rows, double threshold) {
         this.data = data;
-        MIN_ROWS = min_rows;
+        this.MIN_ROWS = min_rows;
+        this.THRESHOLD = threshold;
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
         root.frecuence = data.getRowCount();
         totalNodes = 0;
     }
     
-    public TreeCounter(int min_rows, TariyTableModel data, ClasificationIcon ci) {
+    public TreeCounter(TariyTableModel data, int min_rows, double threshold, ClasificationIcon ci) {
         this.ci = ci;
         this.data = data;
-        MIN_ROWS = min_rows;
+        this.MIN_ROWS = min_rows;
+        this.THRESHOLD = threshold;
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
         root.frecuence = data.getRowCount();
@@ -321,6 +324,8 @@ public class TreeCounter extends Thread{
             return byDefault.bestChild(theClass, totalNodes++);
         } else if(data.getRowCount() < MIN_ROWS){
             return byDefault.bestChild(theClass, totalNodes++);
+        } else if(byDefault.hasOneChildOverThreshold(THRESHOLD) ){
+            return byDefault.bestChild(theClass, totalNodes++);
         } else {
             Attribute attribute = null;
             attribute = this.chooseBestAttribute(data);
@@ -362,7 +367,7 @@ public class TreeCounter extends Thread{
     }
     
     static public void main(String arg[]){
-        TreeCounter c = new TreeCounter(1, new TariyTableModel());
+        TreeCounter c = new TreeCounter(new TariyTableModel(), 0, 65.0);
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree();
         long executionTime = System.currentTimeMillis() - time;
