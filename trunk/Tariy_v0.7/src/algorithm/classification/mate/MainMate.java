@@ -166,7 +166,6 @@ public class MainMate {
     public void buildTree(String winner, HashMap values, float prune1,int prune2) {
         ArrayList and = new ArrayList(1);
         if (desc.isEmpty()) {
-            //ArrayList sc = counterClass(key)
             Describe d = new Describe(0,-1, winner, "-1", "-1",null,getScore(values));
             desc.add(d);
         }
@@ -186,13 +185,19 @@ public class MainMate {
                     if (elem instanceof ItemSet) {
                         short[] s = ((ItemSet) elem).getItems();
                         Describe d = null;
+                        int cadNull = 0;
                         for (int h=0; h<s.length; h++) {
                             String cad = decode(s[h]);
                             StringTokenizer st = new StringTokenizer(cad, "=");
                             String attr = st.nextToken();
                             String value = st.nextToken();
                             int a = dataSrc.getColumnIndex(attr);
-                            if (!(winners.containsValue(value)&& winners.containsKey(a))) {
+                            String ca = (String) winners.get(a);
+                            if(ca == null)
+                                cadNull = 0;
+                            else
+                                cadNull = (int) value.compareTo(ca);
+                            if ( cadNull != 0 || !(winners.containsValue(value)&& winners.containsKey(a))) {
                                 if (attr.compareTo(classe) == 0) {
                                     int l = desc.size()-1;
                                     and = counterClass(values,key,classe);
@@ -394,13 +399,13 @@ public class MainMate {
             }
             counter += y;
         }
-        if(counter > this.prune2){ //if the sum of class values is bigger than 
+        if(counter > this.prune2){ //if the sum of class values is bigger than
             return a;              //prune2 a is returned the same
         }else{
             a.clear();             //if not only the biggest one is returned
             a.add((short)x);
             a.add((ItemSet) aux);
-        return a;
+            return a;
         }
     }
     
@@ -469,18 +474,18 @@ public class MainMate {
     
     public void showDesc(){
         Collections.sort(desc, new compareDaddy());
-        for (int i = 0; i < desc.size(); i++){
-            Describe a = (Describe) desc.get(i);
-            System.out.println("Nod: "+a.getNode()+" Dad: "+a.getFather()+" Attr: "+
-                    a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse()+
-                    " MyFrec: "+ getF(a.getCounter())+" DadFrec: "+a.getDadScore());
-        }
+//        for (int i = 0; i < desc.size(); i++){
+//            Describe a = (Describe) desc.get(i);
+//            System.out.println("Nod: "+a.getNode()+" Dad: "+a.getFather()+" Attr: "+
+//                    a.getAttribute() +" Value: "+a.getValue()+" Classe: "+a.getClasse()+
+//                    " MyFrec: "+ getF(a.getCounter())+" DadFrec: "+a.getDadScore());
+//        }
     }
     
     public TreeCounter erectTree(){
         Describe a1 = (Describe) desc.get(0);
         int fe = getF(a1.getCounter());
-        if(fe != 0 && a1.getCounter().size() == 3) 
+        if(fe != 0 && a1.getCounter().size() == 3)
             a1.getCounter().remove(a1.getCounter().size()-1);
         Attribute root = new Attribute(a1.getAttribute(),fe,a1.getDadScore(), a1.getCounter());
         c = new TreeCounter();
@@ -491,7 +496,7 @@ public class MainMate {
             str = str + "=" + a1.getValue();
             aux2 = (Attribute) c.searchTreeDesc(root,a1.getFather());
             fe = getF(a1.getCounter());
-            if(fe != 0 && a1.getCounter().size() == 3) 
+            if(fe != 0 && a1.getCounter().size() == 3)
                 a1.getCounter().remove(a1.getCounter().size()-1);
             Attribute a2 = new Attribute(str,fe,a1.getDadScore(), a1.getCounter());
             a2.setId(a1.getNode());
@@ -503,7 +508,7 @@ public class MainMate {
                 aux2.setSon(a2);
             }
         }
-        c.seeTree(root.getSon());
+        //c.seeTree(root.getSon());
         c.root = root;
         //c.pruneLeafs();
         ViewerClasification vc = new ViewerClasification(
@@ -521,7 +526,24 @@ public class MainMate {
         mm.calcEntropy();
         long executionTime = System.currentTimeMillis() - time;
         System.out.println("MateBy execution time: "+executionTime+"ms");
-        mm.showDesc();
+        //mm.showDesc();
         mm.erectTree();
+    }
+    
+    private boolean esteEs(ArrayList a) {
+        Iterator i = a.iterator();
+        while (i.hasNext()) {
+            Object elem = (Object) i.next();
+            if (elem instanceof ItemSet) {
+                short[] s = ((ItemSet) elem).getItems();
+                if(s.length == 5){
+                    if(s[1]==17 && s[2]==27 && s[3]==32 && s[4]==36){
+                        return true;
+                    }
+                }
+                
+            }
+        }
+        return false;
     }
 }
