@@ -21,8 +21,10 @@ public class configureParameters extends javax.swing.JFrame {
     private ClasificationIcon ci;
     public double minRows = 1.0;
     public double threshold = 1.0;
+    public double training = 1.0;
     private TreeCounter c;
-    private SpinnerNumberModel snm;
+    private SpinnerNumberModel snmRows;
+    private SpinnerNumberModel snmThreshold;
     TariyTableModel dataOut1 = new TariyTableModel();
     TariyTableModel dataOut2 = new TariyTableModel();
     
@@ -30,8 +32,10 @@ public class configureParameters extends javax.swing.JFrame {
     public configureParameters(ClasificationIcon ci) {
         initComponents();
         this.ci = ci;
-        snm = new SpinnerNumberModel(ci.minRows, 0.0, 100.0, 0.25);
-        spnMinRows.setModel(snm);
+        snmRows = new SpinnerNumberModel(ci.minRows, 0.0, 100.0, 0.25);
+        snmThreshold= new SpinnerNumberModel(ci.threshold, 0.0, 100.0, 0.25);
+        spnMinRows.setModel(snmRows);
+        spnThreshold.setModel(snmThreshold);
     }
     
     /** This method is called from within the constructor to
@@ -46,10 +50,9 @@ public class configureParameters extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         spnMinRows = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
-        txtThreshold = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        spnThreshold = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,9 +67,9 @@ public class configureParameters extends javax.swing.JFrame {
 
         jLabel2.setText("Threshold:");
 
-        jLabel3.setText("I dont remember");
-
         jLabel6.setText("%");
+
+        jLabel7.setText("%");
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -76,15 +79,15 @@ public class configureParameters extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel1)
-                    .add(jLabel2)
-                    .add(jLabel3))
+                    .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(spnMinRows, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .add(txtThreshold, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, spnMinRows, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .add(spnThreshold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 66, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel6)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel6)
+                    .add(jLabel7))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -98,12 +101,9 @@ public class configureParameters extends javax.swing.JFrame {
                 .add(16, 16, 16)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(txtThreshold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(14, 14, 14)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(20, 20, 20))
+                    .add(spnThreshold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel7))
+                .addContainerGap())
         );
 
         jButton1.setText("Accept");
@@ -139,7 +139,7 @@ public class configureParameters extends javax.swing.JFrame {
                     .add(jLabel5)
                     .add(spnSizeSet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel4))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -147,26 +147,23 @@ public class configureParameters extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .add(113, 113, 113)
-                .add(jButton1)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton1)
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(31, 31, 31)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(16, 16, 16)
+                .addContainerGap()
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(19, 19, 19)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +174,9 @@ public class configureParameters extends javax.swing.JFrame {
         float vlsp=0;
         
         minRows = (Double)spnMinRows.getValue();
-        ci.minRows = (Double)spnMinRows.getValue();
+        ci.minRows = minRows;
+        threshold = (Double)spnThreshold.getValue();
+        ci.threshold = threshold;
                
         rows = ci.dataIn.getRowCount();
         cols = ci.dataIn.getColumnCount();
@@ -219,9 +218,11 @@ public class configureParameters extends javax.swing.JFrame {
 //        minRows = (int)(d*tariyData.getRowCount()/100);
 //        c = new TreeCounter(minRows, tariyData);
 //        c.start();
-        Chooser.setStatus("Parameters load in " + ci.getName());
+        ci.mnuRun.setEnabled(true);
+        Chooser.setStatus("Parameters load in " + ci.getName().trim());
         ci.setInfo("min Rows: " + minRows + "%" +
-                 "\nThreshold: " + threshold + "%");
+                 "\nThreshold: " + threshold + "%" +
+                 "\n\nTraining Set: " + vlsp + "%");
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -243,16 +244,15 @@ public class configureParameters extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JSpinner spnMinRows;
     private javax.swing.JSpinner spnSizeSet;
-    private javax.swing.JTextField txtThreshold;
+    private javax.swing.JSpinner spnThreshold;
     // End of variables declaration//GEN-END:variables
     
 }
