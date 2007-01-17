@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -296,6 +297,7 @@ public class Attribute {
             buildStringTree(auxiliar.brother, path, tree);
         }
     }
+
     public void viewWekaTree() {
         TreeBuild builder = new TreeBuild();
         Node top = null;
@@ -313,4 +315,15 @@ public class Attribute {
         f.setSize(800,600);
         f.setVisible(true);
     }
+    
+    public JPanel getWekaTree() {
+        TreeBuild builder = new TreeBuild();
+        Node top = null;
+        NodePlace arrange = new PlaceNode2();
+        top = builder.create(new StringReader(this.buildStringTree()));
+        int num = top.getCount(top,0);
+        TreeVisualizer a = new TreeVisualizer(null, top, arrange);
+        a.setRoot(this);
+        return a;
+    }    
 }
