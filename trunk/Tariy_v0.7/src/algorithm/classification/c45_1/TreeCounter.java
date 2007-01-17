@@ -55,14 +55,15 @@ public class TreeCounter extends Thread{
     public ClasificationIcon ci;
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
-        root = new Attribute("", null, null);
+        root = new Attribute("I'm the root", null, null);
         totalNodes = 0;
     }
     
     public TreeCounter(int min_rows, TariyTableModel data) {
         this.data = data;
         MIN_ROWS = min_rows;
-        root = new Attribute("", null, null);
+        theClass = data.getColumnName(data.getColumnCount() - 1);
+        root = new Attribute(theClass, null, null);
         totalNodes = 0;
     }
     
@@ -70,7 +71,8 @@ public class TreeCounter extends Thread{
         this.ci = ci;
         this.data = data;
         MIN_ROWS = min_rows;
-        root = new Attribute("", null, null);
+        theClass = data.getColumnName(data.getColumnCount() - 1);
+        root = new Attribute(theClass, null, null);
         totalNodes = 0;
     }
     
@@ -300,7 +302,6 @@ public class TreeCounter extends Thread{
     }
     
     public Attribute decisionTree(){
-        this.theClass = data.getColumnName(data.getColumnCount() - 1);
         Attribute attribute = new Attribute("", null, null);
         attribute.entropia = 1.0;
         this.root.son = decisionTree(data, attribute);
@@ -370,7 +371,8 @@ public class TreeCounter extends Thread{
         //System.out.println(root.buildStringTree());
         root.setRootValuesClass();
         //root.valuesClass = root.son.valuesClass;
-        root.viewWekaTree();
+        //root.viewWekaTree();
+        new ViewerClasification(root).setVisible(true);
         //new ShowClassificationRules(root.getLeafs()).setVisible(true);
 //        ViewerClasification vc = new ViewerClasification(
 //                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
