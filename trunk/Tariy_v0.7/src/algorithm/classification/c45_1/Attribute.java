@@ -149,6 +149,19 @@ public class Attribute {
         return major;
     }
     
+    public boolean hasOneChildOverThreshold(double threshold){
+        Iterator it = valuesClass.iterator();
+        while(it.hasNext()){
+            Value value = (Value)it.next();
+            int total = this.getFrecuence();
+            double confidence = ((double)value.getFrecuence()/(double)total) * 100;
+            if(Double.compare(confidence, threshold) > 0){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public Attribute getChild(int index) {
         Attribute attribute = this.son;
         int count = 0;
@@ -297,7 +310,7 @@ public class Attribute {
             buildStringTree(auxiliar.brother, path, tree);
         }
     }
-
+    
     public void viewWekaTree() {
         TreeBuild builder = new TreeBuild();
         Node top = null;
@@ -325,5 +338,5 @@ public class Attribute {
         TreeVisualizer a = new TreeVisualizer(null, top, arrange);
         a.setRoot(this);
         return a;
-    }    
+    }
 }
