@@ -40,13 +40,11 @@ public class Prediction extends AbstractTableModel{
         datos = new Object[rows][columns + 1];
         nomcol = new String[columns + 1];
         
-                // Para isertar los datos
         for(int fi = 0; fi < rows; fi++ ){
             for(int c = 0; c < columns; c++ ){
               datos[fi][c] = datosEntrada.getValueAt(fi,c);
             }
         }
-        // Para insertar el nombre de las columnas
         for(int i = 0; i < columns; i++ ){
             nomcol[i] = datosEntrada.getColumnName(i);
         }
@@ -54,7 +52,7 @@ public class Prediction extends AbstractTableModel{
     }
     
     public void PredictionColTarget(Attribute auxiliar){
-        ax = auxiliar.son; // el ultimo .brother es provicional por que en este arbol se esta duplicando el 1 nodo
+        ax = auxiliar.son;
         nameColTarget(ax);
         NewTable(ax);
     }
@@ -93,7 +91,7 @@ public class Prediction extends AbstractTableModel{
                     String cadv = "";
                     ArrayList values = auxiliar.getValuesClass();
                     Collections.sort(values, new compareValues());
-                    for(int v=0; v < values.size(); v++){  // busca el valor parcializado con mayor frecuencia ejm si ono con mas apaariciones
+                    for(int v=0; v < values.size(); v++){ 
                        Value value = (Value)values.get(v);
                        if(value.getFrecuence()>vlrv){
                           vlrv =  value.getFrecuence();
@@ -136,9 +134,6 @@ public class Prediction extends AbstractTableModel{
             }
            JOptionPane.showMessageDialog(null, "Tablas Incompatibles","Error en Prediction.",JOptionPane.ERROR_MESSAGE);
            return -1;
-           // de alguna forma debo salir para que no siga ejecutando esto
-           // y devolver una tabla vacia y no permitir que se ejecute el view
-           // con los que clasifique de esta forma se puede saber el porcentaje de certeza
         }
         else return numcol;
     }
