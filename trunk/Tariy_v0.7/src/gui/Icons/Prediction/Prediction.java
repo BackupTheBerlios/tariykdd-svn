@@ -29,7 +29,7 @@ public class Prediction extends AbstractTableModel{
     final Object[][] datos;
     final String[] nomcol;
     int columns, rows;
-    int f, colnode;
+    int colnode;
     String cad,atri;
     Attribute ax;
         
@@ -60,28 +60,32 @@ public class Prediction extends AbstractTableModel{
     }
     
     public void NewTable(Attribute auxiliar){
-        if(f < rows){ 
+        int f = 0;
+        
+        while(f < rows){ 
             
             StringTokenizer token = new StringTokenizer(auxiliar.name,"=");
             cad = token.nextToken().trim();
+           
             if(auxiliar.son!=null){
               colnode = getColNode(cad);   
             }   
-//            else colnode = 0; 
+            else colnode = 0; 
+            
             if(colnode != -1){
                 cad = token.nextToken().trim();
-                atri = datos[f][colnode].toString();
+                atri = datos[f][colnode].toString().trim();
 
                 if(auxiliar.son == null){
                    datos[f][columns] =  cad;
                    f++;
-                   NewTable(ax);
+                   auxiliar = ax;
                 }
-                if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
-                    NewTable(auxiliar.son);
+                else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
+                    auxiliar = auxiliar.son;
                 }
-                if(auxiliar.brother != null){
-                    NewTable(auxiliar.brother);
+                else if(auxiliar.brother != null){
+                    auxiliar = auxiliar.brother;
                 }
                 else { // por probar
                     // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
@@ -98,14 +102,12 @@ public class Prediction extends AbstractTableModel{
                     }
                    datos[f][columns] = cadv;
                    f++;
-                   NewTable(ax);
+                   auxiliar = ax;
                 }
             }
             else f = rows;
         }
-        else {
-            System.out.println("fila" + f);
-        }
+        System.out.println("fila" + f);
     }
     
     public void nameColTarget(Attribute aux){
