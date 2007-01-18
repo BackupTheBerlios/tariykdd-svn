@@ -13,7 +13,7 @@ import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Prediction.PredictionIcon;
 import gui.Icons.Rules.RulesIcon;
-import gui.Icons.Tree.TreeIcon;
+import gui.Icons.Tree.HierarchicalTreeIcon;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Component;
@@ -158,10 +158,11 @@ public class MyCanvas extends javax.swing.JPanel {
                             ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
                             //((AssociationIcon)to).dataset.showNTree();
                         } else if(from instanceof ClasificationIcon &&
-                                to instanceof TreeIcon){
-//                            ((TreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
-//                            ((TreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
-                            ((TreeIcon)to).root = ((ClasificationIcon)from).root;
+                                to instanceof HierarchicalTreeIcon){
+//                            ((HierarchicalTreeIcon)to).TreePanel = ((ClasificationIcon)from).c.TreePanel;
+//                            ((HierarchicalTreeIcon)to).RulesText = ((ClasificationIcon)from).c.RulesText;
+                            ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
+                            ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
                         }
                         else if(from instanceof ClasificationIcon &&
                                 to instanceof PredictionIcon){
