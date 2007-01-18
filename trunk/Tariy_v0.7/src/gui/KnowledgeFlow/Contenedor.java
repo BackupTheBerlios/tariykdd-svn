@@ -13,7 +13,7 @@ import gui.Icons.File.FileIcon;
 import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Prediction.PredictionIcon;
 import gui.Icons.Rules.RulesIcon;
-import gui.Icons.Tree.TreeIcon;
+import gui.Icons.Tree.HierarchicalTreeIcon;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -129,7 +129,7 @@ public class Contenedor extends JPanel {
             } else if(nameIcon.equals("mate")){
                 icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("tree")){
-                icon = new TreeIcon((JLabel)presionado, p.x, p.y);
+                icon = new HierarchicalTreeIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Prediction")){
                 icon = new PredictionIcon((JLabel)presionado, p.x, p.y);
             } else {
