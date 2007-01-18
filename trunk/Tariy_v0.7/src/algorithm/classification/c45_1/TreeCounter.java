@@ -56,6 +56,7 @@ public class TreeCounter extends Thread{
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
         root.frecuence = data.getRowCount();
+        root.valuesClass = data.getAttributeDistribution(data.getColumnCount() - 1);
         totalNodes = 0;
     }
     
@@ -67,6 +68,7 @@ public class TreeCounter extends Thread{
         theClass = data.getColumnName(data.getColumnCount() - 1);
         root = new Attribute(theClass, null, null);
         root.frecuence = data.getRowCount();
+        root.valuesClass = data.getAttributeDistribution(data.getColumnCount() - 1);
         totalNodes = 0;
     }
     
@@ -345,7 +347,6 @@ public class TreeCounter extends Thread{
         this.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         System.out.println("decisionTree : " + executionTime + "ms ");
-        root.setRootValuesClass();
         ci.root = root;
         animation.stop();
     }
@@ -357,7 +358,6 @@ public class TreeCounter extends Thread{
         long executionTime = System.currentTimeMillis() - time;
         c.pruneLeafs();
         System.out.println("decisionTree : " + executionTime + "ms ");
-        root.setRootValuesClass();
         new ViewerAllTrees(root).setVisible(true);
     }
 }
