@@ -53,7 +53,7 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/filefind.png")));
         jLabel14.setText("Weka_tree");
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel14.setName("Weka_tree");
