@@ -27,14 +27,15 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setName("otro");
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
-        jLabel11.setText("Tree");
+        jLabel11.setText("Hierarchical_Tree");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel11.setName("tree");
+        jLabel11.setName("Hierarchical_Tree");
         jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,6 +52,13 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel13.setName("Prediction");
         jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/Arbol")));
+        jLabel14.setText("Weka_tree");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel14.setName("Weka_tree");
+        jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,7 +68,8 @@ public class pnlVisores extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -68,11 +77,13 @@ public class pnlVisores extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel12)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(14, 14, 14)
                 .add(jLabel11)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(16, 16, 16)
+                .add(jLabel14)
+                .add(15, 15, 15)
                 .add(jLabel13)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -81,6 +92,7 @@ public class pnlVisores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     // End of variables declaration//GEN-END:variables
     
 }
