@@ -9,18 +9,13 @@
 
 package algorithm.classification.c45_1;
 
-import Utils.GraphDistribution.Grafico;
-import Utils.TreeViewer.TreeVisualizer;
 import gui.Icons.Clasification.ClasificationIcon;
-import gui.Icons.Tree.ShowClassificationRules;
-import gui.Icons.Tree.ViewerClasification;
+import gui.Icons.Tree.ViewerAllTrees;
 import gui.KnowledgeFlow.AnimationLabel;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 import javax.swing.JPanel;
 import javax.swing.table.AbstractTableModel;
@@ -36,7 +31,6 @@ public class TreeCounter extends Thread{
     public Attribute root;
     Attribute aux;
     AbstractTableModel dataIn;
-    public C45TreeGUI view;            //JPanel donde se mostrara el JTree con el arbol de decision
     public int count;
     private int t;
     public String theClass;
@@ -44,16 +38,11 @@ public class TreeCounter extends Thread{
     public int MIN_ROWS;
     public double THRESHOLD;
     public TariyTableModel data = null;
-    
     public JPanel TreePanel;
-    
-    public StringBuffer RulesText;
-    
     private Attribute backer;
-    
     private int totalNodes;
-
     public ClasificationIcon ci;
+
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
         root = new Attribute("I'm the root", null, null);
@@ -355,11 +344,6 @@ public class TreeCounter extends Thread{
         this.decisionTree();
         this.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
-        //this.seeTree();
-        //this.root.viewWekaTree();
-        //new ShowClassificationRules(this.root.getLeafs()).setVisible(true);
-//        TreePanel = this.view.createAndShowGUI(new TreeViewer(root));
-//        RulesText = this.seeLeafs(root);
         System.out.println("decisionTree : " + executionTime + "ms ");
         root.setRootValuesClass();
         ci.root = root;
@@ -367,24 +351,13 @@ public class TreeCounter extends Thread{
     }
     
     static public void main(String arg[]){
-        TreeCounter c = new TreeCounter(new TariyTableModel(), 0, 65.0);
+        TreeCounter c = new TreeCounter(new TariyTableModel(), 0, 100.0);
         long time = System.currentTimeMillis();
         Attribute root = c.decisionTree();
         long executionTime = System.currentTimeMillis() - time;
         c.pruneLeafs();
-        //c.seeTree();
         System.out.println("decisionTree : " + executionTime + "ms ");
-        //System.out.println("digraph J48Tree {\nN0 [label=\"SEX\" ]\nN0->N1 [label=\"= 0\"]\nN1 [label=\"CLASS\" ]\nN1->N2 [label=\"= 0\"]\nN2 [label=\"1 (23.0/3.0)\" shape=box style=filled ]\nN1->N3 [label=\"= 1\"]\nN3 [label=\"1 (145.0/4.0)\" shape=box style=filled ]\nN1->N4 [label=\"= 2\"]\nN4 [label=\"1 (106.0/13.0)\" shape=box style=filled ]\nN1->N5 [label=\"= 3\"]\nN5 [label=\"0 (196.0/90.0)\" shape=box style=filled ]\nN0->N6 [label=\"= 1\"]\nN6 [label=\"CLASS\" ]\nN6->N7 [label=\"= 0\"]\nN7 [label=\"0 (862.0/192.0)\" shape=box style=filled ]\nN6->N8 [label=\"= 1\"]\nN8 [label=\"AGE\" ]\nN8->N9 [label=\"= 0\"]\nN9 [label=\"1 (5.0)\" shape=box style=filled ]\nN8->N10 [label=\"= 1\"]\nN10 [label=\"0 (175.0/57.0)\" shape=box style=filled ]\nN6->N11 [label=\"= 2\"]\nN11 [label=\"AGE\" ]\nN11->N12 [label=\"= 0\"]\nN12 [label=\"1 (11.0)\" shape=box style=filled ]\nN11->N13 [label=\"= 1\"]\nN13 [label=\"0 (168.0/14.0)\" shape=box style=filled ]\nN6->N14 [label=\"= 3\"]\nN14 [label=\"0 (510.0/88.0)\" shape=box style=filled ]\n}\n");
-        //System.out.println(root.buildStringTree());
         root.setRootValuesClass();
-        //root.valuesClass = root.son.valuesClass;
-        //root.viewWekaTree();
-        new ViewerClasification(root).setVisible(true);
-        //new ShowClassificationRules(root.getLeafs()).setVisible(true);
-//        ViewerClasification vc = new ViewerClasification(
-//                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-//        vc.setVisible(true);
-//        TreeCounter c = new TreeCounter(2, new TariyTableModel());
-//        c.start();
+        new ViewerAllTrees(root).setVisible(true);
     }
 }
