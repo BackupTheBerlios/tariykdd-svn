@@ -10,6 +10,7 @@ import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
+import java.awt.Component;
 import java.awt.TextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,18 +32,32 @@ public class ViewerClasification extends javax.swing.JFrame {
     private LinkedList rules;
     /** Creates new form ViewerClasification */
     
-    public ViewerClasification(Attribute root) {
+    public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM) {
         initComponents();
-        JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
-        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
-        //  debe cambiar a un TreeTableModel
-        StringBuffer RulesText = c.seeLeafs(root);
-        scrollTree = new javax.swing.JScrollPane();
-        TextRules = new javax.swing.JTextArea();
-        scrollTree.setViewportView(TextRules);
-        TextRules.setText(RulesText.toString());
-        TabPanel.addTab("Tree", TreePanel);
-        TabPanel.addTab("Rules", scrollTree);
+        //jpanel de jerarquico tree
+//        JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
+        
+        LblErrorM.setText(porErrorM);
+        
+        TabPanel.addTab(nameTree, compTree);
+        
+//        //scroll para text tree
+//        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
+//        //  debe cambiar a un TreeTableModel
+//        StringBuffer RulesText = c.seeLeafs(root);
+//        scrollTree = new javax.swing.JScrollPane();
+//        TextRules = new javax.swing.JTextArea();
+//        scrollTree.setViewportView(TextRules);
+//        TextRules.setText(RulesText.toString());
+//        TabPanel.addTab("Rules", scrollTree);
+
+//        //weka tree
+//        scrollWekaTree = new javax.swing.JScrollPane();
+//        pnlWekaTree = root.getWekaTree();
+//        scrollWekaTree.setViewportView(pnlWekaTree);
+//        TabPanel.addTab("Weka", scrollWekaTree);
+        
+
         scrollTable = new javax.swing.JScrollPane();
         tblRules = new javax.swing.JTable();
         rules = root.getLeafs();
@@ -53,10 +68,6 @@ public class ViewerClasification extends javax.swing.JFrame {
         scrollTable.setViewportView(tblRules);
         TabPanel.addTab("Table", scrollTable);
         this.addJTableHeaderListener();
-        scrollWekaTree = new javax.swing.JScrollPane();
-        pnlWekaTree = root.getWekaTree();
-        scrollWekaTree.setViewportView(pnlWekaTree);
-        TabPanel.addTab("Weka", scrollWekaTree);
     }
     
     public void addJTableHeaderListener() {
@@ -90,10 +101,20 @@ public class ViewerClasification extends javax.swing.JFrame {
     private void initComponents() {
         jPanel2 = new javax.swing.JPanel();
         TabPanel = new javax.swing.JTabbedPane();
+        jLabel3 = new javax.swing.JLabel();
+        LblErrorM = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Viewer Clasification");
         jPanel2.setBackground(new java.awt.Color(81, 81, 133));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Error Missing : ");
+
+        LblErrorM.setFont(new java.awt.Font("Tahoma", 0, 18));
+        LblErrorM.setForeground(new java.awt.Color(255, 255, 255));
+        LblErrorM.setText("xxx");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,15 +122,24 @@ public class ViewerClasification extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jLabel3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(LblErrorM)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(TabPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 399, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(15, 15, 15)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(LblErrorM))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -133,7 +163,9 @@ public class ViewerClasification extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LblErrorM;
     private javax.swing.JTabbedPane TabPanel;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
     private JScrollPane scrollTree;
