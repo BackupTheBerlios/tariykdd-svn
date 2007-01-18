@@ -38,17 +38,6 @@ public class ViewerClasification extends javax.swing.JFrame {
         LblErrorM.setText(porErrorM);
         
         TabPanel.addTab(nameTree, compTree);
-        
-//        //scroll para text tree
-//        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
-//        //  debe cambiar a un TreeTableModel
-//        StringBuffer RulesText = c.seeLeafs(root);
-//        scrollTree = new javax.swing.JScrollPane();
-//        TextRules = new javax.swing.JTextArea();
-//        scrollTree.setViewportView(TextRules);
-//        TextRules.setText(RulesText.toString());
-//        TabPanel.addTab("Rules", scrollTree);
-
         scrollTable = new javax.swing.JScrollPane();
         tblRules = new javax.swing.JTable();
         rules = root.getLeafs();
@@ -57,7 +46,7 @@ public class ViewerClasification extends javax.swing.JFrame {
         tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         ShowClassificationRules.setOptimalColumnWidth(tblRules);
         scrollTable.setViewportView(tblRules);
-        TabPanel.addTab("Table", scrollTable);
+        TabPanel.addTab("Rules", scrollTable);
         this.addJTableHeaderListener();
     }
     
