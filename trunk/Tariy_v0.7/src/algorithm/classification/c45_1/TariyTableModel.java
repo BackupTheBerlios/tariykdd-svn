@@ -9,6 +9,10 @@
 
 package algorithm.classification.c45_1;
 
+import algorithm.classification.Value;
+import algorithm.classification.compareValues;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
@@ -4493,6 +4497,23 @@ public class TariyTableModel extends AbstractTableModel {
             }
         }
         return hash;
+    }
+    
+    public ArrayList getAttributeDistribution(int column){
+        ArrayList values = new ArrayList();
+        int rows = this.getRowCount();
+        compareValues compare = new compareValues();
+        for(int row = 0; row < rows; row++){
+            Value key = new Value( (String) this.getValueAt(row, column), 1 );
+            int index = Collections.binarySearch(values, key, compare);
+            if(index >= 0){
+                ((Value)values.get(index)).incFrecuence(1);
+            } else {
+                values.add((-(index) - 1), key);
+            }
+        }
+        
+        return values;
     }
 }
 
