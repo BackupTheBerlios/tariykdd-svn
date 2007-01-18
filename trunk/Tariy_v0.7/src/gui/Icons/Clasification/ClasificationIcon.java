@@ -54,6 +54,7 @@ public class ClasificationIcon extends Icon{
         super.constrainsTo = new ArrayList(1);
         super.constrainsTo.add("HierarchicalTreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         super.constrainsTo.add("WekaTreeIcon");
+        super.constrainsTo.add("TextTreeIcon");
         super.constrainsTo.add("PredictionIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
         
