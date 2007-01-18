@@ -14,7 +14,10 @@ import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
+import gui.Icons.Clasification.ClasificationIcon;
+import gui.Icons.Tree.ViewerAllTrees;
 import gui.Icons.Tree.ViewerClasification;
+import gui.KnowledgeFlow.AnimationLabel;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,7 +32,7 @@ import Utils.ItemSet;
  *
  * @author ivan
  */
-public class MainMate {
+public class MainMate extends Thread{
     
     /** Fuente de datos */
     private gui.Icons.Filters.TariyTableModel dataSrc;
@@ -55,6 +58,12 @@ public class MainMate {
     
     public TreeCounter c;
     
+    public Attribute root;
+    
+    public ClasificationIcon ci;
+
+    private AnimationLabel animation;
+    
     /** Creates a new instance of MainMate */
     public MainMate(gui.Icons.Filters.TariyTableModel data, float prune1, int prune2) {
         dataSrc = data;
@@ -65,6 +74,15 @@ public class MainMate {
         this.prune2 = prune2;
     }
     
+    public MainMate(gui.Icons.Filters.TariyTableModel data, float prune1, int prune2, ClasificationIcon ci) {
+        this.ci = ci;
+        dataSrc = data;
+        dictionary = new ArrayList();
+        winners = new HashMap();
+        desc = new ArrayList();
+        this.prune1 = prune1;
+        this.prune2 = prune2;
+    }
     /**
      * Construye el diccionario de datos en un arraylist.
      */
@@ -487,7 +505,7 @@ public class MainMate {
         int fe = getF(a1.getCounter());
         if(fe != 0 && a1.getCounter().size() == 3)
             a1.getCounter().remove(a1.getCounter().size()-1);
-        Attribute root = new Attribute(a1.getAttribute(),fe,a1.getDadScore(), a1.getCounter());
+        root = new Attribute(a1.getAttribute(),fe,a1.getDadScore(), a1.getCounter());
         c = new TreeCounter();
         Attribute aux2;
         for(int i = 1; i < desc.size(); i++){
@@ -508,14 +526,26 @@ public class MainMate {
                 aux2.setSon(a2);
             }
         }
-        //c.seeTree(root.getSon());
         c.root = root;
-        //c.pruneLeafs();
-        ViewerClasification vc = new ViewerClasification(
-                c.view.createAndShowGUI(new TreeViewer(root)), c.seeLeafs(root));
-        vc.setVisible(true);
-        root.viewWekaTree();
+        c.pruneLeafs();
         return c;
+    }
+    
+    public void setAnimation(AnimationLabel animation){
+        this.animation = animation;
+    }
+    
+    public void run() {
+        this.buildDictionary();
+        long time = System.currentTimeMillis();
+        this.dataCombination();
+        this.calcEntropy();
+        this.showDesc();
+        long executionTime = System.currentTimeMillis() - time;
+        System.out.println("MateBy execution time: "+executionTime+"ms");
+        this.erectTree();
+        this.ci.root = this.root;
+        animation.stop();
     }
     
     public static void main(String args[]) {
@@ -524,10 +554,11 @@ public class MainMate {
         long time = System.currentTimeMillis();
         mm.dataCombination();
         mm.calcEntropy();
+        mm.showDesc();
         long executionTime = System.currentTimeMillis() - time;
         System.out.println("MateBy execution time: "+executionTime+"ms");
-        //mm.showDesc();
         mm.erectTree();
+        new ViewerAllTrees(mm.root).setVisible(true);
     }
     
     private boolean esteEs(ArrayList a) {
