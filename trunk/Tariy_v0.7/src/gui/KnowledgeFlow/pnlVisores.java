@@ -64,7 +64,7 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/texTree.png")));
         jLabel15.setText("Text_Tree");
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel15.setName("Weka_Tree");
+        jLabel15.setName("Text_Tree");
         jLabel15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
