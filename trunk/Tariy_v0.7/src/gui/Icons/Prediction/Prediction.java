@@ -28,8 +28,7 @@ public class Prediction extends AbstractTableModel{
     AbstractTableModel datosEntrada;
     final Object[][] datos;
     final String[] nomcol;
-    int columns, rows;
-    int colnode;
+    int columns, rows, colnode;
     String cad,atri;
     Attribute ax;
         
@@ -45,6 +44,7 @@ public class Prediction extends AbstractTableModel{
               datos[fi][c] = datosEntrada.getValueAt(fi,c);
             }
         }
+     
         for(int i = 0; i < columns; i++ ){
             nomcol[i] = datosEntrada.getColumnName(i);
         }
