@@ -14,6 +14,7 @@ import gui.Icons.Filters.FilterIcon;
 import gui.Icons.Prediction.PredictionIcon;
 import gui.Icons.Rules.RulesIcon;
 import gui.Icons.Tree.HierarchicalTreeIcon;
+import gui.Icons.Tree.TextTreeIcon;
 import gui.Icons.Tree.WekaTreeIcon;
 import java.awt.Color;
 import java.awt.Component;
@@ -133,11 +134,13 @@ public class Contenedor extends JPanel {
                 icon = new HierarchicalTreeIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Weka_Tree")){
                 icon = new WekaTreeIcon((JLabel)presionado, p.x, p.y);
+            } else if(nameIcon.equals("Text_Tree")){
+                icon = new TextTreeIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Prediction")){
                 icon = new PredictionIcon((JLabel)presionado, p.x, p.y);
             } else {
                 icon = new Icon((JLabel)presionado, p.x, p.y);
-            }
+            }     
             if(p.x + icon.getPreferredSize().width > canvas.getWidth()){
                 canvas.setPreferredSize(new Dimension(p.x + icon.getPreferredSize().width,
                         canvas.getHeight()));
