@@ -45,14 +45,15 @@ public class ClasificationIcon extends Icon{
     public double minRows = 25.0;
     public double trainingSet = 100.0;
     AbstractTableModel dataOut1;
-    AbstractTableModel dataOut2;  // este aqui no va
+    public AbstractTableModel dataOut2; 
     
     public double threshold = 100.0;
     /** Creates a new instance of DBConnectionIcon */
     public ClasificationIcon(JLabel s, int x, int y) {
         super(s, x, y);
         super.constrainsTo = new ArrayList(1);
-        super.constrainsTo.add("TreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
+        super.constrainsTo.add("HierarchicalTreeIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
+        super.constrainsTo.add("WekaTreeIcon");
         super.constrainsTo.add("PredictionIcon");//Restricciones de conexion (a que iconos se puede conectar un icono de clasificacion)
         algorithm = s.getText();
         
