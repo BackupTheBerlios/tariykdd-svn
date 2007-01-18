@@ -42,6 +42,7 @@ public class TreeCounter extends Thread{
     private Attribute backer;
     private int totalNodes;
     public ClasificationIcon ci;
+    public String textTree = "";
 
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
@@ -159,8 +160,11 @@ public class TreeCounter extends Thread{
     }
     
     public void seeTree(Attribute auxiliar){
-        tabs(t);
-        System.out.println(auxiliar);
+//        tabs(t);
+//        System.out.println(auxiliar);
+        textTree =  textTree + "\n" + tabu(t);
+        textTree = textTree + auxiliar;
+                
         if(auxiliar.son != null){
             t++;
             seeTree(auxiliar.son);
@@ -171,10 +175,23 @@ public class TreeCounter extends Thread{
         }
     }
     
-    private void tabs(int t){
+    public String getTextTree(Attribute auxiliar){
+        seeTree(auxiliar.son);
+        return textTree;
+    }
+    
+//    private void tabs(int t){
+//        for(int i = 0; i < t; i++){
+//            System.out.print("|  ");
+//        }
+//    }
+    
+    private String tabu(int t){
+        String tab = "";
         for(int i = 0; i < t; i++){
-            System.out.print("|  ");
+            tab = tab + "|        ";
         }
+        return tab;
     }
     
     public StringBuffer seeLeafs(Attribute root){
