@@ -34,8 +34,6 @@ public class ViewerClasification extends javax.swing.JFrame {
     
     public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM) {
         initComponents();
-        //jpanel de jerarquico tree
-//        JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
         
         LblErrorM.setText(porErrorM);
         
@@ -50,13 +48,6 @@ public class ViewerClasification extends javax.swing.JFrame {
 //        scrollTree.setViewportView(TextRules);
 //        TextRules.setText(RulesText.toString());
 //        TabPanel.addTab("Rules", scrollTree);
-
-//        //weka tree
-//        scrollWekaTree = new javax.swing.JScrollPane();
-//        pnlWekaTree = root.getWekaTree();
-//        scrollWekaTree.setViewportView(pnlWekaTree);
-//        TabPanel.addTab("Weka", scrollWekaTree);
-        
 
         scrollTable = new javax.swing.JScrollPane();
         tblRules = new javax.swing.JTable();
@@ -105,7 +96,7 @@ public class ViewerClasification extends javax.swing.JFrame {
         LblErrorM = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Viewer Clasification");
+        setTitle("Viewer Tree");
         jPanel2.setBackground(new java.awt.Color(81, 81, 133));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -134,12 +125,12 @@ public class ViewerClasification extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(TabPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 399, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(TabPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .add(15, 15, 15)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(LblErrorM))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .add(20, 20, 20))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
