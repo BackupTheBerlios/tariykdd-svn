@@ -131,7 +131,7 @@ public class Contenedor extends JPanel {
                 icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Hierarchical_Tree")){
                 icon = new HierarchicalTreeIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Weka_tree")){
+            } else if(nameIcon.equals("Weka_Tree")){
                 icon = new WekaTreeIcon((JLabel)presionado, p.x, p.y);
             } else if(nameIcon.equals("Prediction")){
                 icon = new PredictionIcon((JLabel)presionado, p.x, p.y);
