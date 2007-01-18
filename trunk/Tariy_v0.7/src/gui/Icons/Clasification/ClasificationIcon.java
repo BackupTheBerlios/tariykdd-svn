@@ -94,8 +94,8 @@ public class ClasificationIcon extends Icon{
         jack.setBounds(this.animation.getX(), this.animation.getY(), 36, 36);
         this.setAnimation(jack);
         System.out.println(algorithm);
-        if(algorithm.equals("  C45  ")){
-            this.startAnimation();
+        if(algorithm.trim().equals("C45")){
+            //this.startAnimation();
             TariyTableModel tariyData = this.changeToTariyModel();
             //System.out.println(cp.minRows);
             int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
@@ -114,18 +114,13 @@ public class ClasificationIcon extends Icon{
                 }
                 columnsName[i] = dataOut1.getColumnName(i);
             }
-//            Object[][] data = ((gui.Icons.Filters.TariyTableModel)dataIn).data;
-//            String[] names = ((gui.Icons.Filters.TariyTableModel)dataIn).columnName;
             gui.Icons.Filters.TariyTableModel tariyData
                     = new gui.Icons.Filters.TariyTableModel(data, columnsName);
             int minIntegerRows = (int)(minRows*tariyData.getRowCount()/100);
-            MainMate mm = new MainMate(tariyData,100, minIntegerRows);
-            mm.buildDictionary();
-            mm.dataCombination();
-            mm.calcEntropy();
-            mm.showDesc();
-            c = mm.erectTree();
-            root = mm.root;
+            MainMate mm = new MainMate(tariyData,(int)threshold, minIntegerRows, this);
+            this.startAnimation();
+            mm.setAnimation(jack);
+            mm.start();
         }
     }
     
