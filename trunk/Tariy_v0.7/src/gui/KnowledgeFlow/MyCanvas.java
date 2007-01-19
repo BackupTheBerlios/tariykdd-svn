@@ -162,6 +162,10 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof AssociationIcon) {
                             ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
                             //((AssociationIcon)to).dataset.showNTree();
+                        } else if (from instanceof FileIcon &&
+                                to instanceof FilterIcon) {
+                            ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
+                            //((AssociationIcon)to).dataset.showNTree();
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof HierarchicalTreeIcon){
                             ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
