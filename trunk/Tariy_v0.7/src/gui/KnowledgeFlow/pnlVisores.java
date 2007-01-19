@@ -54,14 +54,14 @@ public class pnlVisores extends javax.swing.JPanel {
         jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/WekaTree.png")));
-        jLabel14.setText("Weka_Tree");
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/tree.png")));
+        jLabel14.setText(" Weka_Tree ");
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel14.setName("Weka_Tree");
         jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/texTree.png")));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Visores/tree2.png")));
         jLabel15.setText("Text_Tree");
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel15.setName("Text_Tree");
@@ -74,10 +74,10 @@ public class pnlVisores extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -90,11 +90,11 @@ public class pnlVisores extends javax.swing.JPanel {
                 .add(jLabel11)
                 .add(16, 16, 16)
                 .add(jLabel14)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(22, 22, 22)
                 .add(jLabel15)
                 .add(14, 14, 14)
                 .add(jLabel13)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
