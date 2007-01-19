@@ -99,7 +99,7 @@ public class SelectorTable extends javax.swing.JFrame
         jRadioButton1 = new javax.swing.JRadioButton();
         scrollTable = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtQuery2 = new JEditorPane("text/html", "<html>In case you thought that...</html>");
+        txtQuery2 = new JEditorPane("text/html", "<html>No Select found...</html>");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Attribute Selector");
@@ -382,12 +382,18 @@ public class SelectorTable extends javax.swing.JFrame
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
 // TODO add your handling code here:
         try{
-            tableModel = new ScrollableTableModel(connection,
-                    txtQuery2.getToolTipText());
-            tblPreview.setModel(tableModel);
-            this.setOptimalColumnWidth(tblPreview);
-            this.btnAccept.setEnabled(true);
+            if(canvas.nrelations < canvas.ntables - 1){
+                JOptionPane.showMessageDialog(this, "No relations in WHERE clause");
+            } else {
+                tableModel = new ScrollableTableModel(connection,
+                        txtQuery2.getToolTipText());
+                tblPreview.setModel(tableModel);
+                this.setOptimalColumnWidth(tblPreview);
+                this.btnAccept.setEnabled(true);
+            }
         } catch (IllegalArgumentException stme){
+            JOptionPane.showMessageDialog(this, stme.getMessage());
+        }catch (ScrollableTableModelException stme){
             JOptionPane.showMessageDialog(this, stme.getMessage());
         }
     }//GEN-LAST:event_btnExecuteActionPerformed
@@ -578,11 +584,11 @@ public class SelectorTable extends javax.swing.JFrame
             setQuery(canvas.selectToString());
         }
     }
-
+    
     public JButton getBtnAccept() {
         return btnAccept;
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnExecute;

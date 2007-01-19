@@ -217,7 +217,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JEditorPane(&quot;text/html&quot;, &quot;&lt;html&gt;In case you thought that...&lt;/html&gt;&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JEditorPane(&quot;text/html&quot;, &quot;&lt;html&gt;No Select found...&lt;/html&gt;&quot;);"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="SelectorTable_txtQuery2"/>
           </AuxValues>
         </Component>
