@@ -106,6 +106,11 @@ public class ConnectionWizard extends javax.swing.JFrame {
         txtUsuario.setText("postgres");
 
         txtBD.setText("udenar");
+        txtBD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBDKeyTyped(evt);
+            }
+        });
 
         txtHost.setText("localhost");
 
@@ -175,7 +180,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnConectar)
                     .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -184,6 +189,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         lblStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnAccept.setText("Accept");
+        btnAccept.setEnabled(false);
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
@@ -215,6 +221,11 @@ public class ConnectionWizard extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBDKeyTyped
+// TODO add your handling code here:
+        btnAccept.setEnabled(false);
+    }//GEN-LAST:event_txtBDKeyTyped
     
     private void cbxDriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDriverActionPerformed
 // TODO add your handling code here:
@@ -269,10 +280,13 @@ public class ConnectionWizard extends javax.swing.JFrame {
             + " in " + txtHost.getText());
             Chooser.setStatus("Success Connection to " + txtBD.getText()
             + " in " + txtHost.getText());
+            btnAccept.setEnabled(true);
         } catch(SQLException e1){
-            Chooser.status.setText("SQLException: " + e1);
+            lblStatusBar.setText("SQLException: " + e1);
+            Chooser.setStatus("SQLException: " + e1);
         } catch(ClassNotFoundException e){
-            Chooser.status.setText("SQLException: " + e);
+            lblStatusBar.setText("No load the driver: " + e);
+            Chooser.setStatus("No load the driver: " + e);
         }
     }//GEN-LAST:event_btnConectarActionPerformed
     
