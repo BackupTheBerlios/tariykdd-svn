@@ -122,7 +122,7 @@ public class Prediction extends AbstractTableModel{
         boolean compatibilidad = false;
         
         for(int i = 0; i < columns; i++ ){
-            if(colt.equalsIgnoreCase(nomcol[i])){
+            if(colt.equalsIgnoreCase(nomcol[i].trim())){
                numcol = i; 
                compatibilidad = true;
                break;
