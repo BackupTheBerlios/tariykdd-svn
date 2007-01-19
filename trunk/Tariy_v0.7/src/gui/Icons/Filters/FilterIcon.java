@@ -38,6 +38,7 @@ import gui.Icons.Filters.Selection.Seleccion;
 import gui.Icons.Filters.Selection.VerSeleccion;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JFrame;
@@ -76,7 +77,9 @@ public class FilterIcon extends Icon{
     int seal; // opcion para identificar tipo de columna(Integer o String) en Reducciones.
     int minor; // valor a comparar en Reducciones.
     int numberColumns; // numero de columnas de Seleccion.
-    int columnsSelected[]; //arreglo de las columnas seleccionadas en Seleccion.    
+    
+    private DataSet dataset;
+    int columnsSelected[]; //arreglo de las columnas seleccionadas en Seleccion.
     
     /** Creates a new instance of DBConnectionIcon */
     public FilterIcon(JLabel s, int x, int y) {
@@ -117,30 +120,6 @@ public class FilterIcon extends Icon{
     
     public void setDataIn(AbstractTableModel dataIn) {
         this.dataIn = dataIn;
-    }
-    
-    public DataSet buildDataSet(){
-        DataSet dataset = new DataSet("");
-        
-        if(!filterName.equals("codification")){
-            return null;
-        }
-        ArrayList dictionary = ((Codificacion)dataOut).valatricod.datos;
-        dataset.buildMultiValuedDictionary(dictionary);
-        dataset.showDictionary();
-        
-        for(int i = 0; i < dataOut.getRowCount(); i++){
-            for(int j = 0; j < dataOut.getColumnCount(); j++){
-                if(dataOut.getValueAt(i, j) != null){
-                    short item = (Short)dataOut.getValueAt(i, j);
-                    int id = (j == dataOut.getColumnCount() - 1) ? -1 : j;
-                    dataset.buildNTree(item, id);
-                }
-            }
-        }
-        dataset.showNTree();
-        
-        return dataset;
     }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +221,7 @@ public class FilterIcon extends Icon{
             columnsSelected = ((AbrirSeleccion)Open).getColsSel();
             columnSelected = ((AbrirSeleccion)Open).getColObj();
             
-            Seleccion selection = new Seleccion(dataIn, numberColumns, 
+            Seleccion selection = new Seleccion(dataIn, numberColumns,
                     columnsSelected, columnSelected);
             dataOut = selection;
         }
@@ -282,5 +261,64 @@ public class FilterIcon extends Icon{
                 }
             }
         });
+    }
+    
+    public DataSet buildDataSet(){
+        dataset = new DataSet("");
+        ArrayList dictionary;
+        
+        if(filterName.equals("codification")){
+            dictionary = ((Codificacion)dataOut).valatricod.datos;
+        } else {
+            //construir un metodo que genere un diccionario a partir de un
+            //AbstractTableModel dataOut
+            dictionary = this.getDictionaryFromTableModel();
+        }
+        dataset.buildMultiValuedDictionary(dictionary);
+        dataset.showDictionary();
+        
+        for(int i = 0; i < dataOut.getRowCount(); i++){
+            for(int j = 0; j < dataOut.getColumnCount(); j++){
+                if(dataOut.getValueAt(i, j) != null){
+                    String value = dataOut.getColumnName(j) + "=" + (String)dataOut.getValueAt(i, j);
+                    short item = dataset.codeAttribute(value);
+                    int id = (j == dataOut.getColumnCount() - 1) ? -1 : j;
+                    dataset.buildNTree(item, id);
+                }
+            }
+        }
+        dataset.showNTree();
+        
+        return dataset;
+    }
+    
+    private ArrayList getDictionaryFromTableModel() {
+        ArrayList dictionary = new ArrayList();
+        int rows = dataOut.getRowCount();
+        int columns = dataOut.getColumnCount();
+        for(int column = 0; column < columns; column++){
+            String columnName = dataOut.getColumnName(column);
+            ArrayList attributes = this.getAttributes(rows, column);
+            Iterator it = attributes.iterator();
+            while(it.hasNext()){
+                String attribute = (String)it.next();
+                dictionary.add(columnName + "=" + attribute);
+            }
+        }
+        
+        return dictionary;
+    }
+    
+    private ArrayList getAttributes(int rows, int column){
+        ArrayList values = new ArrayList();
+        for(int row = 0; row < rows; row++){
+            String key = (String) dataOut.getValueAt(row, column);
+            int index = Collections.binarySearch(values, key);
+            if(index < 0){
+                values.add((-(index) - 1), key);
+            }
+        }
+        
+        return values;
     }
 }
