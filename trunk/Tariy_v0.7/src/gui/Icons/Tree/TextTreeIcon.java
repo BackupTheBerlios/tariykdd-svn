@@ -64,10 +64,10 @@ public class TextTreeIcon extends Icon{
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
 
-        int f = 0, rows = 0, colnode = 0, datosMissing = 0;
+        int f = 0, rows = 0, colnode = 0;
         String cad,atri;
         Attribute auxiliar;
-        float ErrorMissing;
+        float ErrorMissing = 0, datosMissing = 0;
         
         rows = dataTest.getRowCount();
         auxiliar = root.son;
@@ -101,7 +101,12 @@ public class TextTreeIcon extends Icon{
                auxiliar = root.son;
             }
         }
+        if(datosMissing == 0){
+           ErrorMissing = 0; 
+        }
+        else{
         ErrorMissing = ((datosMissing/rows)*100);
+        }
         texErrorM = Float.toString(ErrorMissing);
     }
     
