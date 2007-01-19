@@ -350,7 +350,6 @@ public class TreeCounter extends Thread{
                 data.setNomcol(names);
                 auxiliar.setValuesClass();
                 auxiliar.son = decisionTree(data, auxiliar);
-                //auxiliar.son.valuesClass = auxiliar.valuesClass;
                 auxiliar = auxiliar.brother;
             }
             
