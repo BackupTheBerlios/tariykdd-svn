@@ -124,6 +124,24 @@ public class MyCanvasTable extends JPanel {
                 tableSelected.getPopupMenu().show(evt.getComponent(),
                         evt.getX(), evt.getY());
             }
+        } else if(press.getName().equals("Campo")){
+            Campo campo = (Campo)press;
+            if(evt.getButton() == evt.BUTTON1){
+                if(campo.seleccionado){
+                    campo.seleccionado = false;
+                    campo.setIcon(null);
+                    select.removeElement(new String( ((Table)campo.getParent().getParent()).getName()
+                    + "." + campo.getText()));
+                    
+                } else {
+                    campo.seleccionado = true;
+                    campo.setIcon(campo.imageSelectorON);
+                    select.addElement(new String( ((Table)campo.getParent().getParent()).getName()
+                    + "." + campo.getText()));
+                }
+                Chooser.status.setText(selectToString());
+                mySelectorTable.setQuery(selectToString());
+            }
         } else if(press.getName().equals("Conector")){
             Conector2 conectorPress = (Conector2)press;
             if(conectorPress.seleccionado){
@@ -169,14 +187,14 @@ public class MyCanvasTable extends JPanel {
         Component presionado = this.findComponentAt(evt.getPoint());
         if(presionado.getName().equals("Table")){
             tableSelected = (Table)presionado.getParent();
-        } else if(presionado.getName().equals("Campo")){
+        } /*else if(presionado.getName().equals("Campo")){
             Campo campo = (Campo)presionado;
             if(campo.seleccionado){
                 campo.seleccionado = false;
                 campo.setIcon(null);
                 select.removeElement(new String( ((Table)campo.getParent().getParent()).getName()
                 + "." + campo.getText()));
-                
+           
             } else {
                 campo.seleccionado = true;
                 campo.setIcon(campo.imageSelectorON);
@@ -185,7 +203,7 @@ public class MyCanvasTable extends JPanel {
             }
             Chooser.status.setText(selectToString());
             mySelectorTable.setQuery(selectToString());
-        } else if(presionado.getName().equals("Conector")){
+        } */else if(presionado.getName().equals("Conector")){
             conectorFixed = (Conector2)presionado;
             if(conectorFixed.seleccionado){
                 if(conectorFixed.conections >= 1){// Mas de una conexion asociada
@@ -433,6 +451,7 @@ public class MyCanvasTable extends JPanel {
                 orderby = "";
             }
         }
+        mySelectorTable.getBtnAccept().setEnabled(false);
         return "SELECT " +
                 (mySelectorTable.isMarketBasket ? "DISTINCT " : "")
                 + str.toString() + " \nFROM "
