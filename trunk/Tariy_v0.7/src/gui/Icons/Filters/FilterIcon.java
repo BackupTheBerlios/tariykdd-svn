@@ -270,8 +270,6 @@ public class FilterIcon extends Icon{
         if(filterName.equals("codification")){
             dictionary = ((Codificacion)dataOut).valatricod.datos;
         } else {
-            //construir un metodo que genere un diccionario a partir de un
-            //AbstractTableModel dataOut
             dictionary = this.getDictionaryFromTableModel();
         }
         dataset.buildMultiValuedDictionary(dictionary);
