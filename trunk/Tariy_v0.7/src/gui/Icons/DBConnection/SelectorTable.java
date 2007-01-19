@@ -29,9 +29,12 @@ import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
@@ -144,6 +147,7 @@ public class SelectorTable extends javax.swing.JFrame
         jScrollPane2.setViewportView(tblPreview);
 
         btnAccept.setText("Accept");
+        btnAccept.setEnabled(false);
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
@@ -223,11 +227,11 @@ public class SelectorTable extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public JScrollPane getScrollTable() {
         return scrollTable;
     }
-
+    
     private void marketBasketItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_marketBasketItemStateChanged
 // TODO add your handling code here:
         if(evt.getStateChange() == evt.SELECTED){
@@ -242,6 +246,10 @@ public class SelectorTable extends javax.swing.JFrame
 // TODO add your handling code here:
         int rows = tableModel.getRowCount();
         int columns = tableModel.getColumnCount();
+        if(columns <= 1){
+            JOptionPane.showMessageDialog(this, "No se aplica Mineria de Datos a una unica columna.");
+            return;
+        }
         Object[][] data = new Object[rows][columns];
         String[] columnsName = new String[columns];
         for(int i = 0; i < columns; i++){
@@ -358,7 +366,7 @@ public class SelectorTable extends javax.swing.JFrame
         dataset.buildNTree(dataset.codeAttribute(item), id);
         System.gc();
         Chooser.status.setText("Free Memory: " + Runtime.getRuntime().freeMemory()
-                                            + " bits");
+        + " bits");
         try {
             dataset.setName(connection.getCatalog());
         } catch (SQLException ex) {
@@ -373,10 +381,15 @@ public class SelectorTable extends javax.swing.JFrame
     
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
 // TODO add your handling code here:
-        tableModel = new ScrollableTableModel(connection,
-                txtQuery2.getToolTipText());
-        tblPreview.setModel(tableModel);
-        this.setOptimalColumnWidth(tblPreview);
+        try{
+            tableModel = new ScrollableTableModel(connection,
+                    txtQuery2.getToolTipText());
+            tblPreview.setModel(tableModel);
+            this.setOptimalColumnWidth(tblPreview);
+            this.btnAccept.setEnabled(true);
+        } catch (IllegalArgumentException stme){
+            JOptionPane.showMessageDialog(this, stme.getMessage());
+        }
     }//GEN-LAST:event_btnExecuteActionPerformed
     
     private void cbxTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTableActionPerformed
@@ -565,7 +578,11 @@ public class SelectorTable extends javax.swing.JFrame
             setQuery(canvas.selectToString());
         }
     }
-    
+
+    public JButton getBtnAccept() {
+        return btnAccept;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnExecute;
@@ -656,5 +673,5 @@ public class SelectorTable extends javax.swing.JFrame
         
         return width;
     }
-
+    
 }
