@@ -150,6 +150,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             ((RulesIcon)to).support = ((AssociationIcon)from).support;
                             ((RulesIcon)to).title = ((AssociationIcon)from).icono.getText();
                         } else if(from instanceof DBConnectionIcon &&
+                                to instanceof ClasificationIcon){
+                            ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                        } else if(from instanceof DBConnectionIcon &&
                                 to instanceof FilterIcon){
                             ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
                         } else if(from instanceof FilterIcon &&
@@ -161,7 +164,6 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
                             ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
-                            //((AssociationIcon)to).dataset.showNTree();
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
                             ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
