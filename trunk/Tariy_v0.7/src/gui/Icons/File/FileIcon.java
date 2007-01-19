@@ -20,10 +20,6 @@ import java.util.Iterator;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
-/**
- *
- * @author ivan
- */
 public class FileIcon extends Icon {
     private JMenuItem mnuOpen;
     private JMenuItem mnuLoad;
@@ -31,16 +27,17 @@ public class FileIcon extends Icon {
     public DataSet dataset;
     public boolean xcon;
     public boolean isMarketBasket;
-    private OpenFile of;
+    private OpenFile of; 
+    public FileTableModel fileTable;
     
     /** Creates a new instance of FileIcon */
     public FileIcon(JLabel s, int x, int y) {
         super(s, x, y);
         
         super.constrainsTo = new ArrayList();
-        super.constrainsTo.add("FiltersIcon");
+        super.constrainsTo.add("FilterIcon");
         super.constrainsTo.add("AssociationIcon");
-        super.constrainsTo.add("ClasificationIcon");
+//        super.constrainsTo.add("ClasificationIcon");
         
         filePath = "";
         dataset = null;
@@ -61,7 +58,7 @@ public class FileIcon extends Icon {
         mnuLoad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 mnuLoadActionPerformed(evt);
-            }
+            } 
         });
         super.pupMenu.add(mnuLoad);
         
@@ -118,5 +115,10 @@ public class FileIcon extends Icon {
                 }
             }
         });
-    }
+        fileTable = of.getTableModel();
+    }    
+//     public FileTableModel getTableModel(){
+//        FileTableModel fileTable = new FileTableModel(filePath);
+//        return fileTable;
+//    } 
 }
