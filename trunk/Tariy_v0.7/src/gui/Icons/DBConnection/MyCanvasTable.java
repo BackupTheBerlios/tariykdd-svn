@@ -51,6 +51,10 @@ public class MyCanvasTable extends JPanel {
     final Color colorConector = new Color(29,113,255);
     final Color colorSeleccionado = new Color(210, 116, 226);
     public SelectorTable mySelectorTable;
+
+    public int ntables;
+
+    public int nrelations;
     final Color colorTag = new Color(210, 27, 226);
     final Color colorBg = new Color(238, 238, 238);
     
@@ -187,23 +191,7 @@ public class MyCanvasTable extends JPanel {
         Component presionado = this.findComponentAt(evt.getPoint());
         if(presionado.getName().equals("Table")){
             tableSelected = (Table)presionado.getParent();
-        } /*else if(presionado.getName().equals("Campo")){
-            Campo campo = (Campo)presionado;
-            if(campo.seleccionado){
-                campo.seleccionado = false;
-                campo.setIcon(null);
-                select.removeElement(new String( ((Table)campo.getParent().getParent()).getName()
-                + "." + campo.getText()));
-           
-            } else {
-                campo.seleccionado = true;
-                campo.setIcon(campo.imageSelectorON);
-                select.addElement(new String( ((Table)campo.getParent().getParent()).getName()
-                + "." + campo.getText()));
-            }
-            Chooser.status.setText(selectToString());
-            mySelectorTable.setQuery(selectToString());
-        } */else if(presionado.getName().equals("Conector")){
+        } else if(presionado.getName().equals("Conector")){
             conectorFixed = (Conector2)presionado;
             if(conectorFixed.seleccionado){
                 if(conectorFixed.conections >= 1){// Mas de una conexion asociada
@@ -410,6 +398,7 @@ public class MyCanvasTable extends JPanel {
     public String selectToString(){
         int length = select.size();
         if(length == 0){
+            mySelectorTable.getBtnAccept().setEnabled(false);
             return "No Select Found...";
         }
         StringTokenizer st;
@@ -419,6 +408,7 @@ public class MyCanvasTable extends JPanel {
         String relation = "";
         StringBuffer relations = new StringBuffer();
         String aux;
+        ntables = 0;
         for(int i = 0; i < length; i++){
             columns = (String)select.elementAt(i);
             if(i < length - 1){
@@ -430,18 +420,22 @@ public class MyCanvasTable extends JPanel {
             aux = st.nextToken();
             if(!tables.contains(aux)){
                 tables += aux + ", ";
+                ntables++;
             }
         }
         length = edges.size();
         Edge edge;
+        nrelations = 0;
         for(int i = 0; i < length; i++){
             edge = (Edge)edges.get(i);
             if(tables.contains(edge.from.getTableName()) &&
                     tables.contains(edge.to.getTableName()) ){
                 relation = edge.getRelation();
                 relations.append(relation + " AND ");
+                nrelations++;
             }
         }
+        
         String orderby = "";
         if(select.size() > 1){
             if(mySelectorTable.isMarketBasket){
