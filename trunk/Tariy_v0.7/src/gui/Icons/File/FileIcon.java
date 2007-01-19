@@ -37,7 +37,7 @@ public class FileIcon extends Icon {
         super.constrainsTo = new ArrayList();
         super.constrainsTo.add("FilterIcon");
         super.constrainsTo.add("AssociationIcon");
-//        super.constrainsTo.add("ClasificationIcon");
+        super.constrainsTo.add("PredictionIcon");
         
         filePath = "";
         dataset = null;
