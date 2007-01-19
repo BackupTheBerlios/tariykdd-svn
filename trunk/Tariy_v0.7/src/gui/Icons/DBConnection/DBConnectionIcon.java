@@ -43,6 +43,7 @@ public class DBConnectionIcon extends Icon{
         super.constrainsTo.add("AssociationIcon");
         super.constrainsTo.add("FilterIcon");
         super.constrainsTo.add("PredictionIcon");
+        super.constrainsTo.add("ClasificationIcon");
         
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");
