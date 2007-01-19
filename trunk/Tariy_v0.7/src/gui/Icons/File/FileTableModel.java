@@ -33,25 +33,26 @@ public class FileTableModel extends AbstractTableModel {
         FileManager fileMngt = new FileManager(filePath);
         fileMngt.dataAndAttributes(true);
         int size = fileMngt.getAttributes().length;
-        columnNames = new Object[size];
+        columnNames = new Object[size-1];
         columnNames = fileMngt.getAttributes();
         
         int rows = fileMngt.getData().length;
         int cols = fileMngt.getData()[0].length;
-        data = new Object[rows][cols+1];
+        data = new Object[rows][cols-1];
         data = fileMngt.getData();
     }
     
     public String getColumnName(int column) {
-        if (column==0) {
-            return "#";
-        } else {
-            if (columnNames[column-1] != null) {
-                return (String) columnNames[column-1];
-            } else {
-                return "";
-            }
-        }
+        return (String) columnNames[column];
+//        if (column==0) {
+//            return "#";
+//        } else {
+//            if (columnNames[column-1] != null) {
+//                return (String) columnNames[column-1];
+//            } else {
+//                return "";
+//            }
+//        }
     }
     
     //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -63,14 +64,15 @@ public class FileTableModel extends AbstractTableModel {
     }
     
     public int getColumnCount() {
-        return columnNames.length+1;
+        return columnNames.length;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
-        if (columnIndex==0) {
-            return rowIndex+1;
-        } else {
-            return data[rowIndex][columnIndex-1];
-        }
+        return data[rowIndex][columnIndex];
+//        if (columnIndex==0) {
+//            return rowIndex+1;
+//        } else {
+//            return data[rowIndex][columnIndex-1];
+//        }
     }
 }
