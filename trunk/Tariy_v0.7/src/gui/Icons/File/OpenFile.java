@@ -237,6 +237,9 @@ public class OpenFile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBrowseActionPerformed
     
+     public FileTableModel getTableModel(){
+        return model;
+    } 
     
     /**
      * @param args the command line arguments
