@@ -25,6 +25,7 @@ public class configureParameters extends javax.swing.JFrame {
     private TreeCounter c;
     private SpinnerNumberModel snmRows;
     private SpinnerNumberModel snmThreshold;
+    private SpinnerNumberModel snmTraining;
     TariyTableModel dataOut1 = new TariyTableModel();
     TariyTableModel dataOut2 = new TariyTableModel();
     
@@ -34,8 +35,10 @@ public class configureParameters extends javax.swing.JFrame {
         this.ci = ci;
         snmRows = new SpinnerNumberModel(ci.minRows, 0.0, 100.0, 0.25);
         snmThreshold= new SpinnerNumberModel(ci.threshold, 0.0, 100.0, 0.25);
+        snmTraining = new SpinnerNumberModel(ci.trainingSet, 0.0, 100.0, 0.25);
         spnMinRows.setModel(snmRows);
         spnThreshold.setModel(snmThreshold);
+        spnSizeSet.setModel(snmTraining);
     }
     
     /** This method is called from within the constructor to
