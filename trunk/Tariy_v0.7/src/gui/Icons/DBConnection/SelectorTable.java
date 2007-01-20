@@ -7,6 +7,7 @@
 package gui.Icons.DBConnection;
 
 import Utils.DataSet;
+import Utils.TableOptimalWidth;
 import gui.Icons.Filters.TariyTableModel;
 import gui.KnowledgeFlow.Chooser;
 import java.awt.Component;
@@ -74,11 +75,8 @@ public class SelectorTable extends javax.swing.JFrame
         scrollTable.add(canvas);
         this.connection = icon.connection;
         cbxTable.setModel(new DefaultComboBoxModel(this.getTables()));
-        //tblPreview.setColumnModel(new myTableColumnModel());
         tblPreview.getColumnModel().addColumnModelListener(this);
         dataset = new DataSet("");
-        tblPreview.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        //this.setOptimalColumnWidth(tblPreview);
     }
     
     /** This method is called from within the constructor to
@@ -132,15 +130,13 @@ public class SelectorTable extends javax.swing.JFrame
             }
         });
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Preview", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10)));
         tblPreview.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tblPreview.setDragEnabled(true);
@@ -170,8 +166,10 @@ public class SelectorTable extends javax.swing.JFrame
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        scrollTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Attribute Selector", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Courier", 1, 12), javax.swing.UIManager.getDefaults().getColor("Checkbox.select")));
+        scrollTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Attribute Selector", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", 0, 10)));
 
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SQL Sentence", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10)));
         txtQuery2.setFont(new java.awt.Font("Courier New", 0, 10));
         jScrollPane3.setViewportView(txtQuery2);
 
@@ -183,7 +181,10 @@ public class SelectorTable extends javax.swing.JFrame
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE)
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .add(layout.createSequentialGroup()
+                        .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(layout.createSequentialGroup()
                         .add(cbxTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 310, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -194,19 +195,16 @@ public class SelectorTable extends javax.swing.JFrame
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jRadioButton1))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                        .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnExecute)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnAccept)
-                        .addContainerGap())
-                    .add(layout.createSequentialGroup()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(btnAccept, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .add(btnExecute, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cbxTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -214,15 +212,16 @@ public class SelectorTable extends javax.swing.JFrame
                     .add(marketBasket)
                     .add(jRadioButton1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .add(scrollTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(btnAccept)
-                        .add(btnExecute))
-                    .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(btnExecute)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnAccept))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pack();
@@ -388,7 +387,7 @@ public class SelectorTable extends javax.swing.JFrame
                 tableModel = new ScrollableTableModel(connection,
                         txtQuery2.getToolTipText());
                 tblPreview.setModel(tableModel);
-                this.setOptimalColumnWidth(tblPreview);
+                TableOptimalWidth.setOptimalColumnWidth(tblPreview);
                 this.btnAccept.setEnabled(true);
             }
         } catch (IllegalArgumentException stme){
@@ -603,81 +602,4 @@ public class SelectorTable extends javax.swing.JFrame
     private javax.swing.JTable tblPreview;
     private javax.swing.JEditorPane txtQuery2;
     // End of variables declaration//GEN-END:variables
-    public static void setOptimalColumnWidth(JTable jtable) {
-        int            i;
-        
-        for (i = 0; i < jtable.getColumnModel().getColumnCount(); i++)
-            setOptimalColumnWidth(jtable, i);
-    }
-    
-    public static void setOptimalColumnWidth(JTable jtable, int col) {
-        int            width;
-        TableColumn    column;
-        JTableHeader   header;
-        
-        if ( (col >= 0) && (col < jtable.getColumnModel().getColumnCount()) ) {
-            width = calcColumnWidth(jtable, col);
-            
-            if (width >= 0) {
-                header = jtable.getTableHeader();
-                column = jtable.getColumnModel().getColumn(col);
-                column.setPreferredWidth(width);
-                jtable.sizeColumnsToFit(-1);
-                header.repaint();
-            }
-        }
-    }
-    
-    public static int calcColumnWidth(JTable table, int col) {
-        int width = calcHeaderWidth(table, col);
-        if (width == -1)
-            return width;
-        
-        TableColumnModel columns = table.getColumnModel();
-        TableModel data = table.getModel();
-        int rowCount = data.getRowCount();
-        TableColumn column = columns.getColumn(col);
-        try {
-            for (int row = rowCount - 1; row >= 0; --row) {
-                Component c = table.prepareRenderer(
-                        table.getCellRenderer(row, col),
-                        row, col);
-                width = Math.max(width, c.getPreferredSize().width + 10);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        return width;
-    }
-    public static int calcHeaderWidth(JTable table, int col) {
-        if (table == null)
-            return -1;
-        
-        if (col < 0 || col > table.getColumnCount()) {
-            System.out.println("invalid col " + col);
-            return -1;
-        }
-        
-        JTableHeader header = table.getTableHeader();
-        TableCellRenderer defaultHeaderRenderer = null;
-        if (header != null) defaultHeaderRenderer = header.getDefaultRenderer();
-        TableColumnModel columns = table.getColumnModel();
-        TableModel data = table.getModel();
-        TableColumn column = columns.getColumn(col);
-        int width = -1;
-        TableCellRenderer h = column.getHeaderRenderer();
-        if (h == null) h = defaultHeaderRenderer;
-        if (h != null) {
-            // Not explicitly impossible
-            Component c = h.getTableCellRendererComponent(
-                    table,
-                    column.getHeaderValue(),
-                    false, false, -1, col);
-            width = c.getPreferredSize().width + 5;
-        }
-        
-        return width;
-    }
-    
 }
