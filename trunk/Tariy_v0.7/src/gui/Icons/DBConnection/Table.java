@@ -185,6 +185,8 @@ public class Table extends javax.swing.JPanel {
     private void initComponents() {
         PopupMenu = new javax.swing.JPopupMenu();
         mnuDelete = new javax.swing.JMenuItem();
+        mnuSelectAll = new javax.swing.JMenuItem();
+        mnuInvertSelection = new javax.swing.JMenuItem();
 
         PopupMenu.setInvoker(this);
         mnuDelete.setText("Delete");
@@ -196,10 +198,67 @@ public class Table extends javax.swing.JPanel {
 
         PopupMenu.add(mnuDelete);
 
+        mnuSelectAll.setText("Select All");
+        mnuSelectAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSelectAllActionPerformed(evt);
+            }
+        });
+
+        PopupMenu.add(mnuSelectAll);
+
+        mnuInvertSelection.setText("Invert Selection");
+        mnuInvertSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuInvertSelectionActionPerformed(evt);
+            }
+        });
+
+        PopupMenu.add(mnuInvertSelection);
+
         setLayout(new java.awt.BorderLayout());
 
         setComponentPopupMenu(PopupMenu);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void mnuInvertSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInvertSelectionActionPerformed
+// TODO add your handling code here:
+        MyCanvasTable parent = (MyCanvasTable)this.getParent();
+        Vector columns = this.getColumns();
+        int size = columns.size();
+        for(int i = 0; i < size; i++){
+            Campo camp = (Campo)columns.elementAt(i);
+            if( camp.seleccionado ){
+                parent.select.removeElement(this.getName() + "." + camp.getText());
+                camp.seleccionado = false;
+                camp.setIcon(null);
+            } else {
+                parent.select.addElement(this.getName() + "." + camp.getText());
+                camp.seleccionado = true;
+                camp.setIcon(camp.imageSelectorON);
+                
+            }
+        }
+        parent.mySelectorTable.setQuery(parent.selectToString());
+        parent.repaint();
+    }//GEN-LAST:event_mnuInvertSelectionActionPerformed
+    
+    private void mnuSelectAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSelectAllActionPerformed
+// TODO add your handling code here:
+        MyCanvasTable parent = (MyCanvasTable)this.getParent();
+        Vector columns = this.getColumns();
+        int size = columns.size();
+        for(int i = 0; i < size; i++){
+            Campo camp = (Campo)columns.elementAt(i);
+            if( !camp.seleccionado ){
+                parent.select.addElement(this.getName() + "." + camp.getText());
+                camp.seleccionado = true;
+                camp.setIcon(camp.imageSelectorON);
+            }
+        }
+        parent.mySelectorTable.setQuery(parent.selectToString());
+        parent.repaint();
+    }//GEN-LAST:event_mnuSelectAllActionPerformed
     public JPopupMenu getPopupMenu(){
         return PopupMenu;
     }
@@ -264,8 +323,8 @@ public class Table extends javax.swing.JPanel {
         int size = columns.size();
         for(int i = 0; i < size; i++){
             if( ((Campo)columns.elementAt(i)).seleccionado ){
-                parent.select.removeElement(new String(this.getName() + "." + 
-                                    ((Campo)columns.elementAt(i)).getText()));
+                parent.select.removeElement(new String(this.getName() + "." +
+                        ((Campo)columns.elementAt(i)).getText()));
             }
         }
         parent.mySelectorTable.setQuery(parent.selectToString());
@@ -277,6 +336,8 @@ public class Table extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu PopupMenu;
     private javax.swing.JMenuItem mnuDelete;
+    private javax.swing.JMenuItem mnuInvertSelection;
+    private javax.swing.JMenuItem mnuSelectAll;
     // End of variables declaration//GEN-END:variables
     
 }
