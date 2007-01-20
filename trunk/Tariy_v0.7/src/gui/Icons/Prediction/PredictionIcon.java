@@ -57,7 +57,7 @@ public class PredictionIcon extends Icon{
             TariyTableModel tariyData = this.changeToTariyModel();     
 //            Prediction p = new Prediction(dataIn);
             p = new Prediction(tariyData);
-            p.PredictionColTarget(root);               
+            p.PredictionColTarget(root);
         }  
         
         private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {

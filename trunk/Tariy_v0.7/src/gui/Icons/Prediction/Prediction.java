@@ -31,6 +31,8 @@ public class Prediction extends AbstractTableModel{
     int columns, rows, colnode;
     String cad,atri;
     Attribute ax;
+    Attribute auxroot;
+    String texErrorM = "0.0";
         
     public Prediction(AbstractTableModel dataIn){
         datosEntrada = dataIn;
@@ -52,6 +54,7 @@ public class Prediction extends AbstractTableModel{
     }
     
     public void PredictionColTarget(Attribute auxiliar){
+        auxroot = auxiliar;
         ax = auxiliar.son;
         nameColTarget(ax);
         NewTable(ax);
@@ -59,9 +62,12 @@ public class Prediction extends AbstractTableModel{
     
     public void NewTable(Attribute auxiliar){
         int f = 0;
+        float ErrorMissing = 0, datosMissing = 0;
+        Attribute auxfather;
+        auxfather = auxroot;
         
         while(f < rows){ 
-            
+                 
             StringTokenizer token = new StringTokenizer(auxiliar.name,"=");
             cad = token.nextToken().trim();
            
@@ -78,8 +84,10 @@ public class Prediction extends AbstractTableModel{
                    datos[f][columns] =  cad;
                    f++;
                    auxiliar = ax;
+                   auxfather = auxroot;
                 }
                 else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
+                    auxfather = auxiliar;
                     auxiliar = auxiliar.son;
                 }
                 else if(auxiliar.brother != null){
@@ -89,7 +97,8 @@ public class Prediction extends AbstractTableModel{
                     // aqui asigno el mejor parcializado para este nodo con el metodo de Andres
                     int vlrv = 0;
                     String cadv = "";
-                    ArrayList values = auxiliar.getValuesClass();
+                    datosMissing++; 
+                    ArrayList values = auxfather.getValuesClass();
                     Collections.sort(values, new compareValues());
                     for(int v=0; v < values.size(); v++){ 
                        Value value = (Value)values.get(v);
@@ -101,10 +110,22 @@ public class Prediction extends AbstractTableModel{
                    datos[f][columns] = cadv; 
                    f++;
                    auxiliar = ax;
+                   auxfather = auxroot;
                 }
             }
             else f = rows;
         }
+        if(datosMissing == 0){
+           ErrorMissing = 0; 
+        }
+        else{
+        ErrorMissing = ((datosMissing/rows)*100);
+        }
+        texErrorM = Float.toString(ErrorMissing);
+    }
+    
+    public String getErrorMissing(){
+        return texErrorM;
     }
     
     public void nameColTarget(Attribute aux){

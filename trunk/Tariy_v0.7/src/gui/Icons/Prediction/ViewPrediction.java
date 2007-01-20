@@ -23,12 +23,12 @@ public class ViewPrediction extends javax.swing.JFrame {
     /**
      * Creates new form ViewPrediction
      */
-    public ViewPrediction(AbstractTableModel dataIn, AbstractTableModel dataOut) {
+    public ViewPrediction(AbstractTableModel dataIn, Prediction dataOut) {
         datosEntrada = dataIn;
         tipoVariables = new TipodVariables(dataIn);
         datosFiltros = dataOut;
         initComponents();
-        LblRegAct.setText(Integer.toString(datosFiltros.getRowCount()));
+        LblRegAct.setText(dataOut.getErrorMissing());
         LblRegElim.setText(dataOut.getColumnName(dataOut.getColumnCount()-1));
     }
     /** This method is called from within the constructor to
@@ -72,7 +72,7 @@ public class ViewPrediction extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registros Actuales : ");
+        jLabel1.setText("Error Missing : ");
 
         LblRegAct.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblRegAct.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,7 +98,7 @@ public class ViewPrediction extends javax.swing.JFrame {
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegElim)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 339, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 384, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegAct)
