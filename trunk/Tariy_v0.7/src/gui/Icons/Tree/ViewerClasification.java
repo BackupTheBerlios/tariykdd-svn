@@ -6,6 +6,7 @@
 
 package gui.Icons.Tree;
 
+import Utils.TableOptimalWidth;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
@@ -43,8 +44,7 @@ public class ViewerClasification extends javax.swing.JFrame {
         rules = root.getLeafs();
         TreeTableModel tblModel = new TreeTableModel(rules);
         tblRules.setModel(tblModel);
-        tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        ShowClassificationRules.setOptimalColumnWidth(tblRules);
+        TableOptimalWidth.setOptimalColumnWidth(tblRules);
         scrollTable.setViewportView(tblRules);
         TabPanel.addTab("Rules", scrollTable);
         this.addJTableHeaderListener();
