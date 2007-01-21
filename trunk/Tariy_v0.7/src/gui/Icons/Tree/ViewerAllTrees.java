@@ -6,6 +6,7 @@
 
 package gui.Icons.Tree;
 
+import Utils.TableOptimalWidth;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
@@ -34,13 +35,10 @@ public class ViewerAllTrees extends javax.swing.JFrame {
     public ViewerAllTrees(Attribute root) {
         initComponents();
         JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
-        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
-        //  debe cambiar a un TreeTableModel
-        StringBuffer RulesText = c.seeLeafs(root);
         scrollTree = new javax.swing.JScrollPane();
         TextRules = new javax.swing.JTextArea();
         scrollTree.setViewportView(TextRules);
-        TextRules.setText(RulesText.toString());
+        TextRules.setText("");
         TabPanel.addTab("Tree", TreePanel);
         TabPanel.addTab("Rules", scrollTree);
         scrollTable = new javax.swing.JScrollPane();
@@ -48,8 +46,7 @@ public class ViewerAllTrees extends javax.swing.JFrame {
         rules = root.getLeafs();
         TreeTableModel tblModel = new TreeTableModel(rules);
         tblRules.setModel(tblModel);
-        tblRules.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        ShowClassificationRules.setOptimalColumnWidth(tblRules);
+        TableOptimalWidth.setOptimalColumnWidth(tblRules);
         scrollTable.setViewportView(tblRules);
         TabPanel.addTab("Table", scrollTable);
         this.addJTableHeaderListener();
