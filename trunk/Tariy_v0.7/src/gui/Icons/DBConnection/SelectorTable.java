@@ -387,7 +387,7 @@ public class SelectorTable extends javax.swing.JFrame
                 tableModel = new ScrollableTableModel(connection,
                         txtQuery2.getToolTipText());
                 tblPreview.setModel(tableModel);
-                TableOptimalWidth.setOptimalColumnWidth(tblPreview);
+                TableOptimalWidth.setOptimalColumnWidth(tblPreview, 10);
                 this.btnAccept.setEnabled(true);
             }
         } catch (IllegalArgumentException stme){
