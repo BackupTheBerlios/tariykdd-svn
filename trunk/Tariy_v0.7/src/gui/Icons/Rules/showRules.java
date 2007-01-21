@@ -9,6 +9,7 @@ package gui.Icons.Rules;
 import Utils.AssocRules;
 import Utils.ExampleFileFilter;
 import Utils.FileManager;
+import Utils.TableOptimalWidth;
 import gui.KnowledgeFlow.Chooser;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -47,9 +48,10 @@ public class showRules extends javax.swing.JFrame {
         if(rules.getRules().size() != 0) {
             RulesTableModel model = new RulesTableModel(rules.getRules());
             tblRules.setModel(model);
+            tblRules.setAutoResizeMode(tblRules.AUTO_RESIZE_OFF);
+            TableOptimalWidth.setOptimalColumnWidth(tblRules);
             Chooser.setStatus("Generate " + tblRules.getRowCount() + " rules with confidence "
                     + confidence + "%");
-//            columnSizes();
         } else {
             // No hay resultados //
         }
@@ -75,11 +77,14 @@ public class showRules extends javax.swing.JFrame {
                     if(column == 1) {
                         rules.sortByGoldStone(0);
                         rules.sortByGoldStone(1);
-                        RulesTableModel rtm = new RulesTableModel(rules.getRules());
-                        tblRules.setModel(rtm);
+//                        RulesTableModel rtm = new RulesTableModel(rules.getRules());
+//                        tblRules.setModel(rtm);
+                        tblRules.updateUI();
                     } else if(column == 2) {
-                        RulesTableModel rtm = new RulesTableModel(rules.sortByConfidence());
-                        tblRules.setModel(rtm);
+//                        RulesTableModel rtm = new RulesTableModel(rules.sortByConfidence());
+//                        tblRules.setModel(rtm);
+                        rules.sortByConfidence();
+                        tblRules.updateUI();
                     }
                 }
             }
