@@ -425,19 +425,19 @@ public class SelectorTable extends javax.swing.JFrame
         for(int i = 0; i < nComponents ; i++){
             otherTable = ((Table)tables[i]).getName();
             references = this.getCrossReference(otherTable, table);
+            System.out.println(references.toString());
             if(references.size() > 0){
-                Chooser.status.setText(references.toString());
                 Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
                 Conector2 c2 = t.getConector((String)references.elementAt(1));
                 canvas.edges.add(new Edge(c1, c2));
             }
-            references = this.getCrossReference(table, otherTable);
-            if(references.size() > 0){
-                Chooser.status.setText(references.toString());
-                Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
-                Conector2 c2 = t.getConector((String)references.elementAt(1));
-                canvas.edges.add(new Edge(c1, c2));
-            }
+//            references = this.getCrossReference(table, otherTable);
+//            if(references.size() > 0){
+//                Chooser.status.setText(references.toString());
+//                Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
+//                Conector2 c2 = t.getConector((String)references.elementAt(1));
+//                canvas.edges.add(new Edge(c1, c2));
+//            }
         }
     }//GEN-LAST:event_cbxTableActionPerformed
     
@@ -535,6 +535,13 @@ public class SelectorTable extends javax.swing.JFrame
             while(rs.next()){
                 pairKeys.addElement(rs.getString(4));
                 pairKeys.addElement(rs.getString(8));
+            }
+            if(pairKeys.size() == 0){
+                rs = dbmd.getCrossReference("", "", table2, "", "", table1);
+                while(rs.next()){
+                    pairKeys.addElement(rs.getString(8));
+                    pairKeys.addElement(rs.getString(4));
+                }
             }
             rs.close();
         }catch(SQLException e){
