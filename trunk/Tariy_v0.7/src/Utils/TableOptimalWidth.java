@@ -29,17 +29,25 @@ public class TableOptimalWidth {
     
     public static void setOptimalColumnWidth(JTable jtable) {
         int columns = jtable.getColumnModel().getColumnCount();
-        if(columns < 10){
+        jtable.setAutoResizeMode(jtable.AUTO_RESIZE_OFF);
+        for (int i = 0; i < columns; i++){
+            setOptimalColumnWidthByColumn(jtable, i);
+        }
+    }
+
+    public static void setOptimalColumnWidth(JTable jtable, int minColumns) {
+        int columns = jtable.getColumnModel().getColumnCount();
+        if(columns < minColumns){
             jtable.setAutoResizeMode(jtable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
             return;
         }
         jtable.setAutoResizeMode(jtable.AUTO_RESIZE_OFF);
         for (int i = 0; i < columns; i++){
-            setOptimalColumnWidth(jtable, i);
+            setOptimalColumnWidthByColumn(jtable, i);
         }
     }
     
-    public static void setOptimalColumnWidth(JTable jtable, int col) {
+    public static void setOptimalColumnWidthByColumn(JTable jtable, int col) {
         int            width;
         TableColumn    column;
         JTableHeader   header;
