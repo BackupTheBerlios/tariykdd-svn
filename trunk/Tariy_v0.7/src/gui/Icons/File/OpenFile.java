@@ -8,6 +8,8 @@ package gui.Icons.File;
 
 import Utils.ExampleFileFilter;
 import Utils.FileManager;
+import Utils.TableOptimalWidth;
+import gui.KnowledgeFlow.Chooser;
 import javax.swing.AbstractButton;
 import javax.swing.table.TableColumn;
 
@@ -209,6 +211,9 @@ public class OpenFile extends javax.swing.JFrame {
         // TODO add your handling code here:
         myFileIcon.filePath = filePath;
         myFileIcon.isMarketBasket = this.isMarketBasket;
+        Chooser.setStatus("Load File: " + filePath);
+        myFileIcon.setInfo("Load File:\n" + filePath);
+        myFileIcon.getMnuLoad().setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
@@ -232,8 +237,9 @@ public class OpenFile extends javax.swing.JFrame {
             filePath = file;
             model = new FileTableModel(file);
             tblData.setModel(model);
+            TableOptimalWidth.setOptimalColumnWidth(tblData, 10);
             lblPreview.setVisible(true);
-            columnSizes();
+            //columnSizes();
         }
     }//GEN-LAST:event_btnBrowseActionPerformed
     
