@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -139,7 +140,12 @@ public class MyCanvas extends javax.swing.JPanel {
                         from.tos.add(to);
                         if(from instanceof DBConnectionIcon &&
                                 to instanceof AssociationIcon){
-                            ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
+                            if(((DBConnectionIcon)from).dataset == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+
+                            } else {
+                                ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
+                            }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof AssociationIcon){
                             ((AssociationIcon)to).dataset = ((FilterIcon)from).buildDataSet();
@@ -296,7 +302,7 @@ public class MyCanvas extends javax.swing.JPanel {
                     iconPress.getInfo());
         } else {
             return null;
-        }        
+        }
     }
     
 //    public Point getToolTipLocation(MouseEvent event) {
