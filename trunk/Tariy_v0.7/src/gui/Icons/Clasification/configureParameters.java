@@ -185,27 +185,48 @@ public class configureParameters extends javax.swing.JFrame {
         cols = ci.dataIn.getColumnCount();
         
         vlsp = Float.parseFloat(spnSizeSet.getValue().toString());
+           
+        Object[][] data1; 
         
-        fsizeset = vlsp/100;  // revisar esto que aqui esta el problema
-        fsizeset = fsizeset*rows;
-        
-        roundf = (int)fsizeset;       
-        Object[][] data1 = new Object[roundf][cols]; 
-        
-        Object[][] data2 = new Object[rows-roundf][cols];  // rows pendiente
-       
+        Object[][] data2; 
+  
         String[] columnsName = new String[cols];
-       
-        for(int i = 0; i < cols; i++){
-            for(int j = 0; j < roundf; j++){
-                data1[j][i] = ci.dataIn.getValueAt(j ,i);
+        
+        if(vlsp == 100 || vlsp == 0){
+            
+           data1 = new Object[rows][cols]; 
+        
+           data2 = new Object[rows][cols]; 
+            
+           for(int i = 0; i < cols; i++){
+                for(int j = 0; j < rows; j++){
+                    data1[j][i] = ci.dataIn.getValueAt(j ,i);
+                    data2[j][i] = ci.dataIn.getValueAt(j ,i);
+                }
+                columnsName[i] = ci.dataIn.getColumnName(i);
             }
-            cn = 0; 
-            for(int j = roundf; j < rows; j++){
-                data2[cn][i] = ci.dataIn.getValueAt(j ,i);
-                cn ++;
+        }
+        else{ 
+                       
+           data1 = new Object[roundf][cols]; 
+        
+           data2 = new Object[rows-roundf][cols]; 
+           
+           fsizeset = vlsp/100; 
+           fsizeset = fsizeset*rows;   
+           roundf = (int)fsizeset; 
+            
+            for(int i = 0; i < cols; i++){
+                for(int j = 0; j < roundf; j++){
+                    data1[j][i] = ci.dataIn.getValueAt(j ,i);
+                }
+                cn = 0; 
+                for(int j = roundf; j < rows; j++){
+                    data2[cn][i] = ci.dataIn.getValueAt(j ,i);
+                    cn ++;
+                }
+                columnsName[i] = ci.dataIn.getColumnName(i);
             }
-            columnsName[i] = ci.dataIn.getColumnName(i);
         }
 
         dataOut1.setDatos(data1);
