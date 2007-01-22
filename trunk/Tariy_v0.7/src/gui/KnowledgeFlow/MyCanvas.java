@@ -6,6 +6,7 @@
 
 package gui.KnowledgeFlow;
 
+import Utils.DataSet;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.DBConnection.DBConnectionIcon;
@@ -104,17 +105,9 @@ public class MyCanvas extends javax.swing.JPanel {
         System.out.println(press.getName());
         if(press.getClass().getSimpleName().equals("MyIcon")){
             seleccionado = (Icon)press.getParent();
-            //Chooser.setStatus( seleccionado.getInfo() );
-            //this.setToolTipText(((Icon)seleccionado).getInfo());
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
                 seleccionado.getPupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
             }
-//            if(seleccionado.froms.size() > 0){
-//                Iterator it = seleccionado.froms.iterator();
-//                while(it.hasNext()){
-//                    Chooser.status.setText( ((Icon)it.next()).icono.getText() );
-//                }
-//            }
             seleccionado = null;
         } else if(press.getClass().getSimpleName().equals("Conector")){
             Conector conectorPress = (Conector)press;
@@ -142,63 +135,167 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof AssociationIcon){
                             if(((DBConnectionIcon)from).dataset == null){
                                 JOptionPane.showMessageDialog(this,"Data no load");
-
                             } else {
                                 ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
                             }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof AssociationIcon){
-                            ((AssociationIcon)to).dataset = ((FilterIcon)from).buildDataSet();
+                            DataSet filterDataset = ((FilterIcon)from).buildDataSet();
+                            if(filterDataset == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((AssociationIcon)to).dataset = filterDataset;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof AssociationIcon &&
                                 to instanceof RulesIcon){
-                            ((RulesIcon)to).trees = ((AssociationIcon)from).trees;
-                            ((RulesIcon)to).dataset = ((AssociationIcon)from).dataset;
-                            ((RulesIcon)to).support = ((AssociationIcon)from).support;
-                            ((RulesIcon)to).title = ((AssociationIcon)from).icono.getText();
+                            if(((AssociationIcon)from).trees == null || ((AssociationIcon)from).dataset == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((RulesIcon)to).trees = ((AssociationIcon)from).trees;
+                                ((RulesIcon)to).dataset = ((AssociationIcon)from).dataset;
+                                ((RulesIcon)to).support = ((AssociationIcon)from).support;
+                                ((RulesIcon)to).title = ((AssociationIcon)from).icono.getText();
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof ClasificationIcon){
-                            ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof FilterIcon){
-                            ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof FilterIcon){
-                            ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                            if(((FilterIcon)from).dataOut == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
-                            ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                            if(((FilterIcon)from).dataOut == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
-                            ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
+                            if(((FileIcon)from).dataset == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
-                            ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
+                            if(((FileIcon)from).fileTable == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         }  else if (from instanceof FileIcon &&
                                 to instanceof PredictionIcon) {
-                            ((PredictionIcon)to).dataIn = ((FileIcon)from).fileTable;
+                            if(((FileIcon)from).fileTable == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((PredictionIcon)to).dataIn = ((FileIcon)from).fileTable;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof HierarchicalTreeIcon){
-                            ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
-                            ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                            if(((ClasificationIcon)from).root == null ||
+                                    ((ClasificationIcon)from).dataOut2 == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
+                                ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof WekaTreeIcon){
-                            ((WekaTreeIcon) to).root = ((ClasificationIcon)from).root;
-                            ((WekaTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                            if(((ClasificationIcon)from).root == null ||
+                                    ((ClasificationIcon)from).dataOut2 == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((WekaTreeIcon) to).root = ((ClasificationIcon)from).root;
+                                ((WekaTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof TextTreeIcon){
-                            ((TextTreeIcon) to).root = ((ClasificationIcon)from).root;
-                            ((TextTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                            if(((ClasificationIcon)from).root == null ||
+                                    ((ClasificationIcon)from).dataOut2 == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((TextTreeIcon) to).root = ((ClasificationIcon)from).root;
+                                ((TextTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof PredictionIcon){
-                            ((PredictionIcon)to).root = ((ClasificationIcon)from).c.root;
+                            if(((ClasificationIcon)from).root == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((PredictionIcon)to).root = ((ClasificationIcon)from).root;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof PredictionIcon){
-                            ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                                JOptionPane.showMessageDialog(this,"Data no load");
+                            } else {
+                                ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                nuevoPresionado.seleccionado = true;
+                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+                                conectorPresionado = null;
+                            }
                         }
-                        
-                        nuevoPresionado.seleccionado = true;
-                        conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                        conectorPresionado = null;
+//
+//                        nuevoPresionado.seleccionado = true;
+//                        conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
+//                        conectorPresionado = null;
                     }
                 }
             }
@@ -212,6 +309,9 @@ public class MyCanvas extends javax.swing.JPanel {
             //Descarte la excepcion
         }
     }//GEN-LAST:event_formMouseReleased
+    
+    private void setConnection(){
+    }
     
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
