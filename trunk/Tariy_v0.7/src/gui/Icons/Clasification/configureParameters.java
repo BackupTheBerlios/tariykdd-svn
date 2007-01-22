@@ -222,7 +222,7 @@ public class configureParameters extends javax.swing.JFrame {
 //        c = new TreeCounter(minRows, tariyData);
 //        c.start();
         ci.mnuRun.setEnabled(true);
-        Chooser.setStatus("Parameters load in " + ci.getName().trim());
+        Chooser.setStatus("Parameters loaded in " + ci.getName().trim());
         ci.setInfo("min Rows: " + minRows + "%" +
                  "\nThreshold: " + threshold + "%" +
                  "\n\nTraining Set: " + vlsp + "%");
