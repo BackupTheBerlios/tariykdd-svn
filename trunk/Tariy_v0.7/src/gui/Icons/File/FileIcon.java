@@ -12,6 +12,7 @@ package gui.Icons.File;
 import Utils.DataSet;
 import Utils.FileManager;
 import gui.Icons.Association.AssociationIcon;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,11 +62,19 @@ public class FileIcon extends Icon {
             } 
         });
         super.pupMenu.add(mnuLoad);
-        
+        mnuLoad.setEnabled(false);
         of = new OpenFile(this);
         of.setVisible(false);
     }
-    
+
+    public JMenuItem getMnuOpen() {
+        return mnuOpen;
+    }
+
+    public JMenuItem getMnuLoad() {
+        return mnuLoad;
+    }
+
     private void mnuOpenActionPerformed(ActionEvent evt) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -116,6 +125,8 @@ public class FileIcon extends Icon {
             }
         });
         fileTable = of.getTableModel();
+        Chooser.setStatus("Load " + fileTable.getRowCount() + " instances.");
+        this.setInfo("Load " + fileTable.getRowCount() + " instances.");
     }    
 //     public FileTableModel getTableModel(){
 //        FileTableModel fileTable = new FileTableModel(filePath);
