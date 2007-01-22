@@ -273,7 +273,6 @@ public class FilterIcon extends Icon{
             dictionary = this.getDictionaryFromTableModel();
         }
         dataset.buildMultiValuedDictionary(dictionary);
-        dataset.showDictionary();
         
         for(int i = 0; i < dataOut.getRowCount(); i++){
             for(int j = 0; j < dataOut.getColumnCount(); j++){
@@ -285,7 +284,6 @@ public class FilterIcon extends Icon{
                 }
             }
         }
-        dataset.showNTree();
         
         return dataset;
     }
