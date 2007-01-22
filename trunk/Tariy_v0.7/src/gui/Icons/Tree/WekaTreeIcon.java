@@ -58,15 +58,16 @@ public class WekaTreeIcon extends Icon{
         });
         super.pupMenu.add(mnuView);
     }
-    
-    private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
 
-        int f = 0, rows = 0, colnode = 0;
+        private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
+
+        int f = 0, rows = 0, columns, colnode = 0;
         String cad,atri;
         Attribute auxiliar;
-        float ErrorMissing = 0, datosMissing = 0;
+        float ErrorMissing = 0, datosWrong = 0;
         
         rows = dataTest.getRowCount();
+        columns = dataTest.getColumnCount()-1;
         auxiliar = root.son;
 
         while(f < rows){ 
@@ -77,12 +78,15 @@ public class WekaTreeIcon extends Icon{
             if(auxiliar.son!=null){
               colnode = getColNode(cad);   
             }   
-            else colnode = 0; 
+            else colnode = columns; 
 
             cad = token.nextToken().trim();
             atri = dataTest.getValueAt(f,colnode).toString().trim();
 
-            if(auxiliar.son == null){
+            if(auxiliar.son == null){ 
+                if(!cad.equalsIgnoreCase(atri)){
+                      datosWrong++;
+                }      
                f++;
                auxiliar = root.son;
             }
@@ -93,16 +97,16 @@ public class WekaTreeIcon extends Icon{
                 auxiliar = auxiliar.brother;
             }
             else { 
-               datosMissing++; 
                f++;
                auxiliar = root.son;
             }
         }
-        if(datosMissing == 0){
+        
+        if(datosWrong == 0){
            ErrorMissing = 0; 
         }
         else{
-        ErrorMissing = ((datosMissing/rows)*100);
+        ErrorMissing = ((datosWrong/rows)*100);
         }
         texErrorM = Float.toString(ErrorMissing);
     }
