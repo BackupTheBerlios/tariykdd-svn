@@ -159,6 +159,7 @@
           <Color blue="99" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="CLASIFICATION"/>
+        <Property name="name" type="java.lang.String" value="otro"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -170,6 +171,7 @@
           <Color blue="99" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ASSOCIATION"/>
+        <Property name="name" type="java.lang.String" value="otro"/>
       </Properties>
     </Component>
   </SubComponents>

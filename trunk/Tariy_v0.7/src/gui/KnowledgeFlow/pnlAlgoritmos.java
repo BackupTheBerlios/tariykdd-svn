@@ -77,10 +77,12 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 16));
         jLabel1.setForeground(new java.awt.Color(0, 51, 153));
         jLabel1.setText("CLASIFICATION");
+        jLabel1.setName("otro");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 2, 16));
         jLabel2.setForeground(new java.awt.Color(0, 51, 153));
         jLabel2.setText("ASSOCIATION");
+        jLabel2.setName("otro");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
