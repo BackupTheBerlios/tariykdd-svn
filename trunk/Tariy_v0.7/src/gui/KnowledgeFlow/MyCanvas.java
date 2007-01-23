@@ -318,16 +318,14 @@ public class MyCanvas extends javax.swing.JPanel {
     
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
-        Component presionado = this.findComponentAt(evt.getPoint());
-        System.out.println(presionado.getName());
-        
-        if(presionado.getClass().getSimpleName().equals("MyIcon")){
-            System.out.println(presionado.getClass().getSimpleName());
-            seleccionado = (Icon)(presionado.getParent());
-        } else if(presionado.getClass().getSimpleName().equals("Conector")){
-            System.out.println(presionado.getClass().getSimpleName() + " - "
-                    + presionado.getParent().getName());
-            conectorPresionado = (Conector)presionado;
+        Component press = this.findComponentAt(evt.getPoint());
+        if(press instanceof MyIcon || press instanceof JackAnimation || press instanceof AnimationLabel){
+            System.out.println(press.getClass().getSimpleName());
+            seleccionado = (Icon)(press.getParent());
+        } else if(press instanceof Conector){
+            System.out.println(press.getClass().getSimpleName() + " - "
+                    + press.getParent().getName());
+            conectorPresionado = (Conector)press;
             if(conectorPresionado.seleccionado){
                 if(conectorPresionado.conections >= 1){// Mas de una conexion asociada
                     this.moveConector(conectorPresionado);
