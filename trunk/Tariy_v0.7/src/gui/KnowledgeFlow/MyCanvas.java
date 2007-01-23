@@ -137,6 +137,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(this,"Data no load");
                             } else {
                                 ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
+                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
                                 conectorPresionado = null;
@@ -148,6 +149,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(this,"Data no load");
                             } else {
                                 ((AssociationIcon)to).dataset = filterDataset;
+                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
                                 conectorPresionado = null;
@@ -211,6 +213,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 JOptionPane.showMessageDialog(this,"Data no load");
                             } else {
                                 ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
+                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
                                 conectorPresionado = null;
