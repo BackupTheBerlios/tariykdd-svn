@@ -207,14 +207,14 @@ public class configureParameters extends javax.swing.JFrame {
             }
         }
         else{ 
-                       
-           data1 = new Object[roundf][cols]; 
-        
-           data2 = new Object[rows-roundf][cols]; 
-           
+                             
            fsizeset = vlsp/100; 
            fsizeset = fsizeset*rows;   
            roundf = (int)fsizeset; 
+           
+           data1 = new Object[roundf][cols]; 
+        
+           data2 = new Object[rows-roundf][cols]; 
             
             for(int i = 0; i < cols; i++){
                 for(int j = 0; j < roundf; j++){
