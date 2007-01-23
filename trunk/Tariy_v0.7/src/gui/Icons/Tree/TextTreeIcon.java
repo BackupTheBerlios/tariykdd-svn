@@ -13,6 +13,7 @@ import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -112,6 +113,9 @@ public class TextTreeIcon extends Icon{
         ErrorMissing = ((datosWrong/rows)*100);
         }
         texErrorM = Float.toString(ErrorMissing);
+        
+        Chooser.setStatus("Text Tree load");
+        this.setInfo("Error Tree : " + texErrorM + " %");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {

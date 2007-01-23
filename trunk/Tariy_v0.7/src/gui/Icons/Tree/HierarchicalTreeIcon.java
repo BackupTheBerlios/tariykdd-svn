@@ -12,6 +12,7 @@ package gui.Icons.Tree;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeViewer;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -105,6 +106,9 @@ public class HierarchicalTreeIcon extends Icon{
         ErrorMissing = ((datosWrong/rows)*100);
         }
         texErrorM = Float.toString(ErrorMissing);
+        
+        Chooser.setStatus("Hierarchical Tree load");
+        this.setInfo("Error Tree : " + texErrorM + " %");
     }
 
     
