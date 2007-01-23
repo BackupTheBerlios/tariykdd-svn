@@ -67,6 +67,11 @@ public class AssociationIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuRun);
+        mnuRun.setEnabled(false);
+    }
+
+    public JMenuItem getMnuRun() {
+        return mnuRun;
     }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
