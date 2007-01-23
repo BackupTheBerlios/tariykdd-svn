@@ -107,7 +107,7 @@ public class HierarchicalTreeIcon extends Icon{
         }
         texErrorM = Float.toString(ErrorMissing);
         
-        Chooser.setStatus("Hierarchical Tree load");
+        Chooser.setStatus("Hierarchical Tree loaded");
         this.setInfo("Error Tree : " + texErrorM + " %");
     }
 

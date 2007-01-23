@@ -111,7 +111,7 @@ public class WekaTreeIcon extends Icon{
         }
         texErrorM = Float.toString(ErrorMissing);
         
-        Chooser.setStatus("Weka Tree load");
+        Chooser.setStatus("Weka Tree loaded");
         this.setInfo("Error Tree : " + texErrorM + " %");
     }
     

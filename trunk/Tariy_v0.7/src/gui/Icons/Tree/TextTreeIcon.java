@@ -114,7 +114,7 @@ public class TextTreeIcon extends Icon{
         }
         texErrorM = Float.toString(ErrorMissing);
         
-        Chooser.setStatus("Text Tree load");
+        Chooser.setStatus("Text Tree loaded");
         this.setInfo("Error Tree : " + texErrorM + " %");
     }
     
