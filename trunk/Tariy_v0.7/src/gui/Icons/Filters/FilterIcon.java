@@ -36,6 +36,7 @@ import gui.Icons.Filters.ReplaceValue.VerRemVal;
 import gui.Icons.Filters.Selection.AbrirSeleccion;
 import gui.Icons.Filters.Selection.Seleccion;
 import gui.Icons.Filters.Selection.VerSeleccion;
+import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -166,11 +167,16 @@ public class FilterIcon extends Icon{
             replace.setValRem(replaceWith);
             replace.nuevaTabla();
             dataOut = replace;
+            this.setInfo("Column for Remplace: " + (indexColumn+1) +
+                    "\nValue for Remplace: " + replaceWith);
         } else if(filterName.equals("codification")){
             Codificacion codification = new Codificacion(dataIn);
             dataOut = codification;
-        } else if(filterName.equals("removem")){
+            this.setInfo(dataIn.getRowCount() + " Records Loaded");
+        } else if(filterName.equals("removem")){ // falta top desde aqui
             EliminarMissing remove = new EliminarMissing(dataIn);
+            this.setInfo(dataIn.getRowCount() - remove.fv + " Records Deleted" +
+                    "\n" + remove.fv + " Records Currents");
             dataOut = remove;
         } else if(filterName.equals("muestra")){
             rangeValue = ((AbrirMuestra)Open).getValMues();
@@ -178,15 +184,20 @@ public class FilterIcon extends Icon{
             Muestra range = new Muestra(dataIn, rangeValue, optionRange);
             range.nuevaTabla();
             dataOut = range;
+            this.setInfo("Range Value: " + rangeValue +
+                    "\nOption Range: " + (optionRange+1));
         } else if(filterName.equals("remvalor")){
             columnSelected = ((AbrirRemVal)Open).getColSel();
             valuesAttribute = ((AbrirRemVal)Open).getAtriSel();
             replaceString = ((AbrirRemVal)Open).getRemCon();
             attributeCount = ((AbrirRemVal)Open).getNumAtri();
-            
             RemplazarValor replace = new RemplazarValor(dataIn, columnSelected,
                     valuesAttribute, replaceString);
             dataOut = replace;
+            this.setInfo("Column Selected: " + (columnSelected+1) +
+                    "\nValues Attribute: " + valuesAttribute +
+                    "\nValue for Remplace: " + replaceString +
+                    "\nNumbers of Atributes: " + attributeCount);
         } else if(filterName.equals("rangenum")){
             columnSelected = ((AbrirRangNumer)Open).getColSelec();
             minValue = ((AbrirRangNumer)Open).getMinVal();
@@ -195,6 +206,9 @@ public class FilterIcon extends Icon{
             RangoNumerico range = new RangoNumerico(dataIn, columnSelected,
                     minValue, maxValue);
             dataOut = range;
+            this.setInfo("Column Selected: " + (columnSelected+1) +
+                    "\nMin Value: " + minValue +
+                    "\nMax Value: " + maxValue);
         } else if(filterName.equals("discretize")){
             columnSelected = ((AbrirDiscretizacion)Open).getColSelec();
             rangeValue = ((AbrirDiscretizacion)Open).getValor();
@@ -203,6 +217,9 @@ public class FilterIcon extends Icon{
             Discretizacion discretize = new Discretizacion(dataIn, columnSelected,
                     rangeValue, optionRange);
             dataOut = discretize;
+             this.setInfo("Column Selected: " + (columnSelected+1) +
+                    "\nRange Value: " + rangeValue +
+                    "\nOption Range: " + optionRange);
         } else if(filterName.equals("reduction")){
             selRbtn = ((AbrirReduccion)Open).getSelRbtn();
             rManRem = ((AbrirReduccion)Open).getRbtnManRem();
@@ -216,6 +233,11 @@ public class FilterIcon extends Icon{
             Reduccion reduction = new Reduccion(dataIn, selRbtn, rManRem, filIni,
                     filFin, seal, minor, columnSelected, valuesAttribute);
             dataOut = reduction;
+            this.setInfo("Option Selected: " + (selRbtn+1) +
+            "\nFirst Row: " + filIni +
+            "\nLast Row: " + filFin +
+            "\nColumn Selected: " + (columnSelected+1) +
+            "\nValues Attributes: " + valuesAttribute);
         } else if(filterName.equals("selection")){
             numberColumns = ((AbrirSeleccion)Open).getNumColsSel();
             columnsSelected = ((AbrirSeleccion)Open).getColsSel();
@@ -224,7 +246,11 @@ public class FilterIcon extends Icon{
             Seleccion selection = new Seleccion(dataIn, numberColumns,
                     columnsSelected, columnSelected);
             dataOut = selection;
+             this.setInfo("Number of Columns: " + (numberColumns+1) +
+            "\nColumn Target: " + (columnSelected+1));
         }
+        
+        Chooser.setStatus("Filter " +filterName+ " loaded");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
