@@ -33,6 +33,7 @@ public class AnimationLabel extends javax.swing.JLabel
             images[i] = new ImageIcon(getClass().getResource(
                     "/images/animation/a" + (i + 1) + ".png"));
         }
+        this.setName("MyIcon");
     }
     
     public void run() {

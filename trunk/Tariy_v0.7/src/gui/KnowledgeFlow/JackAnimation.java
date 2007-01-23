@@ -32,6 +32,7 @@ public class JackAnimation extends AnimationLabel{
             images[i] = new ImageIcon(getClass().getResource(
                     "/images/animation/j" + (i + 1) + ".png"));
         }
+        this.setName("MyIcon");
     }
     
     public void run() {

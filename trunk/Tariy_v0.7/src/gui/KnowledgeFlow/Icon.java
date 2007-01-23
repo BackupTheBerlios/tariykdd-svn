@@ -234,6 +234,7 @@ public class Icon extends javax.swing.JPanel {
         setLayout(null);
 
         setComponentPopupMenu(pupMenu);
+        setName("MyIcon");
     }// </editor-fold>//GEN-END:initComponents
     
     public JPopupMenu getPupMenu() {
@@ -269,7 +270,7 @@ public class Icon extends javax.swing.JPanel {
         parent.remove(this);
         parent.repaint();
     }//GEN-LAST:event_mnuDeleteActionPerformed
-            // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem mnuDelete;
     protected javax.swing.JPopupMenu pupMenu;
     // End of variables declaration//GEN-END:variables
