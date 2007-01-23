@@ -106,7 +106,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnPorRango.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnPorRango.setForeground(new java.awt.Color(0, 0, 204));
         RbtnPorRango.setSelected(true);
-        RbtnPorRango.setText("Por Rango");
+        RbtnPorRango.setText("By Range");
         RbtnPorRango.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPorRango.setBorderPainted(true);
         RbtnPorRango.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -120,7 +120,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         buttonGroup1.add(RbtnPorValor);
         RbtnPorValor.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnPorValor.setForeground(new java.awt.Color(0, 0, 204));
-        RbtnPorValor.setText("Por Valor");
+        RbtnPorValor.setText("By Value");
         RbtnPorValor.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPorValor.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnPorValor.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Fila Inicial");
+        jLabel1.setText("First Row");
         jLabel1.setBounds(50, 10, 80, 20);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -154,18 +154,18 @@ public class AbrirReduccion extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Fila Final");
-        jLabel3.setBounds(180, 10, 70, 20);
+        jLabel3.setText("Last Row");
+        jLabel3.setBounds(180, 10, 80, 20);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnMantener.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnMantener.setForeground(new java.awt.Color(0, 0, 204));
         RbtnMantener.setSelected(true);
-        RbtnMantener.setText("Mantener");
+        RbtnMantener.setText("Keep");
         RbtnMantener.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnMantener.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnMantener.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         buttonGroup2.add(RbtnRemover);
         RbtnRemover.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnRemover.setForeground(new java.awt.Color(0, 0, 204));
-        RbtnRemover.setText("Remover");
+        RbtnRemover.setText("Remove");
         RbtnRemover.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnRemover.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -201,18 +201,18 @@ public class AbrirReduccion extends javax.swing.JFrame {
         });
 
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jLayeredPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numericos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jLayeredPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numerics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
         TexMenores.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexMenores.setForeground(new java.awt.Color(0, 0, 204));
         TexMenores.setEnabled(false);
-        TexMenores.setBounds(160, 20, 70, 40);
+        TexMenores.setBounds(150, 20, 70, 40);
         jLayeredPane4.add(TexMenores, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Menores que :");
+        jLabel4.setText("Smaller :");
         jLabel4.setEnabled(false);
-        jLabel4.setBounds(40, 30, 120, 20);
+        jLabel4.setBounds(70, 30, 80, 20);
         jLayeredPane4.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPane4.setBounds(10, 60, 290, 70);
@@ -227,17 +227,17 @@ public class AbrirReduccion extends javax.swing.JFrame {
             }
         });
 
-        CmbItem.setBounds(90, 10, 210, 40);
+        CmbItem.setBounds(110, 10, 190, 40);
         jLayeredPane2.add(CmbItem, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Atributo :");
+        jLabel2.setText("Attribute :");
         jLabel2.setEnabled(false);
-        jLabel2.setBounds(10, 20, 80, 20);
+        jLabel2.setBounds(10, 20, 100, 20);
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alfabeticos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alphabetics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
         TableAtrib.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -265,7 +265,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(BtnAplicar)
                             .add(RbtnMantener))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 100, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 124, Short.MAX_VALUE)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(RbtnRemover)
                             .add(BtnCerrar))
@@ -273,10 +273,10 @@ public class AbrirReduccion extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(RbtnPorRango)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 226, Short.MAX_VALUE))))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 237, Short.MAX_VALUE))))
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .add(RbtnPorValor))

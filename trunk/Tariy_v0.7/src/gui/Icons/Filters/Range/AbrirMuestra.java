@@ -66,7 +66,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         RbtnAle.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnAle.setForeground(new java.awt.Color(0, 0, 204));
         RbtnAle.setSelected(true);
-        RbtnAle.setText("Aleatorio");
+        RbtnAle.setText("Random");
         RbtnAle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnAle.setBorderPainted(true);
         RbtnAle.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -80,7 +80,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         buttonGroup1.add(Rbtn1enn);
         Rbtn1enn.setFont(new java.awt.Font("Tahoma", 1, 12));
         Rbtn1enn.setForeground(new java.awt.Color(0, 0, 204));
-        Rbtn1enn.setText("1 en n");
+        Rbtn1enn.setText("1 in n");
         Rbtn1enn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         Rbtn1enn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         Rbtn1enn.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         buttonGroup1.add(RbtnPrim);
         RbtnPrim.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnPrim.setForeground(new java.awt.Color(0, 0, 204));
-        RbtnPrim.setText("Primeros n");
+        RbtnPrim.setText("n First");
         RbtnPrim.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPrim.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnPrim.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("n de filas  :");
+        jLabel1.setText("Rows    :");
         jLabel1.setBounds(20, 20, 100, 20);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -117,9 +117,9 @@ public class AbrirMuestra extends javax.swing.JFrame {
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Valor de n :");
+        jLabel2.setText("n Value :");
         jLabel2.setEnabled(false);
-        jLabel2.setBounds(20, 20, 100, 20);
+        jLabel2.setBounds(20, 20, 110, 20);
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         Tex1enn.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -137,9 +137,9 @@ public class AbrirMuestra extends javax.swing.JFrame {
         jLayeredPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Valor de n :");
+        jLabel3.setText("n Value :");
         jLabel3.setEnabled(false);
-        jLabel3.setBounds(20, 20, 100, 20);
+        jLabel3.setBounds(20, 20, 120, 20);
         jLayeredPane4.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TexPrim.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -154,14 +154,14 @@ public class AbrirMuestra extends javax.swing.JFrame {
         TexPrim.setBounds(140, 10, 70, 40);
         jLayeredPane4.add(TexPrim, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

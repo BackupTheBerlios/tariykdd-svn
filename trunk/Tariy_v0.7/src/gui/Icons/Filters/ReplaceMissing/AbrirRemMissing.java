@@ -55,7 +55,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -69,18 +69,18 @@ public class AbrirRemMissing extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Remplazar Con :");
+        jLabel2.setText("Replace by          :");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Atributo            :");
+        jLabel1.setText("Attribute            :");
 
         TxtRemCon.setFont(new java.awt.Font("Tahoma", 0, 12));
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
 
-        BtnReset.setText("Resetear");
+        BtnReset.setText("Reset");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -92,7 +92,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,10 +121,11 @@ public class AbrirRemMissing extends javax.swing.JFrame {
                         .add(BtnReset, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 44, Short.MAX_VALUE)
                         .add(BtnCerrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, TxtRemCon, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(CmbAtributos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, TxtRemCon)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, CmbAtributos, 0, 226, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

@@ -64,28 +64,28 @@ public class VerCodificacion extends javax.swing.JFrame {
         TableDatosEntrada.setModel(datosEntrada);
         jScrollPane1.setViewportView(TableDatosEntrada);
 
-        jTabbedPane1.addTab("Datos de Entrada", jScrollPane1);
+        jTabbedPane1.addTab("Input Data", jScrollPane1);
 
         TableDatosFiltro.setModel(datosFiltros);
         jScrollPane2.setViewportView(TableDatosFiltro);
 
-        jTabbedPane1.addTab("Datos Filtrados", jScrollPane2);
+        jTabbedPane1.addTab("Filter Data", jScrollPane2);
 
         TableDiccionario.setModel(diccionario);
         jScrollPane4.setViewportView(TableDiccionario);
 
-        jTabbedPane1.addTab("Diccionario", jScrollPane4);
+        jTabbedPane1.addTab("Dictionary", jScrollPane4);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registros Actuales : ");
+        jLabel1.setText("Current Records  : ");
 
         LblRegAct.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblRegAct.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Registros Eliminados : ");
+        jLabel3.setText("Deleted Records : ");
 
         LblRegElim.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblRegElim.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,13 +98,13 @@ public class VerCodificacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegElim)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 340, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 394, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegAct)

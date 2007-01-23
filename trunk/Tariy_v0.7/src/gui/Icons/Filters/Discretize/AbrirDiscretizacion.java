@@ -61,7 +61,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -75,12 +75,12 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Atributo    :");
+        jLabel1.setText("Attribute   :");
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
 
-        BtnReset.setText("Resetear");
+        BtnReset.setText("Reset");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -92,7 +92,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +100,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
             }
         });
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Discretizar Por :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Discretize by :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
         TexNR.setFont(new java.awt.Font("Tahoma", 0, 12));
         TexNR.setBounds(170, 20, 80, 30);
         jLayeredPane1.add(TexNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -112,14 +112,14 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         buttonGroup1.add(RbtnNR);
         RbtnNR.setSelected(true);
-        RbtnNR.setText("Numero de Rangos :");
+        RbtnNR.setText("Number of Range :");
         RbtnNR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnNR.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnNR.setBounds(10, 30, 140, 15);
         jLayeredPane1.add(RbtnNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonGroup1.add(RbtnTR);
-        RbtnTR.setText("Tama\u00f1od de Rango :");
+        RbtnTR.setText("Size of Range :");
         RbtnTR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnTR.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnTR.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
                         .add(jLabel1)
                         .add(15, 15, 15)
                         .add(CmbAtributos, 0, 179, Short.MAX_VALUE))
-                    .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(BtnAplicar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -165,7 +165,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
                     .add(BtnAplicar)
                     .add(BtnReset)
                     .add(BtnCerrar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());

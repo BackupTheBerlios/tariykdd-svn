@@ -70,14 +70,14 @@ public class AbrirSeleccion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Variables", jScrollPane3);
 
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +96,7 @@ public class AbrirSeleccion extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .add(94, 94, 94)
                 .add(BtnAplicar)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 178, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 199, Short.MAX_VALUE)
                 .add(BtnCerrar)
                 .add(99, 99, 99))
         );

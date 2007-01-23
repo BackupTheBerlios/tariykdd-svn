@@ -67,14 +67,14 @@ public class AbrirRemVal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,16 +91,16 @@ public class AbrirRemVal extends javax.swing.JFrame {
             }
         });
 
-        CmbItem.setBounds(90, 10, 210, 40);
+        CmbItem.setBounds(110, 10, 190, 40);
         jLayeredPane2.add(CmbItem, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Atributo :");
-        jLabel2.setBounds(10, 20, 80, 20);
+        jLabel2.setText("Attribute :");
+        jLabel2.setBounds(10, 20, 90, 20);
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alfabeticos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alphabetics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
         TableAtrib.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -119,8 +119,8 @@ public class AbrirRemVal extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Remplazar con :");
-        jLabel3.setBounds(10, 270, 130, 20);
+        jLabel3.setText("Remplce by :");
+        jLabel3.setBounds(30, 270, 140, 20);
         jLayeredPane2.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TexRemCon.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -136,7 +136,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
                 .add(BtnAplicar)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 96, Short.MAX_VALUE)
                 .add(BtnCerrar)
-                .add(53, 53, 53))
+                .add(74, 74, 74))
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLayeredPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 309, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)

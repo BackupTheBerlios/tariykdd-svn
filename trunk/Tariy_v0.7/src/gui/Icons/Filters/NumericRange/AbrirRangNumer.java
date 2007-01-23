@@ -60,7 +60,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
-        BtnAplicar.setText("Aplicar");
+        BtnAplicar.setText("Play");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -74,12 +74,12 @@ public class AbrirRangNumer extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Atributo    :");
+        jLabel1.setText("Attribute    :");
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
 
-        BtnReset.setText("Resetear");
+        BtnReset.setText("Reset");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -91,7 +91,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
             }
         });
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Close");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,21 +99,21 @@ public class AbrirRangNumer extends javax.swing.JFrame {
             }
         });
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remplazar el rango con valores nulos ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remplace the range whit nulls values", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
         TxtMinVal.setFont(new java.awt.Font("Tahoma", 0, 12));
         TxtMinVal.setBounds(40, 60, 90, 50);
         jLayeredPane1.add(TxtMinVal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Minimo Valor");
-        jLabel2.setBounds(40, 30, 90, 20);
+        jLabel2.setText("Min Value");
+        jLabel2.setBounds(50, 30, 90, 20);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Maximo Valor");
-        jLabel3.setBounds(190, 30, 100, 17);
+        jLabel3.setText("Max Value");
+        jLabel3.setBounds(200, 30, 100, 17);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TxtMaxVal.setFont(new java.awt.Font("Tahoma", 0, 12));
@@ -140,7 +140,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
                     .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 321, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(BtnAplicar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
                         .add(BtnReset, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(29, 29, 29)
                         .add(BtnCerrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
@@ -160,7 +160,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
                     .add(BtnCerrar)
                     .add(BtnAplicar)
                     .add(BtnReset))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());

@@ -13,6 +13,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -53,14 +54,14 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jTabbedPane1" pref="702" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane1" pref="763" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LblRegElim" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="308" max="32767" attributes="0"/>
+                          <EmptySpace pref="328" max="32767" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LblRegAct" min="-2" max="-2" attributes="0"/>
@@ -121,8 +122,8 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Datos de Entrada">
-                    <Property name="tabTitle" type="java.lang.String" value="Datos de Entrada"/>
+                  <JTabbedPaneConstraints tabName="Input Data">
+                    <Property name="tabTitle" type="java.lang.String" value="Input Data"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -144,8 +145,8 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Datos Filtrados">
-                    <Property name="tabTitle" type="java.lang.String" value="Datos Filtrados"/>
+                  <JTabbedPaneConstraints tabName="Filter Data">
+                    <Property name="tabTitle" type="java.lang.String" value="Filter Data"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -171,7 +172,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registros Actuales : "/>
+            <Property name="text" type="java.lang.String" value="Current Records : "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LblRegAct">
@@ -192,7 +193,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Missing Remplazados : "/>
+            <Property name="text" type="java.lang.String" value="Missing Data Remplaced : "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LblRegElim">
