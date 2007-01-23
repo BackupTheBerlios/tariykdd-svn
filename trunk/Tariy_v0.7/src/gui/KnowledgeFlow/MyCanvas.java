@@ -103,13 +103,13 @@ public class MyCanvas extends javax.swing.JPanel {
 // TODO add your handling code here:
         Component press = this.findComponentAt(evt.getPoint());
         System.out.println(press.getName());
-        if(press.getClass().getSimpleName().equals("MyIcon")){
+        if(press instanceof MyIcon){
             seleccionado = (Icon)press.getParent();
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
                 seleccionado.getPupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
             }
             seleccionado = null;
-        } else if(press.getClass().getSimpleName().equals("Conector")){
+        } else if(press instanceof Conector){
             Conector conectorPress = (Conector)press;
             if(conectorPress.seleccionado){
                 this.removeConector(conectorPress);
@@ -121,8 +121,7 @@ public class MyCanvas extends javax.swing.JPanel {
 // TODO add your handling code here:
         Component presionado = this.findComponentAt(evt.getPoint());
         try{
-            if(presionado.getClass().getSimpleName().equals("Conector")
-            && conectorPresionado != null){
+            if(presionado instanceof Conector && conectorPresionado != null){
                 Conector nuevoPresionado = (Conector)presionado;
                 if(!conectorPresionado.getParent().equals(nuevoPresionado.getParent())){
                     Icon from = ((Icon)conectorPresionado.getParent());
@@ -295,10 +294,6 @@ public class MyCanvas extends javax.swing.JPanel {
                                 conectorPresionado = null;
                             }
                         }
-//
-//                        nuevoPresionado.seleccionado = true;
-//                        conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-//                        conectorPresionado = null;
                     }
                 }
             }
@@ -309,7 +304,6 @@ public class MyCanvas extends javax.swing.JPanel {
             seleccionado = null;
             repaint();
         } catch(NullPointerException npe){
-            //Descarte la excepcion
         }
     }//GEN-LAST:event_formMouseReleased
     
