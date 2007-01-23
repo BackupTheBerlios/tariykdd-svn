@@ -20,7 +20,7 @@ public class EliminarMissing extends AbstractTableModel{
     AbstractTableModel datosEntrada;
     final Object[][] datos;
     final String[] nomcol;
-    int fv = 0;
+    public int fv = 0;
     //-----------------
     
     public EliminarMissing(AbstractTableModel dataIn){
