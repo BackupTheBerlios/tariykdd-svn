@@ -85,7 +85,15 @@ public class AssociationIcon extends Icon{
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
-        short s = (short) ( (support * dataset.getNtransactions()) / 100 );
+        int s_int = (int) ( (support * (double)dataset.getNtransactions()) / (double)100 );
+        System.out.println("dataset.getNtransactions " + dataset.getNtransactions() + " for " + algorithm);
+        System.out.println("s " + support + " for " + algorithm);
+        short s;
+        if(s_int > Short.MAX_VALUE){
+            s = Short.MAX_VALUE;
+        } else {
+            s = (short) s_int;
+        }
         System.out.println("Support " + s + " for " + algorithm);
         JackAnimation jack = new JackAnimation();
         this.add(jack);
