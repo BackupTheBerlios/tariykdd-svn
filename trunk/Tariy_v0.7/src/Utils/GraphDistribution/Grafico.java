@@ -7,6 +7,7 @@
 package Utils.GraphDistribution;
 import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
+import algorithm.classification.compareFrecuence;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class Grafico extends javax.swing.JFrame {
     Arcos sp;
     Attribute node;
     DecimalFormat df = new DecimalFormat();
+    public static ArrayList colors;
+    
     /** Creates new form Grafico */
     public Grafico() {
         initComponents();
@@ -46,6 +49,17 @@ public class Grafico extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
+    public Grafico(Attribute node, ArrayList colors) {
+        initComponents();
+        df.setMaximumFractionDigits(2);
+        this.node = node;
+        this.colors = colors;
+        sp = new Arcos(node.getValuesClass(), node.getFrecuence());
+        sp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, node.name, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10), Color.BLACK));
+        scrollGraph.setViewportView(sp);
+        run();
+        this.setVisible(true);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -90,20 +104,50 @@ public class Grafico extends javax.swing.JFrame {
     
     public void run(){
         final ArrayList t = node.getValuesClass();
+        Collections.sort(t, new compareFrecuence());
+        Collections.reverse(t);
         jList1.setModel(new javax.swing.AbstractListModel() {
             public int getSize() { return t.size(); }
             public Object getElementAt(int i) {
                 Value value = (Value)t.get(i);
                 int total = node.getFrecuence();
                 Double confidence = new Double((double)value.getFrecuence()/(double)total);
-                String item = value.getName() + ": " 
-                        + df.format(confidence * 100) + "% [" 
+                String item = value.getName() + ": "
+                        + df.format(confidence * 100) + "% ["
                         + value.getFrecuence() + "/" + total + "]";
                 return item;
             }
         });
         jList1.setCellRenderer(new CompanyLogoListCellRenderer());
     }
+    
+    public static Color getColor(String name){
+        int n = colors.indexOf(name);
+        switch(n){
+            case 0:
+                return Color.BLUE;
+            case 1:
+                return Color.GREEN.darker();
+            case 2:
+                return Color.RED;
+            case 3:
+                return Color.YELLOW.darker();
+            case 4:
+                return Color.ORANGE;
+            case 5:
+                return Color.MAGENTA;
+            case 6:
+                return Color.PINK;
+            case 7:
+                return Color.LIGHT_GRAY;
+            case 8:
+                return Color.GRAY;
+            case 9:
+                return Color.DARK_GRAY;
+        }
+        return Color.BLACK;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -114,6 +158,7 @@ public class Grafico extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -129,7 +174,9 @@ public class Grafico extends javax.swing.JFrame {
             Component retValue = super.getListCellRendererComponent(
                     list, value, index, isSelected, cellHasFocus
                     );
-            setForeground(Arcos.getColor(index));
+            String str = value.toString();
+            str = str.substring(0, str.indexOf(": "));
+            setForeground(Grafico.getColor(str));
             return retValue;
         }
     }
