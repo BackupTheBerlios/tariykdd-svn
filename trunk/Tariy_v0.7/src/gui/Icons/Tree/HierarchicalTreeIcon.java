@@ -81,7 +81,7 @@ public class HierarchicalTreeIcon extends Icon{
             atri = dataTest.getValueAt(f,colnode).toString().trim();
 
             if(auxiliar.son == null){ 
-                if(!cad.equalsIgnoreCase(atri)){
+                if(cad.equalsIgnoreCase(atri)){
                       datosWrong++;
                 }      
                f++;

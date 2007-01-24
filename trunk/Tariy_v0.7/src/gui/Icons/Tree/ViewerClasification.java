@@ -94,7 +94,7 @@ public class ViewerClasification extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Error Tree : ");
+        jLabel3.setText("Confidence Tree : ");
 
         LblErrorM.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblErrorM.setForeground(new java.awt.Color(255, 255, 255));
