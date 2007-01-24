@@ -31,7 +31,7 @@ public class Arcos extends JPanel {
             for(int j = 0; j < n; j++){
                 double value = (double)((Value)values.get(j)).getFrecuence();
                 grados = (value * 360) / total;
-                color = this.getColor(j);
+                color = Grafico.getColor(((Value)values.get(j)).getName());
                 g2.setPaint(color);
                 g2.fill(new Arc2D.Double(x, y - i, ancho, alto, ini, grados, 2));
                 ini += grados;
@@ -41,32 +41,6 @@ public class Arcos extends JPanel {
         color.brighter();
         g2.setPaint(color);
         g2.drawArc(x, y - 24, ancho, alto, 180, 180);
-    }
-    
-    public static Color getColor(int n){
-        switch(n){
-            case 0:
-                return Color.BLUE;
-            case 1:
-                return Color.GREEN.darker();
-            case 2:
-                return Color.RED;
-            case 3:
-                return Color.YELLOW.darker();
-            case 4:
-                return Color.ORANGE;
-            case 5:
-                return Color.MAGENTA;
-            case 6:
-                return Color.PINK;
-            case 7:
-                return Color.LIGHT_GRAY;
-            case 8:
-                return Color.GRAY;
-            case 9:
-                return Color.DARK_GRAY;
-        }
-        return Color.BLACK;
     }
     
     public void paintComponent(Graphics g) {
