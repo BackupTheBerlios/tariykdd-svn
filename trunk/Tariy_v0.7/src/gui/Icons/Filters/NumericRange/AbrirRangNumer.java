@@ -99,7 +99,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
             }
         });
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remplace the range whit nulls values", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remplace range whit null values", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
         TxtMinVal.setFont(new java.awt.Font("Tahoma", 0, 12));
         TxtMinVal.setBounds(40, 60, 90, 50);
         jLayeredPane1.add(TxtMinVal, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -113,7 +113,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Max Value");
-        jLabel3.setBounds(200, 30, 100, 17);
+        jLabel3.setBounds(200, 30, 100, -1);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TxtMaxVal.setFont(new java.awt.Font("Tahoma", 0, 12));

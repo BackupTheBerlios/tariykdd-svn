@@ -61,7 +61,7 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LblAtElim" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="314" max="32767" attributes="0"/>
+                          <EmptySpace pref="383" max="32767" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LblAtSel" min="-2" max="-2" attributes="0"/>
@@ -172,7 +172,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Atributos Seleccionados :"/>
+            <Property name="text" type="java.lang.String" value="Selected attributes :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LblAtSel">
@@ -193,7 +193,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Atributos Eliminados : "/>
+            <Property name="text" type="java.lang.String" value="Deleted attributes : "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LblAtElim">

@@ -68,14 +68,14 @@ public class VerSeleccion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Atributos Seleccionados :");
+        jLabel1.setText("Selected attributes :");
 
         LblAtSel.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblAtSel.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Atributos Eliminados : ");
+        jLabel3.setText("Deleted attributes : ");
 
         LblAtElim.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblAtElim.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,7 +94,7 @@ public class VerSeleccion extends javax.swing.JFrame {
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblAtElim)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 314, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 383, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblAtSel)

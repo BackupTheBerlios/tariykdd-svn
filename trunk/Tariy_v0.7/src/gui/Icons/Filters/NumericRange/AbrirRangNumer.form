@@ -149,7 +149,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Remplace the range whit nulls values">
+                <TitledBorder title="Remplace range whit null values">
                   <Font PropertyName="font" name="Tahoma" size="14" style="0"/>
                   <Color PropertyName="color" blue="ff" green="dc" red="b9" type="rgb"/>
                 </TitledBorder>

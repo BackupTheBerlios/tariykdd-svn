@@ -65,7 +65,7 @@ public class VerReduccion extends javax.swing.JFrame {
         TableDatosFiltro.setModel(datosFiltros);
         jScrollPane2.setViewportView(TableDatosFiltro);
 
-        jTabbedPane1.addTab("Filter Data", jScrollPane2);
+        jTabbedPane1.addTab("Filtered Data", jScrollPane2);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

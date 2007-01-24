@@ -69,7 +69,7 @@ public class VerCodificacion extends javax.swing.JFrame {
         TableDatosFiltro.setModel(datosFiltros);
         jScrollPane2.setViewportView(TableDatosFiltro);
 
-        jTabbedPane1.addTab("Filter Data", jScrollPane2);
+        jTabbedPane1.addTab("Filtered Data", jScrollPane2);
 
         TableDiccionario.setModel(diccionario);
         jScrollPane4.setViewportView(TableDiccionario);

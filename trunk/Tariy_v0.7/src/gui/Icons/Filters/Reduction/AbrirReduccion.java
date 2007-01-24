@@ -205,14 +205,14 @@ public class AbrirReduccion extends javax.swing.JFrame {
         TexMenores.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexMenores.setForeground(new java.awt.Color(0, 0, 204));
         TexMenores.setEnabled(false);
-        TexMenores.setBounds(150, 20, 70, 40);
+        TexMenores.setBounds(170, 20, 70, 40);
         jLayeredPane4.add(TexMenores, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Smaller :");
+        jLabel4.setText("Smaller than:");
         jLabel4.setEnabled(false);
-        jLabel4.setBounds(70, 30, 80, 20);
+        jLabel4.setBounds(40, 30, 120, 20);
         jLayeredPane4.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPane4.setBounds(10, 60, 290, 70);

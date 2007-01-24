@@ -119,7 +119,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Remplce by :");
+        jLabel3.setText("Replace by :");
         jLabel3.setBounds(30, 270, 140, 20);
         jLayeredPane2.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
