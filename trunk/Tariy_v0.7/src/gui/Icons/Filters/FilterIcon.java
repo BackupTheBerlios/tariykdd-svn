@@ -17,6 +17,7 @@ import gui.Icons.Filters.Discretize.AbrirDiscretizacion;
 import gui.Icons.Filters.Discretize.Discretizacion;
 import gui.Icons.Filters.Discretize.VerDiscretizacion;
 import gui.Icons.Filters.RemoveMissing.EliminarMissing;
+import gui.Icons.Filters.RemoveMissing.Help;
 import gui.Icons.Filters.RemoveMissing.VerResElimMiss;
 import gui.Icons.Filters.Range.AbrirMuestra;
 import gui.Icons.Filters.Range.Muestra;
@@ -56,11 +57,13 @@ public class FilterIcon extends Icon{
     private JMenuItem mnuConfigure;
     private JMenuItem mnuRun;
     private JMenuItem mnuView;
+    private JMenuItem mnuHelp;
     public AbstractTableModel dataIn = null;
     public AbstractTableModel dataOut = null;
     public TipodVariables typeData;
     public String filterName;
     public JFrame Open;
+
     //
     int indexColumn; //indice de la columna para update missing
     Object replaceWith; //objeto con el que sera reemplazado en update missing
@@ -117,11 +120,29 @@ public class FilterIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
     }
     
     public void setDataIn(AbstractTableModel dataIn) {
         this.dataIn = dataIn;
     }
+    
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Help ayuda =  new Help();
+                ayuda.setVisible(true);
+            }
+        }); 
+     }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
         final FilterIcon filter = this;
