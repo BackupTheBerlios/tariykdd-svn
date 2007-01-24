@@ -24,9 +24,11 @@
 package Utils.TreeViewer;
 
 import Utils.GraphDistribution.Grafico;
+import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Stack;
 import javax.swing.*;
 import java.awt.event.*;
@@ -223,6 +225,8 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
     private JDialog m_searchWin;
     private JRadioButton m_caseSen;
     private Attribute root;
+
+    private ArrayList colors;
     ///////////////////
     
     //this is the event fireing stuff
@@ -804,7 +808,7 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
                 String node = (String) stack.pop();
                 auxSon = auxSon.getChild(node);
             }
-            new Grafico(auxSon);
+            new Grafico(auxSon, colors);
             m_nodes[m_focusNode].m_node.setColor(Color.GREEN);
             repaint();
 //	  JOptionPane.showMessageDialog(this, "Sorry, there is no " +
@@ -2050,6 +2054,11 @@ public class TreeVisualizer extends PrintablePanel implements MouseMotionListene
 
     public void setRoot(Attribute root) {
         this.root = root;
+        this.colors = new ArrayList(root.getValuesClass().size());
+        Iterator it = root.getValuesClass().iterator();
+        while(it.hasNext()){
+            this.colors.add( ((Value)it.next()).getName() );
+        }
     }
 }
 
