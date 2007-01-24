@@ -78,8 +78,8 @@ public class MyCanvas extends javax.swing.JPanel {
 
         setLayout(null);
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 10), javax.swing.UIManager.getDefaults().getColor("Button.focus")));
         setName("miCanvas");
+        setPreferredSize(new java.awt.Dimension(800, 500));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
