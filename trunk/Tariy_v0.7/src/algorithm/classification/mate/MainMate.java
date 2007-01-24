@@ -183,16 +183,17 @@ public class MainMate extends Thread{
     }
     
     public void buildTree(String winner, HashMap values, float prune1,int prune2) {
+        String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
         ArrayList and = new ArrayList(1);
         if (desc.isEmpty()) {
-            Describe d = new Describe(0,-1, winner, "-1", "-1",null,getScore(values));
+            and = singleCounterClass(values,classe);
+            Describe d = new Describe(0,-1, winner, "-1", "-1",and,getScore(values));
             desc.add(d);
         }
         int index = desc.size()-1;
         Set set = values.keySet();
         Iterator it = set.iterator();
         ArrayList combinations;
-        String classe = dataSrc.getColumnName(dataSrc.getColumnCount()-1);
         while (it.hasNext()) {
             short key = (Short) it.next();
             combinations = (ArrayList) values.get(key);
@@ -326,6 +327,56 @@ public class MainMate extends Thread{
      */
     public short code(String attr) {
         return (short) Collections.binarySearch(dictionary, attr);
+    }
+    
+    /** Frecuence for root
+     */
+    public ArrayList singleCounterClass(HashMap values,String classe){
+        ArrayList<Value> counter = new ArrayList<Value>();
+        ArrayList combinations = null;
+        int frec = 0;
+        Set set = values.keySet();
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            short key = (Short) it.next();
+            combinations = (ArrayList) values.get(key);
+            Iterator i = combinations.iterator();
+            while (i.hasNext()) {
+                Object elem = (Object) i.next();
+                if (elem instanceof ItemSet) {
+                    short[] elements = ((ItemSet) elem).getItems();
+                    for (int j=0; j<elements.length; j++) {
+                        String str1 = decode(elements[j]);
+                        StringTokenizer st = new StringTokenizer(str1,"=");
+                        String attr = st.nextToken();
+                        String valu = st.nextToken();
+                        if(classe.compareTo(attr)==0){
+                            if(counter.isEmpty()){
+                                Value v = new Value(valu,((ItemSet)elem).getSupport());
+                                counter.add(v);
+                            }else{
+                                int k;
+                                for(k = 0; k < counter.size(); k++){
+                                    if(valu.compareTo(counter.get(k).getName()) == 0){
+                                        counter.get(k).incFrecuence(((ItemSet)elem).getSupport());
+                                        break;
+                                    }
+                                }
+                                if(k == counter.size()){
+                                    Value v = new Value(valu,((ItemSet)elem).getSupport());
+                                    counter.add(v);
+                                }
+                            }
+                            frec += ((ItemSet)elem).getSupport();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        Value v = new Value("",frec);
+        counter.add(v);
+        return counter;
     }
     
     /**This method returns the number of accurrences of each value of the class
@@ -562,22 +613,5 @@ public class MainMate extends Thread{
         System.out.println("MateBy execution time: "+executionTime+"ms");
         mm.erectTree();
         new ViewerAllTrees(mm.root).setVisible(true);
-    }
-    
-    private boolean esteEs(ArrayList a) {
-        Iterator i = a.iterator();
-        while (i.hasNext()) {
-            Object elem = (Object) i.next();
-            if (elem instanceof ItemSet) {
-                short[] s = ((ItemSet) elem).getItems();
-                if(s.length == 5){
-                    if(s[1]==17 && s[2]==27 && s[3]==32 && s[4]==36){
-                        return true;
-                    }
-                }
-                
-            }
-        }
-        return false;
     }
 }
