@@ -79,7 +79,7 @@ public class FilterIcon extends Icon{
     int minor; // valor a comparar en Reducciones.
     int numberColumns; // numero de columnas de Seleccion.
     
-    private DataSet dataset;
+    private DataSet dataset = null;
     int columnsSelected[]; //arreglo de las columnas seleccionadas en Seleccion.
     
     /** Creates a new instance of DBConnectionIcon */

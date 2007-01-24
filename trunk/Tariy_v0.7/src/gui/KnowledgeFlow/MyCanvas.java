@@ -133,7 +133,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         if(from instanceof DBConnectionIcon &&
                                 to instanceof AssociationIcon){
                             if(((DBConnectionIcon)from).dataset == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
@@ -143,11 +143,10 @@ public class MyCanvas extends javax.swing.JPanel {
                             }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof AssociationIcon){
-                            DataSet filterDataset = ((FilterIcon)from).buildDataSet();
-                            if(filterDataset == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                            if(((FilterIcon)from).dataOut == null){
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((AssociationIcon)to).dataset = filterDataset;
+                                ((AssociationIcon)to).dataset = ((FilterIcon)from).buildDataSet();
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
@@ -156,7 +155,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof AssociationIcon &&
                                 to instanceof RulesIcon){
                             if(((AssociationIcon)from).trees == null || ((AssociationIcon)from).dataset == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((RulesIcon)to).trees = ((AssociationIcon)from).trees;
                                 ((RulesIcon)to).dataset = ((AssociationIcon)from).dataset;
@@ -169,7 +168,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof ClasificationIcon){
                             if(((DBConnectionIcon)from).connectionTableModel == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
                                 nuevoPresionado.seleccionado = true;
@@ -179,7 +178,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof FilterIcon){
                             if(((DBConnectionIcon)from).connectionTableModel == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
                                 nuevoPresionado.seleccionado = true;
@@ -189,7 +188,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof FilterIcon &&
                                 to instanceof FilterIcon){
                             if(((FilterIcon)from).dataOut == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
                                 nuevoPresionado.seleccionado = true;
@@ -199,7 +198,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
                             if(((FilterIcon)from).dataOut == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
                                 nuevoPresionado.seleccionado = true;
@@ -209,7 +208,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
                             if(((FileIcon)from).dataset == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
@@ -220,7 +219,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
                             if(((FileIcon)from).fileTable == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
                                 nuevoPresionado.seleccionado = true;
@@ -230,7 +229,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         }  else if (from instanceof FileIcon &&
                                 to instanceof PredictionIcon) {
                             if(((FileIcon)from).fileTable == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).dataIn = ((FileIcon)from).fileTable;
                                 nuevoPresionado.seleccionado = true;
@@ -241,7 +240,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof HierarchicalTreeIcon){
                             if(((ClasificationIcon)from).root == null ||
                                     ((ClasificationIcon)from).dataOut2 == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
@@ -253,7 +252,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof WekaTreeIcon){
                             if(((ClasificationIcon)from).root == null ||
                                     ((ClasificationIcon)from).dataOut2 == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((WekaTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((WekaTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
@@ -265,7 +264,7 @@ public class MyCanvas extends javax.swing.JPanel {
                                 to instanceof TextTreeIcon){
                             if(((ClasificationIcon)from).root == null ||
                                     ((ClasificationIcon)from).dataOut2 == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((TextTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((TextTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
@@ -276,7 +275,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof PredictionIcon){
                             if(((ClasificationIcon)from).root == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).root = ((ClasificationIcon)from).root;
                                 nuevoPresionado.seleccionado = true;
@@ -286,7 +285,7 @@ public class MyCanvas extends javax.swing.JPanel {
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof PredictionIcon){
                             if(((DBConnectionIcon)from).connectionTableModel == null){
-                                JOptionPane.showMessageDialog(this,"Data no load");
+                                Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
                                 nuevoPresionado.seleccionado = true;
@@ -294,6 +293,8 @@ public class MyCanvas extends javax.swing.JPanel {
                                 conectorPresionado = null;
                             }
                         }
+                    } else {
+                        Chooser.setStatus("Cannot connect a " + from.getIconType() + " to a " + to.getIconType());
                     }
                 }
             }
