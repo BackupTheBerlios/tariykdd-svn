@@ -18,6 +18,7 @@ import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.Tree.ViewerAllTrees;
 import gui.Icons.Tree.ViewerClasification;
 import gui.KnowledgeFlow.AnimationLabel;
+import gui.KnowledgeFlow.Chooser;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,7 +62,7 @@ public class MainMate extends Thread{
     public Attribute root;
     
     public ClasificationIcon ci;
-
+    
     private AnimationLabel animation;
     
     /** Creates a new instance of MainMate */
@@ -544,6 +545,8 @@ public class MainMate extends Thread{
         long executionTime = System.currentTimeMillis() - time;
         System.out.println("MateBy execution time: "+executionTime+"ms");
         this.erectTree();
+        ci.setInfo("Builted Model in " + executionTime + "ms");
+        Chooser.setStatus("Mate: Builted Model in " + executionTime + "ms");
         this.ci.root = this.root;
         animation.stop();
     }
