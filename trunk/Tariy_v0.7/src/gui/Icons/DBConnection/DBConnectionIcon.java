@@ -12,6 +12,7 @@ package gui.Icons.DBConnection;
 import Utils.DataSet;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.DBConnection.ConnectionWizard;
+import gui.Icons.DBConnection.Help;
 import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import gui.Icons.DBConnection.SelectorTable;
@@ -28,9 +29,11 @@ import javax.swing.table.AbstractTableModel;
  */
 public class DBConnectionIcon extends Icon{
     private JMenuItem mnuConfigure;
+    private JMenuItem mnuHelp;
     private JMenuItem mnuSelector;
     private JMenuItem mnuLoad;
     public ConnectionWizard myConnectionWizard = null;
+    public Help ayuda = null;
     public Connection connection = null;
     public SelectorTable mySelectorTable = null;
     public AbstractTableModel connectionTableModel;
@@ -44,7 +47,7 @@ public class DBConnectionIcon extends Icon{
         super.constrainsTo.add("FilterIcon");
         super.constrainsTo.add("PredictionIcon");
         super.constrainsTo.add("ClasificationIcon");
-        
+                
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");
         mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +76,15 @@ public class DBConnectionIcon extends Icon{
         });
         mnuLoad.setEnabled(false);
         super.pupMenu.add(mnuLoad);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
     }
     
     public AbstractTableModel getTable(){
@@ -91,6 +103,15 @@ public class DBConnectionIcon extends Icon{
         });
     }
     
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ayuda =  new Help();
+                ayuda.setVisible(true);
+            }
+        }); 
+    }
+      
     private void mnuSelectorActionPerformed(java.awt.event.ActionEvent evt) {
         final DBConnectionIcon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
