@@ -32,10 +32,10 @@ public class TextTreeIcon extends Icon{
     public StringBuffer RulesText;
     public AbstractTableModel dataTest;
     public Attribute root;
-    String texErrorM; 
-
+    String texErrorM;
+    
     private JScrollPane scrollTree;
-
+    
     private JTextArea TextTree;
     
     /** Creates a new instance of DBConnectionIcon */
@@ -64,7 +64,7 @@ public class TextTreeIcon extends Icon{
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
-
+        
         int f = 0, rows = 0, columns, colnode = 0;
         String cad,atri;
         Attribute auxiliar;
@@ -73,44 +73,39 @@ public class TextTreeIcon extends Icon{
         rows = dataTest.getRowCount();
         columns = dataTest.getColumnCount()-1;
         auxiliar = root.son;
-
-        while(f < rows){ 
-
+        
+        while(f < rows){
+            
             StringTokenizer token = new StringTokenizer(auxiliar.name,"=");
             cad = token.nextToken().trim();
-
+            
             if(auxiliar.son!=null){
-              colnode = getColNode(cad);   
-            }   
-            else colnode = columns; 
-
+                colnode = getColNode(cad);
+            } else colnode = columns;
+            
             cad = token.nextToken().trim();
             atri = dataTest.getValueAt(f,colnode).toString().trim();
-
-            if(auxiliar.son == null){ 
+            
+            if(auxiliar.son == null){
                 if(!cad.equalsIgnoreCase(atri)){
-                      datosWrong++;
-                }      
-               f++;
-               auxiliar = root.son;
-            }
-            else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
+                    datosWrong++;
+                }
+                f++;
+                auxiliar = root.son;
+            } else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
                 auxiliar = auxiliar.son;
-            }
-            else if(auxiliar.brother != null){
+            } else if(auxiliar.brother != null){
                 auxiliar = auxiliar.brother;
-            }
-            else { 
-               f++;
-               auxiliar = root.son;
+            } else {
+                f++;
+                auxiliar = root.son;
             }
         }
         
         if(datosWrong == 0){
-           ErrorMissing = 0; 
-        }
-        else{
-        ErrorMissing = ((datosWrong/rows)*100);
+            ErrorMissing = 0;
+        } else{
+            ErrorMissing = ((datosWrong/rows)*100);
         }
         texErrorM = Float.toString(ErrorMissing);
         
@@ -125,15 +120,15 @@ public class TextTreeIcon extends Icon{
         TextTree = new javax.swing.JTextArea();
         scrollTree.setViewportView(TextTree);
         TextTree.setText(tree);
-        
+        final TextTreeIcon tti = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Text Tree", scrollTree, texErrorM).setVisible(true);
+                new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti).setVisible(true);
             }
         });
     }
     
-        public int getColNode(String colt){
+    public int getColNode(String colt){
         int numcol = 0, columns = 0;
         
         boolean compatibilidad = false;
@@ -141,9 +136,9 @@ public class TextTreeIcon extends Icon{
         
         for(int i = 0; i < columns; i++ ){
             if(colt.equalsIgnoreCase(dataTest.getColumnName(i))){
-               numcol = i; 
-               compatibilidad = true;
-               break;
+                numcol = i;
+                compatibilidad = true;
+                break;
             }
         }
         return numcol;

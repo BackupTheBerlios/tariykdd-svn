@@ -116,15 +116,14 @@ public class WekaTreeIcon extends Icon{
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
-        
-        
         scrollWekaTree = new javax.swing.JScrollPane();
         pnlWekaTree = root.getWekaTree();
         scrollWekaTree.setViewportView(pnlWekaTree);
+        final WekaTreeIcon wti = this;
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM).setVisible(true);
+                new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM, wti).setVisible(true);
             }
         });
     }

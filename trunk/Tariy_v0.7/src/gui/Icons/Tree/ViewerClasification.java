@@ -11,6 +11,8 @@ import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
+import gui.KnowledgeFlow.Chooser;
+import gui.KnowledgeFlow.Icon;
 import java.awt.Component;
 import java.awt.TextArea;
 import java.awt.event.MouseAdapter;
@@ -33,7 +35,7 @@ public class ViewerClasification extends javax.swing.JFrame {
     private LinkedList rules;
     /** Creates new form ViewerClasification */
     
-    public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM) {
+    public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM, Icon TreeIcon) {
         initComponents();
         
         LblErrorM.setText(porErrorM);
@@ -44,6 +46,8 @@ public class ViewerClasification extends javax.swing.JFrame {
         rules = root.getLeafs();
         TreeTableModel tblModel = new TreeTableModel(rules);
         tblRules.setModel(tblModel);
+        Chooser.setStatus("Generate " + rules.size() + " rules with a error of " + porErrorM + "%");
+        TreeIcon.setInfo("Generate " + rules.size() + " rules\nwith a error of " + porErrorM + "%");
         TableOptimalWidth.setOptimalColumnWidth(tblRules);
         scrollTable.setViewportView(tblRules);
         TabPanel.addTab("Rules", scrollTable);

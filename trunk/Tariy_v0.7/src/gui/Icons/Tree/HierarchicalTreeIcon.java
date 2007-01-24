@@ -114,10 +114,10 @@ public class HierarchicalTreeIcon extends Icon{
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
         final JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
-        
+        final HierarchicalTreeIcon hti = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Hierarchical Tree", TreePanel, texErrorM).setVisible(true);
+                new ViewerClasification(root, "Hierarchical Tree", TreePanel, texErrorM, hti).setVisible(true);
             }
         });
     }
