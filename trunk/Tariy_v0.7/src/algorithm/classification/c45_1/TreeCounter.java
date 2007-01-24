@@ -12,6 +12,7 @@ package algorithm.classification.c45_1;
 import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.Tree.ViewerAllTrees;
 import gui.KnowledgeFlow.AnimationLabel;
+import gui.KnowledgeFlow.Chooser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -232,6 +233,7 @@ public class TreeCounter extends Thread{
         Attribute auxiliar = this.root;
         Stack stack = new Stack();
         crossTree(auxiliar, stack);
+        totalNodes = 0;
         while(!stack.isEmpty()){
             pruneSameBranch((Attribute)stack.pop());
         }
@@ -248,7 +250,10 @@ public class TreeCounter extends Thread{
     }
     
     public void pruneSameBranch(Attribute node) {
-        if(node.son.son.isLeaf() != null) return;
+        if(node.son.son.isLeaf() != null){
+            totalNodes++;
+            return;
+        }
         String grandSon = node.son.son.name;
         int frecuences = node.son.son.frecuence;
         int frecuencesFather = node.son.son.frecuenceFather;
@@ -363,6 +368,8 @@ public class TreeCounter extends Thread{
         this.pruneLeafs();
         long executionTime = System.currentTimeMillis() - time;
         System.out.println("decisionTree : " + executionTime + "ms ");
+        ci.setInfo("Builted Model in " + executionTime + "ms");
+        Chooser.setStatus("C4.5: Builted Model in " + executionTime + "ms");
         ci.root = root;
         animation.stop();
     }
