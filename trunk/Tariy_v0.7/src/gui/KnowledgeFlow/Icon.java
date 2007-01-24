@@ -111,7 +111,6 @@ public class Icon extends javax.swing.JPanel {
     int c = 7;
     public MyIcon icono;
     public AnimationLabel animation;
-    //public Thread animationThread;
     public ArrayList constrainsTo = null;
     public ArrayList froms = new ArrayList(1);
     public ArrayList tos = new ArrayList(1);
@@ -121,11 +120,10 @@ public class Icon extends javax.swing.JPanel {
         initComponents();
         setName(s.getText());
         setLocation(x, y);
-        info = new String("[Not run]");
+        info = new String("Without\nparameters");
         icono = new MyIcon(s);
         animation = new AnimationLabel();
         animation.setVisible(false);
-        //animationThread = null;
         addIcono(icono);
     }
     
@@ -160,7 +158,7 @@ public class Icon extends javax.swing.JPanel {
         conectores[2] = new Conector();
         add(conectores[2]);
         conectores[2].setBounds(w, 0, c, c);
-        conectores[1].setName("1");
+        conectores[1].setName("2");
         
         conectores[3] = new Conector();
         add(conectores[3]);
