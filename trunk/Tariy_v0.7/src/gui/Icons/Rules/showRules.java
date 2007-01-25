@@ -136,24 +136,18 @@ public class showRules extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stock_text_justify.png")));
         jLabel1.setText("Analized Table:");
 
-        lblTable.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
+        lblTable.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/text_strike.png")));
         jLabel2.setText("System Support:");
 
-        lblSupport.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblSupport.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
+        lblSupport.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
-        lblConfidence.setFont(new java.awt.Font("Lucida Bright", 1, 14));
-        lblConfidence.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(163, 184, 204), 1, true));
+        lblConfidence.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
-        jLabel3.setFont(new java.awt.Font("Lucida Bright", 1, 14));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rules.png")));
         jLabel3.setText("Confidence:");
 
@@ -165,7 +159,7 @@ public class showRules extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setIcon(new javax.swing.ImageIcon("/usr/share/icons/crystalsvg/22x22/actions/save_all.png"));
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
         btnSave.setText("Save Report");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,16 +195,16 @@ public class showRules extends javax.swing.JFrame {
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(layout.createSequentialGroup()
                                 .add(29, 29, 29)
-                                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                         .add(15, 15, 15)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)))
                     .add(layout.createSequentialGroup()
-                        .add(btn_atras, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .add(btn_atras, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                         .add(448, 448, 448)
-                        .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
                         .add(5, 5, 5)))
@@ -237,7 +231,7 @@ public class showRules extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btn_atras)
                     .add(btnSave))
-                .add(36, 36, 36))
+                .add(38, 38, 38))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
