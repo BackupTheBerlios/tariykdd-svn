@@ -51,9 +51,9 @@ public class MyCanvasTable extends JPanel {
     final Color colorConector = new Color(29,113,255);
     final Color colorSeleccionado = new Color(210, 116, 226);
     public SelectorTable mySelectorTable;
-
+    
     public int ntables;
-
+    
     public int nrelations;
     final Color colorTag = new Color(210, 27, 226);
     final Color colorBg = new Color(238, 238, 238);
@@ -148,9 +148,8 @@ public class MyCanvasTable extends JPanel {
             }
         } else if(press.getName().equals("Conector")){
             Conector2 conectorPress = (Conector2)press;
-            if(conectorPress.seleccionado){
+            if(conectorPress.selected){
                 this.removeConector(conectorPress);
-                //Chooser.status.setText(selectToString());
             }
         }
     }//GEN-LAST:event_formMouseClicked
@@ -160,7 +159,7 @@ public class MyCanvasTable extends JPanel {
         if( (0 > evt.getX() || evt.getX() > this.getWidth()) ||
                 (0 > evt.getY() || evt.getY() > this.getHeight()) ){
             if(conectorFixed != null && conectorFixed.conections == 0){
-                conectorFixed.seleccionado = false;
+                conectorFixed.selected = false;
             }
             repaint();
             return;
@@ -169,16 +168,19 @@ public class MyCanvasTable extends JPanel {
         if(presionado.getName().equals("Conector") && conectorFixed != null){
             Conector2 conectorFix = (Conector2)presionado;
             if(!conectorFix.getTable().equals(conectorFixed.getTable())){
-                conectorFix.seleccionado = true;
-                edges.add(new Edge(conectorFixed, conectorFix));
-                Chooser.status.setText(selectToString());
-                mySelectorTable.setQuery(selectToString());
+                Edge newEdge = new Edge(conectorFixed, conectorFix, false);
+                if(!edges.contains(newEdge)){
+                    conectorFix.selected = true;
+                    edges.add(newEdge);
+                    Chooser.status.setText(selectToString());
+                    mySelectorTable.setQuery(selectToString());
+                }
             } else {
-                conectorFixed.seleccionado = false;
+                conectorFixed.selected = false;
             }
         } else {
             if(conectorFixed != null && conectorFixed.conections == 0){
-                conectorFixed.seleccionado = false;
+                conectorFixed.selected = false;
             }
         }
         tableSelected = null;
@@ -193,14 +195,14 @@ public class MyCanvasTable extends JPanel {
             tableSelected = (Table)presionado.getParent();
         } else if(presionado.getName().equals("Conector")){
             conectorFixed = (Conector2)presionado;
-            if(conectorFixed.seleccionado){
+            if(conectorFixed.selected){
                 if(conectorFixed.conections >= 1){// Mas de una conexion asociada
                     this.moveConector(conectorFixed);
                 } else {
                     conectorFixed = null;
                 }
             } else {
-                conectorFixed.seleccionado = true;
+                conectorFixed.selected = true;
                 fx = cx = conectorFixed.get_X();
                 fy = cy = conectorFixed.get_Y();
             }
@@ -333,35 +335,48 @@ public class MyCanvasTable extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     
+    
     private void moveConector(Conector2 conector) {
         Iterator it = edges.iterator();
-        boolean bfrom, bto;
         while(it.hasNext()){
             Edge e = (Edge)it.next();
+            if(e.isDefault()){
+                fx = cx = conectorFixed.get_X();
+                fy = cy = conectorFixed.get_Y();
+                continue;
+            }
             if(e.from.equals(conector)){
                 if(e.from.conections == 1){
-                    e.from.seleccionado = false;
+                    e.from.selected = false;
                 }
                 cx = e.to.get_X();
                 cy = e.to.get_Y();
                 fx = e.from.get_X();
                 fy = e.from.get_Y();
-            } else {
+                conectorFixed = (Conector2)this.findComponentAt(cx, cy);
+                e.from.decreaseConection();
+                e.to.decreaseConection();
+                it.remove();
+                Chooser.setStatus(selectToString());
+                mySelectorTable.setQuery(selectToString());
+                break;
+            }
+            if(e.to.equals(conector)){
                 if(e.to.conections == 1){
-                    e.to.seleccionado = false;
+                    e.to.selected = false;
                 }
                 cx = e.from.get_X();
                 cy = e.from.get_Y();
                 fx = e.to.get_X();
                 fy = e.to.get_Y();
+                conectorFixed = (Conector2)this.findComponentAt(cx, cy);
+                e.from.decreaseConection();
+                e.to.decreaseConection();
+                it.remove();
+                Chooser.setStatus(selectToString());
+                mySelectorTable.setQuery(selectToString());
+                break;
             }
-            conectorFixed = (Conector2)this.findComponentAt(cx, cy);
-            e.from.decreaseConection();
-            e.to.decreaseConection();
-            it.remove();
-            Chooser.setStatus(selectToString());
-            mySelectorTable.setQuery(selectToString());
-            break;
         }
     }
     
@@ -369,14 +384,17 @@ public class MyCanvasTable extends JPanel {
         Iterator it = edges.iterator();
         while(it.hasNext()){
             Edge e = (Edge)it.next();
+            if(e.isDefault()){
+                continue;
+            }
             if( e.from.equals(conector) ||
                     e.to.equals(conector) ){
                 if(e.from.conections == 1){
-                    e.from.seleccionado = false;
+                    e.from.selected = false;
                 }
                 e.from.decreaseConection();
                 if(e.to.conections == 1){
-                    e.to.seleccionado = false;
+                    e.to.selected = false;
                 }
                 e.to.decreaseConection();
                 it.remove();
