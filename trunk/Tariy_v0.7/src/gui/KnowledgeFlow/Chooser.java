@@ -7,6 +7,7 @@
 package gui.KnowledgeFlow;
 
 import gui.frmCredits;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
  
@@ -39,6 +40,7 @@ public class Chooser extends javax.swing.JFrame {
         chooser.addTab("Algorithms", p);
         chooser.addTab("Views", p);
         setStatus("The TariyKDD Project \nis Running...");
+        setPreferredSize(new Dimension(990,680));
     }
     
     /** This method is called from within the constructor to
@@ -48,8 +50,6 @@ public class Chooser extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jDialog1 = new javax.swing.JDialog();
-        jOptionPane1 = new javax.swing.JOptionPane();
         chooser = new javax.swing.JTabbedPane();
         status = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -57,27 +57,6 @@ public class Chooser extends javax.swing.JFrame {
         optNew = new javax.swing.JMenuItem();
         mnuAbout = new javax.swing.JMenu();
         optAbout = new javax.swing.JMenuItem();
-
-        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jOptionPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/animation/j1.png")));
-
-        org.jdesktop.layout.GroupLayout jDialog1Layout = new org.jdesktop.layout.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jDialog1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jOptionPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jDialog1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jOptionPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("The TariyKDD Project");
@@ -141,7 +120,7 @@ public class Chooser extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(status, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -238,9 +217,7 @@ public class Chooser extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane chooser;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JMenu mnuAbout;
     private javax.swing.JMenu mnuAction;
     private javax.swing.JMenuItem optAbout;
