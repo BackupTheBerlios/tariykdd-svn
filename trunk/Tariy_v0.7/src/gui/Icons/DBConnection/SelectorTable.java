@@ -425,11 +425,10 @@ public class SelectorTable extends javax.swing.JFrame
         for(int i = 0; i < nComponents ; i++){
             otherTable = ((Table)tables[i]).getName();
             references = this.getCrossReference(otherTable, table);
-            System.out.println(references.toString());
             if(references.size() > 0){
                 Conector2 c1 = ((Table)tables[i]).getConector((String)references.elementAt(0));
                 Conector2 c2 = t.getConector((String)references.elementAt(1));
-                canvas.edges.add(new Edge(c1, c2));
+                canvas.edges.add(new Edge(c1, c2, true));
             }
 //            references = this.getCrossReference(table, otherTable);
 //            if(references.size() > 0){

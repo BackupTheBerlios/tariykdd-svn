@@ -44,7 +44,7 @@ class Edge{
     }
     
     public String getRelation(){
-        return from.getCampo() + "->" + to.getCampo() ;
+        return from.getCampo() + " = " + to.getCampo() ;
     }
     
     public String toString(){
