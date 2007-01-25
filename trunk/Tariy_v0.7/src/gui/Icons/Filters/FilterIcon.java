@@ -12,12 +12,17 @@ package gui.Icons.Filters;
 import Utils.DataSet;
 import gui.Icons.DBConnection.DBConnectionIcon;
 import gui.Icons.Filters.Codification.Codificacion;
+import gui.Icons.Filters.Codification.HelpCodification;
 import gui.Icons.Filters.Codification.VerCodificacion;
 import gui.Icons.Filters.Discretize.AbrirDiscretizacion;
 import gui.Icons.Filters.Discretize.Discretizacion;
+import gui.Icons.Filters.Discretize.HelpDiscretize;
 import gui.Icons.Filters.Discretize.VerDiscretizacion;
+import gui.Icons.Filters.NumericRange.HelpNumericRange;
+import gui.Icons.Filters.Range.HelpRange;
+import gui.Icons.Filters.Reduction.HelpReduction;
 import gui.Icons.Filters.RemoveMissing.EliminarMissing;
-import gui.Icons.Filters.RemoveMissing.Help;
+import gui.Icons.Filters.RemoveMissing.HelpRemoveM;
 import gui.Icons.Filters.RemoveMissing.VerResElimMiss;
 import gui.Icons.Filters.Range.AbrirMuestra;
 import gui.Icons.Filters.Range.Muestra;
@@ -29,12 +34,15 @@ import gui.Icons.Filters.Reduction.AbrirReduccion;
 import gui.Icons.Filters.Reduction.Reduccion;
 import gui.Icons.Filters.Reduction.VerReduccion;
 import gui.Icons.Filters.ReplaceMissing.AbrirRemMissing;
+import gui.Icons.Filters.ReplaceMissing.HelpUpdateM;
 import gui.Icons.Filters.ReplaceMissing.RemplazarMissing;
 import gui.Icons.Filters.ReplaceMissing.VerResRemMiss;
 import gui.Icons.Filters.ReplaceValue.AbrirRemVal;
+import gui.Icons.Filters.ReplaceValue.HelpRemplaceValue;
 import gui.Icons.Filters.ReplaceValue.RemplazarValor;
 import gui.Icons.Filters.ReplaceValue.VerRemVal;
 import gui.Icons.Filters.Selection.AbrirSeleccion;
+import gui.Icons.Filters.Selection.HelpSelection;
 import gui.Icons.Filters.Selection.Seleccion;
 import gui.Icons.Filters.Selection.VerSeleccion;
 import gui.KnowledgeFlow.Chooser;
@@ -61,9 +69,9 @@ public class FilterIcon extends Icon{
     public AbstractTableModel dataIn = null;
     public AbstractTableModel dataOut = null;
     public TipodVariables typeData;
-    public String filterName;
+    public String filterName, filterText;
     public JFrame Open;
-
+    
     //
     int indexColumn; //indice de la columna para update missing
     Object replaceWith; //objeto con el que sera reemplazado en update missing
@@ -94,15 +102,17 @@ public class FilterIcon extends Icon{
         super.constrainsTo.add("ClasificationIcon");
         
         filterName = s.getName();
-        mnuConfigure = new javax.swing.JMenuItem();
-        mnuConfigure.setText("Configure...");
-        mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConfigureActionPerformed(evt);
-            }
-        });
-        super.pupMenu.add(mnuConfigure);
-        
+        filterText = s.getText();
+        if(!filterName.equals("removem") && !filterName.equals("codification")){
+            mnuConfigure = new javax.swing.JMenuItem();
+            mnuConfigure.setText("Configure...");
+            mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    mnuConfigureActionPerformed(evt);
+                }
+            });
+            super.pupMenu.add(mnuConfigure);
+        }
         mnuRun = new javax.swing.JMenuItem();
         mnuRun.setText("Run...");
         mnuRun.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +121,12 @@ public class FilterIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuRun);
-        
+        if(filterName.equals("removem") || filterName.equals("codification")){
+            mnuRun.setEnabled(true);
+            
+        } else {
+            mnuRun.setEnabled(false);
+        }
         mnuView = new javax.swing.JMenuItem();
         mnuView.setText("View...");
         mnuView.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +135,7 @@ public class FilterIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        mnuView.setEnabled(false);
         
         mnuHelp = new javax.swing.JMenuItem();
         mnuHelp.setText("Help...");
@@ -138,11 +154,37 @@ public class FilterIcon extends Icon{
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Help ayuda =  new Help();
-                ayuda.setVisible(true);
+                if(filterName.equals("removem")){
+                    HelpRemoveM ayuda =  new HelpRemoveM();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("updatem")){
+                    HelpUpdateM ayuda = new HelpUpdateM();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("selection")){
+                    HelpSelection ayuda = new HelpSelection();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("muestra")){
+                    HelpRange ayuda = new HelpRange();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("reduction")){
+                    HelpReduction ayuda = new HelpReduction();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("codification")){
+                    HelpCodification ayuda = new HelpCodification();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("remvalor")){
+                    HelpRemplaceValue ayuda = new HelpRemplaceValue();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("rangenum")){
+                    HelpNumericRange ayuda = new HelpNumericRange();
+                    ayuda.setVisible(true);
+                } else if(filterName.equals("discretize")){
+                    HelpDiscretize ayuda = new HelpDiscretize();
+                    ayuda.setVisible(true);
+                }                                    
             }
-        }); 
-     }
+        });
+    }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
         final FilterIcon filter = this;
@@ -170,6 +212,8 @@ public class FilterIcon extends Icon{
                     Open = new AbrirSeleccion(dataIn);
                     Open.setVisible(true);
                 }
+                
+                mnuRun.setEnabled(true);
             }
         });
     }
@@ -194,7 +238,7 @@ public class FilterIcon extends Icon{
             Codificacion codification = new Codificacion(dataIn);
             dataOut = codification;
             this.setInfo(dataIn.getRowCount() + " Records Loaded");
-        } else if(filterName.equals("removem")){ // falta top desde aqui
+        } else if(filterName.equals("removem")){
             EliminarMissing remove = new EliminarMissing(dataIn);
             this.setInfo(dataIn.getRowCount() - remove.fv + " Records Deleted" +
                     "\n" + remove.fv + " Records Currents");
@@ -238,7 +282,7 @@ public class FilterIcon extends Icon{
             Discretizacion discretize = new Discretizacion(dataIn, columnSelected,
                     rangeValue, optionRange);
             dataOut = discretize;
-             this.setInfo("Column Selected: " + (columnSelected+1) +
+            this.setInfo("Column Selected: " + (columnSelected+1) +
                     "\nRange Value: " + rangeValue +
                     "\nOption Range: " + optionRange);
         } else if(filterName.equals("reduction")){
@@ -255,10 +299,10 @@ public class FilterIcon extends Icon{
                     filFin, seal, minor, columnSelected, valuesAttribute);
             dataOut = reduction;
             this.setInfo("Option Selected: " + (selRbtn+1) +
-            "\nFirst Row: " + filIni +
-            "\nLast Row: " + filFin +
-            "\nColumn Selected: " + (columnSelected+1) +
-            "\nValues Attributes: " + valuesAttribute);
+                    "\nFirst Row: " + filIni +
+                    "\nLast Row: " + filFin +
+                    "\nColumn Selected: " + (columnSelected+1) +
+                    "\nValues Attributes: " + valuesAttribute);
         } else if(filterName.equals("selection")){
             numberColumns = ((AbrirSeleccion)Open).getNumColsSel();
             columnsSelected = ((AbrirSeleccion)Open).getColsSel();
@@ -267,11 +311,12 @@ public class FilterIcon extends Icon{
             Seleccion selection = new Seleccion(dataIn, numberColumns,
                     columnsSelected, columnSelected);
             dataOut = selection;
-             this.setInfo("Number of Columns: " + (numberColumns+1) +
-            "\nColumn Target: " + (columnSelected+1));
+            this.setInfo("Number of Columns: " + (numberColumns+1) +
+                    "\nColumn Target: " + (columnSelected+1));
         }
         
-        Chooser.setStatus("Filter " +filterName+ " loaded");
+        mnuView.setEnabled(true);
+        Chooser.setStatus("Filter " + filterText + " loaded");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
