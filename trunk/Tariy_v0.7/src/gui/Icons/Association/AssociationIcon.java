@@ -32,6 +32,7 @@ import javax.swing.JMenuItem;
 public class AssociationIcon extends Icon{
     private JMenuItem mnuConfigure;
     private JMenuItem mnuRun;
+    private JMenuItem mnuHelp;
     public String algorithm;
     public configureSupport cs;
     public DataSet dataset;
@@ -68,6 +69,15 @@ public class AssociationIcon extends Icon{
         });
         super.pupMenu.add(mnuRun);
         mnuRun.setEnabled(false);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
     }
 
     public JMenuItem getMnuRun() {
@@ -80,6 +90,23 @@ public class AssociationIcon extends Icon{
             public void run() {
                 cs = new configureSupport(ai);
                 cs.setVisible(true);
+            }
+        });
+    }
+    
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                if(algorithm.equals("Apriori")){
+                     HelpApriori ayuda = new HelpApriori();
+                     ayuda.setVisible(true);  
+                } else if(algorithm.equals("FPGrowth")){
+                     HelpFPGrowth ayuda = new HelpFPGrowth();
+                     ayuda.setVisible(true);  
+                } else if(algorithm.equals("EquipAsso")){
+                     HelpEquipAsso ayuda = new HelpEquipAsso();
+                     ayuda.setVisible(true);  
+                }
             }
         });
     }
