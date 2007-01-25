@@ -25,33 +25,47 @@ import javax.swing.JPopupMenu;
 class Edge{
     Conector2 from;
     Conector2 to;
+    boolean Default;
     
-    Edge(Conector2 f, Conector2 t){
+    Edge(Conector2 f, Conector2 t, boolean byDefault){
+        this.Default = byDefault;
         from = f;
         from.increaseConection();
         to = t;
         to.increaseConection();
     }
+
+    public boolean isDefault() {
+        return Default;
+    }
+    
+    public boolean isThisConector(Conector2 conector){
+        return (conector.equals(from) || conector.equals(to));
+    }
     
     public String getRelation(){
-        return from.getCampo() + " = " + to.getCampo() ;
+        return from.getCampo() + "->" + to.getCampo() ;
+    }
+    
+    public String toString(){
+        return getRelation();
     }
 }
 
 class Conector2 extends JComponent {
-    boolean seleccionado = false;
+    boolean selected = false;
     Image imageConector = null;
-    int llave = 0;
+    int key = 0;
     final int width = 20;
     final int height = 20;
     int conections = 0;
     final Color colorSeleccionado = new Color(210, 116, 226);
     final Color colorNormal = new Color(0, 0, 232);
     
-    public Conector2(int llave){
+    public Conector2(int key){
         this.setName("Conector");
-        this.llave = llave;
-        switch(llave){
+        this.key = key;
+        switch(key){
             case 1:
                 imageConector = new ImageIcon(getClass().getResource("/images/primary")).getImage();
                 break;
@@ -62,6 +76,10 @@ class Conector2 extends JComponent {
                 imageConector = new ImageIcon(getClass().getResource("/images/pri-for")).getImage();
                 break;
         }
+    }
+
+    public int getKey() {
+        return key;
     }
     
     public String getCampo(){
@@ -101,18 +119,22 @@ class Conector2 extends JComponent {
         this.conections--;
     }
     public synchronized void paint(Graphics g){
-        if(llave == 0){
-            if(seleccionado){
+        if(key == 0){
+            if(selected){
                 g.setColor(colorSeleccionado);
                 g.fillRect(7, 7, 6, 6);
             } else {
                 g.setColor(colorNormal);
             }
             g.draw3DRect(5, 5, getPreferredSize().width - 11,
-                    getPreferredSize().height - 11, seleccionado);
+                    getPreferredSize().height - 11, selected);
         }else {
             g.drawImage(imageConector, 0, 0, this);
         }
+    }
+    
+    public String toString(){
+        return getCampo() + ": " + conections + " conections " + key + " key";
     }
 }
 
@@ -259,6 +281,7 @@ public class Table extends javax.swing.JPanel {
         parent.mySelectorTable.setQuery(parent.selectToString());
         parent.repaint();
     }//GEN-LAST:event_mnuSelectAllActionPerformed
+    
     public JPopupMenu getPopupMenu(){
         return PopupMenu;
     }
@@ -305,13 +328,13 @@ public class Table extends javax.swing.JPanel {
             int size = conectors.size();
             for(int i = 0; i < size; i++){
                 if(e.from.equals(conectors.elementAt(i))){
-                    e.to.seleccionado = false;
+                    e.to.selected = false;
                     e.to.decreaseConection();
                     parent.tableSelected = null;
                     it.remove();
                     break;
                 } else if(e.to.equals(conectors.elementAt(i))){
-                    e.from.seleccionado = false;
+                    e.from.selected = false;
                     e.from.decreaseConection();
                     parent.tableSelected = null;
                     it.remove();
