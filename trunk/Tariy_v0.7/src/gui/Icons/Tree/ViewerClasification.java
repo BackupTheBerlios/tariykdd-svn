@@ -6,26 +6,12 @@
 
 package gui.Icons.Tree;
 
-import Utils.TableOptimalWidth;
 import algorithm.classification.c45_1.Attribute;
-import algorithm.classification.c45_1.C45TreeGUI;
-import algorithm.classification.c45_1.TreeCounter;
-import algorithm.classification.c45_1.TreeViewer;
 import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import java.awt.Component;
-import java.awt.TextArea;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -37,44 +23,15 @@ public class ViewerClasification extends javax.swing.JFrame {
     
     public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM, Icon TreeIcon) {
         initComponents();
-        
         LblErrorM.setText(porErrorM);
-        
         TabPanel.addTab(nameTree, compTree);
-        scrollTable = new javax.swing.JScrollPane();
-        tblRules = new javax.swing.JTable();
-        rules = root.getLeafs();
-        TreeTableModel tblModel = new TreeTableModel(rules);
-        tblRules.setModel(tblModel);
-        Chooser.setStatus("Generate " + rules.size() + " rules with a error of " + porErrorM + "%");
-        TreeIcon.setInfo("Generate " + rules.size() + " rules\nwith a error of " + porErrorM + "%");
-        TableOptimalWidth.setOptimalColumnWidth(tblRules);
-        scrollTable.setViewportView(tblRules);
-        TabPanel.addTab("Rules", scrollTable);
-        this.addJTableHeaderListener();
+        panelRules = new PanelTableRules(root, porErrorM);
+        Chooser.setStatus("Generate " + panelRules.getRulesCount() + " rules with a error of " + porErrorM + "%");
+        TreeIcon.setInfo("Generate " + panelRules.getRulesCount() + " rules\nwith a error of " + porErrorM + "%");
+        TabPanel.addTab("Rules", panelRules);
     }
     
-    public void addJTableHeaderListener() {
-        MouseAdapter mouseListener = new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                TableColumnModel columnModel = tblRules.getColumnModel();
-                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
-                int column = tblRules.convertColumnIndexToModel(viewColumn);
-                if(e.getClickCount() == 1 && column != -1) {
-                    if(column == 2) {
-                        Collections.sort(rules, new compareClass());
-                        tblRules.updateUI();
-                    } else if(column == 3) {
-                        Collections.sort(rules, new compareConfidence());
-                        Collections.sort(rules, new compareFrecuence());
-                        tblRules.updateUI();
-                    }
-                }
-            }
-        };
-        JTableHeader header = tblRules.getTableHeader();
-        header.addMouseListener(mouseListener);
-    }
+
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -152,10 +109,7 @@ public class ViewerClasification extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-    private JScrollPane scrollTree;
-    private JTextArea TextRules;
-    private javax.swing.JScrollPane scrollTable;
-    private javax.swing.JTable tblRules;
+    private PanelTableRules panelRules;
     private javax.swing.JScrollPane scrollWekaTree;
     private javax.swing.JPanel pnlWekaTree;
 }
