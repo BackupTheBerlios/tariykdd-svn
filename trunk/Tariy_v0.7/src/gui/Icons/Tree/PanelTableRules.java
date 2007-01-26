@@ -8,13 +8,18 @@ package gui.Icons.Tree;
 
 import Utils.ExampleFileFilter;
 import Utils.FileManager;
+import Utils.GraphDistribution.Grafico;
 import Utils.TableOptimalWidth;
+import algorithm.classification.Value;
 import algorithm.classification.c45_1.Attribute;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -29,16 +34,22 @@ public class PanelTableRules extends javax.swing.JPanel {
     boolean orderFrecuence = true;
     boolean orderClass = true;
     boolean orderLength = true;
+    private Attribute leaf;
+    private ArrayList colors;
     
     /** Creates new form PanelTableRules */
     public PanelTableRules(Attribute root, String error) {
         this.error = error;
-        rules = root.getLeafs();
+        this.colors = new ArrayList(root.getValuesClass().size());
+        Iterator it = root.getValuesClass().iterator();
+        while(it.hasNext()){
+            this.colors.add( ((Value)it.next()).getName() );
+        }        rules = root.getLeafs();
         tblModel = new TreeTableModel(rules);
         initComponents();
         tblRules.setModel(tblModel);
         TableOptimalWidth.setOptimalColumnWidth(tblRules);
-        this.addJTableHeaderListener();
+        //this.addJTableHeaderListener();
     }
     
     public int getRulesCount(){
@@ -81,10 +92,23 @@ public class PanelTableRules extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         Save = new javax.swing.JFileChooser();
+        pupGraph = new javax.swing.JPopupMenu();
+        mnuGraph = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRules = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        pupGraph.setInvoker(tblRules);
+        mnuGraph.setText("Item");
+        mnuGraph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuGraphActionPerformed(evt);
+            }
+        });
+
+        pupGraph.add(mnuGraph);
+
+        jScrollPane1.setComponentPopupMenu(pupGraph);
         tblRules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,6 +120,12 @@ public class PanelTableRules extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblRules.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRulesMouseClicked(evt);
+            }
+        });
+
         jScrollPane1.setViewportView(tblRules);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
@@ -125,6 +155,45 @@ public class PanelTableRules extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void tblRulesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRulesMouseClicked
+// TODO add your handling code here:
+        TableColumnModel columnModel = tblRules.getColumnModel();
+        int viewColumn = columnModel.getColumnIndexAtX(evt.getX());
+        int column = tblRules.convertColumnIndexToModel(viewColumn);
+        if((evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3)
+        && column == 2) {
+            int x = tblRules.columnAtPoint(evt.getPoint());
+            int y = tblRules.rowAtPoint(evt.getPoint());
+            leaf = (Attribute)tblModel.getValueAt(y, x); 
+            pupGraph.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+        if(evt.getButton() == evt.BUTTON1 && evt.getClickCount() == 1 && column != -1) {
+            if(column == 1) {
+                Collections.sort(rules, new compareLength(orderLength));
+                orderLength = !orderLength;
+                tblRules.updateUI();
+            } else if(column == 2) {
+                Collections.sort(rules, new compareClass(orderClass));
+                orderClass = !orderClass;
+                tblRules.updateUI();
+            } else if(column == 3) {
+                Collections.sort(rules, new compareConfidence(orderConfidence));
+                Collections.sort(rules, new compareFrecuence(orderFrecuence));
+                orderConfidence = !orderConfidence;
+                orderFrecuence = !orderFrecuence;
+                tblRules.updateUI();
+            }
+        }
+        
+    }//GEN-LAST:event_tblRulesMouseClicked
+    
+    private void mnuGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGraphActionPerformed
+// TODO add your handling code here:
+        System.out.println(leaf.getValuesClass() + " total: " + 
+                leaf.getFrecuence() + " " + leaf.getFrecuenceFather());
+        new Grafico(leaf, colors).setVisible(true);
+    }//GEN-LAST:event_mnuGraphActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -157,6 +226,8 @@ public class PanelTableRules extends javax.swing.JPanel {
     private javax.swing.JFileChooser Save;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem mnuGraph;
+    private javax.swing.JPopupMenu pupGraph;
     private javax.swing.JTable tblRules;
     // End of variables declaration//GEN-END:variables
     
