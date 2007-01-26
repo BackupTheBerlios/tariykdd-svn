@@ -77,12 +77,8 @@ public class showRules extends javax.swing.JFrame {
                     if(column == 1) {
                         rules.sortByGoldStone(0);
                         rules.sortByGoldStone(1);
-//                        RulesTableModel rtm = new RulesTableModel(rules.getRules());
-//                        tblRules.setModel(rtm);
                         tblRules.updateUI();
                     } else if(column == 2) {
-//                        RulesTableModel rtm = new RulesTableModel(rules.sortByConfidence());
-//                        tblRules.setModel(rtm);
                         rules.sortByConfidence();
                         tblRules.updateUI();
                     }
@@ -92,18 +88,6 @@ public class showRules extends javax.swing.JFrame {
         JTableHeader header = tblRules.getTableHeader();
         header.addMouseListener(mouseListener);
     }
-    
-//    public void columnSizes() {
-//        int columns = model.getColumnCount();
-//        int csize = 0;
-//        TableColumn column = null;
-//        
-//        for (int i=0; i<columns; i++) {
-//            column = tblRules.getColumnModel().getColumn(i);
-//            csize = model.getColumnName(i).length();
-//            column.setPreferredWidth(csize*10);
-//        }
-//    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -167,15 +151,13 @@ public class showRules extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Set"));
         tblRules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tblRules);
