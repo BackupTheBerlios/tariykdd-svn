@@ -13,7 +13,7 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="mnuGraph">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Item"/>
+            <Property name="text" type="java.lang.String" value="View Distribution"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuGraphActionPerformed"/>

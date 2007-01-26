@@ -49,7 +49,7 @@ public class PanelTableRules extends javax.swing.JPanel {
         initComponents();
         tblRules.setModel(tblModel);
         TableOptimalWidth.setOptimalColumnWidth(tblRules);
-        //this.addJTableHeaderListener();
+        this.addJTableHeaderListener();
     }
     
     public int getRulesCount(){
@@ -99,7 +99,7 @@ public class PanelTableRules extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         pupGraph.setInvoker(tblRules);
-        mnuGraph.setText("Item");
+        mnuGraph.setText("View Distribution");
         mnuGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuGraphActionPerformed(evt);
@@ -163,35 +163,16 @@ public class PanelTableRules extends javax.swing.JPanel {
         int column = tblRules.convertColumnIndexToModel(viewColumn);
         if((evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3)
         && column == 2) {
-            int x = tblRules.columnAtPoint(evt.getPoint());
-            int y = tblRules.rowAtPoint(evt.getPoint());
-            leaf = (Attribute)tblModel.getValueAt(y, x); 
+            int x = tblRules.rowAtPoint(evt.getPoint());
+            int y = tblRules.columnAtPoint(evt.getPoint());
+            tblRules.setRowSelectionInterval(x, x);
+            leaf = (Attribute)tblModel.getValueAt(x, y);
             pupGraph.show(evt.getComponent(), evt.getX(), evt.getY());
         }
-        if(evt.getButton() == evt.BUTTON1 && evt.getClickCount() == 1 && column != -1) {
-            if(column == 1) {
-                Collections.sort(rules, new compareLength(orderLength));
-                orderLength = !orderLength;
-                tblRules.updateUI();
-            } else if(column == 2) {
-                Collections.sort(rules, new compareClass(orderClass));
-                orderClass = !orderClass;
-                tblRules.updateUI();
-            } else if(column == 3) {
-                Collections.sort(rules, new compareConfidence(orderConfidence));
-                Collections.sort(rules, new compareFrecuence(orderFrecuence));
-                orderConfidence = !orderConfidence;
-                orderFrecuence = !orderFrecuence;
-                tblRules.updateUI();
-            }
-        }
-        
     }//GEN-LAST:event_tblRulesMouseClicked
     
     private void mnuGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGraphActionPerformed
 // TODO add your handling code here:
-        System.out.println(leaf.getValuesClass() + " total: " + 
-                leaf.getFrecuence() + " " + leaf.getFrecuenceFather());
         new Grafico(leaf, colors).setVisible(true);
     }//GEN-LAST:event_mnuGraphActionPerformed
     
