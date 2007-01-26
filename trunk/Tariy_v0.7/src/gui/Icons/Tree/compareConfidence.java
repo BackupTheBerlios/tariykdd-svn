@@ -17,6 +17,11 @@ import java.util.*;
  * @author Proyecto Taryi
  */
 public class compareConfidence implements Comparator {
+    boolean ascendent = true;
+    
+    public compareConfidence(boolean ascendent){
+        this.ascendent = ascendent;
+    }
     
     public int compare(Object obj1, Object obj2) {
         int a1 = ((Attribute)((Leaf)obj1).getLeaf()).getFrecuence();
@@ -26,7 +31,11 @@ public class compareConfidence implements Comparator {
         Double c1 = new Double(a1/a2);
         Double c2 = new Double(b1/b2);
         
-        return c2.compareTo(c1);
+        if(ascendent){
+            return c2.compareTo(c1);
+        } else {
+            return c1.compareTo(c2);
+        }
     }
 }
 
