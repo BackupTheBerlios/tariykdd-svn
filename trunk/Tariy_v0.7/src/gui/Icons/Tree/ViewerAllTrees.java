@@ -6,23 +6,12 @@
 
 package gui.Icons.Tree;
 
-import Utils.TableOptimalWidth;
 import algorithm.classification.c45_1.Attribute;
 import algorithm.classification.c45_1.C45TreeGUI;
-import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
-import java.awt.TextArea;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -30,52 +19,23 @@ import javax.swing.table.TableColumnModel;
  */
 public class ViewerAllTrees extends javax.swing.JFrame {
     private LinkedList rules;
+    private PanelTableRules panelRules;
+    
     /** Creates new form ViewerClasification */
     
     public ViewerAllTrees(Attribute root) {
         initComponents();
         JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
         scrollTree = new javax.swing.JScrollPane();
-        TextRules = new javax.swing.JTextArea();
-        scrollTree.setViewportView(TextRules);
-        TextRules.setText("");
         TabPanel.addTab("Tree", TreePanel);
-        TabPanel.addTab("Rules", scrollTree);
-        scrollTable = new javax.swing.JScrollPane();
-        tblRules = new javax.swing.JTable();
-        rules = root.getLeafs();
-        TreeTableModel tblModel = new TreeTableModel(rules);
-        tblRules.setModel(tblModel);
-        TableOptimalWidth.setOptimalColumnWidth(tblRules);
-        scrollTable.setViewportView(tblRules);
-        TabPanel.addTab("Table", scrollTable);
-        this.addJTableHeaderListener();
+        
+        panelRules = new PanelTableRules(root, "Uncalculated");
+        TabPanel.addTab("Table", panelRules);
+        
         scrollWekaTree = new javax.swing.JScrollPane();
         pnlWekaTree = root.getWekaTree();
         scrollWekaTree.setViewportView(pnlWekaTree);
         TabPanel.addTab("Weka", scrollWekaTree);
-    }
-    
-    public void addJTableHeaderListener() {
-        MouseAdapter mouseListener = new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                TableColumnModel columnModel = tblRules.getColumnModel();
-                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
-                int column = tblRules.convertColumnIndexToModel(viewColumn);
-                if(e.getClickCount() == 1 && column != -1) {
-                    if(column == 2) {
-                        Collections.sort(rules, new compareClass());
-                        tblRules.updateUI();
-                    } else if(column == 3) {
-                        Collections.sort(rules, new compareConfidence());
-                        Collections.sort(rules, new compareFrecuence());
-                        tblRules.updateUI();
-                    }
-                }
-            }
-        };
-        JTableHeader header = tblRules.getTableHeader();
-        header.addMouseListener(mouseListener);
     }
     
     /** This method is called from within the constructor to
@@ -134,9 +94,6 @@ public class ViewerAllTrees extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
     private JScrollPane scrollTree;
-    private JTextArea TextRules;
-    private javax.swing.JScrollPane scrollTable;
-    private javax.swing.JTable tblRules;
     private javax.swing.JScrollPane scrollWekaTree;
     private javax.swing.JPanel pnlWekaTree;
 }
