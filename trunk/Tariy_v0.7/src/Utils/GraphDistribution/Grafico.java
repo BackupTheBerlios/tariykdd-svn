@@ -54,7 +54,11 @@ public class Grafico extends javax.swing.JFrame {
         df.setMaximumFractionDigits(2);
         this.node = node;
         this.colors = colors;
-        sp = new Arcos(node.getValuesClass(), node.getFrecuence());
+        if(node.isLeaf() == null){
+            sp = new Arcos(node.getValuesClass(), node.getFrecuenceFather());
+        } else {
+            sp = new Arcos(node.getValuesClass(), node.getFrecuence());
+        }
         sp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, node.name, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 10), Color.BLACK));
         scrollGraph.setViewportView(sp);
         run();
@@ -110,7 +114,10 @@ public class Grafico extends javax.swing.JFrame {
             public int getSize() { return t.size(); }
             public Object getElementAt(int i) {
                 Value value = (Value)t.get(i);
-                int total = node.getFrecuence();
+                int total = total = node.getFrecuence(); 
+                if(node.isLeaf() == null){
+                    total = node.getFrecuenceFather();
+                } 
                 Double confidence = new Double((double)value.getFrecuence()/(double)total);
                 String item = value.getName() + ": "
                         + df.format(confidence * 100) + "% ["
