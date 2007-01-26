@@ -17,11 +17,20 @@ import java.util.*;
  * @author and
  */
 public class compareClass implements Comparator {
+    boolean ascendent = true;
+    
+    public compareClass(boolean ascendent){
+        this.ascendent = ascendent;
+    }
     
     public int compare(Object obj1, Object obj2) {
         String s1 = ((Attribute)((Leaf)obj1).getLeaf()).name;
         String s2 = ((Attribute)((Leaf)obj2).getLeaf()).name;
         
-        return s2.compareTo(s1);
+        if(ascendent){
+            return s2.compareTo(s1);
+        } else {
+            return s1.compareTo(s2);
+        }
     }
 }
