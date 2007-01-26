@@ -37,6 +37,7 @@ import javax.swing.table.AbstractTableModel;
 public class ClasificationIcon extends Icon{
     private JMenuItem mnuConfigure;
     public JMenuItem mnuRun;
+    public JMenuItem mnuHelp;
     private String algorithm;
     public AbstractTableModel dataIn;
     public TreeCounter c;  //en lugar de un TreeCounter deberia almacenarse un
@@ -76,6 +77,16 @@ public class ClasificationIcon extends Icon{
         });
         mnuRun.setEnabled(false);
         super.pupMenu.add(mnuRun);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
+        
         this.setInfo("Without\nParameters...");
     }
     
@@ -85,6 +96,20 @@ public class ClasificationIcon extends Icon{
             public void run() {
                 cp = new configureParameters(ci);
                 cp.setVisible(true);
+            }
+        });
+    }
+    
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                if(algorithm.trim().equals("C45")){
+                    HelpC45 ayuda = new HelpC45();
+                    ayuda.setVisible(true);  
+                } else if(algorithm.trim().equals("Mate")){
+                    HelpMate ayuda = new HelpMate();
+                    ayuda.setVisible(true);  
+                }
             }
         });
     }
