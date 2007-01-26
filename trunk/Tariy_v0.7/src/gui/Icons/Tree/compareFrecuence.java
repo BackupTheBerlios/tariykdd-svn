@@ -17,12 +17,21 @@ import java.util.*;
  * @author and
  */
 public class compareFrecuence implements Comparator {
+    boolean ascendent = true;
+    
+    public compareFrecuence(boolean ascendent){
+        this.ascendent = ascendent;
+    }
     
     public int compare(Object obj1, Object obj2) {
         int s1 = ((Attribute)((Leaf)obj1).getLeaf()).getFrecuence();
         int s2 = ((Attribute)((Leaf)obj2).getLeaf()).getFrecuence();
         
-        return s2 - s1;
+        if(ascendent){
+            return s2 - s1;
+        } else {
+            return s1 - s2;
+        }
     }
 }
 
