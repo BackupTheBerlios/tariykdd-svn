@@ -19,19 +19,22 @@ import javax.swing.JPanel;
  */
 public class ViewerClasification extends javax.swing.JFrame {
     private LinkedList rules;
+    private Attribute root;
     /** Creates new form ViewerClasification */
-    
     public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM, Icon TreeIcon) {
+        this.root = root;
         initComponents();
         LblErrorM.setText(porErrorM + "%");
         TabPanel.addTab(nameTree, compTree);
         panelRules = new PanelTableRules(root, porErrorM);
-        Chooser.setStatus("Generate " + panelRules.getRulesCount() + " rules with a error of " + porErrorM + "%");
-        TreeIcon.setInfo("Generate " + panelRules.getRulesCount() + " rules\nwith a error of " + porErrorM + "%");
+        Chooser.setStatus("Generate " + panelRules.getRulesCount() + " rules with a confidence of " + porErrorM + "%");
+        TreeIcon.setInfo("Generate " + panelRules.getRulesCount() + " rules\nwith a confidence of " + porErrorM + "%");
         TabPanel.addTab("Rules", panelRules);
     }
-    
 
+    public Attribute getRoot() {
+        return root;
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
