@@ -24,6 +24,7 @@ public class PredictionIcon extends Icon{
 //    private JMenuItem mnuConfigure;
     private JMenuItem mnuRun;
     private JMenuItem mnuView;
+    private JMenuItem mnuHelp;
     public Attribute root;
     public AbstractTableModel dataIn;
     
@@ -51,7 +52,25 @@ public class PredictionIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
     }
+    
+        private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                     HelpPrediction ayuda = new HelpPrediction();
+                     ayuda.setVisible(true);
+                }
+            });
+        }
     
         private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) { 
             TariyTableModel tariyData = this.changeToTariyModel();     
