@@ -35,6 +35,7 @@ public class WekaTreeIcon extends Icon{
     
     private JScrollPane scrollWekaTree;
     private JPanel pnlWekaTree;
+    private ViewerClasification vc;
     
     /** Creates a new instance of DBConnectionIcon */
     public WekaTreeIcon(JLabel s, int x, int y) {
@@ -59,6 +60,8 @@ public class WekaTreeIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        vc = null;
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,16 +116,30 @@ public class WekaTreeIcon extends Icon{
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
-        scrollWekaTree = new javax.swing.JScrollPane();
-        pnlWekaTree = root.getWekaTree();
-        scrollWekaTree.setViewportView(pnlWekaTree);
         final WekaTreeIcon wti = this;
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        Thread view = new Thread(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM, wti).setVisible(true);
+                if(vc == null){
+                    scrollWekaTree = new javax.swing.JScrollPane();
+                    pnlWekaTree = root.getWekaTree();
+                    scrollWekaTree.setViewportView(pnlWekaTree);
+                    vc = new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM, wti);
+                    vc.setVisible(true);
+                } else if(!vc.getRoot().equals(root)){
+                    scrollWekaTree = new javax.swing.JScrollPane();
+                    pnlWekaTree = root.getWekaTree();
+                    scrollWekaTree.setViewportView(pnlWekaTree);
+                    vc = new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM, wti);
+                    vc.setVisible(true);
+                } else {
+                    vc.setVisible(true);
+                }
+                stopAnimation();
             }
         });
+        this.startAnimation();
+        view.start();
     }
     
     public int getColNode(String colt){

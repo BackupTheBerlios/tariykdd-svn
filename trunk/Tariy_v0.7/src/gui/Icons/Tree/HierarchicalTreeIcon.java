@@ -31,6 +31,8 @@ public class HierarchicalTreeIcon extends Icon{
     public AbstractTableModel dataTest;
     public Attribute root;
     String texErrorM;
+    private ViewerClasification vc;
+    
     
     /** Creates a new instance of DBConnectionIcon */
     public HierarchicalTreeIcon(JLabel s, int x, int y) {
@@ -55,6 +57,8 @@ public class HierarchicalTreeIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        vc = null;
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,19 +108,32 @@ public class HierarchicalTreeIcon extends Icon{
         }
         texErrorM = confidenceFormat.format(ErrorMissing);
         
-        Chooser.setStatus("Weka Tree loaded, Confidence Tree : " + texErrorM + "%");
+        Chooser.setStatus("Hierarchical Tree loaded, Confidence Tree : " + texErrorM + "%");
         this.setInfo("Confidence Tree : " + texErrorM + "%");
     }
     
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
-        final JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
         final HierarchicalTreeIcon hti = this;
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        
+        Thread view = new Thread(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Hierarchical Tree", TreePanel, texErrorM, hti).setVisible(true);
+                if(vc == null){
+                    JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
+                    vc = new ViewerClasification(root, "Hierarchical Tree", TreePanel, texErrorM, hti);
+                    vc.setVisible(true);
+                } else if(!vc.getRoot().equals(root)){
+                    JPanel TreePanel = C45TreeGUI.createAndShowGUI(new TreeViewer(root));
+                    vc = new ViewerClasification(root, "Hierarchical Tree", TreePanel, texErrorM, hti);
+                    vc.setVisible(true);
+                } else {
+                    vc.setVisible(true);
+                }
+                stopAnimation();
             }
         });
+        this.startAnimation();
+        view.start();
     }
     
     public int getColNode(String colt){

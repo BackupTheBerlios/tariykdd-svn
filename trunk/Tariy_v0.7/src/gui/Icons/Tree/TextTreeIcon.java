@@ -36,8 +36,8 @@ public class TextTreeIcon extends Icon{
     String texErrorM;
     
     private JScrollPane scrollTree;
-    
     private JTextArea TextTree;
+    private ViewerClasification vc;
     
     /** Creates a new instance of DBConnectionIcon */
     public TextTreeIcon(JLabel s, int x, int y) {
@@ -62,6 +62,8 @@ public class TextTreeIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        vc = null;
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,23 +113,41 @@ public class TextTreeIcon extends Icon{
         }
         texErrorM = confidenceFormat.format(ErrorMissing);
         
-        Chooser.setStatus("Weka Tree loaded, Confidence Tree : " + texErrorM + "%");
+        Chooser.setStatus("Text Tree loaded, Confidence Tree : " + texErrorM + "%");
         this.setInfo("Confidence Tree : " + texErrorM + "%");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
-        TreeCounter c =  new TreeCounter();//  Clase provisional para general reglas en formato texto
-        String tree = c.getTextTree(root);
-        scrollTree = new javax.swing.JScrollPane();
-        TextTree = new javax.swing.JTextArea();
-        scrollTree.setViewportView(TextTree);
-        TextTree.setText(tree);
         final TextTreeIcon tti = this;
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        
+        Thread view = new Thread(new Runnable() {
             public void run() {
-                new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti).setVisible(true);
+                if(vc == null){
+                    TreeCounter c =  new TreeCounter();
+                    String tree = c.getTextTree(root);
+                    scrollTree = new javax.swing.JScrollPane();
+                    TextTree = new javax.swing.JTextArea();
+                    scrollTree.setViewportView(TextTree);
+                    TextTree.setText(tree);
+                    vc = new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti);
+                    vc.setVisible(true);
+                } else if(!vc.getRoot().equals(root)){
+                    TreeCounter c =  new TreeCounter();
+                    String tree = c.getTextTree(root);
+                    scrollTree = new javax.swing.JScrollPane();
+                    TextTree = new javax.swing.JTextArea();
+                    scrollTree.setViewportView(TextTree);
+                    TextTree.setText(tree);
+                    vc = new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti);
+                    vc.setVisible(true);
+                }else {
+                    vc.setVisible(true);
+                }
+                stopAnimation();
             }
         });
+        this.startAnimation();
+        view.start();
     }
     
     public int getColNode(String colt){
