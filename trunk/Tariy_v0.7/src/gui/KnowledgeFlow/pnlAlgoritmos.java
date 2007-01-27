@@ -76,11 +76,13 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 16));
         jLabel1.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLASIFICATION");
         jLabel1.setName("otro");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 2, 16));
         jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ASSOCIATION");
         jLabel2.setName("otro");
 
@@ -88,10 +90,6 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(28, 28, 28)
-                .add(jLabel2)
-                .addContainerGap(30, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
@@ -108,10 +106,6 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
                 .add(36, 36, 36)
                 .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .add(45, 45, 45))
-            .add(layout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
@@ -119,6 +113,14 @@ public class pnlAlgoritmos extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
