@@ -14,6 +14,7 @@ import algorithm.classification.c45_1.C45TreeGUI;
 import algorithm.classification.c45_1.TreeViewer;
 import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -30,8 +31,8 @@ public class WekaTreeIcon extends Icon{
     public StringBuffer RulesText;
     public AbstractTableModel dataTest;
     public Attribute root;
-    String texErrorM; 
-
+    String texErrorM;
+    
     private JScrollPane scrollWekaTree;
     private JPanel pnlWekaTree;
     
@@ -59,9 +60,10 @@ public class WekaTreeIcon extends Icon{
         });
         super.pupMenu.add(mnuView);
     }
-
-        private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
-
+    
+    private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
+        DecimalFormat confidenceFormat = new DecimalFormat();
+        confidenceFormat.setMaximumFractionDigits(3);
         int f = 0, rows = 0, columns, colnode = 0;
         String cad,atri;
         Attribute auxiliar;
@@ -70,49 +72,44 @@ public class WekaTreeIcon extends Icon{
         rows = dataTest.getRowCount();
         columns = dataTest.getColumnCount()-1;
         auxiliar = root.son;
-
-        while(f < rows){ 
-
+        
+        while(f < rows){
+            
             StringTokenizer token = new StringTokenizer(auxiliar.name,"=");
             cad = token.nextToken().trim();
-
+            
             if(auxiliar.son!=null){
-              colnode = getColNode(cad);   
-            }   
-            else colnode = columns; 
-
+                colnode = getColNode(cad);
+            } else colnode = columns;
+            
             cad = token.nextToken().trim();
             atri = dataTest.getValueAt(f,colnode).toString().trim();
-
-            if(auxiliar.son == null){ 
+            
+            if(auxiliar.son == null){
                 if(cad.equalsIgnoreCase(atri)){
-                      datosWrong++;
-                }      
-               f++;
-               auxiliar = root.son;
-            }
-            else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
+                    datosWrong++;
+                }
+                f++;
+                auxiliar = root.son;
+            } else if(auxiliar.son != null && cad.equalsIgnoreCase(atri)){
                 auxiliar = auxiliar.son;
-            }
-            else if(auxiliar.brother != null){
+            } else if(auxiliar.brother != null){
                 auxiliar = auxiliar.brother;
-            }
-            else { 
-               f++;
-               auxiliar = root.son;
+            } else {
+                f++;
+                auxiliar = root.son;
             }
         }
         
         if(datosWrong == 0){
-           ErrorMissing = 0; 
+            ErrorMissing = 0;
+        } else{
+            ErrorMissing = ((datosWrong/rows)*100);
         }
-        else{
-        ErrorMissing = ((datosWrong/rows)*100);
-        }
-        texErrorM = Float.toString(ErrorMissing);
+        texErrorM = confidenceFormat.format(ErrorMissing);
         
-        Chooser.setStatus("Weka Tree loaded");
-        this.setInfo("Error Tree : " + texErrorM + " %");
+        Chooser.setStatus("Weka Tree loaded, Confidence Tree : " + texErrorM + "%");
+        this.setInfo("Confidence Tree : " + texErrorM + "%");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +117,7 @@ public class WekaTreeIcon extends Icon{
         pnlWekaTree = root.getWekaTree();
         scrollWekaTree.setViewportView(pnlWekaTree);
         final WekaTreeIcon wti = this;
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ViewerClasification(root, "Weka Tree", scrollWekaTree, texErrorM, wti).setVisible(true);
@@ -128,7 +125,7 @@ public class WekaTreeIcon extends Icon{
         });
     }
     
-        public int getColNode(String colt){
+    public int getColNode(String colt){
         int numcol = 0, columns = 0;
         
         boolean compatibilidad = false;
@@ -136,9 +133,9 @@ public class WekaTreeIcon extends Icon{
         
         for(int i = 0; i < columns; i++ ){
             if(colt.equalsIgnoreCase(dataTest.getColumnName(i))){
-               numcol = i; 
-               compatibilidad = true;
-               break;
+                numcol = i;
+                compatibilidad = true;
+                break;
             }
         }
         return numcol;

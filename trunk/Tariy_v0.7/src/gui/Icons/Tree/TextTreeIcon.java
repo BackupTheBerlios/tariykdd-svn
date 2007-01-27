@@ -15,6 +15,7 @@ import algorithm.classification.c45_1.TreeCounter;
 import algorithm.classification.c45_1.TreeViewer;
 import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -64,7 +65,8 @@ public class TextTreeIcon extends Icon{
     }
     
     private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        DecimalFormat confidenceFormat = new DecimalFormat();
+        confidenceFormat.setMaximumFractionDigits(3);
         int f = 0, rows = 0, columns, colnode = 0;
         String cad,atri;
         Attribute auxiliar;
@@ -107,10 +109,10 @@ public class TextTreeIcon extends Icon{
         } else{
             ErrorMissing = ((datosWrong/rows)*100);
         }
-        texErrorM = Float.toString(ErrorMissing);
+        texErrorM = confidenceFormat.format(ErrorMissing);
         
-        Chooser.setStatus("Text Tree loaded");
-        this.setInfo("Error Tree : " + texErrorM + " %");
+        Chooser.setStatus("Weka Tree loaded, Confidence Tree : " + texErrorM + "%");
+        this.setInfo("Confidence Tree : " + texErrorM + "%");
     }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {

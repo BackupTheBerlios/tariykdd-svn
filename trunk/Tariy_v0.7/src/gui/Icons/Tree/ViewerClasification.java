@@ -23,7 +23,7 @@ public class ViewerClasification extends javax.swing.JFrame {
     
     public ViewerClasification(Attribute root, String nameTree, Component compTree, String porErrorM, Icon TreeIcon) {
         initComponents();
-        LblErrorM.setText(porErrorM);
+        LblErrorM.setText(porErrorM + "%");
         TabPanel.addTab(nameTree, compTree);
         panelRules = new PanelTableRules(root, porErrorM);
         Chooser.setStatus("Generate " + panelRules.getRulesCount() + " rules with a error of " + porErrorM + "%");
