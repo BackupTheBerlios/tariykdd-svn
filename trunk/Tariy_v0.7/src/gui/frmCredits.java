@@ -6,15 +6,8 @@
 
 package gui;
 
-import java.awt.Color;
 import java.io.IOException;
-import java.net.URL;
 import javax.swing.JEditorPane;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLFrameHyperlinkEvent;
-
 /**
  *
  * @author  and
@@ -24,21 +17,14 @@ public class frmCredits extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public frmCredits() {
         initComponents();
-        this.setBackground(new Color(0, 0, 0, 0));
-        jTabbedPane1.setBackground(new Color(0, 0, 0, 0));
-        URL url = null;
-        String path = null;
         try {
-            path = "/resource/gpl_v2.html";
-            url = getClass().getResource(path);
-            jepGPL.setPage(url);
+            jepGPL.setPage(getClass().getResource("/resource/gpl_v2.html"));
             jepCredits.setPage(getClass().getResource("/resource/credits.html"));
         } catch (Exception e) {
-            System.err.println("Failed to open " + path);
-            url = null;
+            System.err.println("Failed to open html files");
         }
         jepGPL.setEditable(false);
-        jepGPL.addHyperlinkListener(createHyperLinkListener());
+        jepCredits.setEditable(false);
     }
     
     /** This method is called from within the constructor to
@@ -246,24 +232,6 @@ public class frmCredits extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    public HyperlinkListener createHyperLinkListener() {
-        return new HyperlinkListener() {
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-                if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                    if (e instanceof HTMLFrameHyperlinkEvent) {
-                        ((HTMLDocument)jepGPL.getDocument()).processHTMLFrameHyperlinkEvent(
-                                (HTMLFrameHyperlinkEvent)e);
-                    } else {
-                        try {
-                            jepGPL.setPage(e.getURL());
-                        } catch (IOException ioe) {
-                            System.out.println("IOE: " + ioe);
-                        }
-                    }
-                }
-            }
-        };
-    }
     /**
      * @param args the command line arguments
      */
