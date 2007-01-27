@@ -18,13 +18,10 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
-/**
- *
- * @author ivan
- */
 public class RulesIcon extends Icon{
     private JMenuItem mnuConfigure;
     private JMenuItem mnuView;
+    private JMenuItem mnuHelp;
     public configureConfidence cc;
     public double support;
     double confidence;
@@ -56,6 +53,15 @@ public class RulesIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuView);
+        
+        mnuHelp = new javax.swing.JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            }
+        });
+        super.pupMenu.add(mnuHelp);
     }
     
     private void mnuConfigureActionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +74,14 @@ public class RulesIcon extends Icon{
         });
     }
     
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               HelpRules ayuda = new HelpRules();
+               ayuda.setVisible(true);
+            }
+        });
+    }
     
     private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
         AssocRules ar = new AssocRules(trees, dataset.getDictionary(), (int)confidence);
