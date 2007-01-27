@@ -24,6 +24,7 @@ import javax.swing.JMenuItem;
 public class FileIcon extends Icon {
     private JMenuItem mnuOpen;
     private JMenuItem mnuLoad;
+    private JMenuItem mnuHelp;
     public String filePath;
     public DataSet dataset;
     public boolean xcon;
@@ -65,6 +66,15 @@ public class FileIcon extends Icon {
         mnuLoad.setEnabled(false);
         of = new OpenFile(this);
         of.setVisible(false);
+        
+        mnuHelp = new JMenuItem();
+        mnuHelp.setText("Help...");
+        mnuHelp.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                mnuHelpActionPerformed(evt);
+            } 
+        });
+        super.pupMenu.add(mnuHelp);
     }
 
     public JMenuItem getMnuOpen() {
@@ -79,6 +89,15 @@ public class FileIcon extends Icon {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 of.setVisible(true);
+            }
+        });
+    }
+    
+    private void mnuHelpActionPerformed(ActionEvent evt) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 HelpFile ayuda = new HelpFile();
+                 ayuda.setVisible(true);
             }
         });
     }
