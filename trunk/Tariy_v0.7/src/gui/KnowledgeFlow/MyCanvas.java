@@ -18,8 +18,6 @@ import gui.Icons.Tree.HierarchicalTreeIcon;
 import gui.Icons.Tree.TextTreeIcon;
 import gui.Icons.Tree.WekaTreeIcon;
 import gui.KnowledgeFlow.Conexion;
-import gui.KnowledgeFlow.Conexion;
-import gui.KnowledgeFlow.Conexion;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Component;
