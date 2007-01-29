@@ -188,7 +188,7 @@ public class PanelTableRules extends javax.swing.JPanel {
             path = Save.getSelectedFile().getAbsolutePath();
             path += ".tux";
             fm = new FileManager(path);
-            fm.writeString("CLASSIFICATION RULES\n\nMined with a error of " + error + "%\n\n");
+            fm.writeString("CLASSIFICATION RULES\n\nMined with an error of " + error + "%\n\n");
             int rows = tblModel.getRowCount();
             StringBuffer textRules = new StringBuffer();
             for(int i = 0; i < rows; i++){
