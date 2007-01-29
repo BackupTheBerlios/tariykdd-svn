@@ -399,6 +399,9 @@ public class SelectorTable extends javax.swing.JFrame
     
     private void cbxTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTableActionPerformed
 // TODO add your handling code here:
+        if(cbxTable.getSelectedIndex() == 0){
+            return;
+        }
         String table = cbxTable.getSelectedItem().toString();
         ArrayList columns = this.getColumns(table);
         Table t = new Table(table, columns.size());
@@ -475,19 +478,20 @@ public class SelectorTable extends javax.swing.JFrame
     
     public Vector getTables(){
         ResultSet rs;
-        Vector nombres = new Vector();
+        Vector names = new Vector();
+        names.add("Select a table...");
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
             String[] types = { "TABLE" };
             rs = dbmd.getTables("%", "%", "%", types);
             while(rs.next()){
-                nombres.addElement(rs.getString(3));
+                names.addElement(rs.getString(3));
             }
             rs.close();
         }catch(SQLException e){
             e.printStackTrace();
         }finally{
-            return nombres;
+            return names;
         }
     }
     

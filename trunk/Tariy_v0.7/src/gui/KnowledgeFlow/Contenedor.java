@@ -62,6 +62,7 @@ public class Contenedor extends JPanel {
             }
         });
 
+        scrollPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), javax.swing.UIManager.getDefaults().getColor("Button.focus")));
         contenedor.setRightComponent(scrollPanel);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
