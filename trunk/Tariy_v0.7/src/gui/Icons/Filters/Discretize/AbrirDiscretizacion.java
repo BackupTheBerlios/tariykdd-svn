@@ -56,7 +56,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         RbtnTR = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Abrir Discretizacion");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -115,7 +115,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         RbtnNR.setText("Number of Range :");
         RbtnNR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnNR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnNR.setBounds(10, 30, 140, 15);
+        RbtnNR.setBounds(10, 30, 140, -1);
         jLayeredPane1.add(RbtnNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonGroup1.add(RbtnTR);
@@ -128,7 +128,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
             }
         });
 
-        RbtnTR.setBounds(10, 70, 140, 15);
+        RbtnTR.setBounds(10, 70, 140, -1);
         jLayeredPane1.add(RbtnTR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);

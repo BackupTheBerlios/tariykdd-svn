@@ -48,7 +48,7 @@ public class VerSeleccion extends javax.swing.JFrame {
         LblAtElim = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ver Resultado de Selecci\u00f3n");
+        setTitle("View Results ");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         TableTVariables.setModel(tipoVariables);

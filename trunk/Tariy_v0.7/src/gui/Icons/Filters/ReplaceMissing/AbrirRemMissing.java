@@ -50,7 +50,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         BtnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Abrir Remplazar Missing");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);

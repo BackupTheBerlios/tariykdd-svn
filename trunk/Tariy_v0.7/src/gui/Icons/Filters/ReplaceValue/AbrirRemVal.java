@@ -63,7 +63,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         TexRemCon = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Abrir Remplazar Valor ");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

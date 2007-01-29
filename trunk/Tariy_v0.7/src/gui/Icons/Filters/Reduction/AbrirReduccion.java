@@ -97,7 +97,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         TableAtrib = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Abrir Reducciones");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

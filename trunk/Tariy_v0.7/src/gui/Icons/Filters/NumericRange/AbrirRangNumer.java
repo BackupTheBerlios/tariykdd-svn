@@ -55,7 +55,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         TxtMaxVal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Abrir Rango Numerico");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);

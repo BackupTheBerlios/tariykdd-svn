@@ -62,7 +62,7 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         BtnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Abrir Selecci\u00f3n");
+        setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         TableTVariables.setModel(tipoVariables);
