@@ -6,6 +6,8 @@
 
 package gui.Icons.File;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -37,6 +39,8 @@ public class HelpFile extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jTextArea12 = new javax.swing.JTextArea();
+        btnEn = new javax.swing.JToggleButton();
+        btnEs = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -45,8 +49,8 @@ public class HelpFile extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +62,7 @@ public class HelpFile extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("La conexion por medio de archivo plano, se realiza con archivos \nde extension .arf, el cual debe contene los titulos de los \natributos y los valores de los mismos. \n\nEjemplo de archivo .arf\n\n@attribute estado {Soleado,Nublado,Lluvioso,Seco} \n@attribute temperatura {Caliente,Templado,Fresco} \n@attribute humedar {Alta,Normal} \n@attribute viento {Debil,Fuerte} \n@attribute jtennis {si,no} \n\n@data\nSoleado,Caliente,Alta,Debil,no\nSoleado,Caliente,Alta,Fuerte,no\nNublado,Caliente,Alta,Debil,si\nLluvioso,Templado,Alta,Debil,si\nLluvioso,Fresco,Normal,Debil,si\nLluvioso,Fresco,Normal,Fuerte,no\n\nla conexion con otros componentes drag and drop, es similar \nen los modulos de conexion, y se realiza como se muestra a continuacion. ");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -74,7 +78,7 @@ public class HelpFile extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo.\n\nAl hacer click derecho sobre el icono aparece un menu emergente, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el incono de conexion del area de trabajo. \n\nLa opcion Open, adapta los parametros de conexion a las necesidades \ndel analista\n\nLa opcion Load ejecuta la conexion.\n\n\nLa configuracion de la opcion Open de la conexion se realiza de la \nsiguiente manera:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p02"));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/loadFile.png")));
@@ -82,10 +86,10 @@ public class HelpFile extends javax.swing.JFrame {
 
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
-        jTextArea11.setText("El tiempo de carga, es proporcional al tam\u00f1o del archivo.\n");
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p03"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Connection File");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Connection_File"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/confFile.png")));
@@ -93,7 +97,7 @@ public class HelpFile extends javax.swing.JFrame {
 
         jTextArea12.setColumns(20);
         jTextArea12.setRows(5);
-        jTextArea12.setText("Aparece la ventana de visualizaci\u00f3n de datos cargados \ndesde archivo plano. La cual esta compuesta por: \n\nA bot\u00f3n \u201cBrowse\u201d que permite la navegaci\u00f3n en el sistema \nde archivos.\n\nB la grilla en la que ser\u00e1n mostrados los datos cargados\n\nC las opciones \u201cMarquet Basket\u201d y \u201cMultivaluled\u201d que el usuario \npuede seleccionar seg\u00fan el caso y \n\nD los botones de aceptar o cancelar la operaci\u00f3n \u201dAccept\u201d y \u201cCancel\u201d.\n\n\nPara cargar el archivo, accedemos a la opcion Load del menu contextual.");
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p04"));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -122,7 +126,7 @@ public class HelpFile extends javax.swing.JFrame {
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(22, 22, 22)
                         .add(jLabel17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 532, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -155,6 +159,26 @@ public class HelpFile extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,25 +186,52 @@ public class HelpFile extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(118, 118, 118)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)))
+                        .add(btnEs)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 403, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
+        setBounds((screenSize.width-627)/2, (screenSize.height-523)/2, 627, 523);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpFile().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
+
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpFile().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -201,6 +252,8 @@ public class HelpFile extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
