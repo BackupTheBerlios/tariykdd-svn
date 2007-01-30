@@ -24,6 +24,7 @@ public class Help extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        groupTranslate = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -35,6 +36,8 @@ public class Help extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextArea3 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        btnEs = new javax.swing.JToggleButton();
+        btnEn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -98,7 +101,7 @@ public class Help extends javax.swing.JFrame {
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(jLabel6)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(24, 24, 24)
                                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -107,7 +110,7 @@ public class Help extends javax.swing.JFrame {
                                     .add(jLabel1)
                                     .add(jTextArea1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jLabel3))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 61, Short.MAX_VALUE))))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 62, Short.MAX_VALUE))))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(45, 45, 45)
                         .add(jTextArea2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -139,6 +142,28 @@ public class Help extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel1);
 
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        groupTranslate.add(btnEs);
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        groupTranslate.add(btnEn);
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,29 +172,55 @@ public class Help extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
-                        .add(114, 114, 114)
+                        .addContainerGap()
+                        .add(btnEs)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(112, 112, 112)
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 449, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-619)/2, (screenSize.height-535)/2, 619, 535);
-    }// </editor-fold>//GEN-END:initComponents
 
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-619)/2, (screenSize.height-585)/2, 619, 585);
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Al_hacer_click_derecho"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Las_opciones_de_la_ventana"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Aparece_la_ventana_de_seleccion"));
+    }//GEN-LAST:event_btnEsActionPerformed
+    
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Al_hacer_click_derecho"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Las_opciones_de_la_ventana"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Aparece_la_ventana_de_seleccion"));
+    }//GEN-LAST:event_btnEnActionPerformed
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -185,6 +236,9 @@ public class Help extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
+    private javax.swing.ButtonGroup groupTranslate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
