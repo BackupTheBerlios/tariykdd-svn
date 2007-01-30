@@ -16,6 +16,8 @@
 
 package gui.Icons.Filters.Reduction;
 
+import java.util.Locale;
+
 /**
  *
  * @author  Tariy
@@ -48,6 +50,8 @@ public class HelpReduction extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextArea5 = new javax.swing.JTextArea();
+        btnEs = new javax.swing.JToggleButton();
+        btnEn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -56,8 +60,8 @@ public class HelpReduction extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +73,7 @@ public class HelpReduction extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("El objetivo espe\u0131\ufb01co de este \ufb01ltro, es hacer una reduccion en\nel numero de transacciones, manteniendolas o eliminandolas, \na partir de diferentes tecnicas y parametros de seleccion \nteniendo en cuenta que se puede realizar la reduccion tanto  por\nrango como por valor que a su vez se selecciona las transacciones \npor atributo numurico o alfabetico.\n\nTecnica de Reduccion por Rango: Esta tecnica se encarga de reducir \nel conjunto de entrada, en un rango de transacciones, a partir de una \ntransaccion inicial y otra \ufb01nal, de acuerdo al parametro escogido por\nel analista, el cual puede ser eliminar o mantener dichas transacciones.\n\nTecnica de Reduccion de Transacciones por Atributo:\nEsta tecnica se encarga de reducir el conjunto de entrada, dependiendo \ndel tipo de datos que contenga el atributo seleccionado, los cuales \npueden ser alfabeticos o numericos, si son num\u00b4ricos se debe \nsuministrar un valor lim\u0131trofe y si son alfabeticos el analista debera\nseleccionar los atributos de su interes.\nAdemas de acuerdo al parametro escogido por el analista, el \ufb01ltro \neliminara o mantendr\u00b4 las transacciones seleccionadas.\n\n\nla conexion con otros componentes drag and drop, es similar \nen todos los filtros, y se realiza como se muestra a continuacion. ");
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("P"));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -85,7 +89,7 @@ public class HelpReduction extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo B.\n\nAl hacer click derecho sobre el icono aparece un menu emergente C, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el \ufb01ltro del area de trabajo. \n\nLa opcion Configure, adapta los parametros del filtro a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacin del \ufb01ltro.\n \nLa opcion View  muestra la ventana de vizualizacion de datos. \n\n\nLa configuracion del filtro, se realiza de la siguiente manera:");
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Q"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion")));
@@ -93,10 +97,10 @@ public class HelpReduction extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("Aparece la ventana de vizualizacion de datos \ufb01ltrados y no \ufb01ltrados. \n\nLos campos son:\n\nA: Variables o nombres de los campos de la tabla. \nB: Datos de entrada que son los datos que llegaron al \ufb01ltro inicialmente.\nC: Datos \ufb01ltrados que son el resultado de haber aplicado el \ufb01ltro. \nD: nmero de registros eliminados al aplicar el \ufb01ltro.\nE: Numero de registros despues de aplicar el \ufb01ltro.\n");
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("R"));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel1.setText("Filter Reduction");
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Reduction"));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion 2")));
@@ -108,7 +112,7 @@ public class HelpReduction extends javax.swing.JFrame {
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
-        jTextArea5.setText("Al acceder a la opcion de configuracion se muestra B la ventana de\ncon\ufb01guracin correspondiente al filtro 'Reduction'\u2019. Los campos son: \n\nPor rango, los parametros son Fila inicial donde se escribe la\n\ufb01la a partir de la cual inicia el rango y Fila \ufb01nal que es el limite superior \ndel rango.\n\nPor Valor: Se elige el nombre del atributo y luego en caso de que los\nvalores a quitar sean numericos en el campo \u2019Menores que\u2019 se especi\ufb01ca el\nnumero a partir del cual se hace la reduccion. \n\nSi el atributo es alfabetico se escribe su valor en el rea de texto y en las \ncasillas de seleccion se especi\ufb01ca si ese valor se desea \u2019Mantener\u2019 o \u2019Remover\u2019.\nAplicar: ejecuta el \ufb01ltro.\n\n\n\nPara visualizar los resultados obtenidos, hacemos uso de la opcion view\nmostrando una interfaz como la siguiente:\n\n\n");
+        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("S"));
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,7 +142,7 @@ public class HelpReduction extends javax.swing.JFrame {
                             .add(jLabel4)
                             .add(jLabel5)
                             .add(jTextArea3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -173,30 +177,74 @@ public class HelpReduction extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel1);
 
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .add(110, 110, 110)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnEs)
+                        .add(8, 8, 8)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(134, Short.MAX_VALUE))))
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 439, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 399, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-618)/2, (screenSize.height-533)/2, 618, 533);
+        setBounds((screenSize.width-618)/2, (screenSize.height-519)/2, 618, 519);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpReduction().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
+
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpReduction().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -217,6 +265,8 @@ public class HelpReduction extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

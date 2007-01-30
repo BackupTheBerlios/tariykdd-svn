@@ -15,6 +15,8 @@
  */
 package gui.Icons.Filters.Selection;
 
+import java.util.Locale;
+
 
 /**
  *
@@ -48,16 +50,18 @@ public class HelpSelection extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextArea5 = new javax.swing.JTextArea();
+        btnEs = new javax.swing.JToggleButton();
+        btnEn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/exit2.png"))));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,46 +73,46 @@ public class HelpSelection extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("El objetivo especi\ufb01co de este \ufb01ltro, es hacer una seleccion de atributos\ny del atributo objetivo sobre un conjunto de entrada. \nEs usado especialmene en clasificacion.\n\nLa conexion con otros componentes drag and drop, es similar \nen todos los filtros, y se realiza como se muestra a continuacion. ");
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("El_objetivo_especi\ufb01co_de_este_\ufb01ltro,_es_hacer_una_seleccion_de_atributos\ny_del_atributo_objetivo_sobre_un_conjunto_de_entrada._\nEs_usado_especialmene_en_clasificacion.\n\nLa_conexion_con_otros_componentes_drag_and_drop,_es_similar_\nen_todos_los_filtros,_y_se_realiza_como_se_muestra_a_continuacion._"));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/tariy11"))));
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/interrogacion.jpg")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/Help/interrogacion.jpg"))));
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/RemoveMissingA")));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/Help/RemoveMissingA"))));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo B.\n\nAl hacer click derecho sobre el icono aparece un menu emergente C, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el \ufb01ltro del area de trabajo. \n\nLa opcion Configure, adapta los parametros del filtro a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacin del \ufb01ltro.\n \nLa opcion View  muestra la ventana de vizualizacion de datos. \n\n\nLa configuracion del filtro, se realiza de la siguiente manera:");
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Al_liberar_el_icono_en_el_area_de_trabajo_A._es_posible_conectar_los_iconos\npor_medio_de_un_hilo_B.\n\nAl_hacer_click_derecho_sobre_el_icono_aparece_un_menu_emergente_C,_\nel_cual_consta_de_las_siguientes_opciones:\n\nLa_opci\u00f2n_Delete,_borra_el_\ufb01ltro_del_area_de_trabajo._\n\nLa_opcion_Configure,_adapta_los_parametros_del_filtro_a_las_necesidades_\ndel_analista\n\nLa_opcion_Run_ejecuta_la_aplicacin_del_\ufb01ltro.\n_\nLa_opcion_View__muestra_la_ventana_de_vizualizacion_de_datos._\n\n\nLa_configuracion_del_filtro,_se_realiza_de_la_siguiente_manera:"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/Help/visualisacion"))));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("Aparece la ventana de vizualizacion de datos \ufb01ltrados y no \ufb01ltrados. \n\nLos campos son:\n\nA: Variables o nombres de los campos de la tabla. \nB: Datos de entrada que son los datos que llegaron al \ufb01ltro inicialmente.\nC: Datos \ufb01ltrados que son el resultado de haber aplicado el \ufb01ltro. \nD: nmero de registros eliminados al aplicar el \ufb01ltro.\nE: Numero de registros despues de aplicar el \ufb01ltro.\n");
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Aparece_la_ventana_de_vizualizacion_de_datos_\ufb01ltrados_y_no_\ufb01ltrados._\n\nLos_campos_son:\n\nA:_Variables_o_nombres_de_los_campos_de_la_tabla._\nB:_Datos_de_entrada_que_son_los_datos_que_llegaron_al_\ufb01ltro_inicialmente.\nC:_Datos_\ufb01ltrados_que_son_el_resultado_de_haber_aplicado_el_\ufb01ltro._\nD:_nmero_de_registros_eliminados_al_aplicar_el_\ufb01ltro.\nE:_Numero_de_registros_despues_de_aplicar_el_\ufb01ltro.\n"));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel1.setText("Filter Selection");
+        jLabel1.setFont(new java.awt.Font(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Dialog"), 1, 24));
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Selection"));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion 2")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/Help/visualisacion_2"))));
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/confSelection")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/Help/confSelection"))));
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
-        jTextArea5.setText("Al acceder a la opcion de configuracion se muestra B la ventana\nde con\ufb01guracion correspondiente al \ufb01ltro \u2019Selection\u2019.\nLos campos son:\n\nC: Atributo, en esta grilla se muestran los nombres de los \natributos seleccionados. \n\nD: Tipo, muestra el tipo de datos de los atributos.\n\nE: cajas de veri\ufb01cacion para escoger los atributos a utilizar.\n\nF: es posible escoger un atributo clase haciendo click sobre \nestos campos. \n\nLo anterior es util en experimentos de clasi\ufb01cacion. \n\nG: el boton \u2019Aplicar\u2019 debe ser precionado para que el \ufb01ltro sea aplicado.\n\n\nPara visualizar los resultados obtenidos, hacemos uso de la opcion view\nmostrando una interfaz como la siguiente:\n\n\n");
+        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Al_acceder_a_la_opcion_de_configuracion_se_muestra_B_la_ventana\nde_con\ufb01guracion_correspondiente_al_\ufb01ltro_\u2019Selection\u2019.\nLos_campos_son:\n\nC:_Atributo,_en_esta_grilla_se_muestran_los_nombres_de_los_\natributos_seleccionados._\n\nD:_Tipo,_muestra_el_tipo_de_datos_de_los_atributos.\n\nE:_cajas_de_veri\ufb01cacion_para_escoger_los_atributos_a_utilizar.\n\nF:_es_posible_escoger_un_atributo_clase_haciendo_click_sobre_\nestos_campos._\n\nLo_anterior_es_util_en_experimentos_de_clasi\ufb01cacion._\n\nG:_el_boton_\u2019Aplicar\u2019_debe_ser_precionado_para_que_el_\ufb01ltro_sea_aplicado.\n\n\nPara_visualizar_los_resultados_obtenidos,_hacemos_uso_de_la_opcion_view\nmostrando_una_interfaz_como_la_siguiente:\n\n\n"));
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,7 +143,7 @@ public class HelpSelection extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel4)
                             .add(jLabel5))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -174,30 +178,76 @@ public class HelpSelection extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel1);
 
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/CO"))));
+        btnEs.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Espa\u00f1ol"));
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("/images/EN"))));
+        btnEn.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("English"));
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE))
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(btnEs)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(398, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(123, 123, 123)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 443, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 396, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-618)/2, (screenSize.height-537)/2, 618, 537);
+        setBounds((screenSize.width-618)/2, (screenSize.height-516)/2, 618, 516);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpSelection().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
+
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpSelection().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -218,6 +268,8 @@ public class HelpSelection extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

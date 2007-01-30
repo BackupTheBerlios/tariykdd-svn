@@ -16,6 +16,8 @@
 
 package gui.Icons.Filters.RemoveMissing;
 
+import java.util.Locale;
+
 /**
  *
  * @author Tariy
@@ -46,6 +48,8 @@ public class HelpRemoveM extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnEs = new javax.swing.JToggleButton();
+        btnEn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -54,8 +58,8 @@ public class HelpRemoveM extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +71,7 @@ public class HelpRemoveM extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("El objetivo especi\ufb01co de este \ufb01ltro, eliminar todas las \ntransacciones que contengan datos nulos o vacios,\nhaciendo una busqueda de los mismos en toda la tabla \nde la base de datos seleccionada, y creando un nuevo \nconjunto de datos a partir de las transacciones completas. ");
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("T"));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -83,7 +87,7 @@ public class HelpRemoveM extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo B.\n\nAl hacer click derecho sobre el icono aparece un menu emergente C, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el \ufb01ltro del area de trabajo. \nEste \ufb01ltro no contiene ventana de con\ufb01-\nguracion. \nLa opcion Run ejecuta la aplicacin del \ufb01ltro. \nLa opcion View  muestra la ventana de vizualizacion de datos. \n\n");
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("U"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion")));
@@ -91,10 +95,10 @@ public class HelpRemoveM extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("Aparece la ventana de vizualizacion de datos \ufb01ltrados y no \ufb01ltrados. \n\nLos campos son:\n\nA: Variables o nombres de los campos de la tabla. \nB: Datos de entrada que son los datos que llegaron al \ufb01ltro inicialmente.\nC: Datos \ufb01ltrados que son el resultado de haber aplicado el \ufb01ltro. \nD: nmero de registros eliminados al aplicar el \ufb01ltro.\nE: Numero de registros despues de aplicar el \ufb01ltro.\n");
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("V"));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel1.setText("Filter Remove Missing");
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Remove_Missing"));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion 2")));
@@ -128,7 +132,7 @@ public class HelpRemoveM extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel5)
                             .add(jLabel4))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -159,6 +163,26 @@ public class HelpRemoveM extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel1);
 
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,25 +190,50 @@ public class HelpRemoveM extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(115, 115, 115)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)))
+                        .add(btnEs)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(118, 118, 118)
+                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 433, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-618)/2, (screenSize.height-522)/2, 618, 522);
+        setBounds((screenSize.width-618)/2, (screenSize.height-498)/2, 618, 498);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpRemoveM().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
+
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpRemoveM().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -205,6 +254,8 @@ public class HelpRemoveM extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
