@@ -6,12 +6,13 @@
 
 package gui.Icons.Association;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
  */
 public class HelpEquipAsso extends javax.swing.JFrame {
-    
     /** Creates new form frmCredits */
     public HelpEquipAsso() {
         initComponents();
@@ -24,6 +25,7 @@ public class HelpEquipAsso extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -37,6 +39,8 @@ public class HelpEquipAsso extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jTextArea12 = new javax.swing.JTextArea();
+        btnEs = new javax.swing.JToggleButton();
+        btnEn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -58,7 +62,7 @@ public class HelpEquipAsso extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("EquipAsso es un algoritmo de asociacion basado en nuevos \noperadores del Algebra Relacional para Asociaci\u00f3n\n\nOperadores:\n\nEquikeep (\u03c7): Es un operador unario que restringe los valores \nde los atributos de cada una de las tuplas de la relaci\u00f3n R a \nunicamente los valores de los atributos que satisfacen una \nexpresi\u00f3n l\u00f3gica.\n\nAssociator (\u03b1): Es un operador algebraico unario que al contrario \ndel operador Selecci\u00f3n o Restricci\u00f3n (\u03c3), aumenta la cardinalidad \no el tama\u00f1o de una relaci\u00f3n ya que genera a partir de cada tupla \nde una relaci\u00f3n, todas las posibles combinaciones de los valores \nde sus atributos, como tuplas de una nueva relaci\u00f3n conservando \nel mismo esquema. \nPor esta raz\u00f3n esta operaci\u00f3n, debe ser posterior a la mayor de \noperaciones en el proceso de optimizaci\u00f3n de una consulta.\n\nEl operador Associator genera, por cada tupla de la relaci\u00f3n R, \ntodos sus posibles subconjuntos (itemsets) de diferente tama\u00f1o. \nAssociator toma cada tupla t de R y dos par\u00e1metros: \ntam inicial y tam final como entrada, y retorna, por cada tupla t, \nlas diferentes combinaciones de atributos Xi , de tama\u00f1o tam \ninicial hasta tama\u00f1o tam f inal , como tuplas en una nueva relaci\u00f3n. \nEl orden de los atributos en el esquema de R determina los atributos \nen los subconjuntos con valores, el resto se hacen nulos. \nEl tama\u00f1o m\u00e1ximo de un itemset y por consiguiente el tama\u00f1o \n\ufb01nal m\u00e1ximo (tam final ) que se puede tomar como entrada es el \ncorrespondiente al valor del grado de la relaci\u00f3n. \n\nen el primer paso el \nalgoritmo simplemente cuenta el n\u00famero de ocurrencias de \ncada item para determinar los 1-itemsets frecuentes. \n\nEn el subsiguiente paso, con el operador EquiKeep se extraen \nde todas las transacciones los itemsets frecuentes tama\u00f1o 1 \nhaciendo nulos el resto de valores. \n\nLuego se aplica el operador Associator desde Is=2 hasta el grado n.\n\n\n\nla conexion con otros componentes drag and drop, es similar \nen todos los algoritmos, y se realiza como se muestra a continuacion. \n\n\n\n");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -74,7 +78,7 @@ public class HelpEquipAsso extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo.\n\nAl hacer click derecho sobre el icono aparece un menu emergente, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el algoritmo del area de trabajo. \n\nLa opcion Configure, adapta los parametros del algoritmo a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacin del algoritmo.\n\n\nLa configuracion del algoritmes similar en todos los algoritmos de asociacion\ny se realiza de la siguiente manera:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s02"));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/runApriori")));
@@ -82,10 +86,10 @@ public class HelpEquipAsso extends javax.swing.JFrame {
 
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
-        jTextArea11.setText("Al ejecutar el algoritmo, su icono cambiara por una animaci\u00f3n, \nas\u00ed como se muestra en B, lo cual indica que el proceso esta \nen ejecucion.\n\nEl tiempo de ejecucion, es proporcional al tam\u00f1o de la base de \ndatos y al numero y tipo de  procesos que dicho algoritmo involucre.\n");
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s03"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Algorithm EquipAsso");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("Algorithm_EquipAsso"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/confApriori")));
@@ -93,7 +97,7 @@ public class HelpEquipAsso extends javax.swing.JFrame {
 
         jTextArea12.setColumns(20);
         jTextArea12.setRows(5);
-        jTextArea12.setText("Al acceder a la opcion de configuracion, sobre el \u00e1rea de trabajo \naparece una ventana B, para que el usuario con\ufb01gure el soporte \ndel algoritmo.\n\n\nLa ejecucion de todos los algoritmos de asociacion es similar.\nPara ello, accedemos a la opcion Run del menu contextual.");
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s04"));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -119,9 +123,8 @@ public class HelpEquipAsso extends javax.swing.JFrame {
                                     .add(jLabel21)
                                     .add(jTextArea12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jLabel18)
-                                    .add(jTextArea11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                                    .add(jTextArea11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -154,37 +157,84 @@ public class HelpEquipAsso extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(btnEs);
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(btnEn);
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
-                        .add(118, 118, 118)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)))
+                        .add(btnEs)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(12, 12, 12)
+                                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(btnEs)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
-    }// </editor-fold>//GEN-END:initComponents
 
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-627)/2, (screenSize.height-525)/2, 627, 525);
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpEquipAsso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
+    
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpEquipAsso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -200,6 +250,9 @@ public class HelpEquipAsso extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
