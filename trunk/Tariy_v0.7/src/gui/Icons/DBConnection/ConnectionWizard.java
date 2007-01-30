@@ -46,7 +46,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         myDBConnectionIcon = dbci;
         DriverName = "jdbc:postgresql://";
         spnPuerto.setValue(5432);
-        lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
+        //lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
         selector = null;
     }
     
@@ -275,7 +275,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     new String(txtPassword.getPassword()));
             CONEXION_EXITOSA = true;
             // Conexion exitosa...
-            lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
+            //lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/conectado")));
             lblStatusBar.setText("Success Connection to " + txtBD.getText()
             + " in " + txtHost.getText());
             Chooser.setStatus("Success Connection to " + txtBD.getText()
