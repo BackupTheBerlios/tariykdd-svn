@@ -6,6 +6,8 @@
 
 package gui.Icons.Clasification;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -37,6 +39,8 @@ public class HelpC45 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jTextArea12 = new javax.swing.JTextArea();
+        btnEn = new javax.swing.JToggleButton();
+        btnEs = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -45,8 +49,8 @@ public class HelpC45 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +62,7 @@ public class HelpC45 extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("C 4 5 es un algoritmo de Clasificaci\u00f3n\nLa Clasificaci\u00f3n de datos es un proceso de dos pasos:\nEn el primero, se construye un modelo con basa en un c\nonjunto de datos  denominado conjunto de entrenamiento.\nEn el conjunto de entrenamiento, cada tupla se asume que \npertenece a una clase predefinida, determinada por un \natributo clase.\nPor esto, la clasificaci\u00f3n es un aprendizaje supervizado\nEl resto de atributos se denominan atributos condici\u00f3n.\nEn el segundo, el modelo inicialmente se prueba con otro \nconjunto de datos denominado conjunto de prueba.\n\nC45 construye el \u00e1rbol de arriba hacia abajo recursivamente \nutilizando la manera de \u201cdivide y conquistaras\u201d.\nEl algoritmo usa una m\u00e9trica basada en la entrop\u00eda , conocida \ncomo ganancia de informaci\u00f3n para construir el \u00e1rbol.\n\nLa exactitud del modelo se calcula de acuerdo al porcentaje de\nejemplos de prueba que son correctamente clasificados.\n\nla conexion con otros componentes drag and drop, es similar \nen todos los algoritmos, y se realiza como se muestra a continuacion. ");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -74,7 +78,7 @@ public class HelpC45 extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("Al liberar el icono del arera A en el area de trabajo B. es posible conectar los iconos\npor medio de un hilo.\n\nAl hacer click derecho sobre el icono aparece un menu emergente, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el algoritmo del area de trabajo. \n\nLa opcion Configure, adapta los parametros del algoritmo a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacin del algoritmo.\n\n\nLa configuracion del algoritmo es similar en todos los algoritmos de \nClasificacion, se realiza de la siguiente manera:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p02"));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/runApriori")));
@@ -82,10 +86,10 @@ public class HelpC45 extends javax.swing.JFrame {
 
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
-        jTextArea11.setText("Al ejecutar el algoritmo, su icono cambiara por una animaci\u00f3n, \nas\u00ed como se muestra en B, lo cual indica que el proceso esta \nen ejecucion.\n\nEl tiempo de ejecucion, es proporcional al tam\u00f1o de la base de \ndatos y al numero y tipo de  procesos que dicho algoritmo involucre.\n");
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p03"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Algorithm C4-5");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Algorithm_C4-5"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/ConfClasification.png")));
@@ -93,7 +97,7 @@ public class HelpC45 extends javax.swing.JFrame {
 
         jTextArea12.setColumns(20);
         jTextArea12.setRows(5);
-        jTextArea12.setText("Al acceder a la opcion de configuracion, sobre el \u00e1rea de trabajo \naparece un menu contextual, el cual se divide en dos partes:\nuna para parametros de Pruning o poda y otra para Training Set\no conjunto de entrenamiento.\n\nEn pruning en analista tiene la posibilidad de configurar un minimo \nde registros por nodo y tambien debera suministrar un umbral que \npermitira detener la poda de un nodo determinado.\n\nEl analista debera tambien brindar el tam\u00f1o del conjunto de \nentrenamiento.\n\nTodos los parametros estan en terminos de porcentaje.\ndel algoritmo.\n\n\nLa ejecucion de todos los algoritmos es similar, \naccediendo a la opcion Run del menu contextual.");
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p04"));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -120,7 +124,7 @@ public class HelpC45 extends javax.swing.JFrame {
                             .add(jLabel18)
                             .add(jTextArea11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel21))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -152,6 +156,26 @@ public class HelpC45 extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEn.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setText("English");
+        btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnActionPerformed(evt);
+            }
+        });
+
+        btnEs.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs.setText("Espa\u00f1ol");
+        btnEs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,25 +183,52 @@ public class HelpC45 extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(118, 118, 118)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)))
+                        .add(btnEs)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 403, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
+        setBounds((screenSize.width-627)/2, (screenSize.height-523)/2, 627, 523);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpC45().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEsActionPerformed
+
+    private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpC45().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -198,6 +249,8 @@ public class HelpC45 extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
