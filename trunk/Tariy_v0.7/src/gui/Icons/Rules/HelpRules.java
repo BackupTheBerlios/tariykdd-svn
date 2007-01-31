@@ -6,6 +6,8 @@
 
 package gui.Icons.Rules;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -37,6 +39,8 @@ public class HelpRules extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jTextArea12 = new javax.swing.JTextArea();
+        btnEn2 = new javax.swing.JToggleButton();
+        btnEs2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -45,8 +49,8 @@ public class HelpRules extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +62,7 @@ public class HelpRules extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("Este visor permite la generacion de reglas dependiendo de los\nparametros suministrados, despues de un proceso minero de\nasociacion\n\nla conexion con otros componentes drag and drop, es similar \nen todos los visores, y se realiza como se muestra a continuacion. ");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -74,7 +78,7 @@ public class HelpRules extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo.\n\nAl hacer click derecho sobre el icono aparece un menu emergente, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el icono del area de trabajo. \n\nLa opcion Configure, adapta los parametros del algoritmo a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacion del visor.\n\n\nLa configuracion del visor se realiza de la siguiente manera:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p02"));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/rulesGenerator.png")));
@@ -82,10 +86,10 @@ public class HelpRules extends javax.swing.JFrame {
 
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
-        jTextArea11.setText("En el \u00e1rea de trabajo aparece una ventana, con las reglas obtenidas \na partir de los algoritmos de Miner\u00eda de Datos de Asociacion.\n\nAl hacer click en A, la ventana de reglas desaparece y si hace \nclick en B el usuario tiene la opci\u00f3n de guardar el reporte de \nlas reglas de asociaci\u00f3n.\n.\n");
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p03"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Generator");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Generator"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/mnuGenerator.png")));
@@ -93,7 +97,7 @@ public class HelpRules extends javax.swing.JFrame {
 
         jTextArea12.setColumns(20);
         jTextArea12.setRows(5);
-        jTextArea12.setText("Sobre el \u00e1rea de trabajo aparece una ventana B, para que el \nusuario  con\ufb01gure la con\ufb01anza con la cual se van a \ufb01ltrar \nlas reglas de asociaci\u00f3n.\n\n\nPara ejecutar el visor, accedemos a la opcion Run del menu contextual.");
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Sobre_el_\u00e1rea_de_trabajo_aparece_una_ventana_B,_para_que_el_\nusuario__con\ufb01gure_la_con\ufb01anza_con_la_cual_se_van_a_\ufb01ltrar_\nlas_reglas_de_asociaci\u00f3n.\n\n\nPara_ejecutar_el_visor,_accedemos_a_la_opcion_Run_del_menu_contextual."));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -155,6 +159,26 @@ public class HelpRules extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEn2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn2.setText("English");
+        btnEn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEn2ActionPerformed(evt);
+            }
+        });
+
+        btnEs2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs2.setText("Espa\u00f1ol");
+        btnEs2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEs2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,14 +190,26 @@ public class HelpRules extends javax.swing.JFrame {
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)))
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(btnEs2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn2, btnEs2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 411, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEs2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -181,7 +217,20 @@ public class HelpRules extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void btnEs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEs2ActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpRules().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEs2ActionPerformed
+    
+    private void btnEn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEn2ActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpRules().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEn2ActionPerformed
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -201,6 +250,8 @@ public class HelpRules extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn2;
+    private javax.swing.JToggleButton btnEs2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
