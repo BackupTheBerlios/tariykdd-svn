@@ -72,10 +72,6 @@ public class RemplazarMissing extends AbstractTableModel{
    * This function clean the table   
    */  	
     public void nuevaTabla() {
-        //dataOut = datosEntrada.
-        // Para isertar los datos
-        //colRem = 3; //AbrirRemMissing. getColSelec();
-        //valRem = "JC"; //AbrirRemMissing.getValRem();
         for(int f = 0; f < dataOut.getRowCount(); f++ ){
             if(dataOut.getValueAt(f,colRem) == null) {
                 dataOut.setValueAt(valRem,f,colRem);

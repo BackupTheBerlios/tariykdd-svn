@@ -22,6 +22,8 @@
 
 package gui.Icons.Filters.Codification;
 
+import Utils.ExampleFileFilter;
+import Utils.FileManager;
 import gui.Icons.Filters.TipodVariables;
 import gui.Icons.Filters.TariyTableModel;
 import javax.swing.table.AbstractTableModel;
@@ -53,6 +55,7 @@ public class VerCodificacion extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        Save = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -67,6 +70,8 @@ public class VerCodificacion extends javax.swing.JFrame {
         LblRegAct = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         LblRegElim = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("View Results ");
@@ -106,6 +111,22 @@ public class VerCodificacion extends javax.swing.JFrame {
         LblRegElim.setFont(new java.awt.Font("Tahoma", 0, 18));
         LblRegElim.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
+        jButton1.setText("Save Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
+        jButton2.setText("Save Dictionary");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,13 +135,17 @@ public class VerCodificacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegElim)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 394, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 72, Short.MAX_VALUE)
+                        .add(jButton1)
+                        .add(32, 32, 32)
+                        .add(jButton2)
+                        .add(59, 59, 59)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegAct)
@@ -136,7 +161,9 @@ public class VerCodificacion extends javax.swing.JFrame {
                     .add(jLabel3)
                     .add(LblRegElim)
                     .add(LblRegAct)
-                    .add(jLabel1))
+                    .add(jLabel1)
+                    .add(jButton1)
+                    .add(jButton2))
                 .add(28, 28, 28))
         );
 
@@ -158,6 +185,78 @@ public class VerCodificacion extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    /** 
+     * This function Save the Dictionary
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ExampleFileFilter ext = new ExampleFileFilter("csv", "Dictionary");
+        String path;
+        FileManager fm;
+        
+        Save.addChoosableFileFilter(ext);
+        int saveOK = Save.showSaveDialog(this);
+        if(saveOK == Save.APPROVE_OPTION) {
+            path = Save.getSelectedFile().getAbsolutePath();
+            path += ".csv";
+            fm = new FileManager(path);
+            fm.writeString("Dictionary \n\n");
+            int rows = diccionario.getRowCount();
+            int columns = diccionario.getColumnCount()-1;
+            StringBuffer textFilter = new StringBuffer();
+            
+            for(int c = 0; c < columns; c++){
+                textFilter.append(diccionario.getColumnName(c) + ",");
+            }
+            textFilter.append(diccionario.getColumnName(columns));
+            textFilter.append("\n");
+            
+            for(int f = 0; f < rows; f++){
+                for(int c = 0; c < columns; c++){
+                    textFilter.append(diccionario.getValueAt(f,c) + ",");
+                }
+                textFilter.append(diccionario.getValueAt(f,columns));
+                textFilter.append("\n");
+            }
+            fm.writeString(textFilter.toString());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    /** 
+     * This function Save the new Table whit filtered data
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ExampleFileFilter ext = new ExampleFileFilter("csv", "Filtered Data");
+        String path;
+        FileManager fm;
+        
+        Save.addChoosableFileFilter(ext);
+        int saveOK = Save.showSaveDialog(this);
+        if(saveOK == Save.APPROVE_OPTION) {
+            path = Save.getSelectedFile().getAbsolutePath();
+            path += ".csv";
+            fm = new FileManager(path);
+            fm.writeString("Filtered Data Whit Codification \n\n");
+            int rows = datosFiltros.getRowCount();
+            int columns = datosFiltros.getColumnCount()-1;
+            StringBuffer textFilter = new StringBuffer();
+            
+            for(int c = 0; c < columns; c++){
+                textFilter.append(datosFiltros.getColumnName(c) + ",");
+            }
+            textFilter.append(datosFiltros.getColumnName(columns));
+            textFilter.append("\n");
+            
+            for(int f = 0; f < rows; f++){
+                for(int c = 0; c < columns; c++){
+                    textFilter.append(datosFiltros.getValueAt(f,c) + ",");
+                }
+                textFilter.append(datosFiltros.getValueAt(f,columns));
+                textFilter.append("\n");
+            }
+            fm.writeString(textFilter.toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -173,10 +272,13 @@ public class VerCodificacion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblRegAct;
     private javax.swing.JLabel LblRegElim;
+    private javax.swing.JFileChooser Save;
     private javax.swing.JTable TableDatosEntrada;
     private javax.swing.JTable TableDatosFiltro;
     private javax.swing.JTable TableDiccionario;
     private javax.swing.JTable TableTVariables;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

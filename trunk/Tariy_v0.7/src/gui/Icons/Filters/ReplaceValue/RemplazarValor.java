@@ -21,50 +21,63 @@ import java.util.Random;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * This class is used for remplace a vaule in the table.<br>  
+ * This in particular contains information about AbstractTableModel 
+ * whit output data.
  *
  * @author Tariy
  */
 public class RemplazarValor extends AbstractTableModel{
-    
+    /** The input data that arrive from a connection. */
     AbstractTableModel datosEntrada;
+    
+    /** Data after to have applied the filter. */
     Object[][] data;
+    
+    /** Names of the attributes. */
     String[] columnsName;
+    
+    /** Selected Colmn. */
     int ColSel;
+    
+    /** Number of Attributes.*/
     int numatri;
     int filen;
+    
+    /** Selected Attributes.*/
     ArrayList atrisel;
+    
+    /** Value for remplace. */
     String remcon;
     public int replaceCount; 
-    //-----------------
     
+    
+   /** 
+   * This initializes and resizes the variables
+   * and constructs the new table.
+   *
+   * @param dataIn input data that arrive from a connection.
+   * @param colsel Selected Column.
+   * @param atri Selected Attributes.
+   * @param rem Value for remplace.
+   */
     public RemplazarValor(AbstractTableModel dataIn, int colsel,
-            ArrayList atri, String rem){
-        datosEntrada = dataIn;
+        ArrayList atri, String rem){
+        datosEntrada = dataIn;        
         ColSel = colsel;
         atrisel = atri;
         numatri = atri.size();
         remcon = rem;
         replaceCount = 0;
-        
-        //dataOut = new TariyTableModel(data, columnsName);
-        
+
         nuevaTabla();
     }
     
+   /**
+   * This function constructs the new table  
+   * whit filtered data
+   */
     public void nuevaTabla() {
-        //int ColSel; // AbrirRemVal.getColSel();
-        //String atrisel[] = new String[datosEntrada.getRowCount()]; //AbrirRemVal.getAtriSel(); //-----
-        //String remcon; // AbrirRemVal.getRemCon();
-        //int numatri; // AbrirRemVal.getNumAtri()
-        //int filen;
-        //___________
-        
-//        ColSel = 0;
-//        numatri = 2;
-//        atrisel[0] = "Alta";
-//        atrisel[1] = "Baja";
-//        remcon = "JC";
-        
         int rows = datosEntrada.getRowCount();
         int columns = datosEntrada.getColumnCount();
         
@@ -87,42 +100,61 @@ public class RemplazarValor extends AbstractTableModel{
             }
             columnsName[i] = datosEntrada.getColumnName(i);
         }
-        
-        
-//        for(int f = 0; f < datosEntrada.getRowCount(); f++) {
-//            filen = 0;
-//            for(int i = 0; i < numatri; i++) {
-//                if(datosEntrada.getValueAt(f,ColSel).equals(atrisel.get(i))) {
-//                    filen ++;
-//                    //break;
-//                }
-//            }
-//            if(filen != 0) {
-//                data[f][ColSel] = remcon;
-//            }
-//        }
     }
     
+    
+    /**
+     *  Returns the number of columns of the table. 
+     */
     public int getColumnCount() {
         return columnsName.length;
     }
     
+    /**
+     *  Returns the number of rows of the table 
+     */
     public int getRowCount() {
         return data.length;
     }
     
+     /**
+     *  Returns a default name for the column 
+     *
+     * @param column  the column being queried
+     * @return a string containing the default name of <code>column</code>
+     */
     public String getColumnName(int col) {
         return columnsName[col];
     }
     
+     /**
+     *  Returns the value of a cell queried, in a row and column of the table.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return datos value of a cell queried
+     */
     public Object getValueAt(int row, int col) {
         return data[row][col];
     }
     
+     /**
+     *  Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
+     *
+     *  @param c  the column being queried
+     *  @return the Object.class
+     */
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
     
+     /**
+     *  Returns if the cell is editable.  This is the default implementation for all cells.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return boolean value that depends if it is editable
+     */
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
@@ -132,8 +164,4 @@ public class RemplazarValor extends AbstractTableModel{
             return true;
         }
     }
-//
-//    public void setValueAt(Object value, int row, int col) {
-//        datosEntrada.setValueAt(value, row, col);
-//    }
 }
