@@ -17,6 +17,13 @@ public class HelpFile extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpFile() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p02"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p03"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("Connection_File"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/FileHelp").getString("p04"));
     }
     
     /** This method is called from within the constructor to
