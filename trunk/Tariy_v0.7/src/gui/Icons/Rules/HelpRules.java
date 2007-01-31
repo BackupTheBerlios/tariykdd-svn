@@ -17,6 +17,13 @@ public class HelpRules extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpRules() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p02"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("p03"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Generator"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/RulesHelp").getString("Sobre_el_\u00e1rea_de_trabajo_aparece_una_ventana_B,_para_que_el_\nusuario__con\ufb01gure_la_con\ufb01anza_con_la_cual_se_van_a_\ufb01ltrar_\nlas_reglas_de_asociaci\u00f3n.\n\n\nPara_ejecutar_el_visor,_accedemos_a_la_opcion_Run_del_menu_contextual."));
     }
     
     /** This method is called from within the constructor to
