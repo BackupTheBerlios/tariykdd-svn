@@ -19,17 +19,31 @@ package gui.Icons.Filters.RemoveMissing;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * This class is used for create a new Table whitout missing data.<br>  
+ * This in particular contains information about AbstractTableModel 
+ * whit output data.
  *
  * @author Tariy
  */
 public class EliminarMissing extends AbstractTableModel{
-    
+    /** The input data that arrive from a connection. */
     AbstractTableModel datosEntrada;
-    final Object[][] datos;
-    final String[] nomcol;
-    public int fv = 0;
-    //-----------------
     
+    /** Data after to have applied the filter. */
+    final Object[][] datos;
+    
+    /** Number of Columns. */
+    final String[] nomcol;
+   
+    
+    public int fv = 0;
+    
+   /** 
+   * This initializes and resizes the variables
+   * and constructs the new table.
+   *
+   * @param dataIn input data that arrive from a connection.
+   */
     public EliminarMissing(AbstractTableModel dataIn){
         datosEntrada = dataIn;
         datos = new Object[datosEntrada.getRowCount()][datosEntrada.getColumnCount()];
@@ -37,8 +51,11 @@ public class EliminarMissing extends AbstractTableModel{
         nuevaTabla();
     }
     
+   /**
+   * This function constructs the new table  
+   * whit filtered data
+   */
     public void nuevaTabla() {
-        // Para isertar los datos
         int bfv = 0;
         for(int f = 0; f < datosEntrada.getRowCount(); f++ ){
             bfv = 0;
@@ -62,26 +79,58 @@ public class EliminarMissing extends AbstractTableModel{
         }
     }
     
+    /**
+     *  Returns the number of columns of the table. 
+     */
     public int getColumnCount() {
         return nomcol.length;
     }
     
+    /**
+     *  Returns the number of rows of the table 
+     */
     public int getRowCount() {
         return fv;
     }
     
+    /**
+     *  Returns a default name for the column 
+     *
+     * @param column  the column being queried
+     * @return a string containing the default name of <code>column</code>
+     */
     public String getColumnName(int col) {
         return nomcol[col];
     }
     
+    /**
+     *  Returns the value of a cell queried, in a row and column of the table.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return datos value of a cell queried
+     */
     public Object getValueAt(int row, int col) {
         return datos[row][col];
     }
     
+    /**
+     *  Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
+     *
+     *  @param c  the column being queried
+     *  @return the Object.class
+     */
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
     
+    /**
+     *  Returns if the cell is editable.  This is the default implementation for all cells.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return boolean value that depends if it is editable
+     */
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
@@ -92,6 +141,13 @@ public class EliminarMissing extends AbstractTableModel{
         }
     }
     
+    /**
+     *  this method assigns a value to a cell.
+     *
+     *  @param  value   value to assign to cell
+     *  @param  row   row of cell
+     *  @param  col  column of cell
+     */
     public void setValueAt(Object value, int row, int col) {
         datos[row][col] = value;
     }

@@ -21,6 +21,9 @@ import gui.Icons.Filters.TariyTableModel;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * This class is used for create a new Table after replacing a value.<br>  
+ * This in particular contains information about AbstractTableModel 
+ * whit output data.
  *
  * @author Tariy
  */
@@ -31,14 +34,15 @@ public class RemplazarMissing extends AbstractTableModel{
     int colRem, conm = 0;
     Object valRem;
     
-    
-//    final Object[][] datos = new Object[datosEntrada.getRowCount()][datosEntrada.getColumnCount()];
-//    final String[] nomcol = new String[datosEntrada.getColumnCount()];
-    
     public RemplazarMissing(){
         //nuevaTabla();
     }
     
+   /** 
+   * Constructs the new table.
+   *
+   * @param di input data that arrive from a connection.
+   */
     public void setDatosEntrada(AbstractTableModel di) {
         this.dataIn = di;
         int rows = dataIn.getRowCount();
@@ -64,7 +68,9 @@ public class RemplazarMissing extends AbstractTableModel{
     }
     
     
-    
+   /**
+   * This function clean the table   
+   */  	
     public void nuevaTabla() {
         //dataOut = datosEntrada.
         // Para isertar los datos
@@ -77,29 +83,59 @@ public class RemplazarMissing extends AbstractTableModel{
             }
         }
     }
-    
-    
-    
+     
+     /**
+     *  Returns the number of columns of the table. 
+     */
     public int getColumnCount() {
         return dataOut.getColumnCount();
     }
     
+    /**
+     *  Returns the number of rows of the table 
+     */
     public int getRowCount() {
         return dataOut.getRowCount();
     }
     
+    /**
+     *  Returns a default name for the column 
+     *
+     * @param column  the column being queried
+     * @return a string containing the default name of <code>column</code>
+     */
     public String getColumnName(int col) {
         return dataOut.getColumnName(col);
     }
     
+    /**
+     *  Returns the value of a cell queried, in a row and column of the table.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return datos value of a cell queried
+     */
     public Object getValueAt(int row, int col) {
         return dataOut.getValueAt(row, col);
     }
     
+    /**
+     *  Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
+     *
+     *  @param c  the column being queried
+     *  @return the Object.class
+     */
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
     
+     /**
+     *  Returns if the cell is editable.  This is the default implementation for all cells.
+     *
+     *  @param  row  the row being queried
+     *  @param  col the column being queried
+     *  @return boolean value that depends if it is editable
+     */
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
@@ -110,10 +146,22 @@ public class RemplazarMissing extends AbstractTableModel{
         }
     }
     
+    /**
+     *  this method assigns a value to a cell.
+     *
+     *  @param  value   value to assign to cell
+     *  @param  row   row of cell
+     *  @param  col  column of cell
+     */
     public void setValueAt(Object value, int row, int col) {
         dataOut.setValueAt(value, row, col);
     }
     
+    /**
+     * This return the number of missing data.
+     *
+     * @return the number of missing data.
+     */
     public int getNMissing() {
         return conm;
     }
