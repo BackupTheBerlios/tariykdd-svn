@@ -17,6 +17,13 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpHierarchicalTree() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p02"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p03"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Hierarchical_Tree"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p04"));
     }
     
     /** This method is called from within the constructor to

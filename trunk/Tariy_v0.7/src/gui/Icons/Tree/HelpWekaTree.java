@@ -17,6 +17,13 @@ public class HelpWekaTree extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpWekaTree() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p08"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p09"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p10"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Weka_Tree"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Se_muestra_el_\u00e1rbol_Weka._\n\nA_\u00e1rea_del_\u00e1rbol.\n\nB_pesta\u00f1a_para_ver_las_reglas_generadas_a_partir_del_\u00e1rbol.\n\nG_porcentaje_de_error_del_\u00e1rbol.\n\n\nTambien_se_puede_desplegar_el_men\u00fa_para_ajustes_del_\u00e1rbol._\nLas_opciones_son:_\n\nC_\u201cCenter_on_Top_Node\u201d_el_cual_mueve_el_nodo_ra\u00edz_al_centro_de_\nla_pantalla_y_al_\u00e1rbol_consigo._\n\nD_\u201cFit_to_Screen\u201d_el_cual_ajusta_el_\u00e1rbol_al_tama\u00f1o_de_la_ventana._\n\nE_\u201cAuto_Scale\u201d_el_cual_despliega_el_\u00e1rbol_en_su_totalidad_sin_\nimportar_que_sobrepase_el_tama\u00f1o_de_la_ventana.\n\nF_\u201cSelect_Font\u201d_que_permite_seleccionar_el_tama\u00f1o_de_la_fuente_usada.\n\n\n\nVisualizacion_de_Reglas:"));
     }
     
     /** This method is called from within the constructor to
