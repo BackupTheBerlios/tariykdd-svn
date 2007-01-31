@@ -19,13 +19,13 @@ public class HelpNumericRange extends javax.swing.JFrame {
      */
     public HelpNumericRange() {
         initComponents();
-//        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
-//        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
-//        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("H"));
-//        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("I"));
-//        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("J"));
-//        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Numeric_Range"));
-//        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("K"));
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("H"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("I"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("J"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Numeric_Range"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("K"));
     }
     
     /** This method is called from within the constructor to
