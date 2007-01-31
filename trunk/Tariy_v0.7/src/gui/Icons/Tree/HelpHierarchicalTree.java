@@ -6,6 +6,8 @@
 
 package gui.Icons.Tree;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -38,6 +40,8 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jTextArea12 = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
+        btnEn2 = new javax.swing.JToggleButton();
+        btnEs2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -46,8 +50,8 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +63,7 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("Este tipo de visor, permite generar un arbol jerarquico de desicion\napartir de un proceso minero de Clasificacion. \nEs muy util para visualizar el arbol por secciones.\n\nla conexion con otros componentes drag and drop, es similar \nen todos los visores, y se realiza como se muestra a continuacion. ");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -75,7 +79,7 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("Al liberar el icono en el area de trabajo. es posible conectar los iconos\npor medio de un hilo.\n\nAl hacer click derecho sobre el icono aparece un menu emergente, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el visor del area de trabajo. \n\nLa opcion Run ejecuta la aplicacin del visor.\n\nLa opcion View despliega la ventana que permite visualizar tanto \nel \u00e1rbol como  las reglas generadas. Sus detalles se explican \na continuaci\u00f3n.\n\n\nVisualizacion del arbol jerarquico colapsado:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p02"));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/rulesView.png")));
@@ -83,10 +87,10 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
 
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
-        jTextArea11.setText("Las reglas generadas a partir del \u00e1rbol son mostradas.\nEsta lista puede ser ordenada de acuerdo a la columna. \nLa lista se ordena de mayor a menor o viceversa teniendo \ncomo criterio dicha columna.\n.\n");
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p03"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Hierarchical Tree");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("Hierarchical_Tree"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/HierarchicalExpandido.png")));
@@ -94,7 +98,7 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
 
         jTextArea12.setColumns(20);
         jTextArea12.setRows(5);
-        jTextArea12.setText("El anterior es el \u00e1rbol jer\u00e1rquico. Los campos de esta ventana son:\n\nA \u00e1rea del \u00e1rbol. \n\nB botones para expandir o colapsar el \u00e1rbol.\n\nC pesta\u00f1a para visualizar las reglas generadas a partir del \u00e1rbol.\n\nD porcentaje de error del \u00e1rbol.\n\n\n\nVisualizacion de las reglas a partir de dicho arbol.");
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/TreeHelp").getString("p04"));
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/HierarchicalColapsed.png")));
@@ -160,6 +164,26 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEn2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn2.setText("English");
+        btnEn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEn2ActionPerformed(evt);
+            }
+        });
+
+        btnEs2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs2.setText("Espa\u00f1ol");
+        btnEs2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEs2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,21 +195,46 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)))
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(btnEs2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn2, btnEs2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 412, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEs2ActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpHierarchicalTree().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEs2ActionPerformed
+
+    private void btnEn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEn2ActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpHierarchicalTree().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEn2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -206,6 +255,8 @@ public class HelpHierarchicalTree extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn2;
+    private javax.swing.JToggleButton btnEs2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
