@@ -83,7 +83,7 @@ public class ViewerClasification extends javax.swing.JFrame {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(LblErrorM))
-                .add(20, 20, 20))
+                .add(26, 26, 26))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());

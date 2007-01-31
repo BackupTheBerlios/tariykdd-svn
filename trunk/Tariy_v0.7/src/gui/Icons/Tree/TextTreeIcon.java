@@ -37,7 +37,6 @@ public class TextTreeIcon extends Icon{
     String texErrorM;
     
     private JScrollPane scrollTree;
-    private JTextArea TextTree;
     private ViewerClasification vc;
     
     /** Creates a new instance of DBConnectionIcon */
@@ -140,23 +139,22 @@ public class TextTreeIcon extends Icon{
         final TextTreeIcon tti = this;
         
         Thread view = new Thread(new Runnable() {
+            PaneltextTree pnlTree;
             public void run() {
                 if(vc == null){
                     TreeCounter c =  new TreeCounter();
                     String tree = c.getTextTree(root);
                     scrollTree = new javax.swing.JScrollPane();
-                    TextTree = new javax.swing.JTextArea();
-                    scrollTree.setViewportView(TextTree);
-                    TextTree.setText(tree);
+                    pnlTree = new PaneltextTree(tree);
+                    scrollTree.setViewportView(pnlTree); 
                     vc = new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti);
                     vc.setVisible(true);
                 } else if(!vc.getRoot().equals(root)){
                     TreeCounter c =  new TreeCounter();
                     String tree = c.getTextTree(root);
                     scrollTree = new javax.swing.JScrollPane();
-                    TextTree = new javax.swing.JTextArea();
-                    scrollTree.setViewportView(TextTree);
-                    TextTree.setText(tree);
+                    pnlTree = new PaneltextTree(tree);
+                    scrollTree.setViewportView(pnlTree);
                     vc = new ViewerClasification(root, "Text Tree", scrollTree, texErrorM, tti);
                     vc.setVisible(true);
                 }else {
