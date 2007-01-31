@@ -103,7 +103,6 @@ public class showRules extends javax.swing.JFrame {
         lblSupport = new javax.swing.JLabel();
         lblConfidence = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btn_atras = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRules = new javax.swing.JTable();
@@ -123,35 +122,32 @@ public class showRules extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stock_text_justify.png")));
         jLabel1.setText("Analized Table:");
 
+        lblTable.setToolTipText("The table that has been analyzed");
         lblTable.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/text_strike.png")));
         jLabel2.setText("System Support:");
 
+        lblSupport.setToolTipText("Support used");
         lblSupport.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
+        lblConfidence.setToolTipText("Confidence used");
         lblConfidence.setBorder(new javax.swing.border.LineBorder(javax.swing.UIManager.getDefaults().getColor("Button.focus"), 1, true));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rules.png")));
         jLabel3.setText("Confidence:");
 
-        btn_atras.setIcon(new javax.swing.ImageIcon("/usr/share/icons/Bluecurve/20x20/actions/back.png"));
-        btn_atras.setText("Back");
-        btn_atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_atrasActionPerformed(evt);
-            }
-        });
-
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
         btnSave.setText("Save Report");
+        btnSave.setToolTipText("Save this report");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Set"));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Rules set"));
+        jScrollPane1.setToolTipText("Set of rules that pass the given support and confidence");
         tblRules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -166,39 +162,45 @@ public class showRules extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(576, 576, 576)
+                .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(21, 21, 21)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .add(16, 16, 16)
-                        .add(lblTable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                        .addContainerGap())
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(layout.createSequentialGroup()
-                                .add(29, 29, 29)
-                                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
-                            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                        .add(15, 15, 15)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)))
-                    .add(layout.createSequentialGroup()
-                        .add(btn_atras, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                        .add(448, 448, 448)
-                        .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
-                        .add(5, 5, 5)))
-                .add(27, 27, 27))
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .add(16, 16, 16)
+                                .add(lblTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 534, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(layout.createSequentialGroup()
+                                        .add(29, 29, 29)
+                                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                .add(15, 15, 15)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, lblSupport, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, lblConfidence, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
+
+        layout.linkSize(new java.awt.Component[] {lblConfidence, lblSupport, lblTable}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(lblTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1))
+                    .add(jLabel1)
+                    .add(lblTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
@@ -208,13 +210,14 @@ public class showRules extends javax.swing.JFrame {
                     .add(lblConfidence, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3))
                 .add(33, 33, 33)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                .add(24, 24, 24)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btn_atras)
-                    .add(btnSave))
-                .add(38, 38, 38))
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnSave)
+                .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {lblConfidence, lblSupport, lblTable}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
@@ -243,12 +246,7 @@ public class showRules extends javax.swing.JFrame {
                     "%\n\n" + rules.toString());
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-    
-    private void btn_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atrasActionPerformed
-// TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_btn_atrasActionPerformed
-    
+        
     /**
      * @param args the command line arguments
      */
@@ -263,7 +261,6 @@ public class showRules extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser Save;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btn_atras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

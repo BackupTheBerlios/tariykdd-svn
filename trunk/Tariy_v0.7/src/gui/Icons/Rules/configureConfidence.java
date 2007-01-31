@@ -43,6 +43,8 @@ public class configureConfidence extends javax.swing.JFrame {
 
         jLabel2.setText("%");
 
+        spnConfidence.setToolTipText("Confidence of the rule");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,6 +70,7 @@ public class configureConfidence extends javax.swing.JFrame {
         );
 
         btnAccept.setText("Accept");
+        btnAccept.setToolTipText("Accept this parameters");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
@@ -92,7 +95,7 @@ public class configureConfidence extends javax.swing.JFrame {
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnAccept)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
