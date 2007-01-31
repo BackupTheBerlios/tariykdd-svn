@@ -108,6 +108,7 @@ public class PanelTableRules extends javax.swing.JPanel {
 
         pupGraph.add(mnuGraph);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Rules set"));
         jScrollPane1.setComponentPopupMenu(pupGraph);
         tblRules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,6 +121,7 @@ public class PanelTableRules extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblRules.setToolTipText("Classification rules set");
         tblRules.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblRulesMouseClicked(evt);
@@ -130,6 +132,7 @@ public class PanelTableRules extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
         jButton1.setText("Save Report");
+        jButton1.setToolTipText("Save this report");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
