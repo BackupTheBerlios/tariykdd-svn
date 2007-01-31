@@ -39,7 +39,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         datosEntrada = dataIn;
         atributos  = new String[datosEntrada.getColumnCount()+1];
         pa = 1;
-        atributos[0] = "Seleccionar un Atributo";
+        atributos[0] = "Select an attribute";
         for(int i = 0; i < datosEntrada.getColumnCount(); i++) {
             if(datosEntrada.getColumnClass(i).getSimpleName().equals("Integer")) {
                 atributos[pa] = datosEntrada.getColumnName(i);
@@ -219,8 +219,8 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         if(colsel == -1){
             TxtMaxVal.setText("");
             TxtMinVal.setText("");
-            JOptionPane.showMessageDialog(this, "Debe seleccionar algun Atributo",
-                    "Error en Abrir Rango Numerico",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "you must select some attribute",
+                    "Error in Configure Numeric Range",JOptionPane.ERROR_MESSAGE);
         } else {
             x=0;
             cad = TxtMinVal.getText();

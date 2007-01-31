@@ -50,8 +50,8 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         
         TableColumn sportColumn = TableTVariables.getColumnModel().getColumn(3);
         JComboBox comboBox = new JComboBox();
-        comboBox.addItem("Atributo");
-        comboBox.addItem("Objetivo");
+        comboBox.addItem("Attribute");
+        comboBox.addItem("Target");
         sportColumn.setCellEditor(new DefaultCellEditor(comboBox));
     }
     /** This method is called from within the constructor to
@@ -166,14 +166,14 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         if(cob == 0 || cob > 1) bdob = 1;
         
         if(bdat == 1 && bdob == 1) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un Atributo y '1' Objetivo",
-                    "Error en Abrir Seleccin",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You must select at least to an Attribute and “1” Objective",
+                    "Error in Configure Selection",JOptionPane.ERROR_MESSAGE);
         } else if(bdat == 1) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un Atributo",
-                    "Error en Abrir Seleccin.",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You must select an Attribute at least",
+                    "Error in Configure Selection.",JOptionPane.ERROR_MESSAGE);
         } else if(bdob == 1) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar '1' Objetivo",
-                    "Error en Abrir Seleccin.",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "you must select “1” Objective",
+                    "Error in Configure Selection.",JOptionPane.ERROR_MESSAGE);
         } else if(bdat ==0 && bdob == 0) {
             BtnCerrar.setEnabled(true);
             for(int i = 0; i < pc; i++ ){

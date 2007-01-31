@@ -33,7 +33,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
     public AbrirRemMissing(AbstractTableModel datosEntrada) {
         this.datosEntrada = datosEntrada;
         atributos = new String[datosEntrada.getColumnCount()+1];
-        atributos[0] = "Seleccionar un Atributo";
+        atributos[0] = "Select an Attribute";
         for(int i = 0; i < datosEntrada.getColumnCount(); i++) {
             atributos[i+1] = datosEntrada.getColumnName(i);
         }
@@ -190,8 +190,8 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         colsel = datosEntrada.findColumn(CmbAtributos.getModel().getSelectedItem().toString());
         if(colsel == -1){
             TxtRemCon.setText("");
-            JOptionPane.showMessageDialog(this, "Debe seleccionar algun Atributo",
-                    "Error en Abrir Remplazar Missing",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You must select some Attribute",
+                    "Error in Configure Remplace Missing",JOptionPane.ERROR_MESSAGE);
         } else {
             if(datosEntrada.getColumnClass(colsel).getSimpleName().equals("Integer")) {  //************
                 bdcolint = 1;
@@ -216,8 +216,8 @@ public class AbrirRemMissing extends javax.swing.JFrame {
                 BtnCerrar.setEnabled(true);
             } else {
                 TxtRemCon.setText("");
-                JOptionPane.showMessageDialog(this, "Los tipos de datos son diferentes",
-                        "Error en Abrir Remplazar Missing.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "The data types are different ",
+                        "Error in Configure Remplace Missing.",JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_BtnAplicarActionPerformed

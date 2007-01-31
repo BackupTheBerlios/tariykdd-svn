@@ -36,7 +36,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         datosEntrada = dataIn;
         atributos = new String[datosEntrada.getColumnCount()+1];
         atris = new ArrayList(1);
-        atributos[0] = "Seleccionar un Atributo";
+        atributos[0] = "select an Attribute";
         for(int i = 0; i < datosEntrada.getColumnCount(); i++) {
             atributos[i+1] = datosEntrada.getColumnName(i);
         }
@@ -340,7 +340,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         String valmen = null;
         colsel = datosEntrada.findColumn(CmbItem.getModel().getSelectedItem().toString());
         if(colsel == -1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar algun Atributo","Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You must select some Attribute","Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
         } else {
             se = 0;
             if(datosEntrada.getColumnClass(colsel).getSimpleName().equals("Integer")) {  //************
@@ -407,13 +407,13 @@ public class AbrirReduccion extends javax.swing.JFrame {
             if(cad.equals("")) bdSem = 0;
             
             if(bdSem == 0) {
-                JOptionPane.showMessageDialog(this, "Fila Inicial debe contener valores numericos",
-                        "Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "First row must contain numerical values",
+                        "Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
             } else {
                 val = Integer.parseInt(TexFini.getText());
                 if(val < 0 || val > fils ) {
-                    valmen = "Los valores de Fila Inicial deben estar comprendidos entre 0 y " + Integer.toString(fils);
-                    JOptionPane.showMessageDialog(this, valmen,"Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                    valmen = "The values of First Row must be included between 0 and " + Integer.toString(fils);
+                    JOptionPane.showMessageDialog(this, valmen,"Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     fini = Integer.parseInt(cad);
                 }
@@ -430,21 +430,21 @@ public class AbrirReduccion extends javax.swing.JFrame {
             if(cad.equals("")) bdSem = 0;
             
             if(bdSem == 0) {
-                JOptionPane.showMessageDialog(this, "Fila Final debe contener valores numericos",
-                        "Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Last row must contain numerical values",
+                        "Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
             } else {
                 val = Integer.parseInt(TexFfin.getText());
                 if(val < 0 || val > fils ) {
-                    valmen = "Los valores de Fila Final deben estar comprendidos entre 0 y " + Integer.toString(fils);
-                    JOptionPane.showMessageDialog(this, valmen,"Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                    valmen = "The values of Last Row must be included between 0 and  " + Integer.toString(fils);
+                    JOptionPane.showMessageDialog(this, valmen,"Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     ffin = Integer.parseInt(cad);
                 }
             }
             
             if(fini != 0 && ffin != 0 && fini > ffin) {
-                valmen = "La fila inicial debe ser mayor que la fila final ";
-                JOptionPane.showMessageDialog(this, valmen,"Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                valmen = "The First row must be greater than the Last row";
+                JOptionPane.showMessageDialog(this, valmen,"Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
             } else if(fini != 0 && ffin != 0) {
                 BtnCerrar.setEnabled(true);
             }
@@ -462,14 +462,14 @@ public class AbrirReduccion extends javax.swing.JFrame {
                 if(cad.equals("")) bdSem = 0;
                 
                 if(bdSem == 0) {
-                    JOptionPane.showMessageDialog(this, "Menores que debe contener valores numericos",
-                            "Error en Abrir Reduccin.",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Smaller than must contain numerical values",
+                            "Error in Configure Reduction.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     menores = Integer.parseInt(cad);
                     BtnCerrar.setEnabled(true);
                 }
             } else if(se == 1) {
-                for(int f = 0; f < valAtri.getRowCount(); f++) {  // talves esta parte del for deberia ser en el boton aplicar anction performed
+                for(int f = 0; f < valAtri.getRowCount(); f++) {  
                     if(valAtri.getValueAt(f,1).toString().equals("true")) {
                         atris.add(valAtri.getValueAt(f,0).toString());
                     }

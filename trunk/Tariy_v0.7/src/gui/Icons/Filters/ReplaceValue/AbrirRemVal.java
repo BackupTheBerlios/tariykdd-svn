@@ -40,7 +40,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         int pa;
         //____________
         
-        atributos[0] = "Seleccionar un Atributo";
+        atributos[0] = "Select an Attribute";
         pa = 1;
         for(int i = 0; i < datosEntrada.getColumnCount(); i++) {
             if(datosEntrada.getColumnClass(i).getSimpleName().equals("String")) {
@@ -182,7 +182,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         
         colsel = datosEntrada.findColumn(CmbItem.getModel().getSelectedItem().toString());
         if(colsel == -1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar algun Atributo","Error en Abrir Remplazar Valor",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You must select some Attribute","Error in Configure Remplace Value",JOptionPane.ERROR_MESSAGE);
         } else {
             valAtri = new ValAtributos(colsel, datosEntrada);
             TableAtrib.setModel(valAtri);
@@ -201,8 +201,8 @@ public class AbrirRemVal extends javax.swing.JFrame {
             if(uc>47 && uc<58) x++;
         }
         if(x==cad.length()) {
-            JOptionPane.showMessageDialog(this, "Remplazar con debe contener valores alfabeticos",
-                    "Error en Abrir Remplazar Valor.",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Replace by must contain alphabetical values ",
+                    "Error in Configure Remplace Value.",JOptionPane.ERROR_MESSAGE);
         } else {
             texval = TexRemCon.getText();
             BtnCerrar.setEnabled(true);

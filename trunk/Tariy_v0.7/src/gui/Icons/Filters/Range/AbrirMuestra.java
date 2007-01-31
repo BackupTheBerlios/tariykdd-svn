@@ -292,14 +292,14 @@ public class AbrirMuestra extends javax.swing.JFrame {
             if(cad.equals("")) bdSem = 0;
             
             if(bdSem == 0) {
-                JOptionPane.showMessageDialog(this, "n filas debe contener valores numericos",
-                        "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Rows must contain numerical values.",
+                        "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
             } else {
                 val = Integer.parseInt(TexSem.getText());
                 if(val < 0 || val > fils ) {
-                    valmen = "Los valores de n filas deben estar comprendidos entre 0 y " + Integer.toString(fils);
+                    valmen = "The values of Rows must be included between 0 and " + Integer.toString(fils);
                     JOptionPane.showMessageDialog(this, valmen,
-                            "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                            "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     valmuestra = Integer.parseInt(cad);
                     BtnCerrar.setEnabled(true);
@@ -319,14 +319,14 @@ public class AbrirMuestra extends javax.swing.JFrame {
             if(cad.equals("")) bdenn = 0;
             
             if(bdenn == 0) {
-                JOptionPane.showMessageDialog(this, "Valor de n de 1 en n debe contener valores numericos",
-                        "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Value of n of 1 in n must contain numerical values",
+                        "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
             } else {
                 val = Integer.parseInt(Tex1enn.getText());
                 if(val < 0 || val > fils ) {
-                    valmen = "Los valores de 1 en n deben estar comprendidos entre 0 y " + Integer.toString(fils);
+                    valmen = "The values of 1 in n must be included between 0 and " + Integer.toString(fils);
                     JOptionPane.showMessageDialog(this, valmen,
-                            "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                            "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     valmuestra = Integer.parseInt(cad);
                     BtnCerrar.setEnabled(true);
@@ -346,14 +346,14 @@ public class AbrirMuestra extends javax.swing.JFrame {
             if(cad.equals("")) bdPrim = 0;
             
             if(bdPrim == 0) {
-                JOptionPane.showMessageDialog(this, "Valor de n de Primeros n debe contener valores numericos",
-                        "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Value of n of First n must contain numerical values",
+                        "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
             } else {
                 val = Integer.parseInt(TexPrim.getText());
                 if(val < 0 || val > fils ) {
-                    valmen = "Los valores de Primeros n deben estar comprendidos entre 0 y " + Integer.toString(fils);
+                    valmen = "The values of First n must be included between 0 and " + Integer.toString(fils);
                     JOptionPane.showMessageDialog(this, valmen,
-                            "Error en Abrir Muestra.",JOptionPane.ERROR_MESSAGE);
+                            "Error in Configure Range.",JOptionPane.ERROR_MESSAGE);
                 } else {
                     valmuestra = Integer.parseInt(cad);
                     BtnCerrar.setEnabled(true);
