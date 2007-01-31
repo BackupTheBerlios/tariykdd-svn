@@ -66,11 +66,15 @@ public class configureParameters extends javax.swing.JFrame {
         setTitle("Configure Parameters");
         setResizable(false);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pruning")));
-        jLabel1.setText("Min Rows per Node:");
+        jLabel1.setText("Min Rows by Node:");
+
+        spnMinRows.setToolTipText("Minimum number of rows by node");
 
         jLabel2.setText("Threshold:");
 
         jLabel6.setText("%");
+
+        spnThreshold.setToolTipText("Percentage of an attribute in the class");
 
         jLabel7.setText("%");
 
@@ -85,7 +89,7 @@ public class configureParameters extends javax.swing.JFrame {
                     .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, spnMinRows, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, spnMinRows, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                     .add(spnThreshold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 66, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -93,6 +97,9 @@ public class configureParameters extends javax.swing.JFrame {
                     .add(jLabel7))
                 .addContainerGap())
         );
+
+        jPanel3Layout.linkSize(new java.awt.Component[] {spnMinRows, spnThreshold}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
@@ -110,6 +117,7 @@ public class configureParameters extends javax.swing.JFrame {
         );
 
         jButton1.setText("Accept");
+        jButton1.setToolTipText("Accept this parameters");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,6 +126,8 @@ public class configureParameters extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Training Set"));
         jLabel5.setText("Set Size :");
+
+        spnSizeSet.setToolTipText("Size of Training set");
 
         jLabel4.setText("%");
 
@@ -166,7 +176,7 @@ public class configureParameters extends javax.swing.JFrame {
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents

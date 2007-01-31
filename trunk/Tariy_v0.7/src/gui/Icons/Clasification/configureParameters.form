@@ -44,7 +44,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,8 +78,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="spnMinRows" alignment="0" pref="66" max="32767" attributes="1"/>
-                      <Component id="spnThreshold" min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="spnMinRows" linkSize="1" alignment="0" pref="71" max="32767" attributes="1"/>
+                      <Component id="spnThreshold" linkSize="1" min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -113,10 +113,13 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Min Rows per Node:"/>
+            <Property name="text" type="java.lang.String" value="Min Rows by Node:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnMinRows">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Minimum number of rows by node"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -129,6 +132,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnThreshold">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Percentage of an attribute in the class"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -140,6 +146,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Accept"/>
+        <Property name="toolTipText" type="java.lang.String" value="Accept this parameters"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -193,6 +200,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnSizeSet">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Size of Training set"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
