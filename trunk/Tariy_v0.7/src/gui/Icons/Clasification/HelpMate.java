@@ -17,6 +17,13 @@ public class HelpMate extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpMate() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p05"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p06"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p07"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Algorithm_Mate"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p08"));
     }
     
     /** This method is called from within the constructor to

@@ -17,6 +17,13 @@ public class HelpC45 extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpC45() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p02"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p03"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Algorithm_C4-5"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("p04"));
     }
     
     /** This method is called from within the constructor to
