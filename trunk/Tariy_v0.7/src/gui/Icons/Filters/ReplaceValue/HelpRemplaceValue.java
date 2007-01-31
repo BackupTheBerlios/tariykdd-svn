@@ -26,6 +26,13 @@ public class HelpRemplaceValue extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpRemplaceValue() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("A1"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("A2"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("A3"));
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Remplace_Value"));
+        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("A4"));
     }
     
     /** This method is called from within the constructor to

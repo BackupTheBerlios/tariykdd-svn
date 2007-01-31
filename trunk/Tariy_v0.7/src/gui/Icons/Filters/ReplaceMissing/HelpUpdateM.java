@@ -27,6 +27,13 @@ public class HelpUpdateM extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpUpdateM() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("W"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("X"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Y"));
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Update_Missing"));
+        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Z"));
     }
     
     /** This method is called from within the constructor to
