@@ -6,6 +6,8 @@
 
 package gui.Icons.DBConnection;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -15,6 +17,13 @@ public class Help extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public Help() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Return_Aplication"));
+        jScrollPane2.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Help_Conetion_BD"));
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p01"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p02"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p03"));
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Connection_DB"));
     }
     
     /** This method is called from within the constructor to
@@ -46,8 +55,8 @@ public class Help extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,12 +64,12 @@ public class Help extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setToolTipText("Help Conetion BD");
+        jScrollPane2.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Help_Conetion_BD"));
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Al hacer click derecho sobre este icono, se muestran  las siguientes opciones:\n\nDelete: usada para eliminar el \u0131cono del area de trabajo. \nCon\ufb01gure: usada para con\ufb01gurar laconexion a una base de datos. \nSeleccion de atributos: usada para seleccionar de forma gr\ufb01ca los datos que \n                                      seran usados mas adelante.\nCargar: ejecuta el query que se genera en la seleccion de atributos.\n\nLa configurarcion se realiza mediante la siguiente interfaz:\n");
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p01"));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -76,7 +85,7 @@ public class Help extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Las opciones de la ventana de con\ufb01guracion de conexion a bases \nde datos tiene los siguientes campos: \n\nA: Lista de controladores ODBC para varios tipos de bases de datos. \nB: Nombre del usuario de la base de datos. \nC: Nombre de la base de datos.\nD: Nombre del servidor. \nE: Password: clave de acceso a la base de datos.\nF: numero del puerto utilizado para la comunicacin con la base de datos. \nG: boton de conexion. \nH: boton para aceptar la conexion realizada.\nI: mensaje que indica el estado  de la conexion.\n                \nPor medio de la siguiente ventana se realiza la seleccion de los atributos \nen la base de datos");
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p02"));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/seleccionbd")));
@@ -84,10 +93,10 @@ public class Help extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("Aparece la ventana de seleccion de atributos. \n\nA: lista desplegable de las tablas de la base de datos a la que se ha \n     conectado. Al seleccionar una de ellas su representacion gra\ufb01ca \n     aparecera en el espacio de trabajo E. \nB: opcion que permite ver las relaciones establecidas a traves de la\n     l\u0131nea de conexion de atributos entre las tablas.\nC: esta opcion es util cuando se trabajan problemas de canasta de\n     mercado.\nD: opcion para trabajar tablas multivaluadas. \nF:  l\u0131nea que permite realizar las relaciones entre atributos de dos tablas. \n     El resultado de la relacion establecida se re\ufb02eja en el query. \nG: Si se hace click sobre uno de los atributos aparece un \u0131cono de \n     veri\ufb01cacion que indica los campos que se mostraran al ejecutar el query. \nH: espacio en el que se crea el query. Es posible editarlo manualmente.\nI:   boton de ejecuciin del query. \nJ:   tabla en la que se muestra el resultado de la ejecucion del query.\nK: boton para aceptar las operaciones realizadas.\n");
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("p03"));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel1.setText("Connection DB");
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Connection_DB"));
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,15 +216,17 @@ public class Help extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsActionPerformed
-        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Al_hacer_click_derecho"));
-        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Las_opciones_de_la_ventana"));
-        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_es").getString("Aparece_la_ventana_de_seleccion"));
+        Locale.setDefault(new Locale("es", "CO"));
+        new Help().setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_btnEsActionPerformed
     
     private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
-        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Al_hacer_click_derecho"));
-        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Las_opciones_de_la_ventana"));
-        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/DBHelp_en").getString("Aparece_la_ventana_de_seleccion"));
+        Locale.setDefault(new Locale("en", "US"));
+        new Help().setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_btnEnActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
