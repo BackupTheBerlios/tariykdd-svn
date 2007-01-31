@@ -17,6 +17,13 @@ public class HelpApriori extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpApriori() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/AssociationHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/AssociationHelp").getString("p06"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/AssociationHelp").getString("p07"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/AssociationHelp").getString("Algorithm_Apriori"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/AssociationHelp").getString("p08"));
     }
     
     /** This method is called from within the constructor to

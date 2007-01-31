@@ -16,6 +16,13 @@ public class HelpEquipAsso extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpEquipAsso() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/ClassificationHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s02"));
+        jTextArea11.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s03"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("Algorithm_EquipAsso"));
+        jTextArea12.setText(java.util.ResourceBundle.getBundle("resource/translations/EquipAssoHelp_es").getString("s04"));
     }
     
     /** This method is called from within the constructor to
