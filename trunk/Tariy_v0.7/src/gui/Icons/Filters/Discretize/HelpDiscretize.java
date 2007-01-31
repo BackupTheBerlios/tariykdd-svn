@@ -28,6 +28,13 @@ public class HelpDiscretize extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpDiscretize() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
+        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("D"));
+        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("E"));
+        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("F"));
+        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Discretize"));
+        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("G"));
     }
     
     /** This method is called from within the constructor to
@@ -61,8 +68,8 @@ public class HelpDiscretize extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Close_Help..."));
-        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Return_Aplication"));
+        jButton1.setText("Close Help...");
+        jButton1.setToolTipText("Return Aplication");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +81,7 @@ public class HelpDiscretize extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("D"));
+        jTextArea1.setText("El objetivo espec\u00edfico de este filtro, transformar un valor \nnum\u00e9rico discontinuo en un rango continuo, por medio de dos t\u00e9cnicas: \n\ndiscretizar con n\u00famero de rangos y discretizar con el tama\u00f1o del rango, \nllevando un valor dicho valor discontinuo a un formato continuo. \n\nT\u00e9cnica de discretizar con n\u00famero de rangos:\nEsta t\u00e9cnica se encarga de tomar el m\u00ednimo y el m\u00e1ximo valor del\natributo num\u00e9rico seleccionado, con el objetivo de hacer una divisi\u00f3n \nclasificatoria, dependiendo del n\u00famero de rangos otorgado por analista\ny tambi\u00e9n teniendo en cuenta los rangos extremos: desde infinito hasta el\nm\u00ednimo valor y desde el m\u00e1ximo valor hasta +infinito.\n\nT\u00e9cnica de discretizar con el tama\u00f1o del rango\nEsta t\u00e9cnica se encarga de delimitar rangos, en incrementos, seg\u00fan el tama\u00f1o\ndel rango otorgado por el analista, dentro de los valores comprendidos entre\nel m\u00ednimo y m\u00e1ximo valor del atributo num\u00e9rico seleccionado, tambi\u00e9n se tiene \nen cuenta los rangos extremos los cuales son desde el infinito hasta el m\u00ednimo\nvalor, y desde el m\u00e1ximo valor hasta el + infinito.\n\nla conexion con otros componentes drag and drop, es similar \nen todos los filtros, y se realiza como se muestra a continuacion. ");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -90,7 +97,7 @@ public class HelpDiscretize extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("E"));
+        jTextArea2.setText("Al liberar el icono en el area de trabajo A. es posible conectar los iconos\npor medio de un hilo B.\n\nAl hacer click derecho sobre el icono aparece un menu emergente C, \nel cual consta de las siguientes opciones:\n\nLa opci\u00f2n Delete, borra el \ufb01ltro del area de trabajo. \n\nLa opcion Configure, adapta los parametros del filtro a las necesidades \ndel analista\n\nLa opcion Run ejecuta la aplicacin del \ufb01ltro.\n \nLa opcion View  muestra la ventana de vizualizacion de datos. \n\n\nLa configuracion del filtro, se realiza de la siguiente manera:");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion")));
@@ -98,10 +105,10 @@ public class HelpDiscretize extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("F"));
+        jTextArea3.setText("Aparece la ventana de vizualizacion de datos \ufb01ltrados y no \ufb01ltrados. \n\nLos campos son:\n\nA: Variables o nombres de los campos de la tabla. \nB: Datos de entrada que son los datos que llegaron al \ufb01ltro inicialmente.\nC: Datos \ufb01ltrados que son el resultado de haber aplicado el \ufb01ltro. \nD: nmero de registros eliminados al aplicar el \ufb01ltro.\nE: Numero de registros despues de aplicar el \ufb01ltro.\n");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel1.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("Filter_Discretize"));
+        jLabel1.setText("Filter Discretize");
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/visualisacion 2")));
@@ -113,7 +120,7 @@ public class HelpDiscretize extends javax.swing.JFrame {
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
-        jTextArea5.setText(java.util.ResourceBundle.getBundle("resource/translations/FiltersHelp").getString("G"));
+        jTextArea5.setText("Al acceder a la opcion de configuracion se muestra B la ventana de\ncon\ufb01guracin correspondiente al \ufb01ltro \u2019Discretize\u2019. Los campos son: \n\nAtributo, en el cual se escribe el nombre del atributo a discretizar.\n\nDiscretizar por: \u2019N\u00famero de rango\u2019: se puede establecer el n\u00famero\nde rangos a crear. \n\nTama\u00f1o del rango\u2019: se especi\ufb01ca el tama\u00f1o del rango \n\nAplicar: ejecuta el \ufb01ltro. Resetear: deja los campos en blanco\n\n\nPara visualizar los resultados obtenidos, hacemos uso de la opcion view\nmostrando una interfaz como la siguiente:\n\n\n");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,12 +210,10 @@ public class HelpDiscretize extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
                         .add(btnEs)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -237,7 +242,7 @@ public class HelpDiscretize extends javax.swing.JFrame {
         layout.linkSize(new java.awt.Component[] {btnEn, btnEs}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-618)/2, (screenSize.height-522)/2, 618, 522);
+        setBounds((screenSize.width-642)/2, (screenSize.height-522)/2, 642, 522);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
