@@ -80,6 +80,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         RbtnAle.setForeground(new java.awt.Color(0, 0, 204));
         RbtnAle.setSelected(true);
         RbtnAle.setText("Random");
+        RbtnAle.setToolTipText("Random");
         RbtnAle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnAle.setBorderPainted(true);
         RbtnAle.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -94,6 +95,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         Rbtn1enn.setFont(new java.awt.Font("Tahoma", 1, 12));
         Rbtn1enn.setForeground(new java.awt.Color(0, 0, 204));
         Rbtn1enn.setText("1 in n");
+        Rbtn1enn.setToolTipText("1 in n");
         Rbtn1enn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         Rbtn1enn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         Rbtn1enn.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +109,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         RbtnPrim.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnPrim.setForeground(new java.awt.Color(0, 0, 204));
         RbtnPrim.setText("n First");
+        RbtnPrim.setToolTipText("n First");
         RbtnPrim.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPrim.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnPrim.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +127,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
 
         TexSem.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexSem.setForeground(new java.awt.Color(0, 0, 204));
+        TexSem.setToolTipText("Numbers of rows selected by random");
         TexSem.setBounds(140, 10, 70, 40);
         jLayeredPane1.add(TexSem, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -137,6 +141,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
 
         Tex1enn.setFont(new java.awt.Font("Tahoma", 0, 14));
         Tex1enn.setForeground(new java.awt.Color(0, 0, 204));
+        Tex1enn.setToolTipText("This value is the jump of n ");
         Tex1enn.setEnabled(false);
         Tex1enn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +162,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
 
         TexPrim.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexPrim.setForeground(new java.awt.Color(0, 0, 204));
+        TexPrim.setToolTipText("n is the number of rows from first");
         TexPrim.setEnabled(false);
         TexPrim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +174,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         jLayeredPane4.add(TexPrim, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -175,6 +182,7 @@ public class AbrirMuestra extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

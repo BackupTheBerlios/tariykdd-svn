@@ -88,6 +88,7 @@
         <Component class="javax.swing.JButton" name="BtnAplicar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Play"/>
+            <Property name="toolTipText" type="java.lang.String" value="Execute the Configuration"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAplicarActionPerformed"/>
@@ -96,6 +97,7 @@
         <Component class="javax.swing.JButton" name="BtnCerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="toolTipText" type="java.lang.String" value="Close the Configuration"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -121,6 +123,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.DefaultComboBoxModel(atributos)" type="code"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Select an Attribute"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmbItemActionPerformed"/>
@@ -167,6 +170,9 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Alphabetical Values"/>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -210,6 +216,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Value to Replace"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">

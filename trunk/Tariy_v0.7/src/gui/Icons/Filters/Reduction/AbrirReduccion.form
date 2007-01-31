@@ -142,6 +142,7 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="By Range"/>
+            <Property name="toolTipText" type="java.lang.String" value="Reduce by range"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -171,6 +172,7 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="By Value"/>
+            <Property name="toolTipText" type="java.lang.String" value="Reduce by Value"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -219,6 +221,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="First Row"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -234,6 +237,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Last Row"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TexFfinActionPerformed"/>
@@ -265,6 +269,7 @@
         <Component class="javax.swing.JButton" name="BtnAplicar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Play"/>
+            <Property name="toolTipText" type="java.lang.String" value="Execute the Configuration"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAplicarActionPerformed"/>
@@ -273,6 +278,7 @@
         <Component class="javax.swing.JButton" name="BtnCerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="toolTipText" type="java.lang.String" value="Close the Configuration"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -295,6 +301,7 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Keep"/>
+            <Property name="toolTipText" type="java.lang.String" value="Keep the set"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -323,6 +330,7 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Remove"/>
+            <Property name="toolTipText" type="java.lang.String" value="Remove the set"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -357,6 +365,7 @@
                     </TitledBorder>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Reduce by Numeric Value "/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -374,6 +383,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="0" red="0" type="rgb"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Upper Limit "/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
@@ -409,6 +419,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.DefaultComboBoxModel(atributos)" type="code"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Select an Attribute"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -447,6 +458,7 @@
                     </TitledBorder>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Reduce by Alphabetical Value"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -457,6 +469,9 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Alphabetical Values"/>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>

@@ -72,12 +72,14 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         setTitle("Configure Filter");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
+        jScrollPane3.setToolTipText("Select the Attributes and the Target");
         TableTVariables.setModel(tipoVariables);
         jScrollPane3.setViewportView(TableTVariables);
 
         jTabbedPane1.addTab("Variables", jScrollPane3);
 
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Selection");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -85,6 +87,7 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +161,7 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         
         
         for(int f = 0; f < tipoVariables.getRowCount(); f++ ){
-            if(tipoVariables.getValueAt(f,3).toString().equals("Objetivo")) {
+            if(tipoVariables.getValueAt(f,3).toString().equals("Target")) {
                 colObj = f; // colObj es la columna Objetivo
                 cob++;
             }

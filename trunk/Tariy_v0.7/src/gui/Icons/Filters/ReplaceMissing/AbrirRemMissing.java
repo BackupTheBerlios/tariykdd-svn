@@ -63,6 +63,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -83,11 +84,14 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         jLabel1.setText("Attribute            :");
 
         TxtRemCon.setFont(new java.awt.Font("Tahoma", 0, 12));
+        TxtRemCon.setToolTipText("Value to replace");
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
+        CmbAtributos.setToolTipText("Select an Attribute");
 
         BtnReset.setText("Reset");
+        BtnReset.setToolTipText("Resete the Parameters");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -100,6 +104,7 @@ public class AbrirRemMissing extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

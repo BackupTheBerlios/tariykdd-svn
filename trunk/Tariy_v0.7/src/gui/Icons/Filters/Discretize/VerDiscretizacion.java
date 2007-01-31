@@ -69,6 +69,8 @@ public class VerDiscretizacion extends javax.swing.JFrame {
         setTitle("View Results ");
         setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
+        jTabbedPane1.setToolTipText("Structure of Data");
+        jScrollPane3.setToolTipText("Types of Variables");
         TableTVariables.setModel(tipoVariables);
         jScrollPane3.setViewportView(TableTVariables);
 
@@ -79,6 +81,7 @@ public class VerDiscretizacion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Input Data", jScrollPane1);
 
+        jScrollPane2.setToolTipText("Filtered Data");
         TableDatosFiltro.setModel(datosFiltros);
         jScrollPane2.setViewportView(TableDatosFiltro);
 
@@ -96,6 +99,7 @@ public class VerDiscretizacion extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save_all.png")));
         jButton1.setText("Save Report");
+        jButton1.setToolTipText("Save the filtered Data");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

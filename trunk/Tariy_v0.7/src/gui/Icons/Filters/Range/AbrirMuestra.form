@@ -125,6 +125,7 @@
             </Property>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Random"/>
+            <Property name="toolTipText" type="java.lang.String" value="Random"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -154,6 +155,7 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="1 in n"/>
+            <Property name="toolTipText" type="java.lang.String" value="1 in n"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -182,6 +184,7 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="n First"/>
+            <Property name="toolTipText" type="java.lang.String" value="n First"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -230,6 +233,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Numbers of rows selected by random"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -275,6 +279,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="This value is the jump of n "/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -324,6 +329,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="n is the number of rows from first"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -340,6 +346,7 @@
         <Component class="javax.swing.JButton" name="BtnAplicar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Play"/>
+            <Property name="toolTipText" type="java.lang.String" value="execute the Configuration"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAplicarActionPerformed"/>
@@ -348,6 +355,7 @@
         <Component class="javax.swing.JButton" name="BtnCerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="toolTipText" type="java.lang.String" value="Close the Configuration"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>

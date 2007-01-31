@@ -73,6 +73,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -80,6 +81,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +92,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         CmbItem.setFont(new java.awt.Font("Tahoma", 0, 16));
         CmbItem.setModel(new javax.swing.DefaultComboBoxModel(atributos));
+        CmbItem.setToolTipText("Select an Attribute");
         CmbItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbItemActionPerformed(evt);
@@ -106,6 +109,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alphabetics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jScrollPane1.setToolTipText("Alphabetical Values");
         TableAtrib.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -129,6 +133,7 @@ public class AbrirRemVal extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TexRemCon.setFont(new java.awt.Font("Tahoma", 0, 14));
+        TexRemCon.setToolTipText("Value to Replace");
         TexRemCon.setBounds(150, 270, 150, 30);
         jLayeredPane2.add(TexRemCon, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

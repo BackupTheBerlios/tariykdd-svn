@@ -44,13 +44,13 @@ public class TipodVariablesSel extends AbstractTableModel{
             datos[c][0] = datosEntrada.getColumnName(c);
             datos[c][1] = datosEntrada.getColumnClass(c).getSimpleName();
             datos[c][2] = Boolean.TRUE;
-            datos[c][3] = "Atributo";  // tiene que ser un radio buton
+            datos[c][3] = "Attribute";  // tiene que ser un radio buton
         }
         // Para insertar el nombre de las columnas
-        nomcol[0] = "ATRIBUTO";
-        nomcol[1] = "TIPO";
-        nomcol[2] = "SELECCION";
-        nomcol[3] = "OBJETIVO";
+        nomcol[0] = "ATRIBUTE";
+        nomcol[1] = "TYPE";
+        nomcol[2] = "SELECTION";
+        nomcol[3] = "TARGET";
     }
     
     public int getColumnCount() {

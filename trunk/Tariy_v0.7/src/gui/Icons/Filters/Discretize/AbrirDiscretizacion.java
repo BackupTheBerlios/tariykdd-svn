@@ -75,6 +75,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -92,8 +93,10 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
+        CmbAtributos.setToolTipText("Select an attribute");
 
         BtnReset.setText("Reset");
+        BtnReset.setToolTipText("Reset the Parameters");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -106,6 +109,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,10 +119,12 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Discretize by :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
         TexNR.setFont(new java.awt.Font("Tahoma", 0, 12));
+        TexNR.setToolTipText("Number of Range");
         TexNR.setBounds(170, 20, 80, 30);
         jLayeredPane1.add(TexNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TexTR.setFont(new java.awt.Font("Tahoma", 0, 12));
+        TexTR.setToolTipText("Size of Range");
         TexTR.setEnabled(false);
         TexTR.setBounds(170, 70, 80, 30);
         jLayeredPane1.add(TexTR, javax.swing.JLayeredPane.DEFAULT_LAYER);

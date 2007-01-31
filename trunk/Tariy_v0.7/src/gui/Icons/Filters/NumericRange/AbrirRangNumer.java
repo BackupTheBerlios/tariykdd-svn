@@ -75,6 +75,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         setResizable(false);
         jPanel1.setBackground(new java.awt.Color(81, 81, 133));
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -92,8 +93,10 @@ public class AbrirRangNumer extends javax.swing.JFrame {
 
         CmbAtributos.setFont(new java.awt.Font("Tahoma", 0, 12));
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
+        CmbAtributos.setToolTipText("Select an Attribute");
 
         BtnReset.setText("Reset");
+        BtnReset.setToolTipText("Reset the Parameters");
         BtnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResetActionPerformed(evt);
@@ -106,6 +109,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +119,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remplace range whit null values", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(185, 220, 255)));
         TxtMinVal.setFont(new java.awt.Font("Tahoma", 0, 12));
+        TxtMinVal.setToolTipText("Minimum value");
         TxtMinVal.setBounds(40, 60, 90, 50);
         jLayeredPane1.add(TxtMinVal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -125,6 +130,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TxtMaxVal.setFont(new java.awt.Font("Tahoma", 0, 12));
+        TxtMaxVal.setToolTipText("Maximum value");
         TxtMaxVal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtMaxValActionPerformed(evt);

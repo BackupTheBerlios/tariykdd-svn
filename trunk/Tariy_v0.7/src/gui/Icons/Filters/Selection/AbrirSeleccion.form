@@ -85,6 +85,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select the Attributes and the Target"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -112,6 +115,7 @@
         <Component class="javax.swing.JButton" name="BtnAplicar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Play"/>
+            <Property name="toolTipText" type="java.lang.String" value="Execute the Selection"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAplicarActionPerformed"/>
@@ -120,6 +124,7 @@
         <Component class="javax.swing.JButton" name="BtnCerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="toolTipText" type="java.lang.String" value="Close the Configuration"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>

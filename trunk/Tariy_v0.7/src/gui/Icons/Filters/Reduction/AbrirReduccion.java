@@ -112,6 +112,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnPorRango.setForeground(new java.awt.Color(0, 0, 204));
         RbtnPorRango.setSelected(true);
         RbtnPorRango.setText("By Range");
+        RbtnPorRango.setToolTipText("Reduce by range");
         RbtnPorRango.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPorRango.setBorderPainted(true);
         RbtnPorRango.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -126,6 +127,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnPorValor.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnPorValor.setForeground(new java.awt.Color(0, 0, 204));
         RbtnPorValor.setText("By Value");
+        RbtnPorValor.setToolTipText("Reduce by Value");
         RbtnPorValor.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnPorValor.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnPorValor.addActionListener(new java.awt.event.ActionListener() {
@@ -143,11 +145,13 @@ public class AbrirReduccion extends javax.swing.JFrame {
 
         TexFini.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexFini.setForeground(new java.awt.Color(0, 0, 204));
+        TexFini.setToolTipText("First Row");
         TexFini.setBounds(50, 40, 70, 40);
         jLayeredPane1.add(TexFini, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TexFfin.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexFfin.setForeground(new java.awt.Color(0, 0, 204));
+        TexFfin.setToolTipText("Last Row");
         TexFfin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexFfinActionPerformed(evt);
@@ -164,6 +168,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         BtnAplicar.setText("Play");
+        BtnAplicar.setToolTipText("Execute the Configuration");
         BtnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAplicarActionPerformed(evt);
@@ -171,6 +176,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         });
 
         BtnCerrar.setText("Close");
+        BtnCerrar.setToolTipText("Close the Configuration");
         BtnCerrar.setEnabled(false);
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +190,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnMantener.setForeground(new java.awt.Color(0, 0, 204));
         RbtnMantener.setSelected(true);
         RbtnMantener.setText("Keep");
+        RbtnMantener.setToolTipText("Keep the set");
         RbtnMantener.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnMantener.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnMantener.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +204,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
         RbtnRemover.setFont(new java.awt.Font("Tahoma", 1, 12));
         RbtnRemover.setForeground(new java.awt.Color(0, 0, 204));
         RbtnRemover.setText("Remove");
+        RbtnRemover.setToolTipText("Remove the set");
         RbtnRemover.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnRemover.setMargin(new java.awt.Insets(0, 0, 0, 0));
         RbtnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -207,8 +215,10 @@ public class AbrirReduccion extends javax.swing.JFrame {
 
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLayeredPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numerics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jLayeredPane4.setToolTipText("Reduce by Numeric Value ");
         TexMenores.setFont(new java.awt.Font("Tahoma", 0, 14));
         TexMenores.setForeground(new java.awt.Color(0, 0, 204));
+        TexMenores.setToolTipText("Upper Limit ");
         TexMenores.setEnabled(false);
         TexMenores.setBounds(170, 20, 70, 40);
         jLayeredPane4.add(TexMenores, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -225,6 +235,7 @@ public class AbrirReduccion extends javax.swing.JFrame {
 
         CmbItem.setFont(new java.awt.Font("Tahoma", 0, 16));
         CmbItem.setModel(new javax.swing.DefaultComboBoxModel(atributos));
+        CmbItem.setToolTipText("Select an Attribute");
         CmbItem.setEnabled(false);
         CmbItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +254,8 @@ public class AbrirReduccion extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Alphabetics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255)));
+        jLayeredPane5.setToolTipText("Reduce by Alphabetical Value");
+        jScrollPane1.setToolTipText("Alphabetical Values");
         TableAtrib.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
