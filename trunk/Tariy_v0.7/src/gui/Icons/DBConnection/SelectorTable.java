@@ -108,6 +108,7 @@ public class SelectorTable extends javax.swing.JFrame
         });
 
         seeRelacion.setText("View Relations");
+        seeRelacion.setToolTipText("View the relations between tables");
         seeRelacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         seeRelacion.setMargin(new java.awt.Insets(0, 0, 0, 0));
         seeRelacion.addItemListener(new java.awt.event.ItemListener() {
@@ -117,6 +118,7 @@ public class SelectorTable extends javax.swing.JFrame
         });
 
         cbxTable.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select a Table..." }));
+        cbxTable.setToolTipText("Select a Table...");
         cbxTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTableActionPerformed(evt);
@@ -124,6 +126,7 @@ public class SelectorTable extends javax.swing.JFrame
         });
 
         btnExecute.setText("Execute...");
+        btnExecute.setToolTipText("Execute SQL sentence");
         btnExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExecuteActionPerformed(evt);
@@ -143,6 +146,7 @@ public class SelectorTable extends javax.swing.JFrame
         jScrollPane2.setViewportView(tblPreview);
 
         btnAccept.setText("Accept");
+        btnAccept.setToolTipText("Accept and confirm this data set");
         btnAccept.setEnabled(false);
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +156,7 @@ public class SelectorTable extends javax.swing.JFrame
 
         buttonGroup1.add(marketBasket);
         marketBasket.setText("Market Basket");
+        marketBasket.setToolTipText("Choose for mining univalued sets");
         marketBasket.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         marketBasket.setMargin(new java.awt.Insets(0, 0, 0, 0));
         marketBasket.addItemListener(new java.awt.event.ItemListener() {
@@ -163,6 +168,7 @@ public class SelectorTable extends javax.swing.JFrame
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("MultiValued");
+        jRadioButton1.setToolTipText("Choose for mining multivalued sets");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 

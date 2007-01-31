@@ -97,6 +97,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         lblPuerto.setText("Port:");
 
         cbxDriver.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "org.postgresql.Driver", "com.mysql.jdbc.Driver" }));
+        cbxDriver.setToolTipText("Driver JDBC name");
         cbxDriver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxDriverActionPerformed(evt);
@@ -104,8 +105,15 @@ public class ConnectionWizard extends javax.swing.JFrame {
         });
 
         txtUsuario.setText("postgres");
+        txtUsuario.setToolTipText("User name");
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
 
         txtBD.setText("udenar");
+        txtBD.setToolTipText("Database name");
         txtBD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBDKeyTyped(evt);
@@ -113,8 +121,12 @@ public class ConnectionWizard extends javax.swing.JFrame {
         });
 
         txtHost.setText("localhost");
+        txtHost.setToolTipText("Host of the data base");
+
+        spnPuerto.setToolTipText("TCP Port number...");
 
         btnConectar.setText("Connect...");
+        btnConectar.setToolTipText("Connect...");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConectarActionPerformed(evt);
@@ -122,6 +134,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         });
 
         txtPassword.setText("postgres1");
+        txtPassword.setToolTipText("Password user");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,7 +193,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnConectar)
                     .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -189,6 +202,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         lblStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnAccept.setText("Accept");
+        btnAccept.setToolTipText("Accept the connection...");
         btnAccept.setEnabled(false);
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,8 +236,11 @@ public class ConnectionWizard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        btnAccept.setEnabled(false);
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
     private void txtBDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBDKeyTyped
-// TODO add your handling code here:
         btnAccept.setEnabled(false);
     }//GEN-LAST:event_txtBDKeyTyped
     

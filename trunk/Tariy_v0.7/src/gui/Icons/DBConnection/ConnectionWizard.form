@@ -130,7 +130,7 @@
                       <Component id="btnConectar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spnPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,6 +174,7 @@
                 <StringItem index="1" value="com.mysql.jdbc.Driver"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Driver JDBC name"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxDriverActionPerformed"/>
@@ -182,11 +183,16 @@
         <Component class="javax.swing.JTextField" name="txtUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="postgres"/>
+            <Property name="toolTipText" type="java.lang.String" value="User name"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUsuarioKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBD">
           <Properties>
             <Property name="text" type="java.lang.String" value="udenar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Database name"/>
           </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBDKeyTyped"/>
@@ -195,13 +201,18 @@
         <Component class="javax.swing.JTextField" name="txtHost">
           <Properties>
             <Property name="text" type="java.lang.String" value="localhost"/>
+            <Property name="toolTipText" type="java.lang.String" value="Host of the data base"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnPuerto">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="TCP Port number..."/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnConectar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Connect..."/>
+            <Property name="toolTipText" type="java.lang.String" value="Connect..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConectarActionPerformed"/>
@@ -210,6 +221,7 @@
         <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Properties>
             <Property name="text" type="java.lang.String" value="postgres1"/>
+            <Property name="toolTipText" type="java.lang.String" value="Password user"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -233,6 +245,7 @@
     <Component class="javax.swing.JButton" name="btnAccept">
       <Properties>
         <Property name="text" type="java.lang.String" value="Accept"/>
+        <Property name="toolTipText" type="java.lang.String" value="Accept the connection..."/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
