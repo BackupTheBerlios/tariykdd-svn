@@ -29,12 +29,10 @@ public class OpenFile extends javax.swing.JFrame {
         initComponents();
         if (!filePath.equals("")) {
             tblData.setModel(new FileTableModel(filePath));
-            lblPreview.setVisible(true);
         }
         radMultivalued.setSelected(true);
         isMarketBasket = false;
         myFileIcon = icon;
-        lblPreview.setVisible(false);
         model = null;
     }
     
@@ -75,7 +73,6 @@ public class OpenFile extends javax.swing.JFrame {
         radUnivalued = new javax.swing.JRadioButton();
         radMultivalued = new javax.swing.JRadioButton();
         btnCancel = new javax.swing.JButton();
-        lblPreview = new javax.swing.JLabel();
 
         openFile.setCurrentDirectory(new java.io.File("/home/ivan/tariy/cDatos/arff"));
 
@@ -85,14 +82,17 @@ public class OpenFile extends javax.swing.JFrame {
         lblFile.setText("Data File");
 
         txtFile.setEditable(false);
+        txtFile.setToolTipText("File path");
 
         btnBrowse.setText("Browse...");
+        btnBrowse.setToolTipText("Browse a file");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Preview"));
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -104,9 +104,11 @@ public class OpenFile extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblData.setToolTipText("Data preview");
         jScrollPane1.setViewportView(tblData);
 
         btnAccept.setText("Accept");
+        btnAccept.setToolTipText("Accept and confirm this data set");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
@@ -114,6 +116,7 @@ public class OpenFile extends javax.swing.JFrame {
         });
 
         radUnivalued.setText("Market Basket");
+        radUnivalued.setToolTipText("Choose for mining an univalued set");
         radUnivalued.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radUnivalued.setMargin(new java.awt.Insets(0, 0, 0, 0));
         radUnivalued.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +126,7 @@ public class OpenFile extends javax.swing.JFrame {
         });
 
         radMultivalued.setText("Multivalued");
+        radMultivalued.setToolTipText("Choose for mining a multivaluedva set");
         radMultivalued.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radMultivalued.setMargin(new java.awt.Insets(0, 0, 0, 0));
         radMultivalued.addActionListener(new java.awt.event.ActionListener() {
@@ -132,37 +136,35 @@ public class OpenFile extends javax.swing.JFrame {
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.setToolTipText("Cancel this set");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
 
-        lblPreview.setText("Preview");
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                    .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(lblFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 81, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(txtFile, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnBrowse, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(radUnivalued)
                         .add(16, 16, 16)
                         .add(radMultivalued)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 109, Short.MAX_VALUE)
                         .add(btnAccept)
                         .add(14, 14, 14)
-                        .add(btnCancel))
-                    .add(lblPreview))
+                        .add(btnCancel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,10 +175,8 @@ public class OpenFile extends javax.swing.JFrame {
                     .add(lblFile)
                     .add(txtFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnBrowse))
-                .add(22, 22, 22)
-                .add(lblPreview)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(radUnivalued)
@@ -228,17 +228,20 @@ public class OpenFile extends javax.swing.JFrame {
      */
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         // TODO add your handling code here:
-        ExampleFileFilter filter = new ExampleFileFilter("arff", "Data File");
+        ExampleFileFilter filter = new ExampleFileFilter();
+        filter.addExtension("arff");
+        filter.addExtension("csv");
+        filter.setDescription("Data Files");
         openFile.setFileFilter(filter);
         int sel = openFile.showOpenDialog(this);
         if(sel == openFile.APPROVE_OPTION) {
             String file = openFile.getSelectedFile().getAbsolutePath();
+            String ext = filter.getExtension(openFile.getSelectedFile());
             txtFile.setText(file);
             filePath = file;
             model = new FileTableModel(file);
             tblData.setModel(model);
             TableOptimalWidth.setOptimalColumnWidth(tblData, 10);
-            lblPreview.setVisible(true);
             //columnSizes();
         }
     }//GEN-LAST:event_btnBrowseActionPerformed
@@ -264,7 +267,6 @@ public class OpenFile extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFile;
-    private javax.swing.JLabel lblPreview;
     private javax.swing.JFileChooser openFile;
     private javax.swing.JRadioButton radMultivalued;
     private javax.swing.JRadioButton radUnivalued;

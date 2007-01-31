@@ -28,9 +28,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="485" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblFile" min="-2" pref="81" max="-2" attributes="0"/>
@@ -48,7 +48,6 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblPreview" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -63,10 +62,8 @@
                   <Component id="txtFile" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="lblPreview" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="330" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="367" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="radUnivalued" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -91,17 +88,26 @@
     <Component class="javax.swing.JTextField" name="txtFile">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="toolTipText" type="java.lang.String" value="File path"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnBrowse">
       <Properties>
         <Property name="text" type="java.lang.String" value="Browse..."/>
+        <Property name="toolTipText" type="java.lang.String" value="Browse a file"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBrowseActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Data Preview"/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -115,6 +121,7 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Data preview"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -122,6 +129,7 @@
     <Component class="javax.swing.JButton" name="btnAccept">
       <Properties>
         <Property name="text" type="java.lang.String" value="Accept"/>
+        <Property name="toolTipText" type="java.lang.String" value="Accept and confirm this data set"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcceptActionPerformed"/>
@@ -130,6 +138,7 @@
     <Component class="javax.swing.JRadioButton" name="radUnivalued">
       <Properties>
         <Property name="text" type="java.lang.String" value="Market Basket"/>
+        <Property name="toolTipText" type="java.lang.String" value="Choose for mining an univalued set"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -146,6 +155,7 @@
     <Component class="javax.swing.JRadioButton" name="radMultivalued">
       <Properties>
         <Property name="text" type="java.lang.String" value="Multivalued"/>
+        <Property name="toolTipText" type="java.lang.String" value="Choose for mining a multivaluedva set"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -162,15 +172,11 @@
     <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
+        <Property name="toolTipText" type="java.lang.String" value="Cancel this set"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPreview">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Preview"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
