@@ -17,6 +17,11 @@ public class HelpPrediction extends javax.swing.JFrame {
     /** Creates new form frmCredits */
     public HelpPrediction() {
         initComponents();
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Return_Aplication"));
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("p01"));
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("p02"));
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Prediction"));
     }
     
     /** This method is called from within the constructor to
@@ -190,20 +195,20 @@ public class HelpPrediction extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-627)/2, (screenSize.height-521)/2, 627, 521);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnEs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEs2ActionPerformed
         Locale.setDefault(new Locale("es", "CO"));
         new HelpPrediction().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEs2ActionPerformed
-
+    
     private void btnEn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEn2ActionPerformed
 // TODO add your handling code here:
         Locale.setDefault(new Locale("en", "US"));
         new HelpPrediction().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEn2ActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
