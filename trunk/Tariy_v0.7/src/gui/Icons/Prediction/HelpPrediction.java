@@ -6,6 +6,8 @@
 
 package gui.Icons.Prediction;
 
+import java.util.Locale;
+
 /**
  *
  * @author  and
@@ -34,6 +36,8 @@ public class HelpPrediction extends javax.swing.JFrame {
         jTextArea10 = new javax.swing.JTextArea();
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        btnEn2 = new javax.swing.JToggleButton();
+        btnEs2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -42,8 +46,8 @@ public class HelpPrediction extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit2.png")));
         jButton1.setMnemonic('c');
-        jButton1.setText("Close Help...");
-        jButton1.setToolTipText("Return Aplication");
+        jButton1.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Close_Help..."));
+        jButton1.setToolTipText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Return_Aplication"));
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +59,7 @@ public class HelpPrediction extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(51, 51, 51)));
         jTextArea9.setColumns(20);
         jTextArea9.setRows(5);
-        jTextArea9.setText("Este visor permite predesir los valores de los atributos\npertenecientes a la columna objetivo o proposito de la \nclasificacion, basandose en el arbol de decision obtenido\na partir de un algoritmo de clasificacion y el flujo \nde entrada de datos obtenidos de la conexion con \nuna base de datos o un archivo plano.\n\n\nla conexion con otros componentes drag and drop, se realiza \ncon dos modulos especificos los cuales son: con algoritmos \nde clasificacion y modulo de conexion que puede ser con base de\ndatos o archivo plano con extension .arf. ");
+        jTextArea9.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("p01"));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tariy11")));
@@ -71,10 +75,10 @@ public class HelpPrediction extends javax.swing.JFrame {
 
         jTextArea10.setColumns(20);
         jTextArea10.setRows(5);
-        jTextArea10.setText("El icono D \u201cPrediction\u201d aparece en el \u00e1rea de trabajo.\nEl uso de este componente esta condicionado a los siguientes \nrequerimientos. \nDebe haberse cargado un conjunto de datos de entrenamiento A, \ndebi\u00f3 haberse aplicado un algoritmo de clasificaci\u00f3n B a conjunto A \ny debe haberse cargado un conjunto de datos de evaluaci\u00f3n C que \nes al que se le va aplicar el modelo obtenido despu\u00e9s de ejecutar B. \n\nAl icono D le llegan alimentaci\u00f3n de informaci\u00f3n tanto de A como B \ny de esta manera es posible hacer predicci\u00f3n sobre el conjunto \nde evaluaci\u00f3n. \n\nLa visualizacion de los datos obtenidos se presentan en una ventana\ncomo la siguiente:");
+        jTextArea10.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("p02"));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24));
-        jLabel19.setText("Prediction");
+        jLabel19.setText(java.util.ResourceBundle.getBundle("resource/translations/PredictionHelp").getString("Prediction"));
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help/datosPrediction.png")));
@@ -128,6 +132,26 @@ public class HelpPrediction extends javax.swing.JFrame {
         );
         jScrollPane2.setViewportView(jPanel3);
 
+        btnEn2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn2.setText("English");
+        btnEn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEn2ActionPerformed(evt);
+            }
+        });
+
+        btnEs2.setBackground(new java.awt.Color(255, 255, 255));
+        btnEs2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CO")));
+        btnEs2.setText("Espa\u00f1ol");
+        btnEs2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnEs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEs2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,21 +163,46 @@ public class HelpPrediction extends javax.swing.JFrame {
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)))
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(btnEs2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(new java.awt.Component[] {btnEn2, btnEs2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 394, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnEs2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnEn2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-627)/2, (screenSize.height-538)/2, 627, 538);
+        setBounds((screenSize.width-627)/2, (screenSize.height-521)/2, 627, 521);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEs2ActionPerformed
+        Locale.setDefault(new Locale("es", "CO"));
+        new HelpPrediction().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEs2ActionPerformed
+
+    private void btnEn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEn2ActionPerformed
+// TODO add your handling code here:
+        Locale.setDefault(new Locale("en", "US"));
+        new HelpPrediction().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEn2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -174,6 +223,12 @@ public class HelpPrediction extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnEn;
+    private javax.swing.JToggleButton btnEn1;
+    private javax.swing.JToggleButton btnEn2;
+    private javax.swing.JToggleButton btnEs;
+    private javax.swing.JToggleButton btnEs1;
+    private javax.swing.JToggleButton btnEs2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
