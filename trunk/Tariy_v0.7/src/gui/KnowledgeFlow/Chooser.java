@@ -8,6 +8,7 @@ package gui.KnowledgeFlow;
 
 import gui.frmCredits;
 import java.awt.Dimension;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
  
@@ -41,6 +42,7 @@ public class Chooser extends javax.swing.JFrame {
         chooser.addTab("Views", p);
         setStatus("The TariyKDD Project \nis Running...");
         setPreferredSize(new Dimension(990,680));
+        Locale.setDefault(new Locale("en","US"));
     }
     
     /** This method is called from within the constructor to
