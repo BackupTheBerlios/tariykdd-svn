@@ -202,6 +202,68 @@ public class FileManager {
     }
     
     /**
+     * A partir de un Comma Separated Value File (csv), almacena los nombres de
+     * los atributos en un arreglo, los datos en una matriz y el diccionario de
+     * datos en un ArrayList.
+     */
+    public void readCsv() {
+        ArrayList datos = new ArrayList();
+        dictionary = new ArrayList();
+        int rows = 0;
+        int cols = 0;
+        try {
+            outChannel.seek(0);
+            long fileSize = outChannel.length();
+            long pos = 0;
+            String read;
+            while (pos < fileSize) {
+                read = outChannel.readLine();
+                pos = outChannel.getFilePointer();
+                StringTokenizer st = new StringTokenizer(read, ",");
+                if (rows == 0) {
+                    attributes = new Object[st.countTokens()];
+                }
+                while(st.hasMoreTokens()) {
+                    if (rows == 0) {
+                        attributes[cols] = st.nextToken().trim();
+                        cols++;
+                    } else {
+                        String valor = st.nextToken().trim();
+                        datos.add(valor);
+                        if (!dictionary.contains(valor)) {
+                            dictionary.add(valor);
+                            Collections.sort(dictionary);
+                        }
+                    }
+                }
+                if (read.length() > 0) {
+                    datos.add("<");
+                    rows++;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            int c = 0;
+            int r = 0;
+            rows--;
+            data = new Object[rows][cols];
+            Iterator it = datos.iterator();
+            it.next();
+            while (it.hasNext()) {
+                String cad = (String) it.next();
+                if (cad.compareTo("<") == 0) {
+                    r++;
+                    c = 0;
+                } else {
+                    data[r][c] = cad;
+                    c++;
+                }
+            }
+        }
+    }
+    
+    /**
      * A partir de un archivo de acceso aleatorio .arff, almacena los nombres de
      * los atributos en un arreglo, los datos en una matriz y el diccionario de
      * datos en un ArrayList.
@@ -246,22 +308,22 @@ public class FileManager {
                     // Se decrementa en uno el flujo de la cadena para despues
                     // poder leer la linea completa.
                     outChannel.seek(pos--);
-
-                    // Despues de haber leido @data cada linea se almacena en 
+                    
+                    // Despues de haber leido @data cada linea se almacena en
                     // una cadena para los datos.
                     read = outChannel.readLine();
                     pos = outChannel.getFilePointer();
                     
-                    // Si la linea leida es un comentario (37 - %) o un salto de 
+                    // Si la linea leida es un comentario (37 - %) o un salto de
                     // linea (10) entonces se ignora.
                     if (b != 37 && b != 10) {
-
+                        
                         // Las lineas son separadas a traves del salto de linea.
                         dat = dat + read + ",/n,";
                         rows++;
-                        if (rows == 100 && noAll) {
+                        /*if (rows == 100 && noAll) {
                             break;
-                        }
+                        }*/
                     }
                     read = "@data";
                 }
