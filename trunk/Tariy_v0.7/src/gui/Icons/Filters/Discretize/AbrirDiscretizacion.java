@@ -131,17 +131,17 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         buttonGroup1.add(RbtnNR);
         RbtnNR.setSelected(true);
-        RbtnNR.setText("Number of Range:");
+        RbtnNR.setText("Number of Range   :");
         RbtnNR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnNR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnNR.setBounds(10, 40, 140, 15);
+        RbtnNR.setBounds(10, 30, 140, 15);
         jLayeredPane1.add(RbtnNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonGroup1.add(RbtnTR);
-        RbtnTR.setText("Size of Range");
+        RbtnTR.setText("Size of Range         :");
         RbtnTR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnTR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnTR.setBounds(10, 80, 101, 15);
+        RbtnTR.setBounds(10, 80, 140, 15);
         jLayeredPane1.add(RbtnTR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -154,7 +154,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel1)
                         .add(15, 15, 15)
-                        .add(CmbAtributos, 0, 179, Short.MAX_VALUE))
+                        .add(CmbAtributos, 0, 180, Short.MAX_VALUE))
                     .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(BtnAplicar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
