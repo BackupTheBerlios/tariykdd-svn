@@ -30,7 +30,7 @@ public class OpenFile extends javax.swing.JFrame {
         if (!filePath.equals("")) {
             tblData.setModel(new FileTableModel(filePath));
         }
-        radMultivalued.setSelected(true);
+        //radMultivalued.setSelected(true);
         isMarketBasket = false;
         myFileIcon = icon;
         model = null;
@@ -74,8 +74,6 @@ public class OpenFile extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
         btnAccept = new javax.swing.JButton();
-        radUnivalued = new javax.swing.JRadioButton();
-        radMultivalued = new javax.swing.JRadioButton();
         btnCancel = new javax.swing.JButton();
 
         openFile.setCurrentDirectory(new java.io.File("/home/ivan/tariy/cDatos/arff"));
@@ -119,26 +117,6 @@ public class OpenFile extends javax.swing.JFrame {
             }
         });
 
-        radUnivalued.setText("Market Basket");
-        radUnivalued.setToolTipText("Choose for mining an univalued set");
-        radUnivalued.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radUnivalued.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        radUnivalued.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radUnivaluedActionPerformed(evt);
-            }
-        });
-
-        radMultivalued.setText("Multivalued");
-        radMultivalued.setToolTipText("Choose for mining a multivaluedva set");
-        radMultivalued.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radMultivalued.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        radMultivalued.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radMultivaluedActionPerformed(evt);
-            }
-        });
-
         btnCancel.setText("Cancel");
         btnCancel.setToolTipText("Cancel this set");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -161,11 +139,7 @@ public class OpenFile extends javax.swing.JFrame {
                         .add(txtFile, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnBrowse, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(radUnivalued)
-                        .add(16, 16, 16)
-                        .add(radMultivalued)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 109, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
                         .add(btnAccept)
                         .add(14, 14, 14)
                         .add(btnCancel)))
@@ -183,8 +157,6 @@ public class OpenFile extends javax.swing.JFrame {
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(radUnivalued)
-                    .add(radMultivalued)
                     .add(btnCancel)
                     .add(btnAccept))
                 .addContainerGap())
@@ -196,21 +168,7 @@ public class OpenFile extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
-    
-    private void radMultivaluedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radMultivaluedActionPerformed
-        // TODO add your handling code here:
-        radMultivalued.setSelected(true);
-        radUnivalued.setSelected(false);
-        isMarketBasket = false;
-    }//GEN-LAST:event_radMultivaluedActionPerformed
-    
-    private void radUnivaluedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radUnivaluedActionPerformed
-        // TODO add your handling code here:
-        radUnivalued.setSelected(true);
-        radMultivalued.setSelected(false);
-        isMarketBasket = true;
-    }//GEN-LAST:event_radUnivaluedActionPerformed
-    
+            
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         myFileIcon.filePath = filePath;
@@ -274,8 +232,6 @@ public class OpenFile extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFile;
     private javax.swing.JFileChooser openFile;
-    private javax.swing.JRadioButton radMultivalued;
-    private javax.swing.JRadioButton radUnivalued;
     private javax.swing.JTable tblData;
     private javax.swing.JTextField txtFile;
     // End of variables declaration//GEN-END:variables
