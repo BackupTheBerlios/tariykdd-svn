@@ -131,23 +131,17 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
 
         buttonGroup1.add(RbtnNR);
         RbtnNR.setSelected(true);
-        RbtnNR.setText("Number of Range :");
+        RbtnNR.setText("Number of Range:");
         RbtnNR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnNR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnNR.setBounds(10, 30, 140, -1);
+        RbtnNR.setBounds(10, 40, 140, 15);
         jLayeredPane1.add(RbtnNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonGroup1.add(RbtnTR);
-        RbtnTR.setText("Size of Range :");
+        RbtnTR.setText("Size of Range");
         RbtnTR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnTR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnTR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RbtnTRActionPerformed(evt);
-            }
-        });
-
-        RbtnTR.setBounds(10, 70, 140, -1);
+        RbtnTR.setBounds(10, 80, 101, 15);
         jLayeredPane1.add(RbtnTR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -161,7 +155,7 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
                         .add(jLabel1)
                         .add(15, 15, 15)
                         .add(CmbAtributos, 0, 179, Short.MAX_VALUE))
-                    .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(BtnAplicar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -205,17 +199,6 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void RbtnTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbtnTRActionPerformed
-      if(RbtnNR.isSelected()) {
-         TexNR.setEnabled(true); 
-         TexTR.setEnabled(false);
-      }
-      else if(RbtnTR.isSelected()) {
-         TexTR.setEnabled(true);
-         TexNR.setEnabled(false);
-      }
-    }//GEN-LAST:event_RbtnTRActionPerformed
 
     private void BtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResetActionPerformed
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
