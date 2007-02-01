@@ -55,7 +55,11 @@ public class OpenFile extends javax.swing.JFrame {
             column.setPreferredWidth(csize*50);
         }
     }
-    
+
+    public FileTableModel getModel() {
+        return model;
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -214,6 +218,7 @@ public class OpenFile extends javax.swing.JFrame {
         Chooser.setStatus("Load File: " + filePath);
         myFileIcon.setInfo("Load File:\n" + filePath);
         myFileIcon.getMnuLoad().setEnabled(true);
+        myFileIcon.data = model;
         this.dispose();
     }//GEN-LAST:event_btnAcceptActionPerformed
     
@@ -239,7 +244,8 @@ public class OpenFile extends javax.swing.JFrame {
             String ext = filter.getExtension(openFile.getSelectedFile());
             txtFile.setText(file);
             filePath = file;
-            model = new FileTableModel(file);
+            // pasar la extension a FileTableModel
+            model = new FileTableModel(file,ext);
             tblData.setModel(model);
             TableOptimalWidth.setOptimalColumnWidth(tblData, 10);
             //columnSizes();

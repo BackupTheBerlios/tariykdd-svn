@@ -17,9 +17,11 @@ import gui.KnowledgeFlow.Icon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.table.AbstractTableModel;
 
 public class FileIcon extends Icon {
     private JMenuItem mnuOpen;
@@ -29,8 +31,9 @@ public class FileIcon extends Icon {
     public DataSet dataset;
     public boolean xcon;
     public boolean isMarketBasket;
-    private OpenFile of; 
-    public FileTableModel fileTable;
+    private OpenFile of;
+    //public FileTableModel fileTable;
+    public AbstractTableModel data;
     
     /** Creates a new instance of FileIcon */
     public FileIcon(JLabel s, int x, int y) {
@@ -60,7 +63,7 @@ public class FileIcon extends Icon {
         mnuLoad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 mnuLoadActionPerformed(evt);
-            } 
+            }
         });
         super.pupMenu.add(mnuLoad);
         mnuLoad.setEnabled(false);
@@ -72,19 +75,19 @@ public class FileIcon extends Icon {
         mnuHelp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 mnuHelpActionPerformed(evt);
-            } 
+            }
         });
         super.pupMenu.add(mnuHelp);
     }
-
+    
     public JMenuItem getMnuOpen() {
         return mnuOpen;
     }
-
+    
     public JMenuItem getMnuLoad() {
         return mnuLoad;
     }
-
+    
     private void mnuOpenActionPerformed(ActionEvent evt) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -96,15 +99,16 @@ public class FileIcon extends Icon {
     private void mnuHelpActionPerformed(ActionEvent evt) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 HelpFile ayuda = new HelpFile();
-                 ayuda.setVisible(true);
+                HelpFile ayuda = new HelpFile();
+                ayuda.setVisible(true);
             }
         });
     }
     
     private void mnuLoadActionPerformed(ActionEvent evt) {
         final FileManager fm = new FileManager(filePath);
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        final FileIcon ficon = this;
+        Thread load = new Thread(new Runnable() {
             public void run() {
                 Iterator it = tos.iterator();
                 while (it.hasNext()) {
@@ -117,12 +121,13 @@ public class FileIcon extends Icon {
                             ((AssociationIcon) icon).dataset = dataset;
                             dataset.showNTree();
                         } else {
-                            dataset = fm.buildMultivaluedDataset();
+                            dataset = buildDataSet();
                             ((AssociationIcon) icon).dataset = dataset;
                         }
                         xcon = true;
                         
                     }
+                    stopAnimation();
                     // Construir TableModel cuando un filtro esta conectado con
                     // un archivo plano.
                     /*else if (icon instanceof FiltersIcon) {
@@ -135,20 +140,77 @@ public class FileIcon extends Icon {
                 if (!xcon) {
                     if (isMarketBasket) {
                         dataset = fm.buildUnivaluedDataSet();
-                        dataset.showNTree();
+                        //dataset.showNTree();
                     } else {
-                        dataset = fm.buildMultivaluedDataset();
-                        dataset.showNTree();
+                        dataset = buildDataSet();
+                        //dataset.showNTree();
                     }
+                    stopAnimation();
                 }
+                Chooser.setStatus("Load " + dataset.getNtransactions() + " instances.");
+                ficon.setInfo("Load " + dataset.getNtransactions() + " instances.");
             }
         });
-        fileTable = of.getTableModel();
-        Chooser.setStatus("Load " + fileTable.getRowCount() + " instances.");
-        this.setInfo("Load " + fileTable.getRowCount() + " instances.");
-    }    
+        this.startAnimation();
+        load.start();
+        //fileTable = of.getTableModel();
+        //Chooser.setStatus("Load " + fileTable.getRowCount() + " instances.");
+        //this.setInfo("Load " + fileTable.getRowCount() + " instances.");
+    }
 //     public FileTableModel getTableModel(){
 //        FileTableModel fileTable = new FileTableModel(filePath);
 //        return fileTable;
-//    } 
+//    }
+    
+    public DataSet buildDataSet(){
+        dataset = new DataSet("");
+        ArrayList dictionary;
+        
+        dictionary = this.getDictionaryFromTableModel();
+        dataset.buildMultiValuedDictionary(dictionary);
+        data = of.getModel();
+        
+        for(int i = 0; i < data.getRowCount(); i++){
+            for(int j = 0; j < data.getColumnCount(); j++){
+                if(data.getValueAt(i, j) != null){
+                    String value = data.getColumnName(j) + "=" + (String)data.getValueAt(i, j);
+                    short item = dataset.codeAttribute(value);
+                    int id = (j == data.getColumnCount() - 1) ? -1 : j;
+                    dataset.buildNTree(item, id);
+                }
+            }
+        }
+        
+        return dataset;
+    }
+    
+    private ArrayList getDictionaryFromTableModel() {
+        ArrayList dictionary = new ArrayList();
+        int rows = data.getRowCount();
+        int columns = data.getColumnCount();
+        for(int column = 0; column < columns; column++){
+            String columnName = data.getColumnName(column);
+            ArrayList attributes = this.getAttributes(rows, column);
+            Iterator it = attributes.iterator();
+            while(it.hasNext()){
+                String attribute = (String)it.next();
+                dictionary.add(columnName + "=" + attribute);
+            }
+        }
+        
+        return dictionary;
+    }
+    
+    private ArrayList getAttributes(int rows, int column){
+        ArrayList values = new ArrayList();
+        for(int row = 0; row < rows; row++){
+            String key = (String) data.getValueAt(row, column);
+            int index = Collections.binarySearch(values, key);
+            if(index < 0){
+                values.add((-(index) - 1), key);
+            }
+        }
+        
+        return values;
+    }
 }

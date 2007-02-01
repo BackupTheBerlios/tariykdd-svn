@@ -31,7 +31,30 @@ public class FileTableModel extends AbstractTableModel {
         filePath = file;
         
         FileManager fileMngt = new FileManager(filePath);
-        fileMngt.dataAndAttributes(true);
+        fileMngt.readCsv();
+        //fileMngt.dataAndAttributes(true);
+        
+        int size = fileMngt.getAttributes().length;
+        columnNames = new Object[size-1];
+        columnNames = fileMngt.getAttributes();
+        
+        int rows = fileMngt.getData().length;
+        int cols = fileMngt.getData()[0].length;
+        data = new Object[rows][cols-1];
+        data = fileMngt.getData();
+    }
+    
+    /** Creates a new instance of FileTableModel */
+    public FileTableModel(String file, String ext) {
+        filePath = file;
+        
+        FileManager fileMngt = new FileManager(filePath);
+        if(ext.compareTo("arff")==0){
+            fileMngt.dataAndAttributes(true);
+        }else{
+            fileMngt.readCsv();
+        }
+        
         int size = fileMngt.getAttributes().length;
         columnNames = new Object[size-1];
         columnNames = fileMngt.getAttributes();
