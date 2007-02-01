@@ -216,20 +216,20 @@ public class MyCanvas extends javax.swing.JPanel {
                             }
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
-                            if(((FileIcon)from).fileTable == null){
+                            if(((FileIcon)from).data == null){
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((FilterIcon)to).dataIn = ((FileIcon)from).fileTable;
+                                ((FilterIcon)to).dataIn = ((FileIcon)from).data;
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
                                 conectorPresionado = null;
                             }
                         }  else if (from instanceof FileIcon &&
                                 to instanceof PredictionIcon) {
-                            if(((FileIcon)from).fileTable == null){
+                            if(((FileIcon)from).data == null){
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((PredictionIcon)to).dataIn = ((FileIcon)from).fileTable;
+                                ((PredictionIcon)to).dataIn = ((FileIcon)from).data;
                                 nuevoPresionado.seleccionado = true;
                                 conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
                                 conectorPresionado = null;
