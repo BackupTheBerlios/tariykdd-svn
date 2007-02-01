@@ -242,7 +242,6 @@ public class VerCodificacion extends javax.swing.JFrame {
             path = Save.getSelectedFile().getAbsolutePath();
             path += ".csv";
             fm = new FileManager(path);
-            fm.writeString("Filtered Data Whit Codification \n\n");
             int rows = datosFiltros.getRowCount();
             int columns = datosFiltros.getColumnCount()-1;
             StringBuffer textFilter = new StringBuffer();

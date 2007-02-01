@@ -178,7 +178,6 @@ public class VerReduccion extends javax.swing.JFrame {
             path = Save.getSelectedFile().getAbsolutePath();
             path += ".csv";
             fm = new FileManager(path);
-            fm.writeString("Filtered Data Whit Reduction \n\n");
             int rows = datosFiltros.getRowCount();
             int columns = datosFiltros.getColumnCount()-1;
             StringBuffer textFilter = new StringBuffer();
