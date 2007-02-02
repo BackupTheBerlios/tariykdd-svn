@@ -110,9 +110,9 @@ public class ViewPrediction extends javax.swing.JFrame {
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegElim)
-                        .add(116, 116, 116)
+                        .add(74, 74, 74)
                         .add(jButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 177, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 219, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegAct)
@@ -163,7 +163,6 @@ public class ViewPrediction extends javax.swing.JFrame {
             path = Save.getSelectedFile().getAbsolutePath();
             path += ".csv";
             fm = new FileManager(path);
-            fm.writeString("Prediction \n\n");
             int rows = datosFiltros.getRowCount();
             int columns = datosFiltros.getColumnCount()-1;
             StringBuffer textFilter = new StringBuffer();
