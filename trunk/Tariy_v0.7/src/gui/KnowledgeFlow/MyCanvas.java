@@ -1,5 +1,5 @@
 /*
- * Canvas.java
+ * this.java
  *
  * Created on 20 de abril de 2006, 06:41 PM
  */
@@ -26,7 +26,17 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JComponent;
@@ -39,9 +49,10 @@ import javax.swing.JOptionPane;
  */
 
 
-public class MyCanvas extends javax.swing.JPanel {
+public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
+    Contenedor container;
     Icon seleccionado = null;
-    Conector conectorPresionado = null;
+    Conector conectorpressed = null;
     ArrayList conexiones = new ArrayList();  //Arreglo de conectores tipo Conexion()
     int ix, iy, fx, fy;
     
@@ -52,12 +63,21 @@ public class MyCanvas extends javax.swing.JPanel {
     final Color colorLine = new Color(148,167,179);                    //229,192,255
     private Component oldTipToolText;
     private Point oldPoint;
+    DropTarget dropTarget = null;
     
-    /** Creates new form Canvas */
+    /** Creates new form this */
     public MyCanvas() {
         initComponents();
         this.setToolTipText("");
         oldTipToolText = this;
+    }
+    
+    public MyCanvas(Contenedor container) {
+        this.container = container;
+        initComponents();
+        this.setToolTipText("");
+        oldTipToolText = this;
+        dropTarget = new DropTarget( this, this );
     }
     
     public void addIcono(Icon icono){
@@ -117,13 +137,13 @@ public class MyCanvas extends javax.swing.JPanel {
     
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
 // TODO add your handling code here:
-        Component presionado = this.findComponentAt(evt.getPoint());
+        Component pressed = this.findComponentAt(evt.getPoint());
         try{
-            if(presionado instanceof Conector && conectorPresionado != null){
-                Conector nuevoPresionado = (Conector)presionado;
-                if(!conectorPresionado.getParent().equals(nuevoPresionado.getParent())){
-                    Icon from = ((Icon)conectorPresionado.getParent());
-                    Icon to = ((Icon)nuevoPresionado.getParent());
+            if(pressed instanceof Conector && conectorpressed != null){
+                Conector nuevopressed = (Conector)pressed;
+                if(!conectorpressed.getParent().equals(nuevopressed.getParent())){
+                    Icon from = ((Icon)conectorpressed.getParent());
+                    Icon to = ((Icon)nuevopressed.getParent());
                     System.out.println(to.getIconType());
                     if(from.constrainsTo.contains(to.getIconType())){
                         to.froms.add(from);
@@ -135,9 +155,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof AssociationIcon){
@@ -146,9 +166,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((AssociationIcon)to).dataset = ((FilterIcon)from).buildDataSet();
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof AssociationIcon &&
                                 to instanceof RulesIcon){
@@ -159,9 +179,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 ((RulesIcon)to).dataset = ((AssociationIcon)from).dataset;
                                 ((RulesIcon)to).support = ((AssociationIcon)from).support;
                                 ((RulesIcon)to).title = ((AssociationIcon)from).icono.getText();
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof ClasificationIcon){
@@ -169,9 +189,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof FilterIcon){
@@ -179,9 +199,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof FilterIcon){
@@ -189,9 +209,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof FilterIcon &&
                                 to instanceof ClasificationIcon){
@@ -199,9 +219,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
@@ -210,9 +230,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
                                 ((AssociationIcon)to).getMnuRun().setEnabled(true);
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
@@ -220,9 +240,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FileIcon)from).data;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         }  else if (from instanceof FileIcon &&
                                 to instanceof PredictionIcon) {
@@ -230,9 +250,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).dataIn = ((FileIcon)from).data;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof HierarchicalTreeIcon){
@@ -242,9 +262,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof WekaTreeIcon){
@@ -254,9 +274,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((WekaTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((WekaTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof TextTreeIcon){
@@ -266,9 +286,9 @@ public class MyCanvas extends javax.swing.JPanel {
                             } else {
                                 ((TextTreeIcon) to).root = ((ClasificationIcon)from).root;
                                 ((TextTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof ClasificationIcon &&
                                 to instanceof PredictionIcon){
@@ -276,9 +296,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).root = ((ClasificationIcon)from).root;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         } else if(from instanceof DBConnectionIcon &&
                                 to instanceof PredictionIcon){
@@ -286,9 +306,9 @@ public class MyCanvas extends javax.swing.JPanel {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
-                                nuevoPresionado.seleccionado = true;
-                                conexiones.add(new Conexion(conectorPresionado, nuevoPresionado));
-                                conectorPresionado = null;
+                                nuevopressed.seleccionado = true;
+                                conexiones.add(new Conexion(conectorpressed, nuevopressed));
+                                conectorpressed = null;
                             }
                         }
                     } else {
@@ -296,9 +316,9 @@ public class MyCanvas extends javax.swing.JPanel {
                     }
                 }
             }
-            if(conectorPresionado != null){
-                conectorPresionado.seleccionado = false;
-                conectorPresionado = null;
+            if(conectorpressed != null){
+                conectorpressed.seleccionado = false;
+                conectorpressed = null;
             }
             seleccionado = null;
             repaint();
@@ -318,17 +338,17 @@ public class MyCanvas extends javax.swing.JPanel {
         } else if(press instanceof Conector){
             System.out.println(press.getClass().getSimpleName() + " - "
                     + press.getParent().getName());
-            conectorPresionado = (Conector)press;
-            if(conectorPresionado.seleccionado){
-                if(conectorPresionado.conections >= 1){// Mas de una conexion asociada
-                    this.moveConector(conectorPresionado);
+            conectorpressed = (Conector)press;
+            if(conectorpressed.seleccionado){
+                if(conectorpressed.conections >= 1){// Mas de una conexion asociada
+                    this.moveConector(conectorpressed);
                 } else {
-                    conectorPresionado = null;
+                    conectorpressed = null;
                 }
             } else {
-                conectorPresionado.seleccionado = true;
-                fx = ix = conectorPresionado.get_X();
-                fy = iy = conectorPresionado.get_Y();
+                conectorpressed.seleccionado = true;
+                fx = ix = conectorpressed.get_X();
+                fy = iy = conectorpressed.get_Y();
             }
         }
         repaint();
@@ -350,7 +370,7 @@ public class MyCanvas extends javax.swing.JPanel {
             
             seleccionado.setLocation(x - seleccionado.getWidth() / 2,
                     y - seleccionado.getHeight() / 2);
-        } else if(conectorPresionado != null){
+        } else if(conectorpressed != null){
             fx = evt.getX();
             fy = evt.getY();
         }
@@ -380,7 +400,7 @@ public class MyCanvas extends javax.swing.JPanel {
             offgraphics.setColor(colorEdge);
             offgraphics.drawLine(xd, yd, xh, yh);
         }
-        if(conectorPresionado != null && 0 < fx && fx < this.getWidth()
+        if(conectorpressed != null && 0 < fx && fx < this.getWidth()
         && 0 < fy && fy < this.getHeight()){
             offgraphics.setColor(colorLine);
             offgraphics.drawLine(ix, iy, fx, fy);
@@ -398,25 +418,6 @@ public class MyCanvas extends javax.swing.JPanel {
             return null;
         }
     }
-    
-//    public Point getToolTipLocation(MouseEvent event) {
-//        Component press = findComponentAt(event.getPoint());
-//        Point point;
-//        if(press.getParent() instanceof Icon){
-//            Icon iconPress = (Icon)press.getParent();
-//            this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
-//                    iconPress.getInfo());
-//            oldTipToolText = press;
-//            point = new Point(press.getParent().getLocation().x +
-//                    press.getParent().getWidth(),
-//                    press.getParent().getLocation().y);
-//            oldPoint = point;
-//            return point;
-//        } else {
-//            return null;
-//        }
-//
-//    }
     
     private String setIconInfo(String str){
         str = str.replaceAll("\n", "<p>");
@@ -449,7 +450,7 @@ public class MyCanvas extends javax.swing.JPanel {
                     fx = e.hacia.get_X();
                     fy = e.hacia.get_Y();
                 }
-                conectorPresionado = (Conector)this.findComponentAt(ix, iy);
+                conectorpressed = (Conector)this.findComponentAt(ix, iy);
                 e.de.decreaseConection();
                 e.hacia.decreaseConection();
                 it.remove();
@@ -475,6 +476,136 @@ public class MyCanvas extends javax.swing.JPanel {
                 it.remove();
                 break;
             }
+        }
+    }
+    // Step 4: Handle dragged object notifications
+    public void dragExit(DropTargetEvent dte) {
+        System.out.println( "DT: dragExit" );
+    }
+    public void dragEnter(DropTargetDragEvent dtde) {
+        System.out.println( "DT: dragEnter" );
+    }
+    public void dragOver(DropTargetDragEvent dtde) {
+        System.out.println( "DT: dragOver" );
+    }
+    public void dropActionChanged(DropTargetDragEvent dtde) {
+        System.out.println( "DT: dropActionChanged" );
+    }
+    
+    // Step 5: Handle the drop
+    public void drop(DropTargetDropEvent dtde) {
+        System.out.println( "DT: drop" );
+        try {
+            Transferable transferable = dtde.getTransferable();
+            
+            if( transferable.isDataFlavorSupported(
+                    DataFlavor.stringFlavor ) ) {
+                // Step 5: Accept Strings
+                dtde.acceptDrop( DnDConstants.ACTION_COPY );
+                
+                // Step 6: Extract the Transferable String
+                String s = ( String )transferable.getTransferData(
+                        DataFlavor.stringFlavor );
+//                Image image = (Image) transferable.getTransferData(DataFlavor.imageFlavor);
+//                ImageIcon icon1 = new ImageIcon(image);
+                //label.setIcon(icon);
+                
+                System.out.println( s + " - " + dtde.getLocation().x + "," + dtde.getLocation().y);
+                //JLabel icon = new JLabel(label);
+                JLabel pressed = container.getDragged();
+                if(pressed.getName().equals("otro")){
+                    return;
+                }
+                Point p = dtde.getLocation();
+                String nameIcon = pressed.getName();
+                Icon icon = null;
+                if(nameIcon.equals("Conexion BD")){
+                    icon = new DBConnectionIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("EquipAsso")){
+                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("FPGrowth")){
+                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("Apriori")){
+                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
+                } else if (nameIcon.equals("plaintext")) {
+                    icon = new FileIcon((JLabel) pressed, p.x, p.y);
+                } else if(nameIcon.equals("Generador")){
+                    icon = new RulesIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("updatem")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("codification")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("removem")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("muestra")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("remvalor")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("rangenum")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("discretize")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("reduction")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("selection")){
+                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("c45")){
+                    icon = new ClasificationIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("mate")){
+                    icon = new ClasificationIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("Hierarchical_Tree")){
+                    icon = new HierarchicalTreeIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("Weka_Tree")){
+                    icon = new WekaTreeIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("Text_Tree")){
+                    icon = new TextTreeIcon((JLabel)pressed, p.x, p.y);
+                } else if(nameIcon.equals("Prediction")){
+                    icon = new PredictionIcon((JLabel)pressed, p.x, p.y);
+                } else {
+                    icon = new Icon((JLabel)pressed, p.x, p.y);
+                }
+                if(p.x + icon.getPreferredSize().width > this.getWidth()){
+                    this.setPreferredSize(new Dimension(p.x + icon.getPreferredSize().width,
+                            this.getHeight()));
+                    container.getScrollPanel().setViewportView(this);
+                }
+                if(p.y + icon.getPreferredSize().height > this.getHeight()){
+                    this.setPreferredSize(new Dimension(this.getWidth(),
+                            p.y + icon.getPreferredSize().height));
+                    container.getScrollPanel().setViewportView(this);
+                }
+                this.addIcono(icon);
+                icon.setBackground(new Color(0, 0, 0, 0)); //transparencia en el icono.
+                
+                //repaint();
+                
+                
+                //JLabel icon = new JLabel(icon1);
+                //icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testscjp/images/" + image)));
+//                add(icon);
+//                icon.setLocation(dtde.getLocation());
+//                icon.setBounds(icon.getLocation().x, icon.getLocation().y,
+//                        icon.getPreferredSize().width,
+//                        icon.getPreferredSize().height);
+//                icon.setVisible(true);
+                // Step 7: Complete the drop and notify the DragSource
+                // (will receive a
+                // dragDropEnd() notification
+                dtde.getDropTargetContext().dropComplete( true );
+                repaint();
+            } else {
+                // Step 5: Reject dropped objects that are not Strings
+                dtde.rejectDrop();
+            }
+        } catch( IOException exception ) {
+            exception.printStackTrace();
+            System.err.println( "Exception" + exception.getMessage());
+            dtde.rejectDrop();
+        } catch( UnsupportedFlavorException ufException ) {
+            ufException.printStackTrace();
+            System.err.println( "Exception" +
+                    ufException.getMessage());
+            dtde.rejectDrop();
         }
     }
     
