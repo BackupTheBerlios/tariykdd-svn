@@ -11,6 +11,7 @@ import algorithm.classification.c45_1.TariyTableModel;
 import algorithm.classification.c45_1.TreeCounter;
 import gui.KnowledgeFlow.Chooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -210,6 +211,14 @@ public class configureParameters extends javax.swing.JFrame {
             
            for(int i = 0; i < cols; i++){
                 for(int j = 0; j < rows; j++){
+                    
+                    if(ci.dataIn.getValueAt(j ,i) == null){
+                         JOptionPane.showMessageDialog(this, "The input data contain missing values. \n" +
+                         "You would have to apply the filter \nRemove Missing or Remplace Missing",
+                         "Error in Configure Parameters",JOptionPane.ERROR_MESSAGE);
+                         return;
+                    }
+                    
                     data1[j][i] = ci.dataIn.getValueAt(j ,i);
                     data2[j][i] = ci.dataIn.getValueAt(j ,i);
                 }
@@ -228,10 +237,26 @@ public class configureParameters extends javax.swing.JFrame {
             
             for(int i = 0; i < cols; i++){
                 for(int j = 0; j < roundf; j++){
+                    
+                    if(ci.dataIn.getValueAt(j ,i) == null){
+                         JOptionPane.showMessageDialog(this, "The input data contain missing values. \n" +
+                         "You would have to apply the filter \nRemove Missing or Remplace Missing",
+                         "Error in Configure Parameters",JOptionPane.ERROR_MESSAGE);
+                         return;
+                    }
+                    
                     data1[j][i] = ci.dataIn.getValueAt(j ,i);
                 }
                 cn = 0; 
                 for(int j = roundf; j < rows; j++){
+                    
+                    if(ci.dataIn.getValueAt(j ,i) == null){
+                         JOptionPane.showMessageDialog(this, "The input data contain missing values. \n" +
+                         "You would have to apply the filter \nRemove Missing or Remplace Missing",
+                         "Error in Configure Parameters",JOptionPane.ERROR_MESSAGE);
+                         return;
+                    }
+                    
                     data2[cn][i] = ci.dataIn.getValueAt(j ,i);
                     cn ++;
                 }
