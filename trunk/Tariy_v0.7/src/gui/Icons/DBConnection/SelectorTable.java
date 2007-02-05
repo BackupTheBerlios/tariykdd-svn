@@ -469,7 +469,7 @@ public class SelectorTable extends javax.swing.JFrame
         ArrayList nombres = new ArrayList();
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
-            rs = dbmd.getColumns("%", "%", table, null);
+            rs = dbmd.getColumns(null, null, table, null);
             while(rs.next()){
                 nombres.add(rs.getString(4));
             }
@@ -489,7 +489,7 @@ public class SelectorTable extends javax.swing.JFrame
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
             String[] types = { "TABLE" };
-            rs = dbmd.getTables("%", "%", "%", types);
+            rs = dbmd.getTables(null, null, null, types);
             while(rs.next()){
                 names.addElement(rs.getString(3));
             }
