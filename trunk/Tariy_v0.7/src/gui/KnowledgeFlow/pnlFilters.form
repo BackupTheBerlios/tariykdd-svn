@@ -5,6 +5,7 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
+    <Property name="toolTipText" type="java.lang.String" value="por ver"/>
     <Property name="name" type="java.lang.String" value="otro"/>
   </Properties>
   <AuxValues>
@@ -104,7 +105,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/filters/muestra"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Range"/>
+        <Property name="text" type="java.lang.String" value=" Range "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="muestra"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
