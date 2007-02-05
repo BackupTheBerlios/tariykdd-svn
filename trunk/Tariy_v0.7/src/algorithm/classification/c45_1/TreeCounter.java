@@ -44,7 +44,7 @@ public class TreeCounter extends Thread{
     private int totalNodes;
     public ClasificationIcon ci;
     public String textTree = "";
-
+    
     /** Creates a new instance of TreeCounter */
     public TreeCounter() {
         root = new Attribute("I'm the root", null, null);
@@ -101,8 +101,17 @@ public class TreeCounter extends Thread{
         root.frecuence = column;
         root.name = dataIn.getColumnName(column);
         for(int r = 0; r < rows ; r++ ) {
-            value = (String)dataIn.getValueAt(r, column);
-            tarjet = (String)dataIn.getValueAt(r, columns-1);
+            Class thisClass = dataIn.getColumnClass(column);
+            if(!thisClass.getCanonicalName().equals("String")){
+                value = (String)dataIn.getValueAt(r, column).toString();
+            } else {
+                value = (String)dataIn.getValueAt(r, column);
+            }
+            if(!thisClass.getCanonicalName().equals("String")){
+                tarjet = (String)dataIn.getValueAt(r, columns - 1).toString();
+            } else {
+                tarjet = (String)dataIn.getValueAt(r, columns - 1);
+            }
             if(root.son == null){
                 root.son = new Attribute(value, null, null);
                 root.son.son = new Attribute(tarjet, null, null);
@@ -165,7 +174,7 @@ public class TreeCounter extends Thread{
 //        System.out.println(auxiliar);
         textTree =  textTree + "\n" + tabu(t);
         textTree = textTree + auxiliar;
-                
+        
         if(auxiliar.son != null){
             t++;
             seeTree(auxiliar.son);
