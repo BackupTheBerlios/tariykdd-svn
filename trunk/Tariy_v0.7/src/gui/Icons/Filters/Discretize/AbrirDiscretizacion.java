@@ -134,6 +134,12 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         RbtnNR.setText("Number of Range   :");
         RbtnNR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnNR.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        RbtnNR.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RbtnNRItemStateChanged(evt);
+            }
+        });
+
         RbtnNR.setBounds(10, 30, 140, 15);
         jLayeredPane1.add(RbtnNR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -141,7 +147,13 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         RbtnTR.setText("Size of Range         :");
         RbtnTR.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RbtnTR.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        RbtnTR.setBounds(10, 80, 140, 15);
+        RbtnTR.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RbtnTRItemStateChanged(evt);
+            }
+        });
+
+        RbtnTR.setBounds(10, 70, 140, 15);
         jLayeredPane1.add(RbtnTR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -200,6 +212,18 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void RbtnNRItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RbtnNRItemStateChanged
+// TODO add your handling code here:
+        TexNR.setEnabled(true);
+        TexTR.setEnabled(false);
+    }//GEN-LAST:event_RbtnNRItemStateChanged
+
+    private void RbtnTRItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RbtnTRItemStateChanged
+// TODO add your handling code here:
+        TexNR.setEnabled(false);
+        TexTR.setEnabled(true);
+    }//GEN-LAST:event_RbtnTRItemStateChanged
+
     private void BtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResetActionPerformed
         CmbAtributos.setModel(new javax.swing.DefaultComboBoxModel(atributos));
         TexNR.setText("");
@@ -243,8 +267,8 @@ public class AbrirDiscretizacion extends javax.swing.JFrame {
                  BtnCerrar.setEnabled(true);
             }
             else {
-              JOptionPane.showMessageDialog(this, "El valor debe ser Numerico",
-              "Error en Abrir Rango Numerico",JOptionPane.ERROR_MESSAGE); 
+              JOptionPane.showMessageDialog(this, "The value must be numerical",
+              "Error in Configure Rango Numerico",JOptionPane.ERROR_MESSAGE); 
             }              
         } 
     }//GEN-LAST:event_BtnAplicarActionPerformed
