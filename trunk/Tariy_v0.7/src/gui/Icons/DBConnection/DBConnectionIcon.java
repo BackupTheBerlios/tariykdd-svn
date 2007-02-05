@@ -32,7 +32,7 @@ public class DBConnectionIcon extends Icon{
     private JMenuItem mnuHelp;
     private JMenuItem mnuSelector;
     private JMenuItem mnuLoad;
-    public ConnectionWizard myConnectionWizard = null;
+    public ConnectionWizard myConnectionWizard;
     public Help ayuda = null;
     public Connection connection = null;
     public SelectorTable mySelectorTable = null;
@@ -47,7 +47,9 @@ public class DBConnectionIcon extends Icon{
         super.constrainsTo.add("FilterIcon");
         super.constrainsTo.add("PredictionIcon");
         super.constrainsTo.add("ClasificationIcon");
-                
+        
+        myConnectionWizard = null;
+        
         mnuConfigure = new javax.swing.JMenuItem();
         mnuConfigure.setText("Configure...");
         mnuConfigure.addActionListener(new java.awt.event.ActionListener() {
@@ -95,10 +97,14 @@ public class DBConnectionIcon extends Icon{
         final DBConnectionIcon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                myConnectionWizard =  new ConnectionWizard(icon);
-                myConnectionWizard.setVisible(true);
-                mySelectorTable = null;
-                //connection = myConnectionWizard.getConnection();
+                if(myConnectionWizard == null){
+                    myConnectionWizard =  new ConnectionWizard(icon);
+                    myConnectionWizard.setVisible(true);
+                    mySelectorTable = null;
+                } else {
+                    myConnectionWizard.setVisible(true);
+                    mySelectorTable = null;
+                }
             }
         });
     }
@@ -109,9 +115,9 @@ public class DBConnectionIcon extends Icon{
                 ayuda =  new Help();
                 ayuda.setVisible(true);
             }
-        }); 
+        });
     }
-      
+    
     private void mnuSelectorActionPerformed(java.awt.event.ActionEvent evt) {
         final DBConnectionIcon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -127,7 +133,6 @@ public class DBConnectionIcon extends Icon{
     }
     
     private void mnuLoadActionPerformed(java.awt.event.ActionEvent evt) {
-        //dataset.reset();
         Thread load = new Thread(new Runnable() {
             public void run() {
                 mySelectorTable.dataset.reset();
@@ -135,10 +140,9 @@ public class DBConnectionIcon extends Icon{
                     dataset = mySelectorTable.loadDataSet();
                 } else {
                     dataset = mySelectorTable.loadMultiValuedDataSet();
-                    
                 }
-                Chooser.setStatus("Load " + dataset.getNtransactions() 
-                                                                + " Instances");
+                Chooser.setStatus("Load " + dataset.getNtransactions()
+                + " Instances");
                 setInfo("Load " + dataset.getNtransactions() + " Instances");
                 stopAnimation();
                 Iterator it = tos.iterator();
@@ -153,11 +157,11 @@ public class DBConnectionIcon extends Icon{
         this.startAnimation();
         load.start();
     }
-
+    
     public JMenuItem getMnuSelector() {
         return mnuSelector;
     }
-
+    
     public JMenuItem getMnuLoad() {
         return mnuLoad;
     }
