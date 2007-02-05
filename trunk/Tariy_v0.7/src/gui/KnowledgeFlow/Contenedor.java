@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 /**
@@ -29,16 +30,30 @@ import javax.swing.JSplitPane;
  * @author  and
  */
 public class Contenedor extends JPanel {
-    JPanel selector;
+    pnlPreprocesamiento pre;
+    pnlAlgoritmos alg;
+    pnlVisores vis;
+    pnlFilters fil;
+    
+    //JPanel selector;
     MyCanvas canvas;
     Component presionado;
+    private JLabel dragged;
+    
+    private int backup_select;
+    
     /** Creates new form Contenedor */
-    public Contenedor(JPanel s, MyCanvas c) {
+    public Contenedor() {
         initComponents();
-        selector = s;
-        canvas = c;
+        canvas = new MyCanvas(this);
+        pre = new pnlPreprocesamiento(this);
+        alg = new pnlAlgoritmos(this);
+        vis = new pnlVisores(this);
+        fil = new pnlFilters(this);
+        
         scrollPanel.setViewportView(canvas);
-        contenedor.setLeftComponent(selector);
+        scrollSelector.setViewportView(pre);
+        contenedor.setLeftComponent(scrollSelector);
         contenedor.setRightComponent(scrollPanel);
     }
     
@@ -51,8 +66,9 @@ public class Contenedor extends JPanel {
     private void initComponents() {
         contenedor = new javax.swing.JSplitPane();
         scrollPanel = new javax.swing.JScrollPane();
+        scrollSelector = new javax.swing.JScrollPane();
 
-        contenedor.setOneTouchExpandable(true);
+        contenedor.setDividerLocation(170);
         contenedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 contenedorMousePressed(evt);
@@ -64,6 +80,8 @@ public class Contenedor extends JPanel {
 
         scrollPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), javax.swing.UIManager.getDefaults().getColor("Button.focus")));
         contenedor.setRightComponent(scrollPanel);
+
+        contenedor.setLeftComponent(scrollSelector);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -77,17 +95,65 @@ public class Contenedor extends JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    public JLabel getDragged() {
+        return dragged;
+    }
+    
+    public void setDragged(JLabel dragged) {
+        this.dragged = dragged;
+    }
+    
     public JSplitPane getContenedor(){
         return contenedor;
     }
     
-    public void cambiarPanel(JPanel p){
-        contenedor.setLeftComponent(p);
+    public void changeLeftPanel(int select){
+        JPanel selector = null;
+        switch(select){
+            case 0:
+                if(backup_select == select){
+                    backup_select = -1;
+                } else {
+                    selector = pre;
+                    backup_select = select;
+                }
+                break;
+            case 1:
+                if(backup_select == select){
+                    backup_select = -1;
+                } else {
+                    selector = fil;
+                    backup_select = select;
+                }
+                break;
+            case 2:
+                if(backup_select == select){
+                    backup_select = -1;
+                } else {
+                    selector = alg;
+                    backup_select = select;
+                }
+                break;
+            case 3:
+                if(backup_select == select){
+                    backup_select = -1;
+                } else {
+                    selector = vis;
+                    backup_select = select;
+                }
+                break;
+        }
+        if(selector == null){
+            contenedor.setDividerLocation(0);
+        } else {
+            contenedor.setDividerLocation(170);
+        }
+        scrollSelector.setViewportView(selector);
     }
     
     private void contenedorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorMouseReleased
 // TODO add your handling code here:
-        System.out.println("Mouse Liberado");
+        /*System.out.println("Mouse Liberado");
         Point p = evt.getPoint();
         p.x -= (contenedor.getDividerLocation() + contenedor.getDividerSize());
         if(p.x < 0) p.x = 0;
@@ -141,7 +207,7 @@ public class Contenedor extends JPanel {
                 icon = new PredictionIcon((JLabel)presionado, p.x, p.y);
             } else {
                 icon = new Icon((JLabel)presionado, p.x, p.y);
-            }     
+            }
             if(p.x + icon.getPreferredSize().width > canvas.getWidth()){
                 canvas.setPreferredSize(new Dimension(p.x + icon.getPreferredSize().width,
                         canvas.getHeight()));
@@ -155,19 +221,23 @@ public class Contenedor extends JPanel {
             canvas.addIcono(icon);
             icon.setBackground(new Color(0, 0, 0, 0)); //transparencia en el icono.
         }
-        repaint();
+        repaint();*/
     }//GEN-LAST:event_contenedorMouseReleased
     
     private void contenedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorMousePressed
 // TODO add your handling code here:
-        presionado = contenedor.findComponentAt(evt.getPoint());
-        System.out.println(presionado.getName());
+//        presionado = contenedor.findComponentAt(evt.getPoint());
+//        System.out.println(presionado.getName());
     }//GEN-LAST:event_contenedorMousePressed
-    
+
+    public JScrollPane getScrollPanel() {
+        return scrollPanel;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane contenedor;
     private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JScrollPane scrollSelector;
     // End of variables declaration//GEN-END:variables
     
 }
