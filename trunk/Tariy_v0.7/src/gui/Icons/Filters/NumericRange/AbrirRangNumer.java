@@ -66,7 +66,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         TxtMinVal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxtMaxVal = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Configure Filter");
@@ -126,7 +126,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Min Value");
-        jLabel2.setBounds(50, 30, 90, 20);
+        jLabel2.setBounds(40, 30, 90, 20);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         TxtMaxVal.setFont(new java.awt.Font("Tahoma", 0, 12));
@@ -140,11 +140,11 @@ public class AbrirRangNumer extends javax.swing.JFrame {
         TxtMaxVal.setBounds(190, 60, 90, 50);
         jLayeredPane1.add(TxtMaxVal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Max Value");
-        jLabel4.setBounds(200, 30, 90, -1);
-        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Max Value");
+        jLabel3.setBounds(190, 30, 90, 20);
+        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -309,7 +309,7 @@ public class AbrirRangNumer extends javax.swing.JFrame {
     private javax.swing.JTextField TxtMinVal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
