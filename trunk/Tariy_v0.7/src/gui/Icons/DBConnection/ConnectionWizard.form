@@ -27,8 +27,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="lblStatusBar" alignment="0" pref="578" max="32767" attributes="0"/>
                   <Component id="btnAccept" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStatusBar" alignment="1" min="-2" pref="578" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -37,13 +37,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnAccept" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblStatusBar" min="-2" pref="17" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,12 +86,12 @@
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="spnPuerto" min="-2" pref="56" max="-2" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnConectar" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="txtPassword" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtPuerto" min="-2" pref="52" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnConectar" min="-2" pref="98" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -127,10 +127,10 @@
                       <Component id="lblHost" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtHost" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnConectar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -204,11 +204,6 @@
             <Property name="toolTipText" type="java.lang.String" value="Host of the data base"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnPuerto">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="TCP Port number..."/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnConectar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Connect..."/>
@@ -222,6 +217,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="postgres1"/>
             <Property name="toolTipText" type="java.lang.String" value="Password user"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPuerto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
       </SubComponents>

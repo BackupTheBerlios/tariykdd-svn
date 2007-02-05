@@ -36,8 +36,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
     public ConnectionWizard() {
         initComponents();
         DriverName = "jdbc:postgresql://";
-        spnPuerto.setValue(5432);
-        lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
+        txtPuerto.setText("5432");
         selector = null;
     }
     
@@ -45,7 +44,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         initComponents();
         myDBConnectionIcon = dbci;
         DriverName = "jdbc:postgresql://";
-        spnPuerto.setValue(5432);
+        txtPuerto.setText("5432");
         //lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
         selector = null;
     }
@@ -68,9 +67,9 @@ public class ConnectionWizard extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtBD = new javax.swing.JTextField();
         txtHost = new javax.swing.JTextField();
-        spnPuerto = new javax.swing.JSpinner();
         btnConectar = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        txtPuerto = new javax.swing.JTextField();
         lblStatusBar = new javax.swing.JLabel();
         btnAccept = new javax.swing.JButton();
 
@@ -123,8 +122,6 @@ public class ConnectionWizard extends javax.swing.JFrame {
         txtHost.setText("localhost");
         txtHost.setToolTipText("Host of the data base");
 
-        spnPuerto.setToolTipText("TCP Port number...");
-
         btnConectar.setText("Connect...");
         btnConectar.setToolTipText("Connect...");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +132,8 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         txtPassword.setText("postgres1");
         txtPassword.setToolTipText("Password user");
+
+        txtPuerto.setText("0");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,11 +159,11 @@ public class ConnectionWizard extends javax.swing.JFrame {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, lblPassword))
                         .add(12, 12, 12)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(txtPassword)
                             .add(jPanel1Layout.createSequentialGroup()
-                                .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(txtPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(btnConectar))
-                            .add(txtPassword)))
+                                .add(btnConectar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(116, 116, 116)
                         .add(cbxDriver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
@@ -191,9 +190,9 @@ public class ConnectionWizard extends javax.swing.JFrame {
                     .add(lblHost)
                     .add(lblPuerto)
                     .add(txtHost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnConectar)
-                    .add(spnPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .add(txtPuerto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnConectar))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblStatusBar.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -218,28 +217,28 @@ public class ConnectionWizard extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(lblStatusBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnAccept))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnAccept)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, lblStatusBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 578, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnAccept)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblStatusBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         btnAccept.setEnabled(false);
     }//GEN-LAST:event_txtUsuarioKeyTyped
-
+    
     private void txtBDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBDKeyTyped
         btnAccept.setEnabled(false);
     }//GEN-LAST:event_txtBDKeyTyped
@@ -249,11 +248,11 @@ public class ConnectionWizard extends javax.swing.JFrame {
         switch(cbxDriver.getSelectedIndex()){
             case 0:
                 DriverName = "jdbc:postgresql://";
-                spnPuerto.setValue(5432);
+                txtPuerto.setText("5432");
                 break;
             case 1:
                 DriverName = "jdbc:mysql://";
-                spnPuerto.setValue(3306);
+                txtPuerto.setText("3306");
                 break;
         }
         
@@ -286,7 +285,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         try{
             Class.forName(cbxDriver.getSelectedItem().toString());
             url = DriverName + txtHost.getText() + ":"
-                    + spnPuerto.getValue().toString() + "/"
+                    + txtPuerto.getText() + "/"
                     + txtBD.getText();
             connection = DriverManager.getConnection(url, txtUsuario.getText(),
                     new String(txtPassword.getPassword()));
@@ -331,10 +330,10 @@ public class ConnectionWizard extends javax.swing.JFrame {
     private javax.swing.JLabel lblPuerto;
     private javax.swing.JLabel lblStatusBar;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JSpinner spnPuerto;
     private javax.swing.JTextField txtBD;
     private javax.swing.JTextField txtHost;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPuerto;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
     
