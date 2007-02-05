@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
- 
+
 
 /**
  *
@@ -19,23 +19,15 @@ import javax.swing.JPanel;
  */
 public class Chooser extends javax.swing.JFrame {
     Contenedor c1;
-    pnlPreprocesamiento pre;
-    pnlAlgoritmos alg;
-    pnlVisores vis;
-    pnlFilters fil;
-    MyCanvas canvas;
+    //MyCanvas canvas;
     JPanel p = null;
     
     private int backup_select = -1;
     /** Creates new form Chooser */
     public Chooser() {
         initComponents();
-        pre = new pnlPreprocesamiento();
-        alg = new pnlAlgoritmos();
-        vis = new pnlVisores();
-        fil = new pnlFilters();
-        canvas = new MyCanvas();
-        c1 = new Contenedor(pre, canvas);
+        //canvas = new MyCanvas(c1);
+        c1 = new Contenedor();
         chooser.addTab("Connections", c1);
         chooser.addTab("Filters", p);
         chooser.addTab("Algorithms", p);
@@ -114,30 +106,30 @@ public class Chooser extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE))
-                .add(4, 4, 4))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                .add(chooser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(status, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-991)/2, (screenSize.height-685)/2, 991, 685);
+        setBounds((screenSize.width-999)/2, (screenSize.height-685)/2, 999, 685);
     }// </editor-fold>//GEN-END:initComponents
-
+        
     private void optNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNewActionPerformed
 // TODO add your handling code here:
-        canvas.conexiones.clear();
-        canvas.removeAll();
-        canvas.repaint();
+        c1.canvas.conexiones.clear();
+        c1.canvas.removeAll();
+        c1.canvas.repaint();
     }//GEN-LAST:event_optNewActionPerformed
-
+    
     private void optAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optAboutActionPerformed
 // TODO add your handling code here:
         new frmCredits().setVisible(true);
@@ -154,45 +146,7 @@ public class Chooser extends javax.swing.JFrame {
     private void chooserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chooserMouseClicked
 // TODO add your handling code here:
         int select = chooser.getSelectedIndex();
-        switch(select){
-            case 0:
-                if(backup_select == select){
-                    c1.cambiarPanel(p);
-                    backup_select = -1;
-                } else {
-                    c1.cambiarPanel(pre);
-                    backup_select = select;
-                }
-                break;
-            case 1:
-                if(backup_select == select){
-                    c1.cambiarPanel(p);
-                    backup_select = -1;
-                } else {
-                    c1.cambiarPanel(fil);
-                    backup_select = select;
-                }
-                break;
-            case 2:
-                if(backup_select == select){
-                    c1.cambiarPanel(p);
-                    backup_select = -1;
-                } else {
-                    c1.cambiarPanel(alg);
-                    backup_select = select;
-                }
-                break;
-            case 3:
-                if(backup_select == select){
-                    c1.cambiarPanel(p);
-                    backup_select = -1;
-                } else {
-                    c1.cambiarPanel(vis);
-                    backup_select = select;
-                }
-                break;
-        }
-
+        c1.changeLeftPanel(select);
     }//GEN-LAST:event_chooserMouseClicked
     
     public static void setStatus(String str){
