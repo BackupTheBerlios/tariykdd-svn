@@ -199,6 +199,7 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                ((FilterIcon)to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
@@ -209,6 +210,7 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                                ((FilterIcon)to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
@@ -240,6 +242,7 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
                                 ((FilterIcon)to).dataIn = ((FileIcon)from).data;
+                                ((FilterIcon)to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
