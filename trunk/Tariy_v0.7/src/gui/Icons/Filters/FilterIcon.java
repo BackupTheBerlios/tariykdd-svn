@@ -71,6 +71,7 @@ public class FilterIcon extends Icon{
     public TipodVariables typeData;
     public String filterName, filterText;
     public JFrame Open;
+    public JFrame View;
     
     //
     int indexColumn; //indice de la columna para update missing
@@ -145,6 +146,18 @@ public class FilterIcon extends Icon{
             }
         });
         super.pupMenu.add(mnuHelp);
+        
+        Open = null;
+        View = null;
+    }
+    
+    public void setValuesByDefault(){
+        Open = null;
+        View = null;
+        if(!filterName.equals("removem") && !filterName.equals("codification")){
+            mnuRun.setEnabled(false);
+        }
+        mnuView.setEnabled(false);
     }
     
     public void setDataIn(AbstractTableModel dataIn) {
@@ -181,7 +194,7 @@ public class FilterIcon extends Icon{
                 } else if(filterName.equals("discretize")){
                     HelpDiscretize ayuda = new HelpDiscretize();
                     ayuda.setVisible(true);
-                }                                    
+                }
             }
         });
     }
@@ -190,29 +203,32 @@ public class FilterIcon extends Icon{
         final FilterIcon filter = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(filterName.equals("updatem")){
-                    Open = new AbrirRemMissing(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("muestra")){
-                    Open = new AbrirMuestra(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("remvalor")){
-                    Open = new AbrirRemVal(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("rangenum")){
-                    Open = new AbrirRangNumer(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("discretize")){
-                    Open = new AbrirDiscretizacion(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("reduction")){
-                    Open = new AbrirReduccion(dataIn);
-                    Open.setVisible(true);
-                } else if(filterName.equals("selection")){
-                    Open = new AbrirSeleccion(dataIn);
+                if(Open == null){
+                    if(filterName.equals("updatem")){
+                        Open = new AbrirRemMissing(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("muestra")){
+                        Open = new AbrirMuestra(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("remvalor")){
+                        Open = new AbrirRemVal(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("rangenum")){
+                        Open = new AbrirRangNumer(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("discretize")){
+                        Open = new AbrirDiscretizacion(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("reduction")){
+                        Open = new AbrirReduccion(dataIn);
+                        Open.setVisible(true);
+                    } else if(filterName.equals("selection")){
+                        Open = new AbrirSeleccion(dataIn);
+                        Open.setVisible(true);
+                    }
+                } else {
                     Open.setVisible(true);
                 }
-                
                 mnuRun.setEnabled(true);
             }
         });
@@ -323,33 +339,37 @@ public class FilterIcon extends Icon{
         final FilterIcon ai = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(filterName.equals("updatem")){
-                    VerResRemMiss view = new VerResRemMiss(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("codification")){
-                    VerCodificacion view = new VerCodificacion(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("removem")){
-                    VerResElimMiss view = new VerResElimMiss(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("muestra")){
-                    VerMuestra view = new VerMuestra(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("remvalor")){
-                    VerRemVal view = new VerRemVal(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("rangenum")){
-                    VerRangoNumerico view = new VerRangoNumerico(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("discretize")){
-                    VerDiscretizacion view = new VerDiscretizacion(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("reduction")){
-                    VerReduccion view = new VerReduccion(dataIn, dataOut);
-                    view.setVisible(true);
-                } else if(filterName.equals("selection")){
-                    VerSeleccion view = new VerSeleccion(dataIn, dataOut);
-                    view.setVisible(true);
+                if(View == null){
+                    if(filterName.equals("updatem")){
+                        View = new VerResRemMiss(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("codification")){
+                        View = new VerCodificacion(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("removem")){
+                        View = new VerResElimMiss(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("muestra")){
+                        View = new VerMuestra(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("remvalor")){
+                        View = new VerRemVal(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("rangenum")){
+                        View = new VerRangoNumerico(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("discretize")){
+                        View = new VerDiscretizacion(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("reduction")){
+                        View = new VerReduccion(dataIn, dataOut);
+                        View.setVisible(true);
+                    } else if(filterName.equals("selection")){
+                        View = new VerSeleccion(dataIn, dataOut);
+                        View.setVisible(true);
+                    }
+                } else {
+                    View.setVisible(true);
                 }
             }
         });
