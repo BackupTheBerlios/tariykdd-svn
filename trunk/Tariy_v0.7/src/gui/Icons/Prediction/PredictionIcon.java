@@ -63,28 +63,28 @@ public class PredictionIcon extends Icon{
         super.pupMenu.add(mnuHelp);
     }
     
-        private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                     HelpPrediction ayuda = new HelpPrediction();
-                     ayuda.setVisible(true);
-                }
-            });
-        }
+    private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Utils.Help(icon.getName().trim()).setVisible(true);
+            }
+        });
+    }
     
-        private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) { 
-            TariyTableModel tariyData = this.changeToTariyModel();     
+    private void mnuRunActionPerformed(java.awt.event.ActionEvent evt) {
+        TariyTableModel tariyData = this.changeToTariyModel();
 //            Prediction p = new Prediction(dataIn);
-            p = new Prediction(tariyData);
-            p.PredictionColTarget(root);
-        }  
-        
-        private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
-            ViewPrediction view = new ViewPrediction(dataIn, p);
-            view.setVisible(true);
-        }
-        
-        public TariyTableModel changeToTariyModel(){
+        p = new Prediction(tariyData);
+        p.PredictionColTarget(root);
+    }
+    
+    private void mnuViewActionPerformed(java.awt.event.ActionEvent evt) {
+        ViewPrediction view = new ViewPrediction(dataIn, p);
+        view.setVisible(true);
+    }
+    
+    public TariyTableModel changeToTariyModel(){
         int rows = dataIn.getRowCount();
         int columns = dataIn.getColumnCount();
         Object[][] data = new Object[rows][columns];
