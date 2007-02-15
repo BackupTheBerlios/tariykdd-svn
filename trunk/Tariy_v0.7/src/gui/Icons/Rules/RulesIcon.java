@@ -75,10 +75,10 @@ public class RulesIcon extends Icon{
     }
     
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               HelpRules ayuda = new HelpRules();
-               ayuda.setVisible(true);
+                new Utils.Help(icon.getName().trim()).setVisible(true);
             }
         });
     }
