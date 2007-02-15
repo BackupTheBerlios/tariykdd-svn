@@ -95,18 +95,10 @@ public class AssociationIcon extends Icon{
     }
     
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(algorithm.equals("Apriori")){
-                     HelpApriori ayuda = new HelpApriori();
-                     ayuda.setVisible(true);  
-                } else if(algorithm.equals("FPGrowth")){
-                     HelpFPGrowth ayuda = new HelpFPGrowth();
-                     ayuda.setVisible(true);  
-                } else if(algorithm.equals("EquipAsso")){
-                     HelpEquipAsso ayuda = new HelpEquipAsso();
-                     ayuda.setVisible(true);  
-                }
+                new Utils.Help(icon.getName().trim()).setVisible(true);
             }
         });
     }
