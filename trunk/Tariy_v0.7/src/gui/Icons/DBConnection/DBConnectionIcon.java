@@ -12,7 +12,6 @@ package gui.Icons.DBConnection;
 import Utils.DataSet;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.DBConnection.ConnectionWizard;
-import gui.Icons.DBConnection.Help;
 import gui.KnowledgeFlow.Chooser;
 import gui.KnowledgeFlow.Icon;
 import gui.Icons.DBConnection.SelectorTable;
@@ -33,7 +32,6 @@ public class DBConnectionIcon extends Icon{
     private JMenuItem mnuSelector;
     private JMenuItem mnuLoad;
     public ConnectionWizard myConnectionWizard;
-    public Help ayuda = null;
     public Connection connection = null;
     public SelectorTable mySelectorTable = null;
     public AbstractTableModel connectionTableModel;
