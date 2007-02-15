@@ -101,15 +101,10 @@ public class ClasificationIcon extends Icon{
     }
     
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(algorithm.trim().equals("C45")){
-                    HelpC45 ayuda = new HelpC45();
-                    ayuda.setVisible(true);  
-                } else if(algorithm.trim().equals("Mate")){
-                    HelpMate ayuda = new HelpMate();
-                    ayuda.setVisible(true);  
-                }
+                new Utils.Help(icon.getName().trim()).setVisible(true);
             }
         });
     }
