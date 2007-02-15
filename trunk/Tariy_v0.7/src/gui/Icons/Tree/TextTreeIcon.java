@@ -76,10 +76,10 @@ public class TextTreeIcon extends Icon{
     }
     
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 HelpTextTree ayuda = new HelpTextTree();
-                 ayuda.setVisible(true);
+                new Utils.Help(icon.getName().trim()).setVisible(true);
             }
         });
     }
