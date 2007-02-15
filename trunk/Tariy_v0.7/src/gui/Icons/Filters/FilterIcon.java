@@ -165,36 +165,10 @@ public class FilterIcon extends Icon{
     }
     
     private void mnuHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        final Icon icon = this;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(filterName.equals("removem")){
-                    HelpRemoveM ayuda =  new HelpRemoveM();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("updatem")){
-                    HelpUpdateM ayuda = new HelpUpdateM();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("selection")){
-                    HelpSelection ayuda = new HelpSelection();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("muestra")){
-                    HelpRange ayuda = new HelpRange();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("reduction")){
-                    HelpReduction ayuda = new HelpReduction();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("codification")){
-                    HelpCodification ayuda = new HelpCodification();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("remvalor")){
-                    HelpRemplaceValue ayuda = new HelpRemplaceValue();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("rangenum")){
-                    HelpNumericRange ayuda = new HelpNumericRange();
-                    ayuda.setVisible(true);
-                } else if(filterName.equals("discretize")){
-                    HelpDiscretize ayuda = new HelpDiscretize();
-                    ayuda.setVisible(true);
-                }
+                new Utils.Help(icon.getName().trim()).setVisible(true);
             }
         });
     }
