@@ -23,7 +23,7 @@ public class Help extends javax.swing.JFrame {
         try {
             pnlHelp.setPage(getClass().getResource("/resource/" + iconName + "_en.html"));
         } catch (Exception e) {
-            System.err.println("Failed to open html files");
+            System.err.println("Failed to open " + iconName + "_en.html file");
         }
         pnlHelp.setEditable(false);
     }
@@ -73,6 +73,7 @@ public class Help extends javax.swing.JFrame {
         btnEn.setBackground(new java.awt.Color(255, 255, 255));
         groupTranslate.add(btnEn);
         btnEn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EN")));
+        btnEn.setSelected(true);
         btnEn.setText("English");
         btnEn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnEn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +89,12 @@ public class Help extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane2)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(btnEs)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnEn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 198, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 188, Short.MAX_VALUE)
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -104,7 +105,7 @@ public class Help extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -124,7 +125,7 @@ public class Help extends javax.swing.JFrame {
         try {
             pnlHelp.setPage(getClass().getResource("/resource/" + iconName + "_es.html"));
         } catch (Exception e) {
-            System.err.println("Failed to open html files");
+            System.err.println("Failed to open " + iconName + "_es.html file");
         }
     }//GEN-LAST:event_btnEsActionPerformed
     
@@ -132,7 +133,7 @@ public class Help extends javax.swing.JFrame {
         try {
             pnlHelp.setPage(getClass().getResource("/resource/" + iconName + "_en.html"));
         } catch (Exception e) {
-            System.err.println("Failed to open html files");
+            System.err.println("Failed to open " + iconName + "_en.html file");
         }
     }//GEN-LAST:event_btnEnActionPerformed
     
