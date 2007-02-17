@@ -1,4 +1,20 @@
 /*
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+
+/*
  * Contenedor.java
  *
  * Created on 26 de abril de 2006, 06:09 AM
@@ -26,20 +42,25 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 /**
+ * Contain a <code>JSplitPanne</code> to add the selector panels and Work Area
+ * (Class <code>MyCanvas</code>)
  *
  * @author  and
  */
 public class Contenedor extends JPanel {
+    /** Selector panel to Connection */
     pnlPreprocesamiento pre;
+    /** Selector panel to Algorithm */
     pnlAlgoritmos alg;
+    /** Selector panel to Viewer */
     pnlVisores vis;
+    /** Selector panel to Pre-processing */
     pnlFilters fil;
-    
-    //JPanel selector;
+    /** Work area class */
     MyCanvas canvas;
-    Component presionado;
+    // used for save the JLabel selected
     private JLabel dragged;
-    
+    // used in the hide left component in the JSplitPanne Contenedor
     private int backup_select;
     
     /** Creates new form Contenedor */
@@ -69,15 +90,6 @@ public class Contenedor extends JPanel {
         scrollSelector = new javax.swing.JScrollPane();
 
         contenedor.setDividerLocation(170);
-        contenedor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                contenedorMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                contenedorMouseReleased(evt);
-            }
-        });
-
         scrollPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), javax.swing.UIManager.getDefaults().getColor("Button.focus")));
         contenedor.setRightComponent(scrollPanel);
 
@@ -94,19 +106,34 @@ public class Contenedor extends JPanel {
             .add(contenedor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**
+     * Return the JLabel associated to icon selected.
+     */
     public JLabel getDragged() {
         return dragged;
     }
     
+    /**
+     * Set the JLabel which was selected.
+     *
+     * @param dragged JLabel selected.
+     */
     public void setDragged(JLabel dragged) {
         this.dragged = dragged;
     }
     
+    /**
+     * Get the Container
+     */
     public JSplitPane getContenedor(){
         return contenedor;
     }
     
+    /**
+     * Change or hide the left panel
+     *
+     * @param select The selector panel
+     */
     public void changeLeftPanel(int select){
         JPanel selector = null;
         switch(select){
@@ -150,86 +177,9 @@ public class Contenedor extends JPanel {
         }
         scrollSelector.setViewportView(selector);
     }
-    
-    private void contenedorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorMouseReleased
-// TODO add your handling code here:
-        /*System.out.println("Mouse Liberado");
-        Point p = evt.getPoint();
-        p.x -= (contenedor.getDividerLocation() + contenedor.getDividerSize());
-        if(p.x < 0) p.x = 0;
-        if(p.y < 0) p.y = 0;
-        p.x += scrollPanel.getViewport().getViewPosition().x;
-        p.y += scrollPanel.getViewport().getViewPosition().y;
-        if(!presionado.getName().equals("otro")){
-            String nameIcon = presionado.getName();
-            Icon icon = null;
-            if(nameIcon.equals("Conexion BD")){
-                icon = new DBConnectionIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("EquipAsso")){
-                icon = new AssociationIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("FPGrowth")){
-                icon = new AssociationIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Apriori")){
-                icon = new AssociationIcon((JLabel)presionado, p.x, p.y);
-            } else if (nameIcon.equals("plaintext")) {
-                icon = new FileIcon((JLabel) presionado, p.x, p.y);
-            } else if(nameIcon.equals("Generador")){
-                icon = new RulesIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("updatem")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("codification")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("removem")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("muestra")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("remvalor")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("rangenum")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("discretize")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("reduction")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("selection")){
-                icon = new FilterIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("c45")){
-                icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("mate")){
-                icon = new ClasificationIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Hierarchical_Tree")){
-                icon = new HierarchicalTreeIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Weka_Tree")){
-                icon = new WekaTreeIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Text_Tree")){
-                icon = new TextTreeIcon((JLabel)presionado, p.x, p.y);
-            } else if(nameIcon.equals("Prediction")){
-                icon = new PredictionIcon((JLabel)presionado, p.x, p.y);
-            } else {
-                icon = new Icon((JLabel)presionado, p.x, p.y);
-            }
-            if(p.x + icon.getPreferredSize().width > canvas.getWidth()){
-                canvas.setPreferredSize(new Dimension(p.x + icon.getPreferredSize().width,
-                        canvas.getHeight()));
-                scrollPanel.setViewportView(canvas);
-            }
-            if(p.y + icon.getPreferredSize().height > canvas.getHeight()){
-                canvas.setPreferredSize(new Dimension(canvas.getWidth(),
-                        p.y + icon.getPreferredSize().height));
-                scrollPanel.setViewportView(canvas);
-            }
-            canvas.addIcono(icon);
-            icon.setBackground(new Color(0, 0, 0, 0)); //transparencia en el icono.
-        }
-        repaint();*/
-    }//GEN-LAST:event_contenedorMouseReleased
-    
-    private void contenedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorMousePressed
-// TODO add your handling code here:
-//        presionado = contenedor.findComponentAt(evt.getPoint());
-//        System.out.println(presionado.getName());
-    }//GEN-LAST:event_contenedorMousePressed
-
+    /**
+     * Get the JScrollPane associated to Work Area.
+     */
     public JScrollPane getScrollPanel() {
         return scrollPanel;
     }

@@ -1,7 +1,23 @@
 /*
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+
+/*
  * Chooser.java
  *
- * Created on 26 de abril de 2006, 06:15 AM it work!!!
+ * Created on 26 de abril de 2006, 06:15 AM
  */
 
 package gui.KnowledgeFlow;
@@ -14,19 +30,20 @@ import javax.swing.JPanel;
 
 
 /**
+ * Class for displaying a main form. <p>
+ * Click in the left panel to select an icon a release in the Work Area.
  *
  * @author andress
  */
 public class Chooser extends javax.swing.JFrame {
+    /** The Contenedor class add into JTabbePane */
     Contenedor c1;
-    //MyCanvas canvas;
+    /** The auxiliar JPanel used in JTabbePane construction */
     JPanel p = null;
     
-    private int backup_select = -1;
     /** Creates new form Chooser */
     public Chooser() {
         initComponents();
-        //canvas = new MyCanvas(c1);
         c1 = new Contenedor();
         chooser.addTab("Connections", c1);
         chooser.addTab("Filters", p);
@@ -122,7 +139,7 @@ public class Chooser extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-999)/2, (screenSize.height-685)/2, 999, 685);
     }// </editor-fold>//GEN-END:initComponents
-        
+    
     private void optNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNewActionPerformed
 // TODO add your handling code here:
         c1.canvas.conexiones.clear();
@@ -149,6 +166,12 @@ public class Chooser extends javax.swing.JFrame {
         c1.changeLeftPanel(select);
     }//GEN-LAST:event_chooserMouseClicked
     
+    /**
+     * Set the <code>String</code> in the Status Bar.
+     *
+     * @param str The string to set.
+     * @author Proyecto Tariy
+     */
     public static void setStatus(String str){
         status.setText(str);
         str = str.replaceAll("\n", "<p>");
@@ -156,6 +179,11 @@ public class Chooser extends javax.swing.JFrame {
         status.setToolTipText(str);
     }
     
+    /**
+     * Get the <code>String</code> in the Status Bar.
+     *
+     * @author Proyecto Tariy
+     */
     public static String getStatus(){
         return status.getText();
     }
@@ -180,5 +208,4 @@ public class Chooser extends javax.swing.JFrame {
     private javax.swing.JMenuItem optNew;
     public static javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
-    
 }
