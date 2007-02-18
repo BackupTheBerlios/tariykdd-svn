@@ -28,6 +28,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
     private boolean CONEXION_EXITOSA = false;
     private Connection connection = null;
     private String DriverName;
+    private String DBChar;
     private int x = 150, y = 25;
     public SelectorTable selector;
     private DBConnectionIcon myDBConnectionIcon = null;
@@ -37,6 +38,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         initComponents();
         DriverName = "jdbc:postgresql://";
         txtPuerto.setText("5432");
+        DBChar = "/";
         selector = null;
     }
     
@@ -45,7 +47,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
         myDBConnectionIcon = dbci;
         DriverName = "jdbc:postgresql://";
         txtPuerto.setText("5432");
-        //lblStatusBar.setIcon(new ImageIcon(getClass().getResource("/images/no_conectado")));
+        DBChar = "/";
         selector = null;
     }
     
@@ -95,7 +97,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         lblPuerto.setText("Port:");
 
-        cbxDriver.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "org.postgresql.Driver", "com.mysql.jdbc.Driver" }));
+        cbxDriver.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "org.postgresql.Driver", "com.mysql.jdbc.Driver", "oracle.jdbc.driver.OracleDriver" }));
         cbxDriver.setToolTipText("Driver JDBC name");
         cbxDriver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +232,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                 .add(btnAccept)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblStatusBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,10 +251,19 @@ public class ConnectionWizard extends javax.swing.JFrame {
             case 0:
                 DriverName = "jdbc:postgresql://";
                 txtPuerto.setText("5432");
+                DBChar = "/";
                 break;
             case 1:
                 DriverName = "jdbc:mysql://";
                 txtPuerto.setText("3306");
+                DBChar = "/";
+                break;
+            case 2:
+                //oracle.jdbc.driver.OracleDriver
+                //jdbc:oracle:thin:@192.168.8.10:1521:palmira
+                DriverName = "jdbc:oracle:thin:@";
+                txtPuerto.setText("1521");
+                DBChar = ":";
                 break;
         }
         
@@ -285,8 +296,9 @@ public class ConnectionWizard extends javax.swing.JFrame {
         try{
             Class.forName(cbxDriver.getSelectedItem().toString());
             url = DriverName + txtHost.getText() + ":"
-                    + txtPuerto.getText() + "/"
+                    + txtPuerto.getText() + DBChar
                     + txtBD.getText();
+            //jdbc:oracle:thin:@192.168.8.10:1521:palmira
             connection = DriverManager.getConnection(url, txtUsuario.getText(),
                     new String(txtPassword.getPassword()));
             CONEXION_EXITOSA = true;
