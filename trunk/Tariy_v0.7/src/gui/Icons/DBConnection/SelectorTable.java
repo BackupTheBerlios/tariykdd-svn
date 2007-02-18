@@ -506,7 +506,7 @@ public class SelectorTable extends javax.swing.JFrame
         Vector primaryKeys = new Vector(1);
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
-            rs = dbmd.getPrimaryKeys("", "", table);
+            rs = dbmd.getPrimaryKeys(null, null, table);
             while(rs.next()){
                 primaryKeys.addElement(new String(rs.getString(4)));
             }
@@ -523,7 +523,7 @@ public class SelectorTable extends javax.swing.JFrame
         Vector foreingKeys = new Vector(1);
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
-            rs = dbmd.getImportedKeys("", "", table);
+            rs = dbmd.getImportedKeys(null, null, table);
             while(rs.next()){
                 foreingKeys.addElement(new String(rs.getString(8)));
             }
@@ -540,13 +540,13 @@ public class SelectorTable extends javax.swing.JFrame
         Vector pairKeys = new Vector(2);
         try{
             DatabaseMetaData dbmd = connection.getMetaData();
-            rs = dbmd.getCrossReference("", "", table1, "", "", table2);
+            rs = dbmd.getCrossReference(null, null, table1, null, null, table2);
             while(rs.next()){
                 pairKeys.addElement(rs.getString(4));
                 pairKeys.addElement(rs.getString(8));
             }
             if(pairKeys.size() == 0){
-                rs = dbmd.getCrossReference("", "", table2, "", "", table1);
+                rs = dbmd.getCrossReference(null, null, table2, null, null, table1);
                 while(rs.next()){
                     pairKeys.addElement(rs.getString(8));
                     pairKeys.addElement(rs.getString(4));
