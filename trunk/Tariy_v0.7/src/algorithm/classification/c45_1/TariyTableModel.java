@@ -4469,8 +4469,8 @@ public class TariyTableModel extends AbstractTableModel {
                 if(column != j){
                     row[k++] = datos[i][j];
                 } else {
-                    name = (String)datos[i][j];
-                }
+                    name = (String)datos[i][j].toString(); 
+                }                                          
             }
             row[k] = datos[i][columns - 1];
             Iterator it = hash.iterator();
