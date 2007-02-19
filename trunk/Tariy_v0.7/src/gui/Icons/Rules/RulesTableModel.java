@@ -9,6 +9,7 @@
 package gui.Icons.Rules;
 
 import Utils.Rules;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -22,17 +23,18 @@ import javax.swing.table.TableModel;
 public class RulesTableModel extends AbstractTableModel {
     /** Las reglas de asociación. */
     private ArrayList rules;
-    
+    /** Decimal format to confidence */
+    private DecimalFormat df;
     /** Los nombres de las columnas. */
     String[] columnNames = new String[3];
     
     /** */
     protected TableModel model;
     
-    /** 
+    /**
      * Crea una nueva instancia de la clase RulesTableModel.
      *
-     * @param rules La estructura que sera utilizada para crear el modelo de 
+     * @param rules La estructura que sera utilizada para crear el modelo de
      *        la tabla de datos.
      */
     public RulesTableModel(ArrayList rules) {
@@ -41,6 +43,8 @@ public class RulesTableModel extends AbstractTableModel {
         this.columnNames[1] = "Rule";
         this.columnNames[2] = "Confidence";
         fireTableChanged(null);
+        df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
     }
     
     public String getColumnName(int column) {
@@ -50,7 +54,7 @@ public class RulesTableModel extends AbstractTableModel {
             return "";
         }
     }
-
+    
     //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     //||||||||||||||| AbstractTableModel implemented methods |||||||||||||||||
     //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -62,24 +66,24 @@ public class RulesTableModel extends AbstractTableModel {
     public int getRowCount() {
         return rules.size();
     }
-
+    
     public int getColumnCount() {
         return columnNames.length;
     }
-
+    
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object obj = rules.get(rowIndex);
         if(columnIndex == 0) {
             return rowIndex+1;
         } else if(columnIndex == 1) {
             String rule = new String();
-            rule = ((Rules) obj).getAntecedent() + " -> " + 
+            rule = "If " + ((Rules) obj).getAntecedent() + " Then " +
                     ((Rules) obj).getConcecuent();
-            return (Object) rule;
+            return rule;
         } else {
             float confidence = 0;
             confidence = ((Rules) obj).getConfidence();
-            return (Object) confidence;
+            return df.format(confidence) + "%";
         }
     }
 }
