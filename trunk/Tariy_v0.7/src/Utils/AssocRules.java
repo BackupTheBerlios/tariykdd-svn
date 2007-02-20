@@ -167,19 +167,19 @@ public class AssocRules {
         size = ant.size();
         for(int i=0; i<size; i++) {
             element = (Short) ant.elementAt(i);
-            antecedent = antecedent + (String) dictionary.get(element) + " and ";
+            antecedent = antecedent + (String) dictionary.get(element) + " ~ ";
         }
-        antecedent = antecedent.substring(0, antecedent.length() - 5);
+        antecedent = antecedent.substring(0, antecedent.length() - 3);
         
         // Decodificamos los items del consecuente.
         size = con.size();
         for(int i=0; i<size; i++) {
             element = (Short) con.elementAt(i);
-            concecuent = concecuent + (String) dictionary.get(element) + " and ";
+            concecuent = concecuent + (String) dictionary.get(element) + " ~ ";
         }
         
         // Instanciamos una nueva regla en el Vector de las reglas.
-        concecuent = concecuent.substring(0, concecuent.length() - 5);
+        concecuent = concecuent.substring(0, concecuent.length() - 3);
         rules.add( new Rules(antecedent, concecuent, conf) );
     }
     

@@ -77,8 +77,8 @@ public class RulesTableModel extends AbstractTableModel {
             return rowIndex+1;
         } else if(columnIndex == 1) {
             String rule = new String();
-            rule = "If " + ((Rules) obj).getAntecedent() + " Then " +
-                    ((Rules) obj).getConcecuent();
+            rule = "If " + ((Rules) obj).getAntecedent().replaceAll("~", "and") + " Then " +
+                    ((Rules) obj).getConcecuent().replaceAll("~", "and");
             return rule;
         } else {
             float confidence = 0;
