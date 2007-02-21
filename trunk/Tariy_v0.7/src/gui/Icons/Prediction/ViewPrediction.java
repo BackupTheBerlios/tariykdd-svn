@@ -67,12 +67,12 @@ public class ViewPrediction extends javax.swing.JFrame {
         TableDatosEntrada.setModel(datosEntrada);
         jScrollPane1.setViewportView(TableDatosEntrada);
 
-        jTabbedPane1.addTab("Datos de Entrada", jScrollPane1);
+        jTabbedPane1.addTab("Input Data", jScrollPane1);
 
         TableDatosFiltro.setModel(datosFiltros);
         jScrollPane2.setViewportView(TableDatosFiltro);
 
-        jTabbedPane1.addTab("Objetivo Predecible", jScrollPane2);
+        jTabbedPane1.addTab("Predictable Target ", jScrollPane2);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +112,7 @@ public class ViewPrediction extends javax.swing.JFrame {
                         .add(LblRegElim)
                         .add(74, 74, 74)
                         .add(jButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 219, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 243, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(LblRegAct)

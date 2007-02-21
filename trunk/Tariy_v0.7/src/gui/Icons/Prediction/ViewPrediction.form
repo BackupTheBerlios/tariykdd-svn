@@ -67,7 +67,7 @@
                           <Component id="LblRegElim" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="219" max="32767" attributes="0"/>
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="LblRegAct" min="-2" max="-2" attributes="0"/>
@@ -129,8 +129,8 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Datos de Entrada">
-                    <Property name="tabTitle" type="java.lang.String" value="Datos de Entrada"/>
+                  <JTabbedPaneConstraints tabName="Input Data">
+                    <Property name="tabTitle" type="java.lang.String" value="Input Data"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -152,8 +152,8 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Objetivo Predecible">
-                    <Property name="tabTitle" type="java.lang.String" value="Objetivo Predecible"/>
+                  <JTabbedPaneConstraints tabName="Predictable Target ">
+                    <Property name="tabTitle" type="java.lang.String" value="Predictable Target "/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
