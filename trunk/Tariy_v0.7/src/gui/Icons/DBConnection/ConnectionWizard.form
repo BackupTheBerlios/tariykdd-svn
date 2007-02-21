@@ -43,7 +43,7 @@
               <Component id="btnAccept" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblStatusBar" min="-2" pref="17" max="-2" attributes="0"/>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -183,7 +183,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsuario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="postgres"/>
             <Property name="toolTipText" type="java.lang.String" value="User name"/>
           </Properties>
           <Events>
@@ -192,7 +191,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtBD">
           <Properties>
-            <Property name="text" type="java.lang.String" value="udenar"/>
             <Property name="toolTipText" type="java.lang.String" value="Database name"/>
           </Properties>
           <Events>
@@ -201,7 +199,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtHost">
           <Properties>
-            <Property name="text" type="java.lang.String" value="localhost"/>
             <Property name="toolTipText" type="java.lang.String" value="Host of the data base"/>
           </Properties>
         </Component>
@@ -216,7 +213,6 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Properties>
-            <Property name="text" type="java.lang.String" value="postgres1"/>
             <Property name="toolTipText" type="java.lang.String" value="Password user"/>
           </Properties>
         </Component>

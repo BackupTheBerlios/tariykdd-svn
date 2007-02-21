@@ -105,7 +105,6 @@ public class ConnectionWizard extends javax.swing.JFrame {
             }
         });
 
-        txtUsuario.setText("postgres");
         txtUsuario.setToolTipText("User name");
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -113,7 +112,6 @@ public class ConnectionWizard extends javax.swing.JFrame {
             }
         });
 
-        txtBD.setText("udenar");
         txtBD.setToolTipText("Database name");
         txtBD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -121,7 +119,6 @@ public class ConnectionWizard extends javax.swing.JFrame {
             }
         });
 
-        txtHost.setText("localhost");
         txtHost.setToolTipText("Host of the data base");
 
         btnConectar.setText("Connect...");
@@ -132,7 +129,6 @@ public class ConnectionWizard extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setText("postgres1");
         txtPassword.setToolTipText("Password user");
 
         txtPuerto.setText("0");
@@ -232,7 +228,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                 .add(btnAccept)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblStatusBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
