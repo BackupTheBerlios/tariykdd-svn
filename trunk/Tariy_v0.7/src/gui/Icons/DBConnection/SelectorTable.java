@@ -155,7 +155,7 @@ public class SelectorTable extends javax.swing.JFrame
         });
 
         buttonGroup1.add(marketBasket);
-        marketBasket.setText("Market Basket");
+        marketBasket.setText("UniValued");
         marketBasket.setToolTipText("Choose for mining univalued sets");
         marketBasket.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         marketBasket.setMargin(new java.awt.Insets(0, 0, 0, 0));
