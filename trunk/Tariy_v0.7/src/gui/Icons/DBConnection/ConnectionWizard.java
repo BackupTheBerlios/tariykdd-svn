@@ -91,7 +91,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
 
         lblPassword.setText("Password:");
 
-        lblBD.setText("Data Base:");
+        lblBD.setText("DataBase:");
 
         lblHost.setText("Host:");
 
@@ -228,7 +228,7 @@ public class ConnectionWizard extends javax.swing.JFrame {
                 .add(btnAccept)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblStatusBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
