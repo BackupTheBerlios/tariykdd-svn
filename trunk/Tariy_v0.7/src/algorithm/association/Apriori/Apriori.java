@@ -3,7 +3,7 @@
  *
  * Created on 23 de marzo de 2005, 11:50 AM
  *
- * Proyecto Tariy
+ * Proyecto Tariy.  prueba para Alejita.
  */
 
 package algorithm.association.Apriori;
