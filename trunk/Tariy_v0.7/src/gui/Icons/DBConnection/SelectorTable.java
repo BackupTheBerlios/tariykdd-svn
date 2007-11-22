@@ -335,7 +335,8 @@ public class SelectorTable extends javax.swing.JFrame
         }
         boolean inicio, fin;
         int nfilas = tableModel.getRowCount() - 1;
-        Integer aux = (Integer)(tableModel.getValueAt(0, 0));
+        //Integer aux = (Integer)(tableModel.getValueAt(0, 0));
+        String aux = (String)(tableModel.getValueAt(0, 0).toString());
         String item;
         Short itemShort;
         Integer itemInteger;
@@ -344,9 +345,11 @@ public class SelectorTable extends javax.swing.JFrame
         fin = false;
         for(int i = 0; i < nfilas; i++){
             id = 1;
-            if(aux.compareTo((Integer)(tableModel.getValueAt(i + 1, 0))) != 0){
+            //if(aux.compareTo((Integer)(tableModel.getValueAt(i + 1, 0))) != 0){
+            if(aux.compareTo((tableModel.getValueAt(i + 1, 0).toString())) != 0){
                 fin = true;
-                aux = (Integer)(tableModel.getValueAt(i + 1, 0));
+                //aux = (Integer)(tableModel.getValueAt(i + 1, 0));
+                aux = (String)(tableModel.getValueAt(i + 1, 0).toString());
             }
             item = (String)(tableModel.getValueAt(i, 1).toString());
             if(inicio) {
