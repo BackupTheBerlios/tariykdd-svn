@@ -351,11 +351,28 @@ public class FileManager {
                             break;
                         }
                     }
-                    int end = beg + 10;
-                    colName = attrs.substring(end, attrs.indexOf('{'));
-                    colName = colName.trim().toUpperCase();
+                    beg = beg + 11;
+                    int end = beg;
+                    int endSpace = attrs.indexOf(" ", beg);
+                    int endTabulator = attrs.indexOf("\t", beg);
+                    if(endTabulator == -1){
+                        end = endSpace;
+                    } else if(endSpace == -1){
+                        end = endTabulator;
+                    } else if(endSpace < endTabulator){
+                        end = endSpace;
+                    } else {
+                        end = endTabulator;
+                    }
+                    if(end > beg){
+                        colName = attrs.substring(beg, end);
+                    } else {
+                        colName = "No Name";
+                    }
                     attributes[i] = colName;
-                    attrs = attrs.substring(attrs.indexOf('}')+1, attrs.length());
+                    if(attrs.indexOf('@', end) != -1){
+                        attrs = attrs.substring(attrs.indexOf('@', end), attrs.length());
+                    }
                 }
             }
             // Los nombres de los datos se almacenan en una matriz.
