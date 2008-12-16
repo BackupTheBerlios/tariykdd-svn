@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.3" maxVersion="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
     <Property name="toolTipText" type="java.lang.String" value="por ver"/>
-    <Property name="name" type="java.lang.String" value="otro"/>
+    <Property name="name" type="java.lang.String" value="otro" noResource="true"/>
   </Properties>
   <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
@@ -94,7 +98,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="EquipAsso"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="EquipAsso"/>
+        <Property name="name" type="java.lang.String" value="EquipAsso" noResource="true"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
@@ -106,7 +110,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="FPGrowth"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="FPGrowth"/>
+        <Property name="name" type="java.lang.String" value="FPGrowth" noResource="true"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
@@ -118,13 +122,13 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Apriori"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="Apriori"/>
+        <Property name="name" type="java.lang.String" value="Apriori" noResource="true"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
       <Properties>
-        <Property name="name" type="java.lang.String" value="otro"/>
+        <Property name="name" type="java.lang.String" value="otro" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
@@ -135,7 +139,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="  C45  "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="c45"/>
+        <Property name="name" type="java.lang.String" value="c45" noResource="true"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
@@ -147,7 +151,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="  Mate  "/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="mate"/>
+        <Property name="name" type="java.lang.String" value="mate" noResource="true"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
     </Component>
@@ -160,8 +164,8 @@
           <Color blue="99" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="CLASIFICATION"/>
-        <Property name="name" type="java.lang.String" value="otro"/>
+        <Property name="text" type="java.lang.String" value="CLASSIFICATION"/>
+        <Property name="name" type="java.lang.String" value="otro" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -174,7 +178,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="ASSOCIATION"/>
-        <Property name="name" type="java.lang.String" value="otro"/>
+        <Property name="name" type="java.lang.String" value="otro" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
