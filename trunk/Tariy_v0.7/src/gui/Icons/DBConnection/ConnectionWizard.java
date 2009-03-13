@@ -8,17 +8,8 @@ package gui.Icons.DBConnection;
 
 import gui.KnowledgeFlow.Chooser;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.SpinnerNumberModel;
 
 /**
  *
