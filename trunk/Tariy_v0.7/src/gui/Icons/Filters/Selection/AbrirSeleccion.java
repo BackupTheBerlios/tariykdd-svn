@@ -169,13 +169,13 @@ public class AbrirSeleccion extends javax.swing.JFrame {
         if(cob == 0 || cob > 1) bdob = 1;
         
         if(bdat == 1 && bdob == 1) {
-            JOptionPane.showMessageDialog(this, "You must select at least to an Attribute and “1” Objective",
+            JOptionPane.showMessageDialog(this, "You must select at least to an Attribute and an Objective",
                     "Error in Configure Selection",JOptionPane.ERROR_MESSAGE);
         } else if(bdat == 1) {
             JOptionPane.showMessageDialog(this, "You must select an Attribute at least",
                     "Error in Configure Selection.",JOptionPane.ERROR_MESSAGE);
         } else if(bdob == 1) {
-            JOptionPane.showMessageDialog(this, "you must select “1” Objective",
+            JOptionPane.showMessageDialog(this, "you must select an Objective",
                     "Error in Configure Selection.",JOptionPane.ERROR_MESSAGE);
         } else if(bdat ==0 && bdob == 0) {
             BtnCerrar.setEnabled(true);
