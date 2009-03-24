@@ -3,10 +3,8 @@
  *
  * Created on 20 de abril de 2006, 06:41 PM
  */
-
 package gui.KnowledgeFlow;
 
-import Utils.DataSet;
 import gui.Icons.Association.AssociationIcon;
 import gui.Icons.Clasification.ClasificationIcon;
 import gui.Icons.DBConnection.DBConnectionIcon;
@@ -18,11 +16,9 @@ import gui.Icons.Tree.HierarchicalTreeIcon;
 import gui.Icons.Tree.TextTreeIcon;
 import gui.Icons.Tree.WekaTreeIcon;
 import gui.KnowledgeFlow.Conexion;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -39,53 +35,50 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author  and
  */
+public class MyCanvas extends javax.swing.JPanel implements DropTargetListener {
 
-
-public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
     Contenedor container;
     Icon seleccionado = null;
     Conector conectorpressed = null;
     ArrayList conexiones = new ArrayList();  //Arreglo de conectores tipo Conexion()
     int ix, iy, fx, fy;
-    
     Image offscreen;
     Dimension offscreensize;
     Graphics offgraphics;
     final Color colorEdge = new Color(124, 136, 135);
-    final Color colorLine = new Color(148,167,179);                    //229,192,255
+    final Color colorLine = new Color(148, 167, 179);                    //229,192,255
     private Component oldTipToolText;
     private Point oldPoint;
     DropTarget dropTarget = null;
-    
+
     /** Creates new form this */
     public MyCanvas() {
         initComponents();
         this.setToolTipText("");
         oldTipToolText = this;
     }
-    
+
     public MyCanvas(Contenedor container) {
         this.container = container;
         initComponents();
         this.setToolTipText("");
         oldTipToolText = this;
-        dropTarget = new DropTarget( this, this );
+        dropTarget = new DropTarget(this, this);
     }
-    
-    public void addIcono(Icon icono){
+
+    public void addIcono(Icon icono) {
         add(icono);
         icono.setBounds(icono.getLocation().x, icono.getLocation().y,
                 icono.getPreferredSize().width,
                 icono.getPreferredSize().height);
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -116,199 +109,191 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
         });
 
     }// </editor-fold>//GEN-END:initComponents
-    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 // TODO add your handling code here:
-        Component press = this.findComponentAt(evt.getPoint());
-        System.out.println(press.getName());
-        if(press instanceof MyIcon){
-            seleccionado = (Icon)press.getParent();
-            if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
-                seleccionado.getPupMenu().show(evt.getComponent(), evt.getX(), evt.getY());
-            }
-            seleccionado = null;
-        } else if(press instanceof Conector){
-            Conector conectorPress = (Conector)press;
-            if(conectorPress.seleccionado){
-                this.removeConector(conectorPress);
-            }
-        }
+
     }//GEN-LAST:event_formMouseClicked
-    
+
+    public void getMouseReleased(java.awt.event.MouseEvent evt) {
+        this.formMouseReleased(evt);
+    }
+
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
 // TODO add your handling code here:
-        Component pressed = this.findComponentAt(evt.getPoint());
-        try{
-            if(pressed instanceof Conector && conectorpressed != null){
-                Conector nuevopressed = (Conector)pressed;
-                if(!conectorpressed.getParent().equals(nuevopressed.getParent())){
-                    Icon from = ((Icon)conectorpressed.getParent());
-                    Icon to = ((Icon)nuevopressed.getParent());
+        int x = evt.getXOnScreen() - this.getLocationOnScreen().x;
+        int y = evt.getYOnScreen() - this.getLocationOnScreen().y;
+        Component pressed = this.findComponentAt(x, y);
+        try {
+            if (pressed instanceof Conector && conectorpressed != null) {
+                Conector nuevopressed = (Conector) pressed;
+                if (!conectorpressed.getParent().equals(nuevopressed.getParent())) {
+                    Icon from = ((Icon) conectorpressed.getParent());
+                    Icon to = ((Icon) nuevopressed.getParent());
                     System.out.println(to.getIconType());
-                    if(from.constrainsTo.contains(to.getIconType())){
+                    if (from.constrainsTo.contains(to.getIconType())) {
                         to.froms.add(from);
                         from.tos.add(to);
-                        if(from instanceof DBConnectionIcon &&
-                                to instanceof AssociationIcon){
-                            if(((DBConnectionIcon)from).dataset == null){
+                        if (from instanceof DBConnectionIcon &&
+                                to instanceof AssociationIcon) {
+                            if (((DBConnectionIcon) from).dataset == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((AssociationIcon)to).dataset = ((DBConnectionIcon)from).dataset;
-                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
+                                ((AssociationIcon) to).dataset = ((DBConnectionIcon) from).dataset;
+                                ((AssociationIcon) to).getMnuRun().setEnabled(true);
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof FilterIcon &&
-                                to instanceof AssociationIcon){
-                            if(((FilterIcon)from).dataOut == null){
+                        } else if (from instanceof FilterIcon &&
+                                to instanceof AssociationIcon) {
+                            if (((FilterIcon) from).dataOut == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((AssociationIcon)to).dataset = ((FilterIcon)from).buildDataSet();
-                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
+                                ((AssociationIcon) to).dataset = ((FilterIcon) from).buildDataSet();
+                                ((AssociationIcon) to).getMnuRun().setEnabled(true);
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof AssociationIcon &&
-                                to instanceof RulesIcon){
-                            if(((AssociationIcon)from).trees == null || ((AssociationIcon)from).dataset == null){
+                        } else if (from instanceof AssociationIcon &&
+                                to instanceof RulesIcon) {
+                            if (((AssociationIcon) from).trees == null || ((AssociationIcon) from).dataset == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((RulesIcon)to).trees = ((AssociationIcon)from).trees;
-                                ((RulesIcon)to).dataset = ((AssociationIcon)from).dataset;
-                                ((RulesIcon)to).support = ((AssociationIcon)from).support;
-                                ((RulesIcon)to).title = ((AssociationIcon)from).icono.getText();
+                                ((RulesIcon) to).trees = ((AssociationIcon) from).trees;
+                                ((RulesIcon) to).dataset = ((AssociationIcon) from).dataset;
+                                ((RulesIcon) to).support = ((AssociationIcon) from).support;
+                                ((RulesIcon) to).title = ((AssociationIcon) from).icono.getText();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof DBConnectionIcon &&
-                                to instanceof ClasificationIcon){
-                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                        } else if (from instanceof DBConnectionIcon &&
+                                to instanceof ClasificationIcon) {
+                            if (((DBConnectionIcon) from).connectionTableModel == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((ClasificationIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                ((ClasificationIcon) to).dataIn = ((DBConnectionIcon) from).connectionTableModel;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof DBConnectionIcon &&
-                                to instanceof FilterIcon){
-                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                        } else if (from instanceof DBConnectionIcon &&
+                                to instanceof FilterIcon) {
+                            if (((DBConnectionIcon) from).connectionTableModel == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((FilterIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
-                                ((FilterIcon)to).setValuesByDefault();
+                                ((FilterIcon) to).dataIn = ((DBConnectionIcon) from).connectionTableModel;
+                                ((FilterIcon) to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof FilterIcon &&
-                                to instanceof FilterIcon){
-                            if(((FilterIcon)from).dataOut == null){
+                        } else if (from instanceof FilterIcon &&
+                                to instanceof FilterIcon) {
+                            if (((FilterIcon) from).dataOut == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((FilterIcon)to).dataIn = ((FilterIcon)from).dataOut;
-                                ((FilterIcon)to).setValuesByDefault();
+                                ((FilterIcon) to).dataIn = ((FilterIcon) from).dataOut;
+                                ((FilterIcon) to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof FilterIcon &&
-                                to instanceof ClasificationIcon){
-                            if(((FilterIcon)from).dataOut == null){
+                        } else if (from instanceof FilterIcon &&
+                                to instanceof ClasificationIcon) {
+                            if (((FilterIcon) from).dataOut == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((ClasificationIcon)to).dataIn = ((FilterIcon)from).dataOut;
+                                ((ClasificationIcon) to).dataIn = ((FilterIcon) from).dataOut;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
                         } else if (from instanceof FileIcon &&
                                 to instanceof AssociationIcon) {
-                            if(((FileIcon)from).dataset == null){
+                            if (((FileIcon) from).dataset == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((AssociationIcon)to).dataset = ((FileIcon)from).dataset;
-                                ((AssociationIcon)to).getMnuRun().setEnabled(true);
+                                ((AssociationIcon) to).dataset = ((FileIcon) from).dataset;
+                                ((AssociationIcon) to).getMnuRun().setEnabled(true);
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
                         } else if (from instanceof FileIcon &&
                                 to instanceof FilterIcon) {
-                            if(((FileIcon)from).data == null){
+                            if (((FileIcon) from).data == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((FilterIcon)to).dataIn = ((FileIcon)from).data;
-                                ((FilterIcon)to).setValuesByDefault();
+                                ((FilterIcon) to).dataIn = ((FileIcon) from).data;
+                                ((FilterIcon) to).setValuesByDefault();
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        }  else if (from instanceof FileIcon &&
+                        } else if (from instanceof FileIcon &&
                                 to instanceof PredictionIcon) {
-                            if(((FileIcon)from).data == null){
+                            if (((FileIcon) from).data == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((PredictionIcon)to).dataIn = ((FileIcon)from).data;
+                                ((PredictionIcon) to).dataIn = ((FileIcon) from).data;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof ClasificationIcon &&
-                                to instanceof HierarchicalTreeIcon){
-                            if(((ClasificationIcon)from).root == null ||
-                                    ((ClasificationIcon)from).dataOut2 == null){
+                        } else if (from instanceof ClasificationIcon &&
+                                to instanceof HierarchicalTreeIcon) {
+                            if (((ClasificationIcon) from).root == null ||
+                                    ((ClasificationIcon) from).dataOut2 == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((HierarchicalTreeIcon) to).root = ((ClasificationIcon)from).root;
-                                ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                ((HierarchicalTreeIcon) to).root = ((ClasificationIcon) from).root;
+                                ((HierarchicalTreeIcon) to).dataTest = ((ClasificationIcon) from).dataOut2;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof ClasificationIcon &&
-                                to instanceof WekaTreeIcon){
-                            if(((ClasificationIcon)from).root == null ||
-                                    ((ClasificationIcon)from).dataOut2 == null){
+                        } else if (from instanceof ClasificationIcon &&
+                                to instanceof WekaTreeIcon) {
+                            if (((ClasificationIcon) from).root == null ||
+                                    ((ClasificationIcon) from).dataOut2 == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((WekaTreeIcon) to).root = ((ClasificationIcon)from).root;
-                                ((WekaTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                ((WekaTreeIcon) to).root = ((ClasificationIcon) from).root;
+                                ((WekaTreeIcon) to).dataTest = ((ClasificationIcon) from).dataOut2;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof ClasificationIcon &&
-                                to instanceof TextTreeIcon){
-                            if(((ClasificationIcon)from).root == null ||
-                                    ((ClasificationIcon)from).dataOut2 == null){
+                        } else if (from instanceof ClasificationIcon &&
+                                to instanceof TextTreeIcon) {
+                            if (((ClasificationIcon) from).root == null ||
+                                    ((ClasificationIcon) from).dataOut2 == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((TextTreeIcon) to).root = ((ClasificationIcon)from).root;
-                                ((TextTreeIcon) to).dataTest = ((ClasificationIcon)from).dataOut2;
+                                ((TextTreeIcon) to).root = ((ClasificationIcon) from).root;
+                                ((TextTreeIcon) to).dataTest = ((ClasificationIcon) from).dataOut2;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof ClasificationIcon &&
-                                to instanceof PredictionIcon){
-                            if(((ClasificationIcon)from).root == null){
+                        } else if (from instanceof ClasificationIcon &&
+                                to instanceof PredictionIcon) {
+                            if (((ClasificationIcon) from).root == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((PredictionIcon)to).root = ((ClasificationIcon)from).root;
+                                ((PredictionIcon) to).root = ((ClasificationIcon) from).root;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
                             }
-                        } else if(from instanceof DBConnectionIcon &&
-                                to instanceof PredictionIcon){
-                            if(((DBConnectionIcon)from).connectionTableModel == null){
+                        } else if (from instanceof DBConnectionIcon &&
+                                to instanceof PredictionIcon) {
+                            if (((DBConnectionIcon) from).connectionTableModel == null) {
                                 Chooser.setStatus("There are not loaded data in " + from.getIconType() + "...");
                             } else {
-                                ((PredictionIcon)to).dataIn = ((DBConnectionIcon)from).connectionTableModel;
+                                ((PredictionIcon) to).dataIn = ((DBConnectionIcon) from).connectionTableModel;
                                 nuevopressed.seleccionado = true;
                                 conexiones.add(new Conexion(conectorpressed, nuevopressed));
                                 conectorpressed = null;
@@ -319,31 +304,36 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                     }
                 }
             }
-            if(conectorpressed != null){
+            if (conectorpressed != null) {
                 conectorpressed.seleccionado = false;
                 conectorpressed = null;
             }
             seleccionado = null;
             repaint();
-        } catch(NullPointerException npe){
+        } catch (NullPointerException npe) {
         }
     }//GEN-LAST:event_formMouseReleased
-    
-    private void setConnection(){
+
+    private void setConnection() {
     }
-    
+
+    public void getMousePressed(java.awt.event.MouseEvent evt) {
+        this.formMousePressed(evt);
+    }
+
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 // TODO add your handling code here:
-        Component press = this.findComponentAt(evt.getPoint());
-        if(press instanceof MyIcon || press instanceof JackAnimation || press instanceof AnimationLabel){
+        int x = evt.getXOnScreen() - this.getLocationOnScreen().x;
+        int y = evt.getYOnScreen() - this.getLocationOnScreen().y;
+        Component press = this.findComponentAt(x, y);
+        if (press instanceof MyIcon || press instanceof JackAnimation || press instanceof AnimationLabel) {
             System.out.println(press.getClass().getSimpleName());
-            seleccionado = (Icon)(press.getParent());
-        } else if(press instanceof Conector){
-            System.out.println(press.getClass().getSimpleName() + " - "
-                    + press.getParent().getName());
-            conectorpressed = (Conector)press;
-            if(conectorpressed.seleccionado){
-                if(conectorpressed.conections >= 1){// Mas de una conexion asociada
+            seleccionado = (Icon) (press.getParent());
+        } else if (press instanceof Conector) {
+            System.out.println(press.getClass().getSimpleName() + " - " + press.getParent().getName());
+            conectorpressed = (Conector) press;
+            if (conectorpressed.seleccionado) {
+                if (conectorpressed.conections >= 1) {// Mas de una conexion asociada
                     this.moveConector(conectorpressed);
                 } else {
                     conectorpressed = null;
@@ -356,31 +346,41 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
         }
         repaint();
     }//GEN-LAST:event_formMousePressed
-    
+
+    public void getMouseDragged(java.awt.event.MouseEvent evt) {
+        this.formMouseDragged(evt);
+    }
+
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
 // TODO add your handling code here:
-        if(seleccionado != null){
-            int x = evt.getX();
-            int y = evt.getY();
-            if(x < seleccionado.getWidth()/2)
-                x = seleccionado.getWidth()/2;
-            if(x > this.getWidth() - seleccionado.getWidth()/2)
-                x = this.getWidth() - seleccionado.getWidth()/2;
-            if(y < seleccionado.getHeight()/2)
-                y = seleccionado.getHeight()/2;
-            if(y > this.getHeight() - seleccionado.getHeight())
+        if (seleccionado != null) {
+            int x = evt.getXOnScreen() - this.getLocationOnScreen().x;
+            int y = evt.getYOnScreen() - this.getLocationOnScreen().y;
+            if (x < seleccionado.getWidth() / 2) {
+                x = seleccionado.getWidth() / 2;
+            }
+            if (x > this.getWidth() - seleccionado.getWidth() / 2) {
+                x = this.getWidth() - seleccionado.getWidth() / 2;
+            }
+            if (y < seleccionado.getHeight() / 2) {
+                y = seleccionado.getHeight() / 2;
+            }
+            if (y > this.getHeight() - seleccionado.getHeight()) {
                 y = this.getHeight() - seleccionado.getHeight();
-            
+            }
+
             seleccionado.setLocation(x - seleccionado.getWidth() / 2,
                     y - seleccionado.getHeight() / 2);
-        } else if(conectorpressed != null){
-            fx = evt.getX();
-            fy = evt.getY();
+        } else if (conectorpressed != null) {
+            fx = evt.getXOnScreen() - this.getLocationOnScreen().x;
+            fy = evt.getYOnScreen() - this.getLocationOnScreen().y;
+            //fx = evt.getX();
+            //fy = evt.getY();
         }
         repaint();
     }//GEN-LAST:event_formMouseDragged
-    
-    public synchronized void paint(Graphics g){
+
+    public synchronized void paint(Graphics g) {
         int xd, yd, xh, yh;
         Dimension d = getSize();
         if ((offscreen == null) || (d.width != offscreensize.width) || (d.height != offscreensize.height)) {
@@ -392,10 +392,10 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
             offgraphics = offscreen.getGraphics();
         }
         Iterator it = conexiones.iterator();
-        
+
         super.paint(offgraphics);
-        while(it.hasNext()){
-            Conexion aux = (Conexion)(it.next());
+        while (it.hasNext()) {
+            Conexion aux = (Conexion) (it.next());
             xd = aux.de.get_X();
             yd = aux.de.get_Y();
             xh = aux.hacia.get_X();
@@ -403,41 +403,40 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
             offgraphics.setColor(colorEdge);
             offgraphics.drawLine(xd, yd, xh, yh);
         }
-        if(conectorpressed != null && 0 < fx && fx < this.getWidth()
-        && 0 < fy && fy < this.getHeight()){
+        if (conectorpressed != null && 0 < fx && fx < this.getWidth() && 0 < fy && fy < this.getHeight()) {
             offgraphics.setColor(colorLine);
             offgraphics.drawLine(ix, iy, fx, fy);
         }
         g.drawImage(offscreen, 0, 0, null);
     }
-    
-    public String getToolTipText(MouseEvent event){
+
+    public String getToolTipText(MouseEvent event) {
         Component press = findComponentAt(event.getPoint());
-        if(press.getParent() instanceof Icon){
-            Icon iconPress = (Icon)press.getParent();
+        if (press.getParent() instanceof Icon) {
+            Icon iconPress = (Icon) press.getParent();
             return this.setIconInfo("<strong>" + iconPress.getName() + "</strong><br>" +
                     iconPress.getInfo());
         } else {
             return null;
         }
     }
-    
-    private String setIconInfo(String str){
+
+    private String setIconInfo(String str) {
         str = str.replaceAll("\n", "<p>");
         str = "<html>".concat(str).concat("</html>");
         return str;
     }
-    
+
     private void moveConector(Conector conector) {
         Iterator it = conexiones.iterator();
         boolean bfrom, bto;
-        while(it.hasNext()){
-            Conexion e = (Conexion)it.next();
+        while (it.hasNext()) {
+            Conexion e = (Conexion) it.next();
             bfrom = e.de.equals(conector);
             bto = e.hacia.equals(conector);
-            if( bfrom || bto ){
-                if(bfrom){
-                    if(e.de.conections == 1){
+            if (bfrom || bto) {
+                if (bfrom) {
+                    if (e.de.conections == 1) {
                         e.de.seleccionado = false;
                     }
                     ix = e.hacia.get_X();
@@ -445,7 +444,7 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                     fx = e.de.get_X();
                     fy = e.de.get_Y();
                 } else {
-                    if(e.hacia.conections == 1){
+                    if (e.hacia.conections == 1) {
                         e.hacia.seleccionado = false;
                     }
                     ix = e.de.get_X();
@@ -453,7 +452,7 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                     fx = e.hacia.get_X();
                     fy = e.hacia.get_Y();
                 }
-                conectorpressed = (Conector)this.findComponentAt(ix, iy);
+                conectorpressed = (Conector) this.findComponentAt(ix, iy);
                 e.de.decreaseConection();
                 e.hacia.decreaseConection();
                 it.remove();
@@ -461,18 +460,18 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
             }
         }
     }
-    
+
     private void removeConector(Conector conector) {
         Iterator it = conexiones.iterator();
-        while(it.hasNext()){
-            Conexion e = (Conexion)it.next();
-            if( e.de.equals(conector) ||
-                    e.hacia.equals(conector) ){
-                if(e.de.conections == 1){
+        while (it.hasNext()) {
+            Conexion e = (Conexion) it.next();
+            if (e.de.equals(conector) ||
+                    e.hacia.equals(conector)) {
+                if (e.de.conections == 1) {
                     e.de.seleccionado = false;
                 }
                 e.de.decreaseConection();
-                if(e.hacia.conections == 1){
+                if (e.hacia.conections == 1) {
                     e.hacia.seleccionado = false;
                 }
                 e.hacia.decreaseConection();
@@ -483,106 +482,109 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
     }
     // Step 4: Handle dragged object notifications
     public void dragExit(DropTargetEvent dte) {
-        System.out.println( "DT: dragExit" );
+        System.out.println("DT: dragExit");
     }
+
     public void dragEnter(DropTargetDragEvent dtde) {
-        System.out.println( "DT: dragEnter" );
+        System.out.println("DT: dragEnter");
     }
+
     public void dragOver(DropTargetDragEvent dtde) {
-        System.out.println( "DT: dragOver" );
+        System.out.println("DT: dragOver");
     }
+
     public void dropActionChanged(DropTargetDragEvent dtde) {
-        System.out.println( "DT: dropActionChanged" );
+        System.out.println("DT: dropActionChanged");
     }
-    
+
     // Step 5: Handle the drop
     public void drop(DropTargetDropEvent dtde) {
-        System.out.println( "DT: drop" );
+        System.out.println("DT: drop");
         try {
             Transferable transferable = dtde.getTransferable();
-            
-            if( transferable.isDataFlavorSupported(
-                    DataFlavor.stringFlavor ) ) {
+
+            if (transferable.isDataFlavorSupported(
+                    DataFlavor.stringFlavor)) {
                 // Step 5: Accept Strings
-                dtde.acceptDrop( DnDConstants.ACTION_COPY );
-                
+                dtde.acceptDrop(DnDConstants.ACTION_COPY);
+
                 // Step 6: Extract the Transferable String
-                String s = ( String )transferable.getTransferData(
-                        DataFlavor.stringFlavor );
+                String s = (String) transferable.getTransferData(
+                        DataFlavor.stringFlavor);
 //                Image image = (Image) transferable.getTransferData(DataFlavor.imageFlavor);
 //                ImageIcon icon1 = new ImageIcon(image);
                 //label.setIcon(icon);
-                
-                System.out.println( s + " - " + dtde.getLocation().x + "," + dtde.getLocation().y);
+
+                System.out.println(s + " - " + dtde.getLocation().x + "," + dtde.getLocation().y);
                 //JLabel icon = new JLabel(label);
                 JLabel pressed = container.getDragged();
-                if(pressed.getName().equals("otro")){
+                if (pressed.getName().equals("otro")) {
                     return;
                 }
                 Point p = dtde.getLocation();
                 String nameIcon = pressed.getName();
                 Icon icon = null;
-                if(nameIcon.equals("Conexion BD")){
-                    icon = new DBConnectionIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("EquipAsso")){
-                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("FPGrowth")){
-                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("Apriori")){
-                    icon = new AssociationIcon((JLabel)pressed, p.x, p.y);
+                if (nameIcon.equals("Conexion BD")) {
+                    icon = new DBConnectionIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("EquipAsso")) {
+                    icon = new AssociationIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("FPGrowth")) {
+                    icon = new AssociationIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("Apriori")) {
+                    icon = new AssociationIcon((JLabel) pressed, p.x, p.y);
                 } else if (nameIcon.equals("plaintext")) {
                     icon = new FileIcon((JLabel) pressed, p.x, p.y);
-                } else if(nameIcon.equals("Generador")){
-                    icon = new RulesIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("updatem")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("codification")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("removem")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("muestra")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("remvalor")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("rangenum")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("discretize")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("reduction")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("selection")){
-                    icon = new FilterIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("c45")){
-                    icon = new ClasificationIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("mate")){
-                    icon = new ClasificationIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("Hierarchical_Tree")){
-                    icon = new HierarchicalTreeIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("Weka_Tree")){
-                    icon = new WekaTreeIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("Text_Tree")){
-                    icon = new TextTreeIcon((JLabel)pressed, p.x, p.y);
-                } else if(nameIcon.equals("Prediction")){
-                    icon = new PredictionIcon((JLabel)pressed, p.x, p.y);
+                } else if (nameIcon.equals("Generador")) {
+                    icon = new RulesIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("updatem")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("codification")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("removem")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("muestra")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("remvalor")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("rangenum")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("discretize")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("reduction")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("selection")) {
+                    icon = new FilterIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("c45")) {
+                    icon = new ClasificationIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("mate")) {
+                    icon = new ClasificationIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("Hierarchical_Tree")) {
+                    icon = new HierarchicalTreeIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("Weka_Tree")) {
+                    icon = new WekaTreeIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("Text_Tree")) {
+                    icon = new TextTreeIcon((JLabel) pressed, p.x, p.y);
+                } else if (nameIcon.equals("Prediction")) {
+                    icon = new PredictionIcon((JLabel) pressed, p.x, p.y);
                 } else {
-                    icon = new Icon((JLabel)pressed, p.x, p.y);
+                    icon = new Icon((JLabel) pressed, p.x, p.y);
                 }
-                if(p.x + icon.getPreferredSize().width > this.getWidth()){
+                if (p.x + icon.getPreferredSize().width > this.getWidth()) {
                     this.setPreferredSize(new Dimension(p.x + icon.getPreferredSize().width,
                             this.getHeight()));
                     container.getScrollPanel().setViewportView(this);
                 }
-                if(p.y + icon.getPreferredSize().height > this.getHeight()){
+                if (p.y + icon.getPreferredSize().height > this.getHeight()) {
                     this.setPreferredSize(new Dimension(this.getWidth(),
                             p.y + icon.getPreferredSize().height));
                     container.getScrollPanel().setViewportView(this);
                 }
                 this.addIcono(icon);
                 icon.setBackground(new Color(0, 0, 0, 0)); //transparencia en el icono.
-                
+
                 //repaint();
-                
-                
+
+
                 //JLabel icon = new JLabel(icon1);
                 //icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testscjp/images/" + image)));
 //                add(icon);
@@ -594,24 +596,23 @@ public class MyCanvas extends javax.swing.JPanel implements DropTargetListener{
                 // Step 7: Complete the drop and notify the DragSource
                 // (will receive a
                 // dragDropEnd() notification
-                dtde.getDropTargetContext().dropComplete( true );
+                dtde.getDropTargetContext().dropComplete(true);
                 repaint();
             } else {
                 // Step 5: Reject dropped objects that are not Strings
                 dtde.rejectDrop();
             }
-        } catch( IOException exception ) {
+        } catch (IOException exception) {
             exception.printStackTrace();
-            System.err.println( "Exception" + exception.getMessage());
+            System.err.println("Exception" + exception.getMessage());
             dtde.rejectDrop();
-        } catch( UnsupportedFlavorException ufException ) {
+        } catch (UnsupportedFlavorException ufException) {
             ufException.printStackTrace();
-            System.err.println( "Exception" +
+            System.err.println("Exception" +
                     ufException.getMessage());
             dtde.rejectDrop();
         }
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
