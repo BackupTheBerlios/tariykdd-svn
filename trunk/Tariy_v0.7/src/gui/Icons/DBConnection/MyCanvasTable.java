@@ -448,7 +448,8 @@ public class MyCanvasTable extends JPanel {
         String orderby = "";
         if(select.size() > 1){
             if(mySelectorTable.isMarketBasket){
-                orderby = "\nORDER BY " + (String) select.firstElement();
+                orderby = "\nORDER BY " + (String) select.firstElement() + "," +
+                        (String) select.elementAt(1);
             } else {
                 //orderby = "\nORDER BY " + (String) select.lastElement();
                 orderby = "";
