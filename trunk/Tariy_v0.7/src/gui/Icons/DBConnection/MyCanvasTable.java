@@ -11,6 +11,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
@@ -108,10 +109,16 @@ public class MyCanvasTable extends JPanel {
         });
 
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    public void getMouseClicked(java.awt.event.MouseEvent evt){
+        this.formMouseClicked(evt);
+    }
+
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 // TODO add your handling code here:
-        Component press = this.findComponentAt(evt.getPoint());
+        int xx = evt.getXOnScreen() - this.getLocationOnScreen().x;
+        int yy = evt.getYOnScreen() - this.getLocationOnScreen().y;
+        Component press = this.findComponentAt(xx, yy);
         if(press.getName().equals("Table")){
             tableSelected = (Table)press.getParent();
             if(evt.getButton() == evt.BUTTON2 || evt.getButton() == evt.BUTTON3){
@@ -121,18 +128,16 @@ public class MyCanvasTable extends JPanel {
             }
         } else if(press.getName().equals("Campo")){
             Campo campo = (Campo)press;
-            if(evt.getButton() == evt.BUTTON1){
+            if(evt.getButton() == MouseEvent.BUTTON1){
                 if(campo.seleccionado){
                     campo.seleccionado = false;
                     campo.setIcon(null);
-                    select.removeElement(new String( ((Table)campo.getParent().getParent()).getName()
-                    + "." + campo.getText()));
+                    select.removeElement((((Table) campo.getParent().getParent()).getName() + "." + campo.getText()));
                     
                 } else {
                     campo.seleccionado = true;
                     campo.setIcon(campo.imageSelectorON);
-                    select.addElement(new String( ((Table)campo.getParent().getParent()).getName()
-                    + "." + campo.getText()));
+                    select.addElement((((Table) campo.getParent().getParent()).getName() + "." + campo.getText()));
                 }
                 Chooser.status.setText(selectToString());
                 mySelectorTable.setQuery(selectToString());
@@ -144,18 +149,23 @@ public class MyCanvasTable extends JPanel {
             }
         }
     }//GEN-LAST:event_formMouseClicked
-    
+
+    public void getMouseReleased(java.awt.event.MouseEvent evt){
+        this.formMouseReleased(evt);
+    }
+
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-// TODO add your handling code here:
-        if( (0 > evt.getX() || evt.getX() > this.getWidth()) ||
-                (0 > evt.getY() || evt.getY() > this.getHeight()) ){
+        int xx = evt.getXOnScreen() - this.getLocationOnScreen().x;
+        int yy = evt.getYOnScreen() - this.getLocationOnScreen().y;
+        if( (0 > xx || xx > this.getWidth()) ||
+                (0 > yy || yy > this.getHeight()) ){
             if(conectorFixed != null && conectorFixed.conections == 0){
                 conectorFixed.selected = false;
             }
             repaint();
             return;
         }
-        Component presionado = this.findComponentAt(evt.getPoint());
+        Component presionado = this.findComponentAt(xx, yy);
         if(presionado.getName().equals("Conector") && conectorFixed != null){
             Conector2 conectorFix = (Conector2)presionado;
             if(!conectorFix.getTable().equals(conectorFixed.getTable())){
@@ -178,10 +188,15 @@ public class MyCanvasTable extends JPanel {
         conectorFixed = null;
         repaint();
     }//GEN-LAST:event_formMouseReleased
-    
+
+    public void getMousePressed(java.awt.event.MouseEvent evt){
+        this.formMousePressed(evt);
+    }
+
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-// TODO add your handling code here:
-        Component presionado = this.findComponentAt(evt.getPoint());
+        int xx = evt.getXOnScreen() - this.getLocationOnScreen().x;
+        int yy = evt.getYOnScreen() - this.getLocationOnScreen().y;
+        Component presionado = this.findComponentAt(xx, yy);
         if(presionado.getName().equals("Table")){
             tableSelected = (Table)presionado.getParent();
         } else if(presionado.getName().equals("Conector")){
@@ -199,13 +214,16 @@ public class MyCanvasTable extends JPanel {
             }
         }
     }//GEN-LAST:event_formMousePressed
-    
+
+    public void getMouseDragged(java.awt.event.MouseEvent evt){
+        this.formMouseDragged(evt);
+    }
+
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-// TODO add your handling code here:
         if(tableSelected != null){
             int delay = 3;
-            x = evt.getX();
-            y = evt.getY();
+            x = evt.getXOnScreen() - this.getLocationOnScreen().x;
+            y = evt.getYOnScreen() - this.getLocationOnScreen().y;
             if(x < tableSelected.getWidth()/2 + tableSelected.n * deltax + delay)
                 x = tableSelected.getWidth()/2 + tableSelected.n * deltax + delay;
             if(x > this.getWidth() - tableSelected.getWidth()/2 - delay)
@@ -217,8 +235,8 @@ public class MyCanvasTable extends JPanel {
             tableSelected.setLocation(x - tableSelected.getWidth()/2,
                     y - tableSelected.jLabel1.getHeight()/2);
         } else if(conectorFixed != null){
-            fx = evt.getX();
-            fy = evt.getY();
+            fx = evt.getXOnScreen() - this.getLocationOnScreen().x;
+            fy = evt.getYOnScreen() - this.getLocationOnScreen().y;
         }
         repaint();
     }//GEN-LAST:event_formMouseDragged
