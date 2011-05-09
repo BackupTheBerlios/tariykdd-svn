@@ -147,7 +147,7 @@ public class AssociationIcon extends Icon{
                 if(icon instanceof RulesIcon){
                     ((RulesIcon)icon).trees = trees;
                     ((RulesIcon)icon).dataset = dataset;
-                    ((RulesIcon)icon).support = s;
+                    ((RulesIcon)icon).support = s_int;
                     ((RulesIcon)icon).title = algorithm;
                 }
             }
